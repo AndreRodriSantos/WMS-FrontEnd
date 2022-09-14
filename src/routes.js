@@ -5,6 +5,8 @@ import CadastroAlunos from './Pages/CadastroAlunos';
 import CadastroProfessores from './Pages/CadastroProfessores';
 import CadastroTurma from './Pages/CadastroTurma';
 
+import CadastroMedidas from './Components/CadastroMedidas';
+
 const history = createBrowserHistory()
 
 
@@ -15,6 +17,7 @@ export default function Routes() {
                 <Route path='/CadastroAlunos' component={CadastroAlunos} ></Route>
                 <Route path='/CadastroProfessores' component={CadastroProfessores} ></Route>
                 <Route path='/CadastroTurma' component={CadastroTurma} ></Route>
+                <Route path='/CadastroMedida' component={CadastroMedidas} ></Route>
             </Switch>
         </Router>
     );
