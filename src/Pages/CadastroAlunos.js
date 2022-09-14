@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Button } from "../Components/Button"
 import { Input } from "../Components/Input"
 import styles from "../Styles/CadastroAlunos/Prof.module.css"
@@ -8,6 +8,20 @@ import { Foto } from "../Components/Foto"
 import api from "../Services/api"
 
 export default function CadastroAlunos() {
+
+    function CadastrarAluno(event) {
+        event.preventDefault()
+        var body = {"nome":nome , "codMatricula":matricula , "senha":senha };
+        console.log(body)
+        api.post(
+            "api/aluno/save",body
+        );
+    }
+
+    const [nome, setNome] = useState('')
+    const [matricula, setMatricula] = useState('')
+    const [senha, setSenha] = useState('')
+
     return (
         <div className={styles.container}>
             <div className={styles.imagensContainer}>
@@ -29,37 +43,20 @@ export default function CadastroAlunos() {
                 <form onSubmit={CadastrarAluno}>
                     <label className={styles.label}>Nome</label>
                     <br />
-                    <Input id="nome" type="text" placeholder="Digite o seu Nome" name="nome" />
+                    <Input id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" />
                     <br />
                     <label className={styles.label}>Número de Matricula</label>
                     <br />
-                    <Input id="numMatricula" type="number" name="numMatricula" placeholder="Digite o N° Matrícula" />
+                    <Input id="numMatricula" type="number" onChange={(e) => setMatricula(e.target.value)} name="numMatricula" placeholder="Digite o N° Matrícula" />
                     <br />
                     <label className={styles.label}>Senha</label>
                     <br />
-                    <Input id="senha" type="password" name="senha" placeholder="Digite sua Senha" />
+                    <Input id="senha" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" />
                     <br />
                     <Button>Cadastrar</Button>
                 </form>
             </div>
         </div>
     )
-
-}
-
-function CadastrarAluno(event) {
-    event.preventDefault()
-
-    var nome = document.getElementById("nome").value
-    var numMatricula = document.getElementById("numMatricula").value
-    var senha = document.getElementById("senha").value
-
-    var body = {"nome":nome , "codMatricula":numMatricula , "senha":senha };
-
-    console.log(body)
-
-    api.post(
-        "api/aluno/save",body
-    );
 
 }
