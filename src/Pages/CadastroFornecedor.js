@@ -1,4 +1,4 @@
-import styles from "../Styles/Fornecedor.module.css"
+import styles from "../Styles/Cadastros/Fornecedor.module.css"
 import logo from "../IMG/Logo WMS.png"
 import { Input } from "../Components/Input"
 import { Button } from "../Components/Button"

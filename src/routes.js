@@ -16,9 +16,9 @@ export default function Routes() {
             <Switch>
                 <Route path='/CadastroAlunos' component={CadastroAlunos} ></Route>
                 <Route path='/CadastroProfessores' component={CadastroProfessores} ></Route>
-                <Route path='/CadastroTurma' component={CadastroTurma} ></Route>
+                <Route path='/CadastroTurma' component={CadastroTurma}></Route>
                 <Route path='/CadastroFornecedores' component={CadastroFornecedor} ></Route>
-                <Route path='/CadastroProduto' component={CadastroProduto} ></Route>
+                <Route path='/CadastroProduto' component={CadastroProduto}></Route>
             </Switch>
         </Router>
     );

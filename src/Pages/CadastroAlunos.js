@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button } from "../Components/Button"
 import { Input } from "../Components/Input"
-import styles from "../Styles/CadastroAlunos/Prof.module.css"
+import styles from "../Styles/Cadastros/Prof_Aluno.module.css"
 import logo from "../IMG/Logo WMS.png"
 import { Foto } from "../Components/Foto"
 
