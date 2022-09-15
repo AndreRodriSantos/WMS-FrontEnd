@@ -1,6 +1,7 @@
 import React from "react"
 import { Button } from "../Components/Button"
 import { Input } from "../Components/Input"
+import { InputSenha } from "../Components/Inputs/InputSenha"
 import styles from "../Styles/CadastroAlunos/Prof.module.css"
 import logo from "../IMG/Logo WMS.png"
 import { Foto } from "../Components/Foto"
@@ -27,18 +28,12 @@ export default function CadastroAlunos() {
             <div className={styles.formContainer}>
                 <h1 className={styles.h1}>Cadastro de Aluno(a)</h1>
                 <form onSubmit={CadastrarAluno}>
-                    <label className={styles.label}>Nome</label>
-                    <br />
-                    <Input id="nome" type="text" placeholder="Digite o seu Nome" name="nome" />
-                    <br />
-                    <label className={styles.label}>Número de Matricula</label>
-                    <br />
-                    <Input id="numMatricula" type="number" name="numMatricula" placeholder="Digite o N° Matrícula" />
-                    <br />
-                    <label className={styles.label}>Senha</label>
-                    <br />
-                    <Input id="senha" type="password" name="senha" placeholder="Digite sua Senha" />
-                    <br />
+                    <Input id="nome" type="text" placeholder="Digite o seu Nome" name="nome" label="Nome" />
+                    
+                    <Input id="numMatricula" type="number" name="numMatricula" placeholder="Digite o N° Matrícula" label="N° Matrícula" />
+                   
+                    <InputSenha name="senha" placeholder="Digite sua Senha" label="Senha"/>
+                    
                     <Button>Cadastrar</Button>
                 </form>
             </div>

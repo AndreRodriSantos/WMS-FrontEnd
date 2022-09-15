@@ -1,6 +1,7 @@
 import React from "react"
 import { Button } from "../Components/Button"
 import { Input } from "../Components/Input"
+import { Select } from "../Components/Inputs/Select"
 import { Foto } from "../Components/Foto"
 import logo from "../IMG/Logo WMS.png"
 import styles from "../Styles/CasdatroTurma/CadastroT.module.css"
@@ -24,12 +25,7 @@ export default function CadastroTurma() {
                     </div>
                     <form onSubmit={CadastrarTurma}>
                         <Input id="nome" label="Nome da Turma" type="text" name="nome" placeholder="Digite o Nome"></Input>
-                        <label>Periodo</label>                     
-                        <select id="periodo">
-                            <option value={"MANHA"}>Manha</option>
-                            <option value={"TARDE"}>Tarde</option>
-                            <option value={"NOITE"}>Noite</option>
-                        </select>                      
+                        <Select  data={["Manhã", "Tarde", "Noite"]} id="periodo" title="Periodo"></Select>
                         <Input id="dataComeco" label="Data de Começo" type="date" name="nome" placeholder="Selecione a Data" ></Input>                      
                         <Input id="dataFinal" label="Data Final" type="date" name="nome" placeholder="Selecione a Data"></Input>
                         <label>Número de Participantes</label>                       
@@ -40,7 +36,7 @@ export default function CadastroTurma() {
                         <Button>Criar Turma</Button>
                     </form>
                 </div>
-            </div>
+            </div> 
         </div>
     )
 
