@@ -49,7 +49,7 @@ export default function CadastroProduto() {
                         Voltar
                     </button>
 
-                    <button onClick={() => setPasso(passo + 1)} disabled={passo === 3}>
+                    <button onClick={() => setPasso(passo + 1)}>
                         Avançar
                     </button>
                 </div>

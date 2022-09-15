@@ -13,7 +13,7 @@ export class Foto extends React.Component {
                             <div className={styles.user_div}>
                                 <div className={styles.personal_image}>
                                     <label>
-                                        <input type="file" id="fileImage" onChange={fileChange} accept="image/*" />
+                                        <input type="file" id="fileImage" onChange={fileChange} accept=".jpg" />
                                         <img src={foto} className={styles.btnAdd} />
                                         <figure className={styles.personal_figure}>
                                             
