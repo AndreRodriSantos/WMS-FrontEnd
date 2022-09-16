@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../../Styles/Inputs/Select.module.css"
 
 export class Select extends React.Component {
     render() {
@@ -8,8 +9,7 @@ export class Select extends React.Component {
         const dado = data.map((d) => <option key={d}>{d}</option>)
 
         return (
-            <div>
-                <label>{title}</label>  
+            <div className={styles.select}>
                 <select id={id}>
                     {dado}
                 </select>

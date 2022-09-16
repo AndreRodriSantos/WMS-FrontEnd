@@ -1,6 +1,6 @@
 import React from "react"
 import { Button } from "../Components/Button"
-import { Input } from "../Components/Input"
+import { Input } from "../Components/Inputs/Input"
 import { InputSenha } from "../Components/Inputs/InputSenha"
 import styles from "../Styles/CadastroAlunos/Prof.module.css"
 import logo from "../IMG/Logo WMS.png"

@@ -1,6 +1,6 @@
 import React from "react"
 import { Button } from "../Components/Button"
-import { Input } from "../Components/Input"
+import { Input } from "../Components/Inputs/Input"
 import { Select } from "../Components/Inputs/Select"
 import { Foto } from "../Components/Foto"
 import logo from "../IMG/Logo WMS.png"

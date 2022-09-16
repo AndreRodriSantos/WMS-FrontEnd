@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../../Styles/InputSenha.module.css'
+import styles from '../../Styles/Inputs/InputSenha.module.css'
 import eye_off from '../../IMG/eye-off.png'
 
 export class InputSenha extends React.Component {
@@ -21,7 +21,6 @@ export class InputSenha extends React.Component {
 
 function hash () {
     var senha = document.getElementById('senha')
-    var eye = document.getElementById('eye')
 
     if (senha.type === 'password') {
         senha.type = 'text' 

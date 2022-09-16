@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "../Components/Button"
-import { Input } from "../Components/Input"
+import { Input } from "../Components/Inputs/Input"
 import logo from "../IMG/Logo WMS.png"
 import styles from "../Styles/CadastroMedidas.module.css"
 
