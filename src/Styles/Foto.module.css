@@ -5,8 +5,9 @@
 }
 
 .AddFotos {
-    width: 100%;
-    height: 100%px;
+    position: absolute;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
     background-color: #f4f8fb69;
     display: flex;
@@ -19,7 +20,7 @@
     width: 600px;
     height: 600px;
     border-radius: 50%;
-    background-color: #f0f6fb03;
+    background-color: #f0f6fb48;
     display: flex;
     justify-content: center;
     align-items: center;
