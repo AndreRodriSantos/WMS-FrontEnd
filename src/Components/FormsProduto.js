@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React from "react";
 import api from "../Services/api";
 import styles from '../Styles/FormsProduto.module.css'
@@ -20,6 +21,8 @@ export class DadosPrincipais extends React.Component {
                         <label className={styles.label}>Descrição</label>
                         <Input id="descricao" type="text" placeholder="Digite a Descrição" name="descricao" ></Input>
                     </div>
+
+
 
                     <div className={styles.divInput}>
                         <label className={styles.label}>Fornecedor</label>
@@ -121,6 +124,16 @@ export class ImagemProduto extends React.Component {
     }
 }
 
-function ListarFornecedores(){
-    api.get()
+
+function ListarFornecedores() {
+    api.get("api/fornecedor/list").then(function (response){
+        const fornecedores = response.data
+        console.log(fornecedores)
+        for (let i= 0; i < fornecedores.length; i++) {
+            const f = fornecedores[i];
+
+            return (<option>{f.nome}</option>) 
+        }
+    })
+
 }
