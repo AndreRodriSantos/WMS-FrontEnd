@@ -1,0 +1,48 @@
+.conteiner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form__base{
+    width: 610px;
+    height: 750px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    display: flex;
+   
+   
+}
+.logo{
+    position: relative;
+    width: 50px;
+    top: 20px;
+    left: 20px;
+}
+.titles{
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.title{
+    font-size: 32px;
+}
+
+.formContainer{
+    position: relative;
+    top: 15%;
+    width: 500px;
+    height: 500px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.formContainer Button{
+    position: relative;
+    bottom: -50px;
+}

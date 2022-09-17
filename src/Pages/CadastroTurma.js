@@ -1,6 +1,7 @@
 import React from "react"
 import { Button } from "../Components/Button"
-import { Input } from "../Components/Input"
+import { Input } from "../Components/Inputs/Input"
+import { Select } from "../Components/Inputs/Select"
 import { Foto } from "../Components/Foto"
 import logo from "../IMG/Logo WMS.png"
 import styles from "../Styles/CasdatroTurma/CadastroT.module.css"
@@ -23,38 +24,19 @@ export default function CadastroTurma() {
                         <span className={styles.subTitle}>Lógistica</span>
                     </div>
                     <form onSubmit={CadastrarTurma}>
-                        <label>Nome da Turma</label>
-                        <br />
-                        <Input id="nome" type="text" name="nome" placeholder="Digite o Nome"></Input>
-                        <br />
-                        <label>Periodo</label>
-                        <br />
-                        <select id="periodo">
-                            <option value={"MANHA"}>Manha</option>
-                            <option value={"TARDE"}>Tarde</option>
-                            <option value={"NOITE"}>Noite</option>
-
-                        </select>
-                        <br />
-                        <label>Data de Começo</label>
-                        <br />
-                        <Input id="dataComeco" type="date" name="nome" placeholder="Selecione a Data"></Input>
-                        <br />
-                        <label>Data Final</label>
-                        <br />
-                        <Input id="dataFinal" type="date" name="nome" placeholder="Selecione a Data"></Input>
-                        <br />
-                        <label>Número de Participantes</label>
-                        <br />
+                        <Input id="nome" label="Nome da Turma" type="text" name="nome" placeholder="Digite o Nome"></Input>
+                        <Select  data={["Manhã", "Tarde", "Noite"]} id="periodo" title="Periodo"></Select>
+                        <Input id="dataComeco" label="Data de Começo" type="date" name="nome" placeholder="Selecione a Data" ></Input>                      
+                        <Input id="dataFinal" label="Data Final" type="date" name="nome" placeholder="Selecione a Data"></Input>
+                        <label>Número de Participantes</label>                       
                         <div className={styles.slidecontainer}>
                             <input type="range" min="1" max="40" id="myRange" onChange={numero} className={styles.slider} />
                             <p className={styles.value}><span id="participantes"></span></p>
-                        </div> 
-                        <br />
+                        </div>        
                         <Button>Criar Turma</Button>
                     </form>
                 </div>
-            </div>
+            </div> 
         </div>
     )
 

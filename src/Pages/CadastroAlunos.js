@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Button } from "../Components/Button"
-import { Input } from "../Components/Input"
+import { Input } from "../Components/Inputs/Input"
+import { InputSenha } from "../Components/Inputs/InputSenha"
 import styles from "../Styles/Cadastros/Prof_Aluno.module.css"
 import logo from "../IMG/Logo WMS.png"
 import { Foto } from "../Components/Foto"
