@@ -1,7 +1,6 @@
 import React from "react";
-
-import styles from '../Styles/Foto.module.css'
-import foto from '../IMG/AddFotosIcon.png'
+import foto from "../../IMG/image-icon.png"
+import styles from "../../Styles/Inputs/InputFoto.module.css"
 
 export class Foto extends React.Component {
     render() {
@@ -16,7 +15,6 @@ export class Foto extends React.Component {
                                         <input type="file" id="fileImage" onChange={fileChange} accept=".jpg" />
                                         <img src={foto} className={styles.btnAdd} />
                                         <figure className={styles.personal_figure}>
-                                            
                                             <img className={styles.personal_avatar} id="imgPhoto" />
                                         </figure>
                                     </label>

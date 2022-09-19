@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Button } from "../Components/Button"
+import { Button } from "../Button"
 import { Input } from "../Components/Inputs/Input"
 import logo from "../IMG/Logo WMS.png"
 import styles from "../Styles/CadastroMedidas.module.css"
 
-import api from '../Services/api'
+import api from '../../Services/api'
 
 export default class CadastroMedidas extends React.Component {
     render() {

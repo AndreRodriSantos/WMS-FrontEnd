@@ -1,9 +1,8 @@
-import { render } from "@testing-library/react";
 import React from "react";
-import api from "../Services/api";
-import styles from '../Styles/FormsProduto.module.css'
-import { Foto } from "./Foto";
-import { Input } from "./Input";
+import api from "../../Services/api";
+import styles from '../../Styles/Cadastros/FormsProduto.module.css'
+import { Foto } from "../Inputs/InputFoto";
+import { Input } from "../Inputs/InputText";
 
 export class DadosPrincipais extends React.Component {
 

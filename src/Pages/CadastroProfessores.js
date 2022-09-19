@@ -1,14 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
 import { Button } from "../Components/Button"
-import { Input } from "../Components/Inputs/Input"
+import { Input } from "../Components/Inputs/InputText"
 import { InputSenha } from "../Components/Inputs/InputSenha"
 import styles from "../Styles/Cadastros/Prof_Aluno.module.css"
 import logo from "../IMG/Logo WMS.png"
-import { Foto } from "../Components/Foto"
+import { Foto } from "../Components/Inputs/InputFoto"
 
 import api from '../Services/api'
 
 export default function CadastroProfessores() {
+
+    const [nome, setNome] = useState('')
+    const [nif, setNif] = useState('')
+    const [senha, setSenha] = useState('')
+    
     return (
         <div className={styles.container}>
             <div className={styles.imagensContainer}>
@@ -28,10 +33,9 @@ export default function CadastroProfessores() {
             <div className={styles.formContainer}>
                 <h1 className={styles.h1}>Cadastro de Professor(a)</h1>
                 <form onSubmit={CadastrarProf}>
-                    <Input id="nome" type="text" placeholder="Digite o seu Nome" name="nome" label="Nome" />  
-                    <Input id="nif" type="number" name="nif" placeholder="Digite seu NIF" label="Nif"/>
-                    <InputSenha id="senha" type="password" name="senha" placeholder="Digite sua Senha" label="Senha" />
-                    
+                    <Input id="nome" type="text" onChange={(e) => setNome(e.target.value)}  placeholder="Digite o seu Nome" name="nome" label="Nome" />  
+                    <Input id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif"/>
+                    <InputSenha id="senha" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" label="Senha" />
                     <Button>Cadastrar</Button>
                 </form>
             </div>

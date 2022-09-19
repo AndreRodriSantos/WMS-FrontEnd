@@ -1,14 +1,40 @@
-import React from "react"
+import React, { useState } from "react"
 import { Button } from "../Components/Button"
-import { Input } from "../Components/Inputs/Input"
+import { Input } from "../Components/Inputs/InputText"
 import { Select } from "../Components/Inputs/Select"
-import { Foto } from "../Components/Foto"
+import { Foto } from "../Components/Inputs/InputFoto"
 import logo from "../IMG/Logo WMS.png"
-import styles from "../Styles/CasdatroTurma/CadastroT.module.css"
+import styles from "../Styles/Cadastros/CadastroTurma.module.css"
 
 import api from "../Services/api"
 
 export default function CadastroTurma() {
+
+    function CadastrarTurma(event){
+        event.preventDefault()
+
+        const periodo = document.getElementById("periodo").value
+        const participantes = document.getElementById("participantes").textContent
+    
+        const body = {
+            'nome':nome, 
+            'periodo':periodo,
+            'dataInicio':dataC,
+            'dataFinal': dataF,
+            'numeroMembro':participantes 
+        };
+    
+        console.log(body)
+    
+        api.post(
+            "api/turma/save",body
+        );
+    }
+
+    var [nome, setNome] = useState('')
+    var [dataC, setDataComeco] = useState('')
+    var [dataF, setDataFinal] = useState('')
+
     return (
         <div className={styles.container}>
             <div className={styles.baseForm}>
@@ -24,10 +50,10 @@ export default function CadastroTurma() {
                         <span className={styles.subTitle}>Lógistica</span>
                     </div>
                     <form onSubmit={CadastrarTurma}>
-                        <Input id="nome" label="Nome da Turma" type="text" name="nome" placeholder="Digite o Nome"></Input>
-                        <Select  data={["Manhã", "Tarde", "Noite"]} id="periodo" title="Periodo"></Select>
-                        <Input id="dataComeco" label="Data de Começo" type="date" name="nome" placeholder="Selecione a Data" ></Input>                      
-                        <Input id="dataFinal" label="Data Final" type="date" name="nome" placeholder="Selecione a Data"></Input>
+                        <Input id="nome" label="Nome da Turma" onChange={(e) => setNome(e.target.value)} type="text" name="nome" placeholder="Digite o Nome"></Input>
+                        <Select  data={["MANHA", "TARDE", "NOITE"]} id="periodo" title="Periodo"></Select>
+                        <Input id="dataComeco" label="Data de Começo" onChange={(e) => setDataComeco(e.target.value)} type="date" name="nome" placeholder="Selecione a Data" ></Input>                      
+                        <Input id="dataFinal" label="Data Final" onChange={(e) => setDataFinal(e.target.value)} type="date" name="nome" placeholder="Selecione a Data"></Input>
                         <label>Número de Participantes</label>                       
                         <div className={styles.slidecontainer}>
                             <input type="range" min="1" max="40" id="myRange" onChange={numero} className={styles.slider} />
@@ -52,26 +78,3 @@ function numero() {
     }
 } 
 
-function CadastrarTurma(event){
-    event.preventDefault()
-
-    const nomeTurma = document.getElementById('nome').value
-    const periodo = document.getElementById('periodo').value
-    const dataComeco = document.getElementById('dataComeco').value
-    const dataFinal = document.getElementById('dataFinal').value
-    const participantes = document.getElementById('participantes').textContent
-
-    const body = {
-        'nome':nomeTurma, 
-        'periodo':periodo,
-        'dataInicio':dataComeco,
-        'dataFinal': dataFinal,
-        'numeroMembro':participantes 
-    };
-
-    console.log(body)
-
-    api.post(
-        "api/turma/save",body
-    );
-}

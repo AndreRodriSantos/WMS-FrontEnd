@@ -13,7 +13,7 @@
   border: 2px solid #000;
   border-radius: 5px;
   font-size: 18px;
-  color: #000;
+  color: #111;
   outline: none;
   background: none;
 }
@@ -21,23 +21,19 @@
 .inputBox label {
   position: absolute;
   left: 5px;
-  top: 8px;
+  top: 9px;
   padding: 5px;
   pointer-events: none;
   font-size: 1rem;
-  color: #000;
+  color: #111;
   transition: 0.5s;
-  opacity: 0;
 }
 
 .inputBox input:valid~label,
 .inputBox input:focus~label {
   color: #4D71FF;
-  transform: translateX(10px) translateY(-18px);
-  font-size: 0.65em;
+  transform: translateX(10px) translateY(-21px);
   background: #fff;
-  border-left: 1px solid #4D71FF;
-  border-right: 1px solid #4D71FF;
   letter-spacing: 0.2em;
   opacity: 1;
 }

@@ -1,7 +1,7 @@
 import styles from "../Styles/Cadastros/CadastroProduto.module.css"
 import logo from "../IMG/Logo WMS.png"
 import {useState } from "react"
-import {DadosPrincipais, Taxas_Impostos, ImagemProduto} from "../Components/FormsProduto"
+import {DadosPrincipais, Taxas_Impostos, ImagemProduto} from "../Components/Forms/FormsProduto"
 
 export default function CadastroProduto() {
 

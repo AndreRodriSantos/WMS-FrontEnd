@@ -1,6 +1,6 @@
 import styles from "../Styles/Cadastros/Fornecedor.module.css"
 import logo from "../IMG/Logo WMS.png"
-import { Input } from "../Components/Input"
+import { Input } from "../Components/Inputs/InputText"
 import { Button } from "../Components/Button"
 import api from "../Services/api"
 import { useState } from "react"
@@ -44,40 +44,21 @@ export default function CadastroFornecedor() {
 
                     <div className={styles.column}>
 
-                        <div className={styles.divInput}>
-                            <label className={styles.label}>Nome</label>
-                            <Input id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o Nome do Fornecedor" name="nome" ></Input>
-                        </div>
+                            <Input label="Nome" id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o Nome do Fornecedor" name="nome" ></Input>
+                      
+                            <Input label="CNPJ" id="cnpj"  onChange={(e) => setCnpj(e.target.value)} type="text" placeholder="Digite o CNPJ" name="cpnj" ></Input>
+                        
+                            <Input  label="CEP" id="cep" type="text" onChange={(e) => setCep(e.target.value)} placeholder="Digite o CEP" name="cep" ></Input>
 
-                        <div className={styles.divInput}>
-                            <label className={styles.label}>CNPJ</label>
-                            <Input id="cnpj"  onChange={(e) => setCnpj(e.target.value)} type="text" placeholder="Digite o CNPJ" name="cpnj" ></Input>
-                        </div>
-
-                        <div className={styles.divInput}>
-                            <label className={styles.label}>CEP</label>
-                            <Input id="cep" type="text" onChange={(e) => setCep(e.target.value)} placeholder="Digite o CEP" name="cep" ></Input>
-                        </div>
-
-                        <div className={styles.divInput}>
-                            <label className={styles.label}>Logradouro</label>
-                            <Input id="logradouro" type="text" onChange={(e) => setLogradouro(e.target.value)} placeholder="Digite o Logradouro" name="nome" ></Input>
-                        </div>
+                            <Input  label="Logradouro" id="logradouro" type="text" onChange={(e) => setLogradouro(e.target.value)} placeholder="Digite o Logradouro" name="nome" ></Input>
 
                     </div>
 
                     <div className={styles.column}>
 
-                        <div className={styles.divInput}>
-                            <label className={styles.label}>Localidade</label>
-                            <Input id="localidade" type="text" onChange={(e) => setLocalidade(e.target.value)} placeholder="Digite o localidade" name="localidade" ></Input>
-                        </div>
+                            <Input label="Localidade" id="localidade" type="text" onChange={(e) => setLocalidade(e.target.value)} placeholder="Digite o localidade" name="localidade" ></Input>
 
-                        <div className={styles.divInput}>
-                            <label className={styles.label}>UF</label>
-                            <Input id="uf" type="text" onChange={(e) => setUf(e.target.value)} placeholder="Digite o UF" name="uf" ></Input>
-                        </div>
-
+                            <Input  label="UF" id="uf" type="text" onChange={(e) => setUf(e.target.value)} placeholder="Digite o UF" name="uf" ></Input>
                         <div className={styles.divInput}>
                             <label className={styles.label}>Homologado</label>
                             
