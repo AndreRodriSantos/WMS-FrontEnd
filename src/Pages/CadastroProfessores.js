@@ -13,7 +13,7 @@ export default function CadastroProfessores() {
     const [nome, setNome] = useState('')
     const [nif, setNif] = useState('')
     const [senha, setSenha] = useState('')
-    
+
     return (
         <div className={styles.container}>
             <div className={styles.imagensContainer}>
@@ -33,8 +33,8 @@ export default function CadastroProfessores() {
             <div className={styles.formContainer}>
                 <h1 className={styles.h1}>Cadastro de Professor(a)</h1>
                 <form onSubmit={CadastrarProf}>
-                    <Input id="nome" type="text" onChange={(e) => setNome(e.target.value)}  placeholder="Digite o seu Nome" name="nome" label="Nome" />  
-                    <Input id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif"/>
+                    <Input id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" label="Nome" />
+                    <Input id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif" />
                     <InputSenha id="senha" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" label="Senha" />
                     <Button>Cadastrar</Button>
                 </form>
@@ -44,19 +44,18 @@ export default function CadastroProfessores() {
 
 }
 
-function CadastrarProf(event){
+function CadastrarProf(event) {
     event.preventDefault()
 
     const nomeProf = document.getElementById('nome').value
     const nif = document.getElementById('nif').value
     const senha = document.getElementById('senha').value
 
-    const body = {'nome':nomeProf, 'nif': nif, 'senha':senha };
+    const body = { 'nome': nomeProf, 'nif': nif, 'senha': senha };
 
     console.log(body)
 
     api.post(
-        "api/professor/save",body
+        "api/professor/save", body
     );
-
 }

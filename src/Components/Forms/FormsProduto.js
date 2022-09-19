@@ -3,67 +3,29 @@ import api from "../../Services/api";
 import styles from '../../Styles/Cadastros/FormsProduto.module.css'
 import { Foto } from "../Inputs/InputFoto";
 import { Input } from "../Inputs/InputText";
+import { Select } from "../Inputs/Select";
 
 export class DadosPrincipais extends React.Component {
-
+    
     render() {
         return (
             <form className={styles.form}>
                 <div className={styles.column}>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Nome</label>
-                        <Input id="nome" type="text" placeholder="Digite o Nome do Produto" name="nome" ></Input>
-                    </div>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Descrição</label>
-                        <Input id="descricao" type="text" placeholder="Digite a Descrição" name="descricao" ></Input>
-                    </div>
-
-
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Fornecedor</label>
-                        <select id="nome" type="text" placeholder="Digite o Nome do Fornecedor" name="fornecedor" >
-                            {}
-                        </select>
-                    </div>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Ponto de Pedido</label>
-                        <Input id="nome" type="text" placeholder="Digite o Ponto de Pedido" name="pontoPedido" ></Input>
-                    </div>
-
+                    <Input label="Nome" id="nome" type="text" name="nome" ></Input>
+                    <Input label="Descrição" id="descricao" type="text" name="descricao" ></Input>
+                    <Select idArrow="arrow1" data={["Fornecedor", "Fornecedor2"]} id="fornecedor" name="fornecedor"></Select>
+                    <Input label="Ponto de Pedido" type="text" id="nome" name="pontoPedido"></Input>
                 </div>
 
                 <div className={styles.column}>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Validade</label>
-                        <Input id="nome" type="text" placeholder="Digite a Validade do Produto" name="validade" ></Input>
-                    </div>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Demanda</label>
-                        <Input id="nome" type="text" placeholder="Digite a Demanda por esse Produto" name="demanda" ></Input>
-                    </div>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Valor</label>
-                        <Input id="nome" type="text" placeholder="Digite o Valor do Produto" name="valor" ></Input>
-                    </div>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Nome</label>
-                        <Input id="nome" type="text" placeholder="Digite a Unidade de Medida do Produto" name="medida" ></Input>
-                    </div>
-
+                    <Input label="Validade" id="nome" type="date" name="validade"></Input>
+                    <Select idArrow="arrow2" data={["BAIXA", "MEDIA", "ALTA"]} id="demanda" name="demanda"></Select>
+                    <Input label="Valor" id="valor" type="number" name="valor"></Input>
+                    <Select idArrow="arrow3" data={["Medida 1", "Medida 2"]} id="nome" type="text" placeholder="Digite a Unidade de Medida do Produto" name="medida" ></Select>
                 </div>
             </form>
         )
     }
-
 }
 
 export class Taxas_Impostos extends React.Component {
@@ -73,38 +35,31 @@ export class Taxas_Impostos extends React.Component {
 
                 <div className={styles.column}>
 
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Nome</label>
-                        <Input id="nome" type="text" placeholder="Digite o Nome do Produto" name="nome" ></Input>
-                    </div>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Nome</label>
-                        <Input id="nome" type="text" placeholder="Digite o Nome do Produto" name="nome" ></Input>
-                    </div>
-
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Nome</label>
-                        <Input id="nome" type="text" placeholder="Digite o Nome do Produto" name="nome" ></Input>
-                    </div>
+                    <Input label="IPI" id="nome" type="text" name="nome" ></Input>
+                    <Input label="PIS" id="descricao" type="text" name="descricao" ></Input>
+                    <Input label="COFINS" id="descricao" type="text" name="descricao" ></Input>
 
                 </div>
 
                 <div className={styles.column}>
 
+                    <Input label="SKU" id="nome" type="text" name="nome" ></Input>
+                    <Input label="ICMS" id="descricao" type="text" name="descricao" ></Input>
                     <div className={styles.divInput}>
-                        <label className={styles.label}>Nome</label>
-                        <Input id="nome" type="text" placeholder="Digite o Nome do Produto" name="nome" ></Input>
-                    </div>
+                        <label className={styles.label}>Produto Importado</label>
 
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Nome</label>
-                        <Input id="nome" type="text" placeholder="Digite o Nome do Produto" name="nome" ></Input>
-                    </div>
+                        <div className={styles.importado}>
+                            <div>
+                                <label className={styles.label}>Sim</label>
+                                <input id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
+                            </div>
 
-                    <div className={styles.divInput}>
-                        <label className={styles.label}>Nome</label>
-                        <Input id="nome" type="text" placeholder="Digite o Nome do Produto" name="nome" ></Input>
+                            <div>
+                                <label className={styles.label}>Não</label>
+                                <input id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -125,14 +80,14 @@ export class ImagemProduto extends React.Component {
 
 
 function ListarFornecedores() {
-    api.get("api/fornecedor/list").then(function (response){
+    api.get("api/fornecedor/list").then(function (response) {
         const fornecedores = response.data
         console.log(fornecedores)
-        for (let i= 0; i < fornecedores.length; i++) {
+        
+        for (let i = 0; i < fornecedores.length; i++) {
             const f = fornecedores[i];
-
-            return (<option>{f.nome}</option>) 
+            
+            return (<option>{f.nome}</option>)
         }
     })
-
 }
