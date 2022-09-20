@@ -1,9 +1,13 @@
-.container{
+.container {
     width: 100%;
     height: 100%;
-    background-color: aqua;
+    background: rgb(114, 237, 242);
+    background: linear-gradient(90deg, rgba(114, 237, 242, 1) 0%, rgba(83, 88, 230, 1) 100%);
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
-.base{
+
+.base {
     position: relative;
     top: 10%;
     left: 5%;
@@ -15,7 +19,29 @@
     justify-content: center;
     text-align: center;
 }
-.btns{
+
+.cubo {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 800px;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seila {
+    position: fixed;
+    width: 250px;
+    height: 50px;
+    background: rgb(114, 237, 242);
+    background: linear-gradient(90deg, rgb(90 123 233) 0%, rgb(86 102 231) 100%);
+    right: 10%;
+    bottom: 9%;
+}
+
+.btns {
     position: absolute;
     top: -5%;
     width: 460px;
@@ -27,34 +53,45 @@
     justify-content: space-around;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-button{
+
+.btn {
     width: 150px;
     height: 50px;
     border-radius: 10px;
     border: none;
     font-size: 20px;
-    font-weight: bold; 
+    font-weight: bold;
     transition: 0.3s ease-in;
     background-color: transparent;
     z-index: 1;
 }
-button:focus{
+
+.btnOn {
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s ease-in;
+    z-index: 1;
     background-color: #4D71FF;
     color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.title{
+
+
+.title {
     position: absolute;
     top: 15%;
     margin: 0 20%;
     font-size: 24px;
     font-weight: 400;
 }
-.base_form{
+
+.base_form {
     position: relative;
     width: 500px;
-    height: 500px;
-    top: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,8 +99,23 @@ button:focus{
     overflow: hidden;
 }
 
-.form{
+.telaCadastro {
+    position: absolute;
+    width: 350px;
+    bottom: -80%;
+}
+
+.btnCadastro {
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+}
+
+.alunoOn {
     position: relative;
+    left: 232px;
+    transition: .5s;
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -71,19 +123,44 @@ button:focus{
     align-items: center;
     text-align: center;
 }
-.form{
-    margin-left: 100px;
+
+.alunoOff {
+    position: relative;
+    left: -750px;
     transition: .5s;
-    left: 46%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-.telaCadastro{
-    position: absolute;
-    width: 350px;
-    bottom: -20%;
+
+.profOn {
+    position: relative;
+    left: -232px;
+    transition: .5s;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-.btnCadastro{
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    color: #000;
+
+.profOff {
+    position: relative;
+    left: 500px;
+    transition: .5s;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.logo{
+    position: fixed;
+    top: 2%;
+    right: 0;
 }
