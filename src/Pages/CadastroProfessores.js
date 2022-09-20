@@ -57,5 +57,5 @@ function CadastrarProf(event) {
 
     api.post(
         "api/professor/save", body
-    );
+    )
 }

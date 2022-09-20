@@ -1,20 +1,22 @@
 import styles from "../Styles/Cadastros/CadastroProduto.module.css"
 import logo from "../IMG/Logo WMS.png"
-import {useState } from "react"
-import {DadosPrincipais, Taxas_Impostos, ImagemProduto} from "../Components/Forms/FormsProduto"
+import { useState } from "react"
+import { DadosPrincipais, Taxas_Impostos, ImagemProduto } from "../Components/Forms/FormsProduto"
 
 export default function CadastroProduto() {
-
     const [passo, setPasso] = useState(1)
+
+    const [data, setData] = useState({})
 
     const getCompPassos = () => {
         switch (passo) {
-            case 1: return <DadosPrincipais />
-            case 2: return <Taxas_Impostos />
-            case 3: return <ImagemProduto />
-            default: return <DadosPrincipais />
+            case 1: return <DadosPrincipais childtoParent={()=> setData} />
+            case 2: return <Taxas_Impostos childtoParent={data} />
+            case 3: return <ImagemProduto  childtoParent={data} />
+            default: return <DadosPrincipais childtoParent={data} />
         }
     }
+
 
     return (
         <div className={styles.container}>
@@ -42,16 +44,6 @@ export default function CadastroProduto() {
 
                 <div className={styles.div_forms} id="forms">
                     {getCompPassos()}
-                </div>
-
-                <div className={styles.footerButtons}>
-                    <button onClick={() => setPasso(passo - 1)} disabled={passo === 1}>
-                        Voltar
-                    </button>
-
-                    <button onClick={() => setPasso(passo + 1)}>
-                        Avançar
-                    </button>
                 </div>
 
             </div>
