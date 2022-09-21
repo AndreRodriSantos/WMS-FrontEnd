@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 import api from "../../Services/api";
 import styles from '../../Styles/Cadastros/FormsProduto.module.css'
@@ -6,7 +5,7 @@ import { Foto } from "../Inputs/InputFoto";
 import { Input } from "../Inputs/InputText";
 import { Select } from "../Inputs/Select";
 
-export function DadosPrincipais({ saveData }) {
+export function DadosPrincipais({ saveData, addPasso }) {
 
     function handleSaveData(e) {
         e.preventDefault()
@@ -15,6 +14,7 @@ export function DadosPrincipais({ saveData }) {
             demanda, valor, medida
         };
         saveData(data)
+        addPasso(1)
     }
 
     const [nome, setNome] = useState('')
@@ -26,34 +26,55 @@ export function DadosPrincipais({ saveData }) {
     const [valor, setValor] = useState('')
     const [medida, setMedida] = useState('')
 
-    function getFornecedores(){
+    function getFornecedores() {
         return api.get("api/fornecedor/list").then(response => response.data)
     }
 
-    async function fazOptions(){
+    function getMedidas() {
+        return api.get("api/unidade/list").then(response => response.data)
+    }
+
+    function getDemandas() {
+        return api.get("api/enumeracoes/demandas").then(response => response.data)
+    }
+
+    async function fazOptionsFornecedor() {
         const fornecedor = await getFornecedores()
-        const options = await fornecedor.map((f) => <option value={f.id}>{f.nome}</option>)
+        const options = await fornecedor.map((f) => `<option value=${f.id}>${f.nome}</option>`)
+        return options
+    }
+
+    async function fazOptionsDemanda() {
+        const demanda = await getDemandas()
+        const options = demanda.map((d) => `<option value=${d}>${d}</option>`)
+        return options
+    }
+
+    async function fazOptionsMedida() {
+        const medidas = await getMedidas()
+        const options = await medidas.map((m) => `<option value=${m.id}>${m.nome + " ("  + m.sigla + ")"}</option>`)
         return options
     }
 
     return (
         <form className={styles.form} onSubmit={handleSaveData}>
+
             <div className={styles.column}>
                 <Input onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
                 <Input onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
-                <Select data={fazOptions()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
+                <Select value={fornecedor} onChange={(e) => setFornecedor(e.target.value)}  data={fazOptionsFornecedor()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
                 <Input onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="text" id="nome" name="pontoPedido"></Input>
             </div>
 
             <div className={styles.column}>
                 <Input onChange={(e) => setValidade(e.target.value)} label="Validade" id="nome" type="date" name="validade"></Input>
-                <Select idArrow="arrow2" data={["BAIXA", "MEDIA", "ALTA"]} id="demanda" name="demanda"></Select>
+                <Select onChange={(e) => setDemanda(e.target.value)} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                 <Input onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
-                <Select idArrow="arrow3" data={["Medida 1", "Medida 2"]} id="nome" type="text" placeholder="Digite a Unidade de Medida do Produto" name="medida" ></Select>
+                <Select onChange={(e) => setMedida(e.target.value)} data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
             </div>
 
             <div className={styles.footerButtons}>
-                <button>
+                <button type="button">
                     Voltar
                 </button>
 
@@ -66,7 +87,9 @@ export function DadosPrincipais({ saveData }) {
     )
 }
 
-export function Taxas_Impostos() {
+export function Taxas_Impostos({saveData}) {
+
+    
 
     return (
         <form className={styles.form}>
@@ -75,11 +98,12 @@ export function Taxas_Impostos() {
                 <Input label="IPI" id="nome" type="text" name="nome" ></Input>
                 <Input label="PIS" id="descricao" type="text" name="descricao" ></Input>
                 <Input label="COFINS" id="descricao" type="text" name="descricao" ></Input>
+                <Input label="ICMS" id="descricao" type="text" name="descricao" ></Input>
             </div>
 
             <div className={styles.column}>
                 <Input label="SKU" id="nome" type="text" name="nome" ></Input>
-                <Input label="ICMS" id="descricao" type="text" name="descricao" ></Input>
+                <Select label="NCM" id="ncm" type="text" name="descricao" ></Select>
                 <div className={styles.divInput}>
                     <label className={styles.label}>Produto Importado</label>
 

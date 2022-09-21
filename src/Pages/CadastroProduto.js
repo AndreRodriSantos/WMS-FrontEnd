@@ -2,6 +2,7 @@ import styles from "../Styles/Cadastros/CadastroProduto.module.css"
 import logo from "../IMG/Logo WMS.png"
 import { useState } from "react"
 import { DadosPrincipais, Taxas_Impostos, ImagemProduto } from "../Components/Forms/FormsProduto"
+import api from "../Services/api"
 
 export default function CadastroProduto() {
 
@@ -16,20 +17,27 @@ export default function CadastroProduto() {
         const demanda = (produto.demanda)
         const valor = (produto.valor)
         const medida = (produto.medida)
-
-        console.log(produto)
+        const ipi = (produto.ipi)
+        const pis = (produto.pis)
+        const confins = (produto.confins)
+        const icms = (produto.ipi)
+        const sku = (produto.ipi)
+        const ncm = (produto.ncm)
+        const importado = (produto.importado)
     }
 
+    function getPassos(p){
+        setPasso(passo + p)
+    }
 
     const getCompPassos = () => {
         switch (passo) {
-            case 1: return <DadosPrincipais saveData={handleSaveProduto} />
+            case 1: return <DadosPrincipais saveData={handleSaveProduto} addPasso={getPassos} />
             case 2: return <Taxas_Impostos/>
             case 3: return <ImagemProduto/>
             default: return <DadosPrincipais  saveData={handleSaveProduto} />
         }
     }
-
 
     return (
         <div className={styles.container}>

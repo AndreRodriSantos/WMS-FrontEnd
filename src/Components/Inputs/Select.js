@@ -1,36 +1,36 @@
 import React from "react";
 import styles from "../../Styles/Inputs/Select.module.css"
-import arrowUp from  "../../IMG/arrow-up.png"
+import arrowUp from "../../IMG/arrow-up.png"
 import arrowDown from "../../IMG/arrow-down.png"
 
 export class Select extends React.Component {
     render() {
 
-        const { title, data, id, idArrow} = this.props
+        const { title, data, id, idArrow, onChange, value } = this.props
 
-        async function FazOptions(){
+        async function FazOptions() {
             const dados = await data
             const select = document.getElementById(id)
-            select.appendChild(dados)
+            console.log(dados)
+            select.innerHTML = dados
+            console.log(select)
         }
 
         FazOptions()
 
-        function arrow(){
+        function arrow() {
+
             const arrow = document.getElementById(idArrow)
-            
-            if(arrow.classList.contains(styles.arrowDown)){
+            if (arrow.classList.contains(styles.arrowDown)) {
                 arrow.classList.replace(styles.arrowDown, styles.arrowUp)
-            }else{
+            }else {
                 arrow.classList.replace(styles.arrowUp, styles.arrowDown)
             }
         }
 
         return (
             <div className={styles.select} onClick={arrow} onBlur={arrow}>
-                <select id={id} required>
-                    
-                </select>
+                <select onChange={onChange} value={value} id={id} required></select>
                 <img src={arrowDown} id={idArrow} className={styles.arrowDown}></img>
             </div>
         );
