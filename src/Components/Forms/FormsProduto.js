@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import api from "../../Services/api";
 import styles from '../../Styles/Cadastros/FormsProduto.module.css'
@@ -5,37 +6,49 @@ import { Foto } from "../Inputs/InputFoto";
 import { Input } from "../Inputs/InputText";
 import { Select } from "../Inputs/Select";
 
-export function DadosPrincipais({childtoParent}) {
+export function DadosPrincipais({ saveData }) {
 
-    const [data, setData] = useState({});
-
-    childtoParent = (e) => {
+    function handleSaveData(e) {
         e.preventDefault()
-        setData({nome, descricao, fornecedor});
-      }
+        const data = {
+            nome, descricao, fornecedor, pedido, validade,
+            demanda, valor, medida
+        };
+        saveData(data)
+    }
 
     const [nome, setNome] = useState('')
     const [descricao, setDescricao] = useState('')
-    const fornecedor = document.getElementById("fornecedor").value
-    const [pontoPedido, setPedido] = useState('')
+    const [fornecedor, setFornecedor] = useState('')
+    const [pedido, setPedido] = useState('')
     const [validade, setValidade] = useState('')
     const [demanda, setDemanda] = useState('')
     const [valor, setValor] = useState('')
     const [medida, setMedida] = useState('')
 
+    function getFornecedores(){
+        return api.get("api/fornecedor/list").then(response => response.data)
+    }
+
+    async function fazOptions(){
+        const fornecedor = await getFornecedores()
+        const options = await fornecedor.map((f) => <option value={f.id}>{f.nome}</option>)
+        return options
+    }
+
     return (
-        <form className={styles.form} onSubmit={childtoParent}>
+        <form className={styles.form} onSubmit={handleSaveData}>
             <div className={styles.column}>
                 <Input onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
                 <Input onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
-                <Select idArrow="arrow1" data={["Fornecedor", "Fornecedor2"]} id="fornecedor" name="fornecedor"></Select>
-                <Input label="Ponto de Pedido" type="text" id="nome" name="pontoPedido"></Input>
+                <Select data={fazOptions()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
+                <Input onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="text" id="nome" name="pontoPedido"></Input>
             </div>
 
             <div className={styles.column}>
-                <Input label="Validade" id="nome" type="date" name="validade"></Input>
+                <Input onChange={(e) => setValidade(e.target.value)} label="Validade" id="nome" type="date" name="validade"></Input>
                 <Select idArrow="arrow2" data={["BAIXA", "MEDIA", "ALTA"]} id="demanda" name="demanda"></Select>
-                <Input label="Valor" id="valor" type="number" name="valor"></Input>
+                <Input onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
                 <Select idArrow="arrow3" data={["Medida 1", "Medida 2"]} id="nome" type="text" placeholder="Digite a Unidade de Medida do Produto" name="medida" ></Select>
             </div>
 
@@ -44,7 +57,7 @@ export function DadosPrincipais({childtoParent}) {
                     Voltar
                 </button>
 
-                <button type="submit" onClick={() => console.log(data)}>
+                <button type="submit">
                     Avançar
                 </button >
             </div>
@@ -119,16 +132,3 @@ export function ImagemProduto() {
     )
 }
 
-
-function ListarFornecedores() {
-    api.get("api/fornecedor/list").then(function (response) {
-        const fornecedores = response.data
-        console.log(fornecedores)
-
-        for (let i = 0; i < fornecedores.length; i++) {
-            const f = fornecedores[i];
-
-            return (<option>{f.nome}</option>)
-        }
-    })
-}

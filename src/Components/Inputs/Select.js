@@ -8,7 +8,13 @@ export class Select extends React.Component {
 
         const { title, data, id, idArrow} = this.props
 
-        const dado = data.map((d) => <option value={d} key={d}>{d}</option>)
+        async function FazOptions(){
+            const dados = await data
+            const select = document.getElementById(id)
+            select.appendChild(dados)
+        }
+
+        FazOptions()
 
         function arrow(){
             const arrow = document.getElementById(idArrow)
@@ -18,13 +24,12 @@ export class Select extends React.Component {
             }else{
                 arrow.classList.replace(styles.arrowUp, styles.arrowDown)
             }
-        
         }
 
         return (
             <div className={styles.select} onClick={arrow} onBlur={arrow}>
                 <select id={id} required>
-                    {dado}
+                    
                 </select>
                 <img src={arrowDown} id={idArrow} className={styles.arrowDown}></img>
             </div>
