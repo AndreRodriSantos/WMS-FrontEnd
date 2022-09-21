@@ -164,3 +164,36 @@
     top: 2%;
     right: 0;
 }
+.div_title {
+    position: absolute;
+    top: 20%;
+    right: 25%;
+    width: 750px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    z-index: 1;
+}
+.div_title a {
+    font-family: "Cosi Azure";
+    font-size: 75px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fefefe00;
+    -webkit-text-stroke: 1px #FFF;
+   /*  margin-right: 100%; */
+}
+.div_title span::before {
+    width: 0;
+    color: #fff;
+    overflow: hidden;
+    position: absolute;
+    content: attr(data-text);
+    transition: all 1s cubic-bezier(0.84, 0, 0.08, 0.99);
+}   
+.div_title span:hover::before {
+    width: 100%;
+}

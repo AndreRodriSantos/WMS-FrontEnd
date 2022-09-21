@@ -7,6 +7,7 @@ import CadastroTurma from './Pages/CadastroTurma';
 import CadastroFornecedor from './Pages/CadastroFornecedor';
 import CadastroProduto from './Pages/CadastroProduto';
 import Login from './Pages/Login';
+import Home from './Pages/Home';
 
 const history = createBrowserHistory()
 
@@ -16,6 +17,7 @@ export default function Routes() {
         <Router history={history}>
             <Switch>
                 <Route path='/Login' component={Login}></Route>
+                <Route path='/Home' component={Home}></Route>
                 <Route path='/CadastroAlunos' component={CadastroAlunos} ></Route>
                 <Route path='/CadastroProfessores' component={CadastroProfessores} ></Route>
                 <Route path='/CadastroTurma' component={CadastroTurma}></Route>

@@ -12,8 +12,15 @@ export default function Login() {
 
     return (
         <div className={styles.container}>
+
+            <div className={styles.div_title}>
+                <a className="navigation-link navigation-link-1" href="#">
+                    <span data-text="Warehouse Management System" className={styles.span}>Warehouse Management System</span>
+                </a>
+            </div>
+
             <img src={logo} className={styles.logo}></img>
-           <div className={styles.base}>
+            <div className={styles.base}>
                 <div className={styles.btns}>
                     <button id="btnAluno" type="button" className={styles.btnOn} onClick={loginAluno}>Aluno</button>
                     <button id="btnProf" type="button" className={styles.btn} onClick={loginProf}>Professor</button>
@@ -29,7 +36,7 @@ export default function Login() {
 
                     <form id="loginProf" className={styles.profOff}>
                         <Input id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                        <InputSenha  id="senhaProf" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
+                        <InputSenha id="senhaProf" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
                         <Button>Entrar</Button>
                         <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroProfessores" className={styles.btnCadastro}>Crie aqui!</a></p>
                     </form>
@@ -38,7 +45,7 @@ export default function Login() {
             <div className={styles.cubo}>
                 <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameborder='0' width='100%' height='100%'></iframe>
             </div>
-            <div className={styles.seila}></div> 
+            <div className={styles.seila}></div>
         </div>
     );
 
@@ -46,13 +53,13 @@ export default function Login() {
         console.log('aaaa')
         const aluno = document.getElementById('loginAluno')
         const prof = document.getElementById('loginProf')
-       
+
         const btnAluno = document.getElementById('btnAluno')
         const btnProf = document.getElementById('btnProf')
-        
+
         aluno.classList.replace(styles.alunoOn, styles.alunoOff)
         prof.classList.replace(styles.profOff, styles.profOn)
-    
+
         btnAluno.classList.replace(styles.btnOn, styles.btn)
         btnProf.classList.replace(styles.btn, styles.btnOn)
     }
@@ -63,12 +70,12 @@ export default function Login() {
 
         const btnAluno = document.getElementById('btnAluno')
         const btnProf = document.getElementById('btnProf')
-        
+
         aluno.classList.replace(styles.alunoOff, styles.alunoOn)
         prof.classList.replace(styles.profOn, styles.profOff)
 
         btnAluno.classList.replace(styles.btn, styles.btnOn)
         btnProf.classList.replace(styles.btnOn, styles.btn)
-      
+
     }
 }
