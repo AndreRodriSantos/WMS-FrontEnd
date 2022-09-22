@@ -13,17 +13,17 @@ export default function CadastroProduto() {
 
     const [nome, setNome] = useState('')
     const [descricao, setDescricao] = useState('')
-    const [fornecedores, setFornecedor] = useState(0)
+    const [fornecedores_id, setFornecedor] = useState("")
     const [pedido, setPedido] = useState('')
-    const [demanda, setDemanda] = useState('')
+    const [demanda, setDemanda] = useState('BAIXA')
     const [valorUnitario, setValor] = useState('')
-    const [medida, setMedida] = useState('')
+    const [medida_id, setMedida] = useState('1')
     const [ipi, setIpi] = useState('')
     const [pis, setPis] = useState('')
     const [cofins, setCofins] = useState('')
     const [icms, setIcms] = useState('')
     const [sku, setSku] = useState('')
-    const [ncm, setNcm] = useState('')
+    const [ncm_id, setNcm] = useState('')
     const [importado, setimportado] = useState('')
 
     const getCompPasso = () => {
@@ -48,6 +48,7 @@ export default function CadastroProduto() {
                 etapa3.classList.replace(styles.etapa3Off, styles.etapa3On)
                 break;
         }
+
     }
 
     useEffect(() => {
@@ -86,11 +87,10 @@ export default function CadastroProduto() {
     function CadastrarProduto(e) {
         e.preventDefault()
         const body = {
-            nome, descricao, medida, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms
+            nome, descricao, medida_id, valorUnitario, demanda, ncm_id, sku, fornecedores_id ,pedido, importado, ipi, pis, cofins, icms
         }
 
         api.post("api/produto/save", body)
-
         console.log(body)
     }
 
@@ -123,7 +123,7 @@ export default function CadastroProduto() {
         <div className={styles.container} onChange={(e) => getCompPasso(e)}>
             <div className={styles.formContainer}>
 
-                <header>
+                <header className={styles.header}>
                     <img src={logo} className={styles.logo}></img>
 
                     <div className={styles.etapas}>
@@ -150,7 +150,7 @@ export default function CadastroProduto() {
                         <div className={styles.column}>
                             <Input onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
                             <Input onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
-                            <Select value={fornecedores} onChange={(e) => setFornecedor(e.target.value)} data={fazOptionsFornecedor()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
+                            <Select defaultValue={fornecedores_id} onChange={(e) => setFornecedor(e.target.value)} data={fazOptionsFornecedor()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
                             <Input onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="text" id="nome" name="pontoPedido"></Input>
                         </div>
 
@@ -158,15 +158,15 @@ export default function CadastroProduto() {
                             <Input onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="text" name="nome" ></Input>
                             <Select onChange={(e) => setDemanda(e.target.value)} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                             <Input onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
-                            <Select value={medida} onChange={(e) => setMedida(e.target.value)} data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
+                            <Select defaultValue={medida_id} onChange={(e) => setMedida(e.target.value)} data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
                         </div>
 
                         <div className={styles.footerButtons}>
-                            <button type="button" >
+                            <button type="button" className={styles.voltarButton}>
                                 Voltar
                             </button>
 
-                            <button type="submit">
+                            <button type="submit" className={styles.avancarButton}>
                                 Avançar
                             </button >
                         </div>
@@ -183,7 +183,7 @@ export default function CadastroProduto() {
 
                         <div className={styles.column}>
                             <Input onChange={(e) => setIcms(e.target.value)} label="ICMS" id="descricao" type="text" name="descricao" ></Input>
-                            <Select value={ncm} onChange={(e) => setNcm(e.target.value)} data={fazOptionsNcm()} label="NCM" id="ncm" type="text" name="descricao" ></Select>
+                            <Select defaultValue={ncm_id} onChange={(e) => setNcm(e.target.value)} data={fazOptionsNcm()} label="NCM" id="ncm" type="text" name="descricao" ></Select>
                             <div className={styles.divInput}>
                                 <label className={styles.label}>Produto Importado</label>
 
@@ -198,15 +198,16 @@ export default function CadastroProduto() {
                                         <input onChange={(e) => setimportado(e.target.value)} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
                         <div className={styles.footerButtons}>
-                            <div type="button" onClick={(e) => { setPasso(passo - 1); getCompPasso(e) }}>
+                            <button className={styles.voltarButton} type="button" onClick={(e) => { setPasso(passo - 1); getCompPasso(e) }}>
                                 Voltar
-                            </div>
+                            </button>
 
-                            <button type="submit">
+                            <button className={styles.avancarButton} type="submit">
                                 Avançar
                             </button>
                         </div>
@@ -218,11 +219,11 @@ export default function CadastroProduto() {
                         </div>
 
                         <div className={styles.footerButtons} >
-                            <div type="button" onClick={(e) => { setPasso(passo - 1); getCompPasso(e) }}>
+                            <button className={styles.voltarButton} type="button" onClick={(e) => { setPasso(passo - 1); getCompPasso(e) }}>
                                 Voltar
-                            </div>
+                            </button>
 
-                            <button type="submit">
+                            <button className={styles.avancarButton} type="submit">
                                 Confirmar
                             </button>
                         </div>
