@@ -7,9 +7,6 @@ import logo from "../IMG/Logo WMS.png"
 
 export default function Login() {
 
-    const lixo = document.querySelector(".spline-watermark")
-    console.log(lixo)
-
     return (
         <div className={styles.container}>
 
