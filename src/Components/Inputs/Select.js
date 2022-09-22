@@ -6,14 +6,13 @@ import arrowDown from "../../IMG/arrow-down.png"
 export class Select extends React.Component {
     render() {
 
-        const { title, data, id, idArrow, onChange, value } = this.props
+        const { title, data, id, idArrow, onChange } = this.props
 
         async function FazOptions() {
             const dados = await data
             const select = document.getElementById(id)
             console.log(dados)
             select.innerHTML = dados
-            console.log(select)
         }
 
         FazOptions()
@@ -30,7 +29,7 @@ export class Select extends React.Component {
 
         return (
             <div className={styles.select} onClick={arrow} onBlur={arrow}>
-                <select onChange={onChange} value={value} id={id} required></select>
+                <select onChange={onChange} id={id} required></select>
                 <img src={arrowDown} id={idArrow} className={styles.arrowDown}></img>
             </div>
         );
