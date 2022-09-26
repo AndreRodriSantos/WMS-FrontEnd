@@ -6,24 +6,21 @@ import api from "../Services/api"
 import { Foto } from "../Components/Inputs/InputFoto";
 import { Input } from "../Components/Inputs/InputText";
 import { Select } from "../Components/Inputs/Select";
+import { fazOptionsDemanda, fazOptionsFornecedor, fazOptionsMedida, fazOptionsNcm, getFornecedorID, getMedidaID, getNcmID } from "../Services/gets"
 
 export default function CadastroProduto() {
 
     const [passo, setPasso] = useState(1)
-
     const [nome, setNome] = useState('')
     const [descricao, setDescricao] = useState('')
-    const [fornecedores, setFornecedor] = useState(0)
-    const [pedido, setPedido] = useState('')
+    const [pontoPedido, setPedido] = useState('')
     const [demanda, setDemanda] = useState('')
     const [valorUnitario, setValor] = useState('')
-    const [medida, setMedida] = useState('')
     const [ipi, setIpi] = useState('')
     const [pis, setPis] = useState('')
     const [cofins, setCofins] = useState('')
     const [icms, setIcms] = useState('')
     const [sku, setSku] = useState('')
-    const [ncm, setNcm] = useState('')
     const [importado, setimportado] = useState('')
 
     const getCompPasso = () => {
@@ -54,70 +51,25 @@ export default function CadastroProduto() {
         getCompPasso()
     })
 
-    function Avancar(e) {
+
+    async function CadastrarProduto(e) {
         e.preventDefault()
-        setPasso(passo + 1)
-        getCompPasso()
-    }
 
-    function Voltar(e) {
-        e.preventDefault()
-        setPasso(passo - 1)
-        getCompPasso()
-    }
+        let fornecedores = document.getElementById("fornecedor").value
+        fornecedores = await getFornecedorID(fornecedores)
+        let medida = document.getElementById("medida").value
+        medida = await getMedidaID(medida)
+        let ncm = document.getElementById("ncm").value
+        ncm = await getNcmID(ncm)
 
-
-    function getFornecedores(e) {
-        return api.get("api/fornecedor/list").then(response => response.data)
-    }
-
-    function getMedidas(e) {
-        return api.get("api/unidade/list").then(response => response.data)
-    }
-
-    function getDemandas(e) {
-        return api.get("api/enumeracoes/demandas").then(response => response.data)
-    }
-
-    function getNcm(e) {
-        return api.get("api/ncm/").then(response => response.data)
-    }
-
-    function CadastrarProduto(e) {
-        e.preventDefault()
         const body = {
-            nome, descricao, medida, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms
+            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms
         }
 
         api.post("api/produto/save", body)
 
         console.log(body)
     }
-
-    async function fazOptionsFornecedor() {
-        const fornecedor = await getFornecedores()
-        const options = await fornecedor.map((f) => `<option value=${f.id}>${f.nome}</option>`)
-        return options
-    }
-
-    async function fazOptionsDemanda() {
-        const demanda = await getDemandas()
-        const options = demanda.map((d) => `<option value=${d}>${d}</option>`)
-        return options
-    }
-
-    async function fazOptionsMedida() {
-        const medidas = await getMedidas()
-        const options = await medidas.map((m) => `<option value=${m.id}>${m.nome + " (" + m.sigla + ")"}</option>`)
-        return options
-    }
-
-    async function fazOptionsNcm() {
-        const ncm = await getNcm()
-        const options = await ncm.map((n) => `<option value=${n.id}>${n.ncm}</option>`)
-        return options
-    }
-
 
     return (
         <div className={styles.container} onChange={(e) => getCompPasso(e)}>
@@ -132,7 +84,7 @@ export default function CadastroProduto() {
                             Dados Principais
                         </button>
 
-                        <button onClick={(e) => { setPasso(2); getCompPasso(e) }}>
+                        <button onClick={(e) => { setPasso(2)}}>
                             Taxas
                         </button>
 
@@ -145,20 +97,20 @@ export default function CadastroProduto() {
 
                 <div className={styles.div_forms} id="forms">
 
-                    <form className={`${styles.form}  ${styles.etapa1On}`} id="etapa1" onSubmit={(e) => Avancar(e)}>
+                    <form className={`${styles.form}  ${styles.etapa1On}`} id="etapa1" onSubmit={(e) => {e.preventDefault(); setPasso(passo + 1)}}>
 
                         <div className={styles.column}>
                             <Input onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
                             <Input onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
-                            <Select value={fornecedores} onChange={(e) => setFornecedor(e.target.value)} data={fazOptionsFornecedor()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
-                            <Input onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="text" id="nome" name="pontoPedido"></Input>
+                            <Select data={fazOptionsFornecedor()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
+                            <Input onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="number" id="nome" name="pontoPedido"></Input>
                         </div>
 
                         <div className={styles.column}>
-                            <Input onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="text" name="nome" ></Input>
+                            <Input onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="number" name="nome" ></Input>
                             <Select onChange={(e) => setDemanda(e.target.value)} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                             <Input onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
-                            <Select value={medida} onChange={(e) => setMedida(e.target.value)} data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
+                            <Select data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
                         </div>
 
                         <div className={styles.footerButtons}>
@@ -173,17 +125,17 @@ export default function CadastroProduto() {
 
                     </form>
 
-                    <form className={`${styles.form}  ${styles.etapa2Off}`} onSubmit={(e) => { setPasso(passo + 1); console.log(passo); getCompPasso(e); e.preventDefault() }} id="etapa2">
+                    <form className={`${styles.form}  ${styles.etapa2Off}`}onSubmit={(e) => {e.preventDefault(); setPasso(passo + 1)}} id="etapa2">
 
                         <div className={styles.column}>
-                            <Input onChange={(e) => setIpi(e.target.value)} label="IPI" id="nome" type="text" name="nome" ></Input>
-                            <Input onChange={(e) => setPis(e.target.value)} label="PIS" id="descricao" type="text" name="descricao" ></Input>
-                            <Input onChange={(e) => setCofins(e.target.value)} label="COFINS" id="descricao" type="text" name="descricao" ></Input>
+                            <Input onChange={(e) => setIpi(e.target.value)} label="IPI" id="nome" type="number" name="nome" ></Input>
+                            <Input onChange={(e) => setPis(e.target.value)} label="PIS" id="descricao" type="number" name="descricao" ></Input>
+                            <Input onChange={(e) => setCofins(e.target.value)} label="COFINS" id="descricao" type="number" name="descricao" ></Input>
                         </div>
 
                         <div className={styles.column}>
-                            <Input onChange={(e) => setIcms(e.target.value)} label="ICMS" id="descricao" type="text" name="descricao" ></Input>
-                            <Select value={ncm} onChange={(e) => setNcm(e.target.value)} data={fazOptionsNcm()} label="NCM" id="ncm" type="text" name="descricao" ></Select>
+                            <Input onChange={(e) => setIcms(e.target.value)} label="ICMS" id="descricao" type="number" name="descricao" ></Input>
+                            <Select data={fazOptionsNcm()} label="NCM" id="ncm" idArrow="arrow4" name="ncm"></Select>
                             <div className={styles.divInput}>
                                 <label className={styles.label}>Produto Importado</label>
 

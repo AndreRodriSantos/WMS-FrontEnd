@@ -11,11 +11,8 @@ export class Select extends React.Component {
         async function FazOptions() {
             const dados = await data
             const select = document.getElementById(id)
-            console.log(dados)
             select.innerHTML = dados
         }
-
-        FazOptions()
 
         function arrow() {
 
@@ -28,7 +25,7 @@ export class Select extends React.Component {
         }
 
         return (
-            <div className={styles.select} onClick={arrow} onBlur={arrow}>
+            <div onLoad={FazOptions} className={styles.select} onClick={arrow} onBlur={arrow}>
                 <select onChange={onChange} id={id} required></select>
                 <img src={arrowDown} id={idArrow} className={styles.arrowDown}></img>
             </div>
