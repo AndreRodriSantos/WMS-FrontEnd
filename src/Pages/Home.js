@@ -6,7 +6,7 @@ export default function Home() {
     return(
         <section className={styles.components}>
             <div className={styles.home}>
-                <SideBar />
+            <SideBar />             
             </div>
         </section>
     );
