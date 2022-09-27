@@ -26,14 +26,14 @@ export default function Login() {
                 <div className={styles.base_form}>
                     <form id="loginAluno" className={styles.alunoOn}>
                         <Input id="numero" label="Número de Matrícula" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                        <InputSenha id="senhaAluno" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
+                        <InputSenha id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
                         <Button>Entrar</Button>
                         <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroAlunos" className={styles.btnCadastro}>Crie aqui!</a></p>
                     </form>
 
                     <form id="loginProf" className={styles.profOff}>
                         <Input id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                        <InputSenha id="senhaProf" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
+                        <InputSenha id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
                         <Button>Entrar</Button>
                         <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroProfessores" className={styles.btnCadastro}>Crie aqui!</a></p>
                     </form>

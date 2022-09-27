@@ -35,7 +35,7 @@ export default function CadastroProfessores() {
                 <form onSubmit={CadastrarProf}>
                     <Input id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" label="Nome" />
                     <Input id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif" />
-                    <InputSenha id="senha" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" label="Senha" />
+                    <InputSenha id="senha"  id_eye="eye" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" label="Senha" />
                     <Button>Cadastrar</Button>
                 </form>
             </div>

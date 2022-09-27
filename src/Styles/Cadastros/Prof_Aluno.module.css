@@ -8,13 +8,11 @@
     justify-content: space-between;
 }
 
-.label{
-    margin-bottom: 5px;
-}
-
 .logo{
-    margin-left: 20px;
+    position: fixed;
     font-size: 15;
+    left: 20px;
+    top: 20px;
 }
 
 .h1{

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../Styles/Inputs/Select.module.css"
-import arrowUp from "../../IMG/arrow-up.png"
 import arrowDown from "../../IMG/arrow-down.png"
 
 export class Select extends React.Component {

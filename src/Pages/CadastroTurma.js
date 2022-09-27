@@ -7,6 +7,7 @@ import logo from "../IMG/Logo WMS.png"
 import styles from "../Styles/Cadastros/CadastroTurma.module.css"
 
 import api from "../Services/api"
+import { fazOptionsPeriodo } from "../Services/gets"
 
 export default function CadastroTurma() {
 
@@ -51,7 +52,7 @@ export default function CadastroTurma() {
                     </div>
                     <form onSubmit={CadastrarTurma}>
                         <Input id="nome" label="Nome da Turma" onChange={(e) => setNome(e.target.value)} type="text" name="nome" placeholder="Digite o Nome"></Input>
-                        <Select  data={["MANHA", "TARDE", "NOITE"]} id="periodo" title="Periodo"></Select>
+                        <Select data={fazOptionsPeriodo()} id="periodo" idArrow="arrow" title="Periodo"></Select>
                         <Input id="dataComeco" label="Data de Começo" onChange={(e) => setDataComeco(e.target.value)} type="date" name="nome" placeholder="Selecione a Data" ></Input>                      
                         <Input id="dataFinal" label="Data Final" onChange={(e) => setDataFinal(e.target.value)} type="date" name="nome" placeholder="Selecione a Data"></Input>
                         <label>Número de Participantes</label>                       

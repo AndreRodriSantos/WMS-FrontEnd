@@ -74,14 +74,21 @@
 
 .column {
     width: 50%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .divInput {
+    height: 60px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
 }
 
 .footerButtons{
@@ -89,9 +96,14 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-around;
 }
 
+.importado{
+    display: flex;
+    flex-direction: row;
+}
 .avancarButton{
     background-color: #41C04E;
     border-radius: 5px;

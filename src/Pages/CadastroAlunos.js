@@ -43,11 +43,11 @@ export default function CadastroAlunos() {
                 <h1 className={styles.h1}>Cadastro de Aluno(a)</h1>
                 <form onSubmit={CadastrarAluno}>
                     <Input label="Nome" id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" />
-                    <br />
+                    <br/>
                     <Input label="N° Matricula" id="numMatricula" type="number" onChange={(e) => setMatricula(e.target.value)} name="numMatricula" placeholder="Digite o N° Matrícula" />
-                    <br />
-                    <InputSenha label="Senha" id="senha" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" />
-                    <br />
+                    <br/>
+                    <InputSenha label="Senha" id="senha"  id_eye="eye"  type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" />
+                    <br/>
                     <Button>Cadastrar</Button>
                 </form>
             </div>

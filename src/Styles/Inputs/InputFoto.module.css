@@ -6,10 +6,10 @@
 
 .AddFotos {
     position: relative;
-    width: 800px;
-    height: 800px;
+    width: 100%;
+    height: 80%;
     border-radius: 50%;
-    background-color: #f4f8fb69;
+    background-color: #f4f8fb7d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,8 +17,8 @@
 
 .base_circle {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background-color: #f0f6fb48;
     display: flex;

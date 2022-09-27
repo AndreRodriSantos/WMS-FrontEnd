@@ -30,6 +30,11 @@ export function getNcmID(id) {
     return api.get("api/ncm/" + id).then(response => response.data)
 }
 
+export function getPeriodo(e) {
+    return api.get("api/enumeracoes/periodos").then(response => response.data)
+}
+
+
 //Listagens
 
 export async function fazOptionsFornecedor() {
@@ -41,6 +46,12 @@ export async function fazOptionsFornecedor() {
 export async function fazOptionsDemanda() {
     const demanda = await getDemandas()
     const options = demanda.map((d) => `<option value=${d}>${d}</option>`)
+    return options
+}
+
+export async function fazOptionsPeriodo() {
+    const periodo = await getDemandas()
+    const options = periodo.map((p) => `<option value=${p}>${p}</option>`)
     return options
 }
 

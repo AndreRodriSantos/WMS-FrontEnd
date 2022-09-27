@@ -108,7 +108,7 @@ export default function CadastroProduto() {
 
                         <div className={styles.column}>
                             <Input onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="number" name="nome" ></Input>
-                            <Select onChange={(e) => setDemanda(e.target.value)} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
+                            <Select data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                             <Input onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
                             <Select data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
                         </div>

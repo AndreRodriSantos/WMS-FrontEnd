@@ -16,6 +16,7 @@ export default function Routes() {
     return(
         <Router history={history}>
             <Switch>
+                <Route path='/' exact component={Login}></Route>
                 <Route path='/Login' component={Login}></Route>
                 <Route path='/Home' component={Home}></Route>
                 <Route path='/CadastroAlunos' component={CadastroAlunos} ></Route>
