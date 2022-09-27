@@ -2,6 +2,9 @@
 
 import api from "./api"
 
+// Components
+import CardTurma from "../Components/CardTurma";
+
 export function getFornecedores(e) {
     return api.get("api/fornecedor/list").then(response => response.data)
 }
@@ -34,6 +37,9 @@ export function getPeriodo(e) {
     return api.get("api/enumeracoes/periodos").then(response => response.data)
 }
 
+export function getTurma() {
+    return api.get("api/turma/list").then(response => response.data)
+}
 
 //Listagens
 
@@ -50,7 +56,7 @@ export async function fazOptionsDemanda() {
 }
 
 export async function fazOptionsPeriodo() {
-    const periodo = await getDemandas()
+    const periodo = await getPeriodo()
     const options = periodo.map((p) => `<option value=${p}>${p}</option>`)
     return options
 }
@@ -66,3 +72,12 @@ export async function fazOptionsNcm() {
     const options = await ncm.map((n) => `<option value=${n.id}>${n.ncm}</option>`)
     return options
 }
+
+export async function fazListaTurma() {
+    const turmas = await getTurma()
+    const CardTurma = await turmas.map((t) => <CardTurma nomeTurma={t.nome} periodo={t.periodo} dataComeco={t.dataInicio} membros={t.numeroMembro}/>)
+    console.log(CardTurma)
+    return CardTurma
+}
+
+

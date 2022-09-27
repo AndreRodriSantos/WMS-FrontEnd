@@ -1,0 +1,29 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #E8EAEE;
+}
+.addTurmas{
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.2s ease-in;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.addTurmas:hover{
+    background-color: transparent;
+    border: 5px solid #000;
+    color: #000;
+}
