@@ -73,6 +73,5 @@ export default function Login() {
 
         btnAluno.classList.replace(styles.btn, styles.btnOn)
         btnProf.classList.replace(styles.btnOn, styles.btn)
-
     }
 }

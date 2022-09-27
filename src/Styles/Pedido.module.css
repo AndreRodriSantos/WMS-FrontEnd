@@ -1,0 +1,44 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../IMG/FundoPedido.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pedidoDiv {
+    width: 25%;
+    min-width: 350px;
+    height: 60%;
+    background-color: white;
+    box-shadow: 0px 0px 30px black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.header{
+    height: 20%;
+}
+
+.lista{
+    height: 70%;
+}
+
+.footer{
+    height: 10%;
+}
+
+.listaProdutos{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
