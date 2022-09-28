@@ -1,0 +1,46 @@
+.container{
+    border-radius: 20px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    margin: 10px 0px;
+    flex-direction: row;
+}
+
+.imgDiv{
+    width: 30%;
+    height: 100%;
+    padding: 10px;
+    background-color: red;
+}
+
+.produtoDados{
+    height: 100%;
+    width: 70%;
+    flex-direction: column;
+}
+
+.titleCheck{
+    height: 50%;
+    width: 100%;
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dados{
+    height: 50%;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.qtd{
+    height: 20px;
+    width: 60px;
+}

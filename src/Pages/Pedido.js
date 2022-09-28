@@ -1,10 +1,27 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
+import ProdutoItem from "../Components/ProdutoItem"
+import api from "../Services/api"
 import styles from "../Styles/Pedido.module.css"
 
 export default function Pedido() {
 
     const [pesquisa, setPesquisa] = useState('')
+    const [produto, setProduto] = useState([])
+
+    function getProduto(){
+        return api.get('api/produto').then(
+            response => {
+                setProduto(response.data)
+                return response.data
+            }
+        )
+    }
+
+    useEffect(() =>{
+        getProduto()
+    },[])
+
 
     return (
         <div className={styles.container}>
@@ -26,7 +43,7 @@ export default function Pedido() {
                 <div className={styles.lista}>
 
                     <div className={styles.listaProdutos} id="listaProdutos">
-                    
+                        {produto.map(p => <ProdutoItem />)}
                     </div>
 
                     <div className={styles.itemsPedidos} id="itemsPedidos">
@@ -39,7 +56,6 @@ export default function Pedido() {
                     <span>Valor:</span>
                     <button className={styles.addProdutos}>Adicionar</button>
                 </div>
-
             </div>
         </div>
     )

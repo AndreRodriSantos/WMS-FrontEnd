@@ -9,7 +9,7 @@ export class InputPesquisa extends React.Component {
                 <form>
                     <input id={id} className={styles.inputPesquisa} type="search" placeholder={placeholder} autoComplete="off" onChange={onChange} required name={name}></input>
                     <button className={styles.lupa}><i className="fa-solid fa-magnifying-glass"></i></button>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i className="fa-solid fa-cart-shopping"></i>
                 </form>
             </div>
         );

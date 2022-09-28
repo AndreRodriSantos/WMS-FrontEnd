@@ -53,15 +53,17 @@ export default function CadastroProduto() {
     })
 
 
-    async function CadastrarProduto(e) {
+    async function CadastrarProduto(e){
         e.preventDefault()
 
         let fornecedores = document.getElementById("fornecedor").value
         fornecedores = await getFornecedorID(fornecedores)
+        console.log(fornecedores)
         let medida = document.getElementById("medida").value
         medida = await getMedidaID(medida)
         let ncm = document.getElementById("ncm").value
         ncm = await getNcmID(ncm)
+        
 
         const body = {
             nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms
@@ -108,7 +110,7 @@ export default function CadastroProduto() {
 
                         <div className={styles.column}>
                             <Input onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="number" name="nome" ></Input>
-                            <Select data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
+                            <Select onChange={(e) => setDemanda(e.target.value)} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                             <Input onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
                             <Select data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
                         </div>
@@ -166,11 +168,13 @@ export default function CadastroProduto() {
                     </form>
 
                     <form className={`${styles.form}  ${styles.etapa3Off}`} id="etapa3" onSubmit={(e) => CadastrarProduto(e)}>
+                        
                         <div className={styles.divFotos}>
                             <Foto></Foto>
                         </div>
 
                         <div className={styles.footerButtons} >
+
                             <button className={styles.voltarButton} type="button" onClick={(e) => { setPasso(passo - 1); getCompPasso(e) }}>
                                 Voltar
                             </button>
