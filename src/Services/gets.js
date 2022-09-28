@@ -37,8 +37,8 @@ export function getPeriodo(e) {
     return api.get("api/enumeracoes/periodos").then(response => response.data)
 }
 
-export function getTurma() {
-    return api.get("api/turma/list").then(response => response.data)
+export async function getTurma() {
+    return await api.get("api/turma/list").then(response => response.data)
 }
 
 //Listagens
@@ -73,11 +73,12 @@ export async function fazOptionsNcm() {
     return options
 }
 
-export async function fazListaTurma() {
-    const turmas = await getTurma()
-    const CardTurma = await turmas.map((t) => <CardTurma nomeTurma={t.nome} periodo={t.periodo} dataComeco={t.dataInicio} membros={t.numeroMembro}/>)
-    console.log(CardTurma)
-    return CardTurma
+export  function fazListaTurma() {
+    const turmas = getTurma()
+    console.log(turmas)
+   // const cardTurma = turmas.map((t) => <CardTurma nomeTurma={t.nome} periodo={t.periodo} dataComeco={t.dataInicio} membros={t.numeroMembro}/>)
+   // console.log(cardTurma)
+    return turmas
 }
 
 

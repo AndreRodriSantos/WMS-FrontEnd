@@ -9,6 +9,7 @@ import CadastroProduto from './Pages/CadastroProduto';
 import Login from './Pages/Login';
 import Turmas from './Pages/Turmas'
 import Home from './Pages/Home';
+import ListaMembros from './Pages/ListaMembros';
 
 const history = createBrowserHistory()
 
@@ -19,6 +20,7 @@ export default function Routes() {
                 <Route path='/' exact component={Login}></Route>
                 <Route path='/Login' component={Login}></Route>
                 <Route path='/Turmas' component={Turmas}></Route>
+                <Route path='/Membros' component={ListaMembros}></Route>
                 <Route path='/Home' component={Home}></Route>
                 <Route path='/CadastroAlunos' component={CadastroAlunos} ></Route>
                 <Route path='/CadastroProfessores' component={CadastroProfessores} ></Route>
