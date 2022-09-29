@@ -1,73 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from '../Styles/Lista/ListaMebros.module.css'
+import LinhaMembros from '../Components/LinhaMembro'
+import api from "../Services/api";
 
 export default function ListaMembros() {
+
+    const [membros , setMembros] = useState([])
+
+    function getAluno() {
+        return api.get("api/aluno/list").then(
+            response => {
+                console.log(response.data)
+                setMembros(response.data)
+                return response.data
+            }
+        )
+    }
+
+    useEffect(() => {
+        getAluno()
+    }, [])
+
     return (
         <section className={styles.container}>
             <div className={styles.baseList}>
                 <span className={styles.title}><i className="fa-solid fa-users"></i>Lista de Membros</span>
-                <table className={styles.tabela}>
-                    <thead>
-                        <tr className={styles.headerList}>
-                            <th className={styles.titleList}></th>
-                            <th className={styles.titleList}>Nome</th>
-                            <th className={styles.titleList}>Email</th>
-                            <th className={styles.titleList}>Matrícula</th>
-                            <th className={styles.titleList}>Função</th>
-                            <th className={styles.titleList}><i className="fa-solid fa-gear"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody className={styles.body}>
-                        <tr>
-                            <th className={styles.titleList}><div className={styles.imgMembro}></div></th>
-                            <td className={styles.titleList}><span className={styles.nome}>Nome</span></td>
-                            <td className={styles.titleList}>Email</td>
-                            <td className={styles.titleList}>Matrícula</td>
-                            <td className={styles.titleList}>Função</td>
-                            <td className={styles.titleList}>
-                                <div href="#" className={styles.btnConfig}>
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className={styles.titleList}><div className={styles.imgMembro}></div></th>
-                            <td className={styles.titleList}><span className={styles.nome}>Nome</span></td>
-                            <td className={styles.titleList}>Email</td>
-                            <td className={styles.titleList}>Matrícula</td>
-                            <td className={styles.titleList}>Função</td>
-                            <td className={styles.titleList}>
-                                <div href="#" className={styles.btnConfig}>
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </div>
-                            </td>
-                        </tr>
-                         <tr>
-                            <th className={styles.titleList}><div className={styles.imgMembro}></div></th>
-                            <td className={styles.titleList}><span className={styles.nome}>Nome</span></td>
-                            <td className={styles.titleList}>Email</td>
-                            <td className={styles.titleList}>Matrícula</td>
-                            <td className={styles.titleList}>Função</td>
-                            <td className={styles.titleList}>
-                                <div href="#" className={styles.btnConfig}>
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th className={styles.titleList}><div className={styles.imgMembro}></div></th>
-                            <td className={styles.titleList}><span className={styles.nome}>Nome</span></td>
-                            <td className={styles.titleList}>Email</td>
-                            <td className={styles.titleList}>Matrícula</td>
-                            <td className={styles.titleList}>Função</td>
-                            <td className={styles.titleList}>
-                                <div href="#" className={styles.btnConfig}>
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className={styles.div_lista}>
+                    <ul className={styles.lista}>
+                        <table id="tabela" className={styles.tabelaMembro} >
+                            <thead>
+                                <tr className={styles.header_list}>
+                                    <td className={styles.mes}></td>
+                                    <td className={styles.mes}>Nome</td>
+                                    <td className={styles.mes}>Email</td>
+                                    <td className={styles.mes}>Matrícula</td>
+                                    <td className={styles.mes}>Função</td>
+                                    <td className={styles.mes}></td>
+                                </tr>
+                            </thead>
+                            <tbody id="lista" className={styles.body}>
+                                {membros.map((m) => <LinhaMembros />)}
+                            </tbody>
+                        </table>
+                    </ul>
+                </div>
             </div>
         </section>
     );

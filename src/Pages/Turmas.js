@@ -29,7 +29,11 @@ export default function Turmas() {
         <section className={styles.container}>
            
             {turmas.map((t) => <CardTurma nomeTurma={t.nome} periodo={t.periodo} dataComeco={t.dataInicio} membros={t.numeroMembro} imgTurma={img}/>)}
-            
+            {turmas.length <= 0 && 
+                <div className={styles.semTurmas}>
+                    <span className={styles.titleSemTurma}>Nenhuma Turma Cadastrada</span> 
+                </div>
+            }
             <a href="/CadastroTurma" className={styles.addTurmas} ><i className="fa-solid fa-plus"></i></a>
         </section>
     );

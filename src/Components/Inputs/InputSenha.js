@@ -8,7 +8,7 @@ import eye_close from '../../IMG/eye-close.gif'
 export class InputSenha extends React.Component {
     render() {
 
-        const { name, label, id, id_eye } = this.props
+        const { name, label, id, id_eye, onChange } = this.props
 
         function hash() {
             var senha = document.getElementById(id)
@@ -32,7 +32,7 @@ export class InputSenha extends React.Component {
 
         return (
             <div className={styles.inputBox}>
-                <input type="password" autoComplete="off" required name={name} id={id}></input>
+                <input type="password" autoComplete="off" onChange={onChange} required name={name} id={id}></input>
                 <label>{label}</label>
                 <div onClick={hash} type="button" id="btn" className={styles.btn}>
                     <img id={id_eye} width="30px" height="30px" src={eye_off} ></img>
