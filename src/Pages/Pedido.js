@@ -34,21 +34,25 @@ export default function Pedido() {
                     </div>
 
                     <div className={styles.btns}>
-                        <button id="btnAluno" type="button" className={styles.btnOn} onClick={Pedido}>Produtos</button>
-                        <button id="btnProf" type="button" className={styles.btn} onClick={Produtos}>Item(s) Pedido</button>
+                        <button id="btnProduto" type="button" className={styles.btnOn} onClick={Produtos}>Produtos</button>
+                        <button id="btnPedido" type="button" className={styles.btn} onClick={ItemsPedidos} >Item(s) Pedido</button>
                     </div>
 
                 </header>
 
                 <div className={styles.lista}>
 
-                    <div className={styles.listaProdutos} id="listaProdutos">
-                        {produto.map(p => <ProdutoItem />)}
+                    <div className={styles.produtoOn} id="listaProdutos">
+                        {produto.map(p => <ProdutoItem key={p.id} nome={p.nome} valor={"R$ " + p.valorUnitario}/>)}
                     </div>
 
-                    <div className={styles.itemsPedidos} id="itemsPedidos">
+                    <div className={styles.pedidoOff} id="itemsPedidos">
 
                     </div>
+
+                </div>
+
+                <div>
 
                 </div>
 
@@ -62,9 +66,29 @@ export default function Pedido() {
 }
 
 function Produtos(){
+    const produto = document.getElementById('listaProdutos')
+    const pedido = document.getElementById('itemsPedidos')
 
+    const btnProduto = document.getElementById('btnProduto')
+    const btnPedido = document.getElementById('btnPedido')
+
+    produto.classList.replace(styles.ProdutoOff, styles.ProdutoOn)
+    pedido.classList.replace(styles.PedidoOn, styles.PedidoOff)
+
+    btnProduto.classList.replace(styles.btn, styles.btnOn)
+    btnPedido.classList.replace(styles.btnOn, styles.btn)
 }
 
 function ItemsPedidos(){
-    
+    const produto = document.getElementById('listaProdutos')
+    const pedido = document.getElementById('itemsPedidos')
+
+    const btnProduto = document.getElementById('btnProduto')
+    const btnPedido = document.getElementById('btnPedido')
+
+    produto.classList.replace(styles.ProdutoOn, styles.ProdutoOff)
+    pedido.classList.replace(styles.PedidoOff, styles.PedidoOn)
+
+    btnPedido.classList.replace(styles.btn, styles.btnOn)
+    btnProduto.classList.replace(styles.btnOn, styles.btn)
 }

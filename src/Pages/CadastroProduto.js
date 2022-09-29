@@ -8,7 +8,10 @@ import { Input } from "../Components/Inputs/InputText";
 import { Select } from "../Components/Inputs/Select";
 import { fazOptionsDemanda, fazOptionsFornecedor, fazOptionsMedida, fazOptionsNcm, getFornecedorID, getMedidaID, getNcmID } from "../Services/gets"
 
+
 export default function CadastroProduto() {
+
+    let imagem 
 
     const [passo, setPasso] = useState(1)
     const [nome, setNome] = useState('')
@@ -53,7 +56,7 @@ export default function CadastroProduto() {
     })
 
 
-    async function CadastrarProduto(e){
+    async function CadastrarProduto(e) {
         e.preventDefault()
 
         let fornecedores = document.getElementById("fornecedor").value
@@ -63,10 +66,33 @@ export default function CadastroProduto() {
         medida = await getMedidaID(medida)
         let ncm = document.getElementById("ncm").value
         ncm = await getNcmID(ncm)
-        
+
+        const uploadImage = async (e) => {
+            console.log(e.target.files);
+            const file = e.target.files[0]
+
+            const teste = await base64(file);
+            imagem = teste
+            console.log(teste);
+        };
+
+        const base64 = (file) => {
+            return new Promise((resolve, reject) => {   
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+
+                fileReader.onload = () => {
+                    resolve(fileReader.result)
+                };
+                fileReader.onerror = (error) => {
+                    reject(error)
+                };
+            });
+        }
+
 
         const body = {
-            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms
+            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms,imagem
         }
 
         api.post("api/produto/save", body)
@@ -86,7 +112,7 @@ export default function CadastroProduto() {
                             Dados Principais
                         </button>
 
-                        <button onClick={(e) => { setPasso(2)}}>
+                        <button onClick={(e) => { setPasso(2) }}>
                             Taxas
                         </button>
 
@@ -99,7 +125,7 @@ export default function CadastroProduto() {
 
                 <div className={styles.div_forms} id="forms">
 
-                    <form className={`${styles.form}  ${styles.etapa1On}`} id="etapa1" onSubmit={(e) => {e.preventDefault(); setPasso(passo + 1)}}>
+                    <form className={`${styles.form}  ${styles.etapa1On}`} id="etapa1" onSubmit={(e) => { e.preventDefault(); setPasso(passo + 1) }}>
 
                         <div className={styles.column}>
                             <Input onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
@@ -127,7 +153,7 @@ export default function CadastroProduto() {
 
                     </form>
 
-                    <form className={`${styles.form}  ${styles.etapa2Off}`}onSubmit={(e) => {e.preventDefault(); setPasso(passo + 1)}} id="etapa2">
+                    <form className={`${styles.form}  ${styles.etapa2Off}`} onSubmit={(e) => { e.preventDefault(); setPasso(passo + 1) }} id="etapa2">
 
                         <div className={styles.column}>
                             <Input onChange={(e) => setIpi(e.target.value)} label="IPI" id="nome" type="number" name="nome" ></Input>
@@ -168,7 +194,7 @@ export default function CadastroProduto() {
                     </form>
 
                     <form className={`${styles.form}  ${styles.etapa3Off}`} id="etapa3" onSubmit={(e) => CadastrarProduto(e)}>
-                        
+
                         <div className={styles.divFotos}>
                             <Foto></Foto>
                         </div>

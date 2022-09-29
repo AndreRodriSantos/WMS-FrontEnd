@@ -3,7 +3,11 @@ import foto from "../../IMG/image-icon.png"
 import styles from "../../Styles/Inputs/InputFoto.module.css"
 
 export class Foto extends React.Component {
+
+    
+
     render() {
+        const {onChange} = this.props
         return (
             <div className={styles.AddFotos} >
                 <div className={styles.base_circle}>

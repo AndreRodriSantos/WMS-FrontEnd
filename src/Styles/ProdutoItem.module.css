@@ -1,46 +1,67 @@
 .container{
-    border-radius: 20px;
-    width: 100%;
+    width: 95%;
     height: 100px;
     display: flex;
-    margin: 10px 0px;
+    margin: 10px 10px;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: rgb(211, 211, 211);
 }
 
 .imgDiv{
-    width: 30%;
+    width: 100px;
     height: 100%;
     padding: 10px;
-    background-color: red;
+    border-radius: 10px;
+}
+
+.imgDiv img{
+    width: 100%;
+    height: 100%;
 }
 
 .produtoDados{
     height: 100%;
     width: 70%;
     flex-direction: column;
+    padding: 0 10px;
 }
 
 .titleCheck{
     height: 50%;
     width: 100%;
-    background-color: green;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
+    border-radius: 10px 10px 0 0;
 }
 
 .dados{
     height: 50%;
     width: 100%;
-    background-color: blue;
     display: flex;
     justify-content: space-around;
+    border-radius: 0 0 10px 10px;
     align-items: center;
 }
 
 .qtd{
     height: 20px;
-    width: 60px;
+    width: 50px;
+    border-radius: 10px;
+}
+
+.divQtd{
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.divQtd p{
+    padding-right: 5px;
 }
