@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../Styles/Lista/ListaMebros.module.css'
+import styles from '../../Styles/Lista/ListaMebros.module.css'
 
 export default class LinhaMembros extends React.Component {
     render() {

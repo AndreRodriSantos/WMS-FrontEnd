@@ -12,7 +12,7 @@ export default function CadastroAlunos() {
 
     function CadastrarAluno(event) {
         event.preventDefault()
-        var body = {"nome":nome , "codMatricula":matricula , "senha":senha };
+        var body = {"nome":nome , "codMatricula":matricula , "email":emailAluno ,"senha":senha };
         console.log(body)
         api.post(
             "api/aluno/save",body
@@ -21,6 +21,7 @@ export default function CadastroAlunos() {
 
     const [nome, setNome] = useState('')
     const [matricula, setMatricula] = useState('')
+    const [emailAluno, setEmailAluno] = useState('')
     const [senha, setSenha] = useState('')
 
     return (
@@ -45,6 +46,8 @@ export default function CadastroAlunos() {
                     <Input label="Nome" id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" />
                     <br/>
                     <Input label="N° Matricula" id="numMatricula" type="number" onChange={(e) => setMatricula(e.target.value)} name="numMatricula" placeholder="Digite o N° Matrícula" />
+                    <br/>
+                    <Input label="Email" id="emailAluno" type="email" onChange={(e) => setEmailAluno(e.target.value)} name="emailAluno" placeholder="Digite o Email" />
                     <br/>
                     <InputSenha label="Senha" id="senha"  id_eye="eye"  type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" />
                     <br/>
