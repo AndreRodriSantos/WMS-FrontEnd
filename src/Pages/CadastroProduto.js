@@ -1,23 +1,18 @@
 import styles from "../Styles/Cadastros/CadastroProduto.module.css"
 import logo from "../IMG/Logo WMS.png"
 import { useEffect, useState } from "react"
-import { DadosPrincipais, Taxas_Impostos, ImagemProduto } from "../Components/Forms/FormsProduto"
 import api from "../Services/api"
 import { Foto } from "../Components/Inputs/InputFoto";
 import { Input } from "../Components/Inputs/InputText";
 import { Select } from "../Components/Inputs/Select";
 import { fazOptionsDemanda, fazOptionsFornecedor, fazOptionsMedida, fazOptionsNcm, getFornecedorID, getMedidaID, getNcmID } from "../Services/gets"
 
-
 export default function CadastroProduto() {
-
-    let imagem 
 
     const [passo, setPasso] = useState(1)
     const [nome, setNome] = useState('')
     const [descricao, setDescricao] = useState('')
     const [pontoPedido, setPedido] = useState('')
-    const [demanda, setDemanda] = useState('')
     const [valorUnitario, setValor] = useState('')
     const [ipi, setIpi] = useState('')
     const [pis, setPis] = useState('')
@@ -61,34 +56,13 @@ export default function CadastroProduto() {
 
         let fornecedores = document.getElementById("fornecedor").value
         fornecedores = await getFornecedorID(fornecedores)
+        let demanda = document.getElementById("demanda").value
         console.log(fornecedores)
         let medida = document.getElementById("medida").value
         medida = await getMedidaID(medida)
         let ncm = document.getElementById("ncm").value
         ncm = await getNcmID(ncm)
-
-        const uploadImage = async (e) => {
-            console.log(e.target.files);
-            const file = e.target.files[0]
-
-            const teste = await base64(file);
-            imagem = teste
-            console.log(teste);
-        };
-
-        const base64 = (file) => {
-            return new Promise((resolve, reject) => {   
-                const fileReader = new FileReader();
-                fileReader.readAsDataURL(file);
-
-                fileReader.onload = () => {
-                    resolve(fileReader.result)
-                };
-                fileReader.onerror = (error) => {
-                    reject(error)
-                };
-            });
-        }
+        let imagem = document.getElementById("imgPhoto").getAttribute("src")
 
 
         const body = {
@@ -136,7 +110,7 @@ export default function CadastroProduto() {
 
                         <div className={styles.column}>
                             <Input onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="number" name="nome" ></Input>
-                            <Select onChange={(e) => setDemanda(e.target.value)} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
+                            <Select data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                             <Input onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
                             <Select data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
                         </div>

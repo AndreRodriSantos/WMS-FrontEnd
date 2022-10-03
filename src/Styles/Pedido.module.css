@@ -19,8 +19,6 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    position: relative;
 }
 
 .header{
@@ -28,13 +26,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
 }
 
 .lista{
     height: 70%;
-    position: relative;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    justify-content: center;
 }
 
 .footer{
@@ -89,13 +91,12 @@
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    position: relative;
-    left: 232px;
+    position: absolute;
+    left: 0;
     transition: .5s;
     width: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 }
@@ -111,7 +112,6 @@
     width: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 }
@@ -122,12 +122,11 @@
     overflow-y: scroll;
     overflow-x: hidden;
     position: absolute;
-    left: -232px;
+    left: 0;
     transition: .5s;
     width: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
 }
@@ -145,4 +144,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.addProdutos{
+    position: absolute;
+}   
+
+.finalizarPedido{
+    position: absolute;
+}
+
+.btnsFooter{
+    position: relative;
+    width: 80px;
+    height: 20px;
 }

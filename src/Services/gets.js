@@ -50,7 +50,7 @@ export async function fazOptionsDemanda() {
 }
 
 export async function fazOptionsPeriodo() {
-    const periodo = await getDemandas()
+    const periodo = await getPeriodo()
     const options = periodo.map((p) => `<option value=${p}>${p}</option>`)
     return options
 }

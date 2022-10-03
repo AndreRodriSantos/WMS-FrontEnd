@@ -50,8 +50,9 @@ function CadastrarProf(event) {
     const nomeProf = document.getElementById('nome').value
     const nif = document.getElementById('nif').value
     const senha = document.getElementById('senha').value
+    let imagem = document.getElementById("imgPhoto").getAttribute("src")
 
-    const body = { 'nome': nomeProf, 'nif': nif, 'senha': senha };
+    const body = { 'nome': nomeProf, 'nif': nif, 'senha': senha, imagem };
 
     console.log(body)
 

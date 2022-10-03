@@ -16,13 +16,15 @@ export default function CadastroTurma() {
 
         const periodo = document.getElementById("periodo").value
         const participantes = document.getElementById("participantes").textContent
+        let imagem = document.getElementById("imgPhoto").getAttribute("src")
     
         const body = {
             'nome':nome, 
             'periodo':periodo,
             'dataInicio':dataC,
             'dataFinal': dataF,
-            'numeroMembro':participantes 
+            'numeroMembro':participantes ,
+            imagem
         };
     
         console.log(body)

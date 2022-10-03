@@ -4,8 +4,6 @@ import styles from "../../Styles/Inputs/InputFoto.module.css"
 
 export class Foto extends React.Component {
 
-    
-
     render() {
         const {onChange} = this.props
         return (
