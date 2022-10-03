@@ -22,7 +22,7 @@ export default function CadastroTurma() {
             'periodo':periodo,
             'dataInicio':dataC,
             'dataFinal': dataF,
-            'numeroMembro':participantes 
+            'numParticipantes':participantes 
         };
     
         console.log(body)

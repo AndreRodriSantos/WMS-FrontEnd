@@ -4,7 +4,7 @@ import styles from '../Styles/Turmas/CardTurmas.module.css'
 export default class CardTurma extends React.Component {
     render() {
 
-        const { nomeTurma , periodo , membros , dataComeco , imgTurma} = this.props;
+        const { idTurma, nomeTurma , periodo , membros , dataComeco , imgTurma} = this.props;
 
         return (
             <div className={styles.Card}>

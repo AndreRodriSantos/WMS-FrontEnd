@@ -7,21 +7,33 @@ import api from "../Services/api";
 
 export default function ListaMembros() {
 
-    const [membros, setMembros] = useState([])
+    const [alunos, setAlunos] = useState([])
+    const [professores, setProfessores] = useState([])
+    let [membrosCheck, setMembrosCheck] = useState([])
 
     function getAluno() {
         return api.get("api/aluno/list").then(
             response => {
-                console.log(response.data)
-                setMembros(response.data)
+                setAlunos(response.data)
+                return response.data
+            }
+        )
+    }
+
+    function getProf() {
+        return api.get("api/professor/list").then(
+            response => {              
+                setProfessores(response.data)
                 return response.data
             }
         )
     }
 
     useEffect(() => {
+        getProf()
         getAluno()
     }, [])
+
 
     function AbrirList() {
         const btnAddMembro = document.getElementById('btnAddMembro')
@@ -33,18 +45,33 @@ export default function ListaMembros() {
         list.style.left = "0"
     }
 
+    function onCheck(membro) {  
+        setMembrosCheck(membrosCheck  => [...membrosCheck, membro])
+        
+        
+    }
+
+    function offCheck(membro) {
+
+    }
+
+    function addList(){
+       membrosCheck.map(() => "")
+    }
 
     return (
         <section className={styles.container}>
             <div className={styles.AddMembros}>
                 <div id='btnAddMembro' onClick={AbrirList} className={styles.baseAddMembros}>
-                    <span className={styles.button}>
+                    <span onClick={addList} className={styles.button}>
                         <i className="fa-regular fa-plus"></i>
                     </span>
                     <input id='pesquisa' className={styles.pesquisa} type="text" placeholder='Busque por uma Pessoa' />
                 </div>
                 <ul id="listMembros" className={styles.listPesquisa}>
-                    {membros.map((m) => <LinhaPesquisa idMembro={m.id} nome={m.nome} email={m.email} matricula={m.codMatricula} />)}
+                    {alunos.map((m , key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'aluno'} onCheck={onCheck} offCheck={offCheck}/>)}
+                    {professores.map((m, key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'professor'} onCheck={onCheck} offCheck={offCheck}/>)}
+
                 </ul>
             </div>
 
@@ -59,13 +86,13 @@ export default function ListaMembros() {
                                     <td className={styles.mes}></td>
                                     <td className={styles.mes}>Nome</td>
                                     <td className={styles.mes}>Email</td>
-                                    <td className={styles.mes}>Matrícula</td>
+                                    <td className={styles.mes}>Nif / Matrícula</td>
                                     <td className={styles.mes}>Função</td>
                                     <td className={styles.mes}></td>
                                 </tr>
                             </thead>
                             <tbody id="lista" className={styles.body}>
-                                {/*  {membros.map((m) => <LinhaMembros nome={m.nome} email={m.email} matricula={m.codMatricula} />)}  */}
+                                {/*   */}
                             </tbody>
                         </table>
                     </ul>

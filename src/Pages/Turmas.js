@@ -21,14 +21,17 @@ export default function Turmas() {
         getTurma()
     }, [])
 
+    function btnListaMembro(){
+        const idTurma = document.getElementById('')
+        console.log(idTurma);
+    }
     
     const img = 'https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/b8e0abca-53ef-411c-ae4e-debcb2e937ab24416098.png?alt=media'
 
 
     return (
-        <section className={styles.container}>
-           
-            {turmas.map((t) => <CardTurma nomeTurma={t.nome} periodo={t.periodo} dataComeco={t.dataInicio} membros={t.numeroMembro} imgTurma={img}/>)}
+        <section onLoad={btnListaMembro} className={styles.container}>          
+            {turmas.map((t) => <CardTurma idTurma={t.id} nomeTurma={t.nome} periodo={t.periodo} dataComeco={t.dataInicio} membros={t.numeroMembro} imgTurma={img}/>)}
             {turmas.length <= 0 && 
                 <div className={styles.semTurmas}>
                     <span className={styles.titleSemTurma}>Nenhuma Turma Cadastrada</span> 
