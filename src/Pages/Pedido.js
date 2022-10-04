@@ -70,6 +70,13 @@ export default function Pedido() {
         api.post("api/pedido/save", pedido)
     }
 
+    function Pesquisar(texto){
+        api.get(`api/produto/findbyall/${texto}`).then( response => {
+            setProduto(response.data)
+            console.log(produto)
+        })
+    }
+
     useEffect(() => {
         getProduto()
     }, [])
@@ -81,7 +88,7 @@ export default function Pedido() {
                 <header className={styles.header}>
 
                     <div className={styles.divPesquisa}>
-                        <InputPesquisa id="pesquisaProduto" onChange={(e) => setPesquisa(e.target.value)} placeholder="Pesquise pelo Produto"></InputPesquisa>
+                        <InputPesquisa  id="pesquisaProduto" search={Pesquisar} placeholder="Pesquise pelo Produto"></InputPesquisa>
                     </div>
 
                     <div className={styles.btns} >
