@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../Styles/AddMembros.module.css'
+import styles from '../../Styles/LinhaPesquisa.module.css'
 
 export default class LinhaPesquisa extends React.Component {
     render() {
@@ -8,12 +8,12 @@ export default class LinhaPesquisa extends React.Component {
 
         const { membro , onCheck, offCheck, typeMembro } = this.props
         const idMembro = typeMembro+membro.id
-        console.log(idMembro);
+        //console.log(idMembro);
         //const cod = membro.cod
       
         function clickCheck () {      
             const checkbox = document.getElementById(idMembro)
-            console.log(checkbox)
+            //console.log(checkbox)
             if(checkbox.checked == true){
                 onCheck(membro)
             }else{
@@ -29,7 +29,10 @@ export default class LinhaPesquisa extends React.Component {
                     <div className={styles.imgMembro}>
                         <img src={img}></img>
                     </div>
-                    <span className={styles.nameMembro}>{membro.nome}</span>
+                    <div className={styles.infoMembro}>
+                        <span className={styles.nameMembro}>{membro.nome}</span>
+                        <span className={styles.subTitle}>{membro.email}{membro.nif}</span>
+                    </div>
                 </span>
                 <label className={styles.label}>
                     <input id={idMembro} onClick={clickCheck} className={styles.input} type="checkbox" />

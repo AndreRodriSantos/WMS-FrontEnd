@@ -3,6 +3,7 @@ import styles from '../Styles/Lista/ListaMebros.module.css'
 /* import LinhaMembros from '../Components/Membros/LinhaMembro' */
 /* import AddMembros from "../Components/Membros/AddMembros"; */
 import LinhaPesquisa from "../Components/Membros/LinhaPesquisa";
+import SearchInput from "../Components/Inputs/SearchInput";
 import api from "../Services/api";
 
 export default function ListaMembros() {
@@ -10,6 +11,36 @@ export default function ListaMembros() {
     const [alunos, setAlunos] = useState([])
     const [professores, setProfessores] = useState([])
     let [membrosCheck, setMembrosCheck] = useState([])
+
+    //Juntando dois json em uma Variavel
+    var membroList = alunos.concat(professores)
+    console.log(membroList);
+
+    const [text, setText] = useState('')
+    const [list, setList] = useState(membroList)
+    
+    //Fazendo Busca pelo Membro
+    useEffect(() => {
+        if(text === ''){
+            setList(membroList)
+            
+        }else{
+            setList(
+                membroList.filter((item) => 
+                item.nome.toLowerCase().indexOf(text.toLowerCase()) > -1
+                )
+            );
+        }
+    }, [text]);
+
+    //Ordernando busca de A & Z
+    const OrderTitle = () => {
+        let newList = [...membroList] 
+
+        newList.sort((a, b) => (a.nome > b.nome ? 1 : b.nome > a.nome ? -1 : 0))
+
+        setList(newList)
+    }
 
     function getAluno() {
         return api.get("api/aluno/list").then(
@@ -34,7 +65,7 @@ export default function ListaMembros() {
         getAluno()
     }, [])
 
-
+    
     function AbrirList() {
         const btnAddMembro = document.getElementById('btnAddMembro')
         const pesquisa = document.getElementById('pesquisa')
@@ -47,8 +78,7 @@ export default function ListaMembros() {
 
     function onCheck(membro) {  
         setMembrosCheck(membrosCheck  => [...membrosCheck, membro])
-        
-        
+               
     }
 
     function offCheck(membro) {
@@ -57,7 +87,8 @@ export default function ListaMembros() {
 
     function addList(){
        membrosCheck.map(() => "")
-    }
+    } 
+
 
     return (
         <section className={styles.container}>
@@ -66,15 +97,19 @@ export default function ListaMembros() {
                     <span onClick={addList} className={styles.button}>
                         <i className="fa-regular fa-plus"></i>
                     </span>
-                    <input id='pesquisa' className={styles.pesquisa} type="text" placeholder='Busque por uma Pessoa' />
+                    <div id='pesquisa' className={styles.pesquisa}>
+                        <span onClick={OrderTitle} className={styles.btnOrderTitle}>
+                            <i className="fa-solid fa-arrow-up-a-z"></i>
+                        </span>
+                        <SearchInput id='pesquisa' placeholder="Pesquise um pessoa" value={text} onChange={(search) => setText(search)}/>
+                    </div>
                 </div>
                 <ul id="listMembros" className={styles.listPesquisa}>
-                    {alunos.map((m , key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'aluno'} onCheck={onCheck} offCheck={offCheck}/>)}
-                    {professores.map((m, key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'professor'} onCheck={onCheck} offCheck={offCheck}/>)}
-
+                    {list.map((m , key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'aluno'} onCheck={onCheck} offCheck={offCheck}/>)}
+                    {/* {professores.map((m, key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'professor'} onCheck={onCheck} offCheck={offCheck}/>)} */}
                 </ul>
+          
             </div>
-
 
             <div className={styles.baseList}>
                 <span className={styles.title}><i className="fa-solid fa-users"></i>Lista de Membros</span>

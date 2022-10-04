@@ -197,13 +197,22 @@ td button:hover{
 .pesquisa::placeholder{
     font-size: 20px;
 }
+.btnOrderTitle{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
 .listPesquisa{
     position: absolute;
     width: 320px;
-    height: 100%;
+    max-height: 100%;
     border-radius: 0 0 50px 0;
     background-color: #fff;
-    top: 10%;
+    top: 20%;
     left: -350px;
     transition: .5s ease-in;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -215,89 +224,3 @@ td button:hover{
 .listPesquisa::-webkit-scrollbar{
     display: none;
 }
-.linhaPesqusa{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    top: 70px;  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-}
-.Membro{
-    position: relative;
-    width: 250px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-.imgMembro{
-    margin: 0 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #000;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.imgMembro img{
-   width: 70px;
-}
-.nameMembro{
-    font-size: 20px;
-    font-weight: bold;
-    color: #000;
-}
-
-/* Check */
-.label{
-    position: relative;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 20px;
-    
-}
-  .label .input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  .checkmark {
-    position: absolute;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-  }
-  .label:hover .input ~ .checkmark {
-    background-color: #ccc;
-  }
-  .label .input:checked ~ .checkmark {
-    background-color: #2196F3;
-  }
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  .label input:checked ~ .checkmark:after {
-    display: block;
-  }
-  .label .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
