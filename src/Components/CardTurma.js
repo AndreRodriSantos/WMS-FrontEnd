@@ -4,7 +4,11 @@ import styles from '../Styles/Turmas/CardTurmas.module.css'
 export default class CardTurma extends React.Component {
     render() {
 
-        const { idTurma, nomeTurma , periodo , membros , dataComeco , imgTurma} = this.props;
+        const { nomeTurma , periodo , membros , dataComeco , imgTurma, id} = this.props;
+
+        function setStorage(){
+            localStorage.setItem("idTurma", id)
+        }
 
         return (
             <div className={styles.Card}>
@@ -20,7 +24,7 @@ export default class CardTurma extends React.Component {
                         <span className={styles.barra}></span>
                     </span>
                     <span className={styles.baseMembro}>
-                        <a href="/Membros" className={styles.membros}><i className="fa-solid fa-users"></i></a>
+                        <a href="/Membros" onClick={setStorage} className={styles.membros}><i className="fa-solid fa-users"></i></a>
                         <p className={styles.titleMembros}>Membros</p>
                         <span className={styles.NuMembro}>{membros}</span>
                     </span>

@@ -14,20 +14,24 @@ export default function ListaMembros() {
 
     //Juntando dois json em uma Variavel
     var membroList = alunos.concat(professores)
-    console.log(membroList);
 
     const [text, setText] = useState('')
     const [list, setList] = useState(membroList)
-    
+    console.log(list)
+
+    function getTurma(id){
+       return api.get(`api/turma/${id}`).then(response => response.data)
+    }
+
     //Fazendo Busca pelo Membro
     useEffect(() => {
-        if(text === ''){
+        if (text === '') {
             setList(membroList)
-            
-        }else{
+
+        } else {
             setList(
-                membroList.filter((item) => 
-                item.nome.toLowerCase().indexOf(text.toLowerCase()) > -1
+                membroList.filter((item) =>
+                    item.nome.toLowerCase().indexOf(text.toLowerCase()) > -1
                 )
             );
         }
@@ -35,7 +39,7 @@ export default function ListaMembros() {
 
     //Ordernando busca de A & Z
     const OrderTitle = () => {
-        let newList = [...membroList] 
+        let newList = [...membroList]
 
         newList.sort((a, b) => (a.nome > b.nome ? 1 : b.nome > a.nome ? -1 : 0))
 
@@ -53,7 +57,7 @@ export default function ListaMembros() {
 
     function getProf() {
         return api.get("api/professor/list").then(
-            response => {              
+            response => {
                 setProfessores(response.data)
                 return response.data
             }
@@ -63,9 +67,10 @@ export default function ListaMembros() {
     useEffect(() => {
         getProf()
         getAluno()
+        
     }, [])
 
-    
+
     function AbrirList() {
         const btnAddMembro = document.getElementById('btnAddMembro')
         const pesquisa = document.getElementById('pesquisa')
@@ -76,18 +81,24 @@ export default function ListaMembros() {
         list.style.left = "0"
     }
 
-    function onCheck(membro) {  
-        setMembrosCheck(membrosCheck  => [...membrosCheck, membro])
-               
+    function onCheck(membro) {
+        setMembrosCheck(membrosCheck => [...membrosCheck, membro])
+        console.log(membrosCheck);
     }
 
     function offCheck(membro) {
 
     }
 
-    function addList(){
-       membrosCheck.map(() => "")
-    } 
+    async function addList() {
+        const turma = await getTurma(localStorage.getItem("idTurma"))
+
+        membrosCheck.map((m) => {
+            m.turma= turma
+            console.log(m.id)
+            api.put(`api/aluno/${m.id}`, m)
+        })
+    }
 
 
     return (
@@ -101,14 +112,14 @@ export default function ListaMembros() {
                         <span onClick={OrderTitle} className={styles.btnOrderTitle}>
                             <i className="fa-solid fa-arrow-up-a-z"></i>
                         </span>
-                        <SearchInput id='pesquisa' placeholder="Pesquise um pessoa" value={text} onChange={(search) => setText(search)}/>
+                        <SearchInput id='pesquisa' placeholder="Pesquise um pessoa" value={text} onChange={(search) => setText(search)} />
                     </div>
                 </div>
                 <ul id="listMembros" className={styles.listPesquisa}>
-                    {list.map((m , key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'aluno'} onCheck={onCheck} offCheck={offCheck}/>)}
+                    {list.map((m) => <LinhaPesquisa membro={m}  onCheck={onCheck} offCheck={offCheck} />)}
                     {/* {professores.map((m, key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'professor'} onCheck={onCheck} offCheck={offCheck}/>)} */}
                 </ul>
-          
+
             </div>
 
             <div className={styles.baseList}>
