@@ -5,6 +5,7 @@ import styles from '../Styles/Lista/ListaMebros.module.css'
 import LinhaPesquisa from "../Components/Membros/LinhaPesquisa";
 import SearchInput from "../Components/Inputs/SearchInput";
 import api from "../Services/api";
+import LinhaMembros from "../Components/Membros/LinhaMembro";
 
 export default function ListaMembros() {
 
@@ -12,8 +13,12 @@ export default function ListaMembros() {
     const [professores, setProfessores] = useState([])
     let [membrosCheck, setMembrosCheck] = useState([])
 
+    const [alunosAdd, setAlunosAdd] = useState([])
+    const [professoresAdd, setProfessoresAdd] = useState([])
+
     //Juntando dois json em uma Variavel
     var membroList = alunos.concat(professores)
+    var membroAdd = alunosAdd.concat(professoresAdd)
 
     const [text, setText] = useState('')
     const [list, setList] = useState([])
@@ -30,7 +35,7 @@ export default function ListaMembros() {
         } else {
             setList(
                 membroList.filter((item) =>
-                    item.nome.toLowerCase().indexOf(text.toLowerCase()) > -1
+                    item.nome.toLowerCase().indexOf(text.toLowerCase()) > -1                   
                 )
             );
         }
@@ -52,24 +57,29 @@ export default function ListaMembros() {
                 alu.map(a => {
                     if(a.turma == null){
                         setAlunos(alunos => [...alunos, a])
+                    }else{
+                        setAlunosAdd(alunosAdd => [...alunosAdd, a])
+                    }
+                })
+            }
+        )
+    }
+    
+    function getProf() {
+        return api.get("api/professor/list").then(
+            response => {             
+                const profs = response.data
+                profs.map(p => {
+                    if(p.turma == null){
+                        setProfessores(professores => [...professores, p])
+                    }else{
+                        setProfessoresAdd(professoresAdd => [...professoresAdd, p])                       
                     }
                 })
             }
         )
     }
 
-    function getProf() {
-        return api.get("api/professor/list").then(
-            response => {
-                const profs = response.data
-                profs.map(p => {
-                    if(p.turma == null){
-                        setProfessores(professores => [...professores, p])
-                    }
-                })
-            }
-        )
-    }
 
     useEffect(() => {
         getProf()
@@ -104,7 +114,7 @@ export default function ListaMembros() {
 
     async function addList() {
         const turma = await getTurma(localStorage.getItem("idTurma"))
-
+        console.log(turma);
         membrosCheck.map((m) => {
             m.turma= turma
             
@@ -114,6 +124,7 @@ export default function ListaMembros() {
                 api.patch(`api/professor/${m.id}`, turma)
             }
         })
+
     }
 
 
@@ -133,7 +144,7 @@ export default function ListaMembros() {
                 </div>
                 <ul id="listMembros" className={styles.listPesquisa}>
                     {
-                    list.length == 0 ? <li>Sem resultados <i class="fa-regular fa-face-sad-tear"></i></li> : list.map((m) => <LinhaPesquisa key={m.nif == undefined ? m.codMatricula + m.id : m.nif + m.id } membro={m}  onCheck={onCheck} offCheck={offCheck} />)
+                    list.length == 0 ? <li>Sem resultados <i className="fa-regular fa-face-sad-tear"></i></li> : list.map((m) => <LinhaPesquisa key={m.nif == undefined ? m.codMatricula + m.id : m.nif + m.id } membro={m}  onCheck={onCheck} offCheck={offCheck} />)
                     }
                 </ul>
 
@@ -155,7 +166,10 @@ export default function ListaMembros() {
                                 </tr>
                             </thead>
                             <tbody id="lista" className={styles.body}>
-                                {/*   */}
+                                {
+                                membroAdd.map((m) =>  <LinhaMembros key={m.nif == undefined ? m.codMatricula + m.id : m.nif + m.id } funcao={m.nif == undefined ? "ALUNO"  :  "PROFESSOR"} membro={m} />)
+                               
+                                }
                             </tbody>
                         </table>
                     </ul>
