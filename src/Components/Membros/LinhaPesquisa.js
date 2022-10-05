@@ -6,10 +6,9 @@ export default class LinhaPesquisa extends React.Component {
         
         const img = 'https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/b8e0abca-53ef-411c-ae4e-debcb2e937ab24416098.png?alt=media'
 
-        const { membro , onCheck, offCheck, typeMembro } = this.props
-        const idMembro = typeMembro+membro.id
-        //console.log(idMembro);
-        //const cod = membro.cod
+        const { membro , onCheck, offCheck } = this.props
+
+        const idMembro = membro.id
       
         function clickCheck () {      
             const checkbox = document.getElementById(idMembro)
@@ -19,8 +18,6 @@ export default class LinhaPesquisa extends React.Component {
             }else{
                 offCheck(membro)
             }
-           
-        
         }
        
         return (

@@ -16,7 +16,7 @@ export default function ListaMembros() {
     var membroList = alunos.concat(professores)
 
     const [text, setText] = useState('')
-    const [list, setList] = useState(membroList)
+    const [list, setList] = useState([])
     console.log(list)
 
     function getTurma(id){
@@ -27,7 +27,6 @@ export default function ListaMembros() {
     useEffect(() => {
         if (text === '') {
             setList(membroList)
-
         } else {
             setList(
                 membroList.filter((item) =>
@@ -49,8 +48,12 @@ export default function ListaMembros() {
     function getAluno() {
         return api.get("api/aluno/list").then(
             response => {
-                setAlunos(response.data)
-                return response.data
+                const alu = response.data
+                alu.map(a => {
+                    if(a.turma == null){
+                        setAlunos(alunos => [...alunos, a])
+                    }
+                })
             }
         )
     }
@@ -58,8 +61,12 @@ export default function ListaMembros() {
     function getProf() {
         return api.get("api/professor/list").then(
             response => {
-                setProfessores(response.data)
-                return response.data
+                const profs = response.data
+                profs.map(p => {
+                    if(p.turma == null){
+                        setProfessores(professores => [...professores, p])
+                    }
+                })
             }
         )
     }
@@ -79,6 +86,11 @@ export default function ListaMembros() {
         btnAddMembro.style.width = "350px"
         pesquisa.style.left = '0'
         list.style.left = "0"
+
+        setTimeout(() => {
+            setList(membroList)
+        }, 500);
+        
     }
 
     function onCheck(membro) {
@@ -95,8 +107,12 @@ export default function ListaMembros() {
 
         membrosCheck.map((m) => {
             m.turma= turma
-            console.log(m.id)
-            api.put(`api/aluno/${m.id}`, m)
+            
+            if(m.nif == undefined){
+                api.patch(`api/aluno/${m.id}`, turma)
+            }else{
+                api.patch(`api/professor/${m.id}`, turma)
+            }
         })
     }
 
@@ -116,8 +132,9 @@ export default function ListaMembros() {
                     </div>
                 </div>
                 <ul id="listMembros" className={styles.listPesquisa}>
-                    {list.map((m) => <LinhaPesquisa membro={m}  onCheck={onCheck} offCheck={offCheck} />)}
-                    {/* {professores.map((m, key) => <LinhaPesquisa membro={m} key={m.id} typeMembro={'professor'} onCheck={onCheck} offCheck={offCheck}/>)} */}
+                    {
+                    list.length == 0 ? <li>Sem resultados <i class="fa-regular fa-face-sad-tear"></i></li> : list.map((m) => <LinhaPesquisa key={m.nif == undefined ? m.codMatricula + m.id : m.nif + m.id } membro={m}  onCheck={onCheck} offCheck={offCheck} />)
+                    }
                 </ul>
 
             </div>

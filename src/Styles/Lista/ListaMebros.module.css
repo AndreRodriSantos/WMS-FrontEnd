@@ -1,4 +1,4 @@
-.container{
+.container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -6,7 +6,8 @@
     align-items: center;
     background-color: #ECEEF2;
 }
-.baseList{
+
+.baseList {
     position: absolute;
     bottom: 0;
     width: 80%;
@@ -19,7 +20,8 @@
     align-items: center;
     overflow: hidden;
 }
-.title{
+
+.title {
     position: absolute;
     width: 250px;
     height: 30px;
@@ -40,7 +42,8 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
-.div_lista{
+
+.div_lista {
     position: relative;
     width: 90%;
     height: 75%;
@@ -48,7 +51,8 @@
     display: flex;
     justify-content: center;
 }
-.fecharPesquisa{
+
+.fecharPesquisa {
     cursor: pointer;
     visibility: hidden;
     color: rgb(0, 0, 0);
@@ -56,6 +60,7 @@
     margin-left: 10px;
     font-size: 25px;
 }
+
 .lista {
     display: flex;
     flex-direction: column;
@@ -64,16 +69,19 @@
     height: 105%;
     margin-top: 30px;
     overflow: scroll;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
+
 .tabelaMembro thead {
     height: 50px;
     color: #F2F2F4;
 }
+
 .tabelaMembro tr {
     height: 50px;
 }
-.headerList{
+
+.headerList {
     position: absolute;
     width: 100%;
     display: flex;
@@ -81,10 +89,12 @@
     align-items: center;
     border-bottom: 5px solid red;
 }
-.mes{
+
+.mes {
     font-size: 25px;
     font-weight: 300;
 }
+
 .tabelaMembro td {
     box-sizing: border-box;
     overflow-x: hidden;
@@ -92,7 +102,8 @@
     color: var(--black);
     text-align: center;
 }
-td button{
+
+td button {
     width: 50px;
     background-color: transparent;
     border: none;
@@ -100,38 +111,46 @@ td button{
     font-size: 20px;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.1s;  
+    transition: 0.1s;
 }
-td button:hover{
+
+td button:hover {
     font-size: 25px;
 }
-*::-webkit-scrollbar{
-    background-color:white;
+
+*::-webkit-scrollbar {
+    background-color: white;
     width: 10px;
 }
-*::-webkit-scrollbar-thumb{
+
+*::-webkit-scrollbar-thumb {
     background-color: rgb(192, 192, 192);
-    border-radius: 10px;  
+    border-radius: 10px;
 }
-.titleList{
+
+.titleList {
     text-align: center;
     padding: 8px;
 }
-.imgMembro{
+
+.imgMembro {
     margin: 0 auto;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background-color: #000;
 }
-.body{
+
+.body {
     color: #A7A7A7;
 }
-.nome{
+
+.nome {
     font-weight: bold;
     color: #000;
 }
-.btnConfig{
+
+.btnConfig {
     margin: 0 auto;
     width: 50px;
     height: 50px;
@@ -142,9 +161,9 @@ td button:hover{
     align-items: center;
     color: #000;
     cursor: pointer;
-} 
+}
 
-.AddMembros{
+.AddMembros {
     position: fixed;
     top: 0;
     left: 0;
@@ -155,14 +174,15 @@ td button:hover{
     height: 500px;
     z-index: 1;
 }
-.baseAddMembros{
+
+.baseAddMembros {
     position: absolute;
     top: 10%;
     left: 0;
     width: 60px;
     height: 60px;
     background-color: #fff;
-    border-radius: 0 50px 50px 0 ;
+    border-radius: 0 50px 50px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,7 +191,8 @@ td button:hover{
     transition: .5s ease-in;
     z-index: 2;
 }
-.button{
+
+.button {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -184,7 +205,8 @@ td button:hover{
     font-size: 25px;
     right: 10px;
 }
-.pesquisa{
+
+.pesquisa {
     position: absolute;
     height: 50px;
     left: -300px;
@@ -194,10 +216,12 @@ td button:hover{
     outline: none;
     transition: .5s ease-in;
 }
-.pesquisa::placeholder{
+
+.pesquisa::placeholder {
     font-size: 20px;
 }
-.btnOrderTitle{
+
+.btnOrderTitle {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -206,7 +230,8 @@ td button:hover{
     align-items: center;
     font-size: 25px;
 }
-.listPesquisa{
+
+.listPesquisa {
     position: absolute;
     width: 320px;
     max-height: 100%;
@@ -218,9 +243,22 @@ td button:hover{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     overflow: hidden;
     overflow: scroll;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     z-index: 1;
 }
-.listPesquisa::-webkit-scrollbar{
+
+.listPesquisa::-webkit-scrollbar {
     display: none;
+}
+
+.listPesquisa li {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    /* top: 70px;  */
+    display: flex;
+    color: gray;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
 }
