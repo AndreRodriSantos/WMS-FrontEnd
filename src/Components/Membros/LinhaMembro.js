@@ -4,7 +4,7 @@ import styles from '../../Styles/Lista/ListaMebros.module.css'
 export default class LinhaMembros extends React.Component {
     render() {
 
-        const { membro, funcao, imgMembro} = this.props;
+        const { membro, funcao, imgMembro ,onClick} = this.props;
 
         return (
             <tr>
@@ -14,7 +14,7 @@ export default class LinhaMembros extends React.Component {
                 <td className={styles.titleList}>{membro.nif == undefined ? membro.codMatricula : membro.nif}</td>
                 <td className={styles.titleList}>{funcao}</td>
                 <td className={styles.titleList}>
-                    <div href="#" className={styles.btnConfig}>
+                    <div onClick={onClick} href="#" className={styles.btnConfig}>
                         <i className="fa-solid fa-ellipsis"></i>
                     </div>
                 </td>

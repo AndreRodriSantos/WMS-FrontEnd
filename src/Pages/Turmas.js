@@ -33,7 +33,7 @@ export default function Turmas() {
                     <span className={styles.titleSemTurma}>Nenhuma Turma Cadastrada</span> 
                 </div>
             }
-            <a className={styles.addTurmas} ><i className="fa-solid fa-plus"></i></a>
+            <a href='/cadastroTurma' className={styles.addTurmas} ><i className="fa-solid fa-plus"></i></a>
         </section>
     );
 }
