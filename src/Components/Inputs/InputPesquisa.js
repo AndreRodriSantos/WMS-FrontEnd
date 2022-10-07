@@ -21,7 +21,7 @@ export class InputPesquisa extends React.Component {
                     
                     <input id={id} className={styles.inputPesquisa} type="search" placeholder={placeholder} autoComplete="off" onChange={e => this.setState({texto : e.target.value})}  required name={name}></input>
                     <button className={styles.lupa}><i className="fa-solid fa-magnifying-glass"></i></button>
-                    <i className="fa-solid fa-cart-shopping"></i>
+                    
                 </form>
             </div>
         );

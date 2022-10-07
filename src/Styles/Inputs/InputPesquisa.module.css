@@ -1,11 +1,26 @@
-.inputPesquisa{
-
+.inputPesquisa {
+    width: 90%;
+    height: 50px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.lupa{
-
+.lupa {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.inputBox{
-    
+.inputBox {
+    width: 345px;
+    height: 50px;
+    position: relative;
+    top: 10px;
+    left: -20px;
+    border-radius: 0 50px 50px 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+

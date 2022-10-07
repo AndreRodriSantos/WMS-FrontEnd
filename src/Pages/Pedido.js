@@ -116,8 +116,8 @@ export default function Pedido() {
 
                 <div className={styles.footer}>
                     <div>
-                        <span>Valor: R$ </span>
-                        <span id="valorTotalSelec">{0}</span>
+                        <span className={styles.spanValor}>Valor: R$ </span>
+                        <span className={styles.spanValor} id="valorTotalSelec">{0}</span>
                     </div>
 
                     <div className={styles.btnsFooter}>
