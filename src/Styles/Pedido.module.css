@@ -23,6 +23,26 @@
     justify-content: space-between;
 }
 
+.pedidoOn::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .pedidoOn::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: #4D71FF;
+    border-radius: 10px;
+  }
+
+  .produtoOn::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .produtoOn::-webkit-scrollbar-thumb {
+    width: 10px;
+    background-color: #4D71FF;
+    border-radius: 10px;
+  }
+
 .header{
     height: 25%;
     display: flex;
@@ -108,7 +128,7 @@
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    position: relative;
+    position: absolute;
     left: -750px;
     transition: .5s;
     width: 500px;

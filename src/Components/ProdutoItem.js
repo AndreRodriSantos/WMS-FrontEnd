@@ -25,38 +25,38 @@ export default class ProdutoItem extends React.Component {
         return (
             <div className={styles.container} key={id} >
 
-                <div className={styles.imgDiv}>
-                    <img src="https://images.uncyc.org/pt/d/db/Ednaldo.jpg"></img>
-                </div>
-
-                <div className={styles.produtoDados}>
-
-                    <div className={styles.titleCheck}>
-                        <p>{produto.nome}</p>
-
-                        <div className={styles.checkboxAnimate}>
-                            <label>
-                                <input id={id} className="check" onClick={check} type="checkbox" name="check" />
-                                <span className={styles.inputCheck}></span>
-                            </label>
-                        </div>
-
+                    <div className={styles.imgDiv}>
+                        <img src="https://images.uncyc.org/pt/d/db/Ednaldo.jpg"></img>
                     </div>
 
-                    <div className={styles.dados}>
+                    <div className={styles.produtoDados}>
 
-                        <div className={styles.divQtd}>
-                            <p>Qtd</p><input type="number" id="qtd" defaultValue={1} className={styles.qtd}></input>
+                        <div className={styles.titleCheck}>
+                            <p>{produto.nome}</p>
+
+                            <div className={styles.checkboxAnimate}>
+                                <label>
+                                    <input id={id} className="check" onClick={check} type="checkbox" name="check" />
+                                    <span className={styles.inputCheck}></span>
+                                </label>
+                            </div>
+
                         </div>
 
-                        <div>
-                            <i className="fa-solid fa-user"></i>
-                            <span>User</span>
-                        </div>
+                        <div className={styles.dados}>
 
-                        <span id="valor">{"R$ " + produto.valorUnitario}</span>
+                            <div className={styles.divQtd}>
+                                <p>Qtd</p><input type="number" id="qtd" defaultValue={1} className={styles.qtd}></input>
+                            </div>
+
+                            <div>
+                                <i className="fa-solid fa-user"></i>
+                                <span>User</span>
+                            </div>
+
+                            <span id="valor">{"R$ " + produto.valorUnitario}</span>
+                        </div>
                     </div>
-                </div>
             </div>
         )
     }

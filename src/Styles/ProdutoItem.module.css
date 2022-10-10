@@ -1,13 +1,14 @@
 .container{
     width: 95%;
-    height: 150px;
     display: flex;
     margin: 10px 10px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    padding: 20px 0px;
+    border-bottom: 2px solid #ECECEC ;
 }
+
 
 .imgDiv{
     width: 100px;
@@ -28,7 +29,6 @@
     width: 70%;
     flex-direction: column;
     padding: 0 10px;
-    
 }
 
 .titleCheck{
@@ -75,6 +75,12 @@
 
 .divQtd p{
     padding-right: 5px;
+}
+
+.btnRemover{
+    font-size: 25px;
+    color: #06b1c5;
+    cursor: pointer;
 }
 
 /* CheckBox Style */

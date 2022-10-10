@@ -81,6 +81,16 @@ export default function Pedido() {
         getProduto()
     }, [])
 
+    function tirarProdutoLista(id){
+
+        console.log(produtosAdicionados);
+        produtosAdicionados.map((p, index) => {
+            if(p.id == id){
+                produtosAdicionados.splice(index, 1)
+            }
+        })
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.pedidoDiv}>
@@ -101,11 +111,11 @@ export default function Pedido() {
                 <div className={styles.lista}>
 
                     <div className={styles.produtoOn} id="listaProdutos">
-                        {produto.map(p => <ProdutoItem onCheck={onCheck} unCheck={unCheck} id={p.codProduto} produto={p} />)}
+                        {produto.map((p, key) => <ProdutoItem onCheck={onCheck} key={key} unCheck={unCheck} id={p.codProduto} produto={p} />)}
                     </div>
 
                     <div className={styles.pedidoOff} id="itemsPedidos">
-                        {produtosAdicionados.map(p => <ItemPedido produto={p.produto} quantidade={p.quantidade}></ItemPedido>)}
+                        {produtosAdicionados.map((p, key) => <ItemPedido tirarProduto={tirarProdutoLista} produto={p.produto} key={key} quantidade={p.quantidade}></ItemPedido>)}
                     </div>
 
                 </div>

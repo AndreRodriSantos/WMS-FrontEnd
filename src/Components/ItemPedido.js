@@ -4,9 +4,12 @@ import styles from "../Styles/ProdutoItem.module.css"
 export default class ItemPedido extends React.Component {
     render() {
 
-        const { id, produto, quantidade } = this.props
-        
+        const { id, produto, quantidade, tirarProduto } = this.props
 
+        function tiraProdutoLista(){
+            tirarProduto(produto.id)
+        }
+        
         return (
             <div className={styles.container} key={id} >
                 <div className={styles.imgDiv}>
@@ -18,11 +21,8 @@ export default class ItemPedido extends React.Component {
                     <div className={styles.titleCheck}>
                         <p>{produto.nome}</p>
 
-                        <div>
-                            <p>Qtd</p>
-                            <div>
-                                {quantidade}
-                            </div>
+                        <div className={styles.btnRemover} onClick={tiraProdutoLista}>
+                            <i className="fa-regular fa-circle-xmark"></i>
                         </div>
 
                     </div>
@@ -30,8 +30,10 @@ export default class ItemPedido extends React.Component {
                     <div className={styles.dados}>
 
                         <div className={styles.divQtd}>
-                            <span>Demanda: </span>
-                            <p style={{textTransform: "capitalize"}}>{produto.demanda}</p>
+                            <p>Qtd:</p>
+                            <div>
+                                {quantidade}
+                            </div>
                         </div>
 
                         <span>User</span>
