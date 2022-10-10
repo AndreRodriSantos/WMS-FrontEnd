@@ -143,8 +143,6 @@ export default function ListaMembros() {
 
     }
 
-
-
     return (
         <section className={styles.container}>
             <div className={styles.AddMembros}>
