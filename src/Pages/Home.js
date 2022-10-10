@@ -7,7 +7,7 @@ export default function Home() {
         <section className={styles.components}>
             <div className={styles.home}>
                 <SideBar />
-
+                
             </div>
         </section>
     );

@@ -11,6 +11,7 @@ import Turmas from './Pages/Turmas'
 import Home from './Pages/Home';
 import Pedido from './Pages/Pedido';
 import ListaMembros from './Pages/ListaMembros';
+import Loading from './Components/Loading'
 
 const history = createBrowserHistory()
 
@@ -19,6 +20,7 @@ export default function Routes() {
         <Router history={history}>
             <Switch>
                 <Route path='/' exact component={Login}></Route>
+                <Route path='/Loading' exact component={Loading}></Route>
                 <Route path='/Login' component={Login}></Route>
                 <Route path='/Turmas' component={Turmas}></Route>
                 <Route path='/Membros' component={ListaMembros}></Route>

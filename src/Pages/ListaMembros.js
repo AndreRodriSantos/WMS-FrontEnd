@@ -57,7 +57,7 @@ export default function ListaMembros() {
                 alu.map(a => {
                     if(a.turma == null){
                         setAlunos(alunos => [...alunos, a])
-                    }else{
+                    }else if (a.turma.id == localStorage.getItem("idTurma")){
                         setAlunosAdd(alunosAdd => [...alunosAdd, a])
                     }
                 })
@@ -72,7 +72,7 @@ export default function ListaMembros() {
                 profs.map(p => {
                     if(p.turma == null){
                         setProfessores(professores => [...professores, p])
-                    }else{
+                    }else if (p.turma.id == localStorage.getItem("idTurma")){
                         setProfessoresAdd(professoresAdd => [...professoresAdd, p])                       
                     }
                 })
@@ -114,7 +114,6 @@ export default function ListaMembros() {
 
     async function addList() {
         const turma = await getTurma(localStorage.getItem("idTurma"))
-        console.log(turma);
         membrosCheck.map((m) => {
             m.turma= turma
             
@@ -127,6 +126,22 @@ export default function ListaMembros() {
 
     }
 
+    function tirarAluno() {
+        const turmaRemove = ""
+        membroAdd.map((m) => {
+            m.turma.id = turmaRemove
+            console.log(m.turma.id );
+            
+            /* if(m.nif == undefined){
+                api.patch(`api/aluno/${m.id}`,turmaRemove)
+            }else{
+                api.patch(`api/professor/${m.id}`, turmaRemove)
+            }  */
+            
+            
+        })
+
+    }
 
     return (
         <section className={styles.container}>
@@ -167,8 +182,7 @@ export default function ListaMembros() {
                             </thead>
                             <tbody id="lista" className={styles.body}>
                                 {
-                                membroAdd.map((m) =>  <LinhaMembros key={m.nif == undefined ? m.codMatricula + m.id : m.nif + m.id } funcao={m.nif == undefined ? "ALUNO"  :  "PROFESSOR"} membro={m} />)
-                               
+                                    membroAdd.map((m) =>  <LinhaMembros key={m.nif == undefined ? m.codMatricula + m.id : m.nif + m.id } funcao={m.nif == undefined ? "ALUNO"  :  "PROFESSOR"} membro={m} onClick={tirarAluno}/>)                               
                                 }
                             </tbody>
                         </table>
