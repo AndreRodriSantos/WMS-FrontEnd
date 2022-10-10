@@ -28,7 +28,7 @@ export default class LinhaPesquisa extends React.Component {
                     </div>
                     <div className={styles.infoMembro}>
                         <span className={styles.nameMembro}>{membro.nome}</span>
-                        <span className={styles.subTitle}>{membro.email}{membro.nif}</span>
+                        <span className={styles.subTitle}>{membro.email}</span>
                     </div>
                 </span>
                 <label className={styles.label}>

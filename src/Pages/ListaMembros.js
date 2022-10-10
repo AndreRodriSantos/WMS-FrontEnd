@@ -54,6 +54,7 @@ export default function ListaMembros() {
         return api.get("api/aluno/list").then(
             response => {
                 const alu = response.data
+
                 alu.map(a => {
                     if(a.turma == null){
                         setAlunos(alunos => [...alunos, a])
@@ -112,16 +113,25 @@ export default function ListaMembros() {
 
     }
 
+
+    function getAlunoId(id) {
+        api.get(`api/aluno/${id}`).then(
+            response => {return response.data}
+        )
+    }
+
     async function addList() {
         const turma = await getTurma(localStorage.getItem("idTurma"))
+
+        async function alunoget(id){
+            return getAlunoId(id).then(response => response.data)
+        }
+      
         membrosCheck.map((m) => {
-            m.turma= turma
-            
-            if(m.nif == undefined){
-                api.patch(`api/aluno/${m.id}`, turma)
-            }else{
-                api.patch(`api/professor/${m.id}`, turma)
-            }
+            const aluno = alunoget(m.id)
+            const body =  {turma , aluno}
+            console.log(body);
+            api.post(`api/membros/save`, body)
         })
 
     }

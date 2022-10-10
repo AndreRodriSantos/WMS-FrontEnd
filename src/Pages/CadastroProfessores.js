@@ -12,6 +12,7 @@ export default function CadastroProfessores() {
 
     const [nomeProf, setNome] = useState('')
     const [nif, setNif] = useState('')
+    const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
     function CadastrarProf(event) {
@@ -22,7 +23,7 @@ export default function CadastroProfessores() {
         const senha = document.getElementById('senha').value
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
     
-        const body = { 'nome': nomeProf, 'nif': nif, 'senha': senha, imagem };
+        const body = { 'nome': nomeProf, 'nif': nif, "email":email , 'senha': senha, imagem };
     
         console.log(body)
     
@@ -52,6 +53,7 @@ export default function CadastroProfessores() {
                 <form onSubmit={CadastrarProf}>
                     <Input id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" label="Nome" />
                     <Input id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif" />
+                    <Input label="Email" id="email" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Digite o Email" />
                     <InputSenha id="senha" id_eye="eye" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" label="Senha" />
                     <Button>Cadastrar</Button>
                 </form>
