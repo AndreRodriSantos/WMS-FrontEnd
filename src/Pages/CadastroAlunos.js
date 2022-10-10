@@ -49,11 +49,7 @@ export default function CadastroAlunos() {
                     <br/>
                     <Input label="N° Matricula" id="numMatricula" type="number" onChange={(e) => setMatricula(e.target.value)} name="numMatricula" placeholder="Digite o N° Matrícula" />
                     <br/>
-<<<<<<< HEAD
-                    <Input label="Email" id="email" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Digite seu Email" />
-=======
                     <Input label="Email" id="emailAluno" type="email" onChange={(e) => setEmailAluno(e.target.value)} name="emailAluno" placeholder="Digite o Email" />
->>>>>>> BranchCaio
                     <br/>
                     <InputSenha label="Senha" id="senha"  id_eye="eye"  type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" />
                     <br/>
