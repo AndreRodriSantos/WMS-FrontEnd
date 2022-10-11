@@ -56,7 +56,7 @@ export default function Pedido() {
         })
         console.log(produtoSelecionados)
         console.log(produtosAdicionados)
-        
+
         ItemsPedidos()
     }
 
@@ -70,8 +70,8 @@ export default function Pedido() {
         api.post("api/pedido/save", pedido)
     }
 
-    function Pesquisar(texto){
-        api.get(`api/produto/findbyall/${texto}`).then( response => {
+    function Pesquisar(texto) {
+        api.get(`api/produto/findbyall/${texto}`).then(response => {
             setProduto(response.data)
             console.log(produto)
         })
@@ -81,14 +81,15 @@ export default function Pedido() {
         getProduto()
     }, [])
 
-    function tirarProdutoLista(id){
-
-        console.log(produtosAdicionados);
+    function tirarProdutoLista(id) {
+        console.log();
         produtosAdicionados.map((p, index) => {
-            if(p.id == id){
-                produtosAdicionados.splice(index, 1)
+            const prod = p.produto
+            if (prod.codProduto == id) {
+                setProdutosAdicionados(produtosAdicionados => produtosAdicionados.splice(index, 1))
             }
         })
+        console.log(produtosAdicionados);
     }
 
     return (
@@ -98,7 +99,7 @@ export default function Pedido() {
                 <header className={styles.header}>
 
                     <div className={styles.divPesquisa}>
-                        <InputPesquisa  id="pesquisaProduto" search={Pesquisar} placeholder="Pesquise pelo Produto"></InputPesquisa>
+                        <InputPesquisa id="pesquisaProduto" search={Pesquisar} placeholder="Pesquise pelo Produto"></InputPesquisa>
                     </div>
 
                     <div className={styles.btns} >
