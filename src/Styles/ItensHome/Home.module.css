@@ -1,10 +1,13 @@
 .components{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #C4C9DC;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: absolute;
 }
 .home{
     width: 100%;
@@ -12,4 +15,104 @@
     background-color: #fff;
     border-radius: 20px;
     margin: 0 20px;
+    display: flex;
+   
+}
+.cardTutorial{
+    position: absolute;
+    left: 10%;
+    top: 4%;
+    width: 950px;
+    height: 430px;
+    background: linear-gradient(287deg, #CA8DEA 0%, #6064F9 120%);
+    border-radius: 20px 20px 170px 20px ;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+}
+.listHistorico{
+    position: absolute;
+    left: 10%;
+    bottom: 4%;
+    width: 950px;
+    height: 430px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.BotChat{
+    bottom: -57%;
+    right: 3%;
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    border-radius: 20px 20px 0 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
+    transition: .5s;
+}
+.baseAI{
+    position: absolute;
+    top: -15%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: -1;
+}
+.foto{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #000;
+    z-index: 1;
+}
+.btnOn{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4D71FF;
+    top: -15%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 1;
+}
+.btnOff{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4D71FF;
+    top: -15%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+}
+.title{
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    color: #4D71FF;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
