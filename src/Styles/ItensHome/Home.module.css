@@ -29,6 +29,94 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 }
+.titleCard{
+    position: relative;
+    top: 5%;
+    left: 5%;
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    width: 550px;
+    height: 100px;
+
+}
+.subCard{
+    position: relative;
+    top: 5%;
+    left: 5%;
+    width: 400px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.subTitle{
+    font-size: 18px;
+    color: #fff;
+    font-weight: 300;
+    margin: 1% 0;
+}
+.btns{
+    position: relative;
+    top: 5%;
+    left: 5%;
+    width: 350px;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tutorial{
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    background-color: #ED80FD;
+    cursor: pointer;
+}
+.simulacao{
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    background-color: transparent;
+    cursor: pointer;
+}
+.Caixa{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.C1{
+    position: relative;
+    top: 0;
+    animation: caixa 5s ease-in infinite;
+}
+@keyframes caixa{
+    0%{
+        top: 0;
+    }
+    50%{
+        top: 5%;
+    }
+    100%{
+        top: 0;
+    }
+}
 .listHistorico{
     position: absolute;
     left: 10%;
@@ -39,10 +127,19 @@
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.BotChat{
+.BaseBotChat{
+    position: absolute;
     bottom: -57%;
     right: 3%;
-    position: absolute;
+    width: 400px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+}
+.BotChat{
+    position: relative;
     width: 400px;
     height: 600px;
     border-radius: 20px 20px 0 0;
@@ -62,16 +159,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    z-index: -1;
+    z-index: 1;
 }
 .foto{
-    position: relative;
+    position: absolute;
     width: 100px;
     height: 100px;
+    top: -11%;
     border-radius: 50%;
     background-color: #000;
-    z-index: 1;
+    z-index: 2;
 }
 .btnOn{
     position: absolute;
@@ -105,6 +204,33 @@
     cursor: pointer;
     opacity: 0;
 }
+.interogacao{
+    position: absolute;
+    background-color: #4D71FF;
+    width: 50px;
+    height: 50px;
+    top: 5%;
+    right: -35%;
+    font-size: 25px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60%;
+    z-index: 1;
+    transition: .5s;
+}
+.triangulo{
+    position: absolute;
+    left: -3%;
+    bottom: 0;
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #4D71FF;
+    transform: rotate(115deg);
+}
 .title{
     position: absolute;
     top: 3%;
@@ -115,4 +241,29 @@
     justify-content: center;
     align-items: center;
 
+}
+
+.base{
+    position: absolute;
+    right: 2%;
+    bottom: 4%;
+    width: 450px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.btnsList {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

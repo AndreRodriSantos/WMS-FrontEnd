@@ -22,7 +22,7 @@ export default function ListaMembros() {
 
     const [text, setText] = useState('')
     const [list, setList] = useState([])
-    console.log(list)
+    //console.log(list)
 
     function getTurma(id){
        return api.get(`api/turma/${id}`).then(response => response.data)
@@ -106,7 +106,7 @@ export default function ListaMembros() {
 
     function onCheck(membro) {
         setMembrosCheck(membrosCheck => [...membrosCheck, membro])
-        console.log(membrosCheck);
+        //console.log(membrosCheck);
     }
 
     function offCheck(membro) {
@@ -120,27 +120,22 @@ export default function ListaMembros() {
         )
     }
 
-    async function addList() {
-        const turma = await getTurma(localStorage.getItem("idTurma"))
+    function addList() {
+        const turma = getTurma(localStorage.getItem("idTurma"))
+        const aluno = getAlunoId().then(response => response.data)
+        const body =  {turma , aluno};
+        console.log(body);
 
-        async function alunoget(id){
-            return getAlunoId(id).then(response => response.data)
-        }
-      
         membrosCheck.map((m) => {
-            const aluno = alunoget(m.id)
-            const body =  {turma , aluno}
-            console.log(body);
             api.post(`api/membros/save`, body)
         })
-
     }
 
     function tirarAluno() {
         const turmaRemove = ""
         membroAdd.map((m) => {
             m.turma.id = turmaRemove
-            console.log(m.turma.id );
+            
             
             /* if(m.nif == undefined){
                 api.patch(`api/aluno/${m.id}`,turmaRemove)
