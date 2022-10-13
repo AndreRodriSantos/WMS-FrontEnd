@@ -16,9 +16,11 @@ export default function ListaMembros() {
     const [alunosAdd, setAlunosAdd] = useState([])
     const [professoresAdd, setProfessoresAdd] = useState([])
 
+    const [membroTurma , setMembroTurma] = useState([])
+
     //Juntando dois json em uma Variavel
-    var membroList = alunos.concat(professores)
-    var membroAdd = alunosAdd.concat(professoresAdd)
+    //var membroList = alunos.concat(professores)
+    //var membroAdd = alunosAdd.concat(professoresAdd)
 
     const [text, setText] = useState('')
     const [list, setList] = useState([])
@@ -31,10 +33,10 @@ export default function ListaMembros() {
     //Fazendo Busca pelo Membro
     useEffect(() => {
         if (text === '') {
-            setList(membroList)
+            setList(alunos)
         } else {
             setList(
-                membroList.filter((item) =>
+                alunos.filter((item) =>
                     item.nome.toLowerCase().indexOf(text.toLowerCase()) > -1                   
                 )
             );
@@ -43,7 +45,7 @@ export default function ListaMembros() {
 
     //Ordernando busca de A & Z
     const OrderTitle = () => {
-        let newList = [...membroList]
+        let newList = [...alunos]
 
         newList.sort((a, b) => (a.nome > b.nome ? 1 : b.nome > a.nome ? -1 : 0))
 
@@ -66,25 +68,22 @@ export default function ListaMembros() {
         )
     }
     
-    function getProf() {
-        return api.get("api/professor/list").then(
-            response => {             
-                const profs = response.data
-                profs.map(p => {
-                    if(p.turma == null){
-                        setProfessores(professores => [...professores, p])
-                    }else if (p.turma.id == localStorage.getItem("idTurma")){
-                        setProfessoresAdd(professoresAdd => [...professoresAdd, p])                       
-                    }
-                })
+
+    function getMembros() { 
+        return api.get(`api/membros/teste/${localStorage.getItem("idTurma")}`).then(
+            response => {
+                const membro = response.data
+                console.log(membro);
+                membro.map(m => {
+                    setMembroTurma(membroTurma => [...membroTurma, m])
+                })         
             }
         )
     }
 
-
     useEffect(() => {
-        getProf()
         getAluno()
+        getMembros()
         
     }, [])
 
@@ -99,53 +98,35 @@ export default function ListaMembros() {
         list.style.left = "0"
 
         setTimeout(() => {
-            setList(membroList)
+            setList(alunos)
         }, 500);
         
     }
 
     function onCheck(membro) {
         setMembrosCheck(membrosCheck => [...membrosCheck, membro])
-        //console.log(membrosCheck);
+        /* console.log(membrosCheck); */
     }
 
     function offCheck(membro) {
 
     }
 
+    async function addList() {
 
-    function getAlunoId(id) {
-        api.get(`api/aluno/${id}`).then(
-            response => {return response.data}
-        )
-    }
+        const turma = await getTurma(localStorage.getItem("idTurma"))
 
-    function addList() {
-        const turma = getTurma(localStorage.getItem("idTurma"))
-        const aluno = getAlunoId().then(response => response.data)
-        const body =  {turma , aluno};
-        console.log(body);
-
-        membrosCheck.map((m) => {
+        membrosCheck.map((m) => { 
+            const body =  {turma , "aluno" : m}; 
+            /* console.log(body); */
+            
             api.post(`api/membros/save`, body)
+
         })
     }
 
-    function tirarAluno() {
-        const turmaRemove = ""
-        membroAdd.map((m) => {
-            m.turma.id = turmaRemove
-            
-            
-            /* if(m.nif == undefined){
-                api.patch(`api/aluno/${m.id}`,turmaRemove)
-            }else{
-                api.patch(`api/professor/${m.id}`, turmaRemove)
-            }  */
-            
-            
-        })
-
+    function tirarAluno(id) { 
+        api.delete(`api/membros/${id}`) 
     }
 
     return (
@@ -187,7 +168,7 @@ export default function ListaMembros() {
                             </thead>
                             <tbody id="lista" className={styles.body}>
                                 {
-                                    membroAdd.map((m) =>  <LinhaMembros key={m.nif == undefined ? m.codMatricula + m.id : m.nif + m.id } funcao={m.nif == undefined ? "ALUNO"  :  "PROFESSOR"} membro={m} onClick={tirarAluno}/>)                               
+                                    membroTurma.map((m) => <LinhaMembros key={m.id} funcao={m.nif == undefined ? "ALUNO"  :  "PROFESSOR"} aluno={m.aluno} membro={m} tirarAluno={tirarAluno}/>)                               
                                 }
                             </tbody>
                         </table>

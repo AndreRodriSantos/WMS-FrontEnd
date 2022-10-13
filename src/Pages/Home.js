@@ -68,9 +68,8 @@ export default function Home() {
                     </div>
                     <div className={styles.base_form}>
                         <div className={styles.listaFornecedor}>
-
+                            
                         </div> 
-
                     </div>
                 </div>
 
