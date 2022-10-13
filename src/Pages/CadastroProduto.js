@@ -66,7 +66,7 @@ export default function CadastroProduto() {
 
 
         const body = {
-            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms,imagem
+            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms, imagem
         }
 
         api.post("api/produto/save", body)
@@ -101,18 +101,26 @@ export default function CadastroProduto() {
 
                     <form className={`${styles.form}  ${styles.etapa1On}`} id="etapa1" onSubmit={(e) => { e.preventDefault(); setPasso(passo + 1) }}>
 
-                        <div className={styles.column}>
-                            <Input onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
-                            <Input onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
-                            <Select data={fazOptionsFornecedor()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
-                            <Input onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="number" id="nome" name="pontoPedido"></Input>
+                        <div className={styles.dados}>
+                            
+                            <div className={styles.column}>
+                                <Input width={"325px"} onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
+                                <Input width={"325px"} onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
+                                <Select width={"325px"} data={fazOptionsFornecedor()} idArrow="arrow1" id="fornecedor" name="fornecedor"></Select>
+                                <Input width={"325px"} onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="number" id="nome" name="pontoPedido"></Input>
+                            </div>
+
+                            <div className={styles.column}>
+                                <Input width={"325px"} onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="number" name="nome" ></Input>
+                                <Select width={"325px"} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
+                                <Input width={"325px"} onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
+                                <Select width={"325px"} data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
+                            </div>
+
                         </div>
 
-                        <div className={styles.column}>
-                            <Input onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="number" name="nome" ></Input>
-                            <Select data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
-                            <Input onChange={(e) => setValor(e.target.value)} label="Valor" id="valor" type="number" name="valor"></Input>
-                            <Select data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
+                        <div className={styles.listFornecedores}>
+
                         </div>
 
                         <div className={styles.footerButtons}>

@@ -86,7 +86,7 @@ export default function Pedido() {
         produtosAdicionados.map((p, index) => {
             const prod = p.produto
             if (prod.codProduto == id) {
-                setProdutosAdicionados(produtosAdicionados => produtosAdicionados.splice(index, 1))
+                setProdutosAdicionados([...produtosAdicionados.splice(index, 1)])
             }
         })
         console.log(produtosAdicionados);
