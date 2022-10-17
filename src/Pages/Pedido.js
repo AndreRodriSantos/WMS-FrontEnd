@@ -8,10 +8,9 @@ import styles from "../Styles/Pedido.module.css"
 
 export default function Pedido() {
 
-    const [pesquisa, setPesquisa] = useState('')
     const [produto, setProduto] = useState([])
-    let [produtoSelecionados, setProdutoSelecionados] = useState([])
-    let [produtosAdicionados, setProdutosAdicionados] = useState([])
+    const [produtoSelecionados, setProdutoSelecionados] = useState([])
+    const [produtosAdicionados, setProdutosAdicionados] = useState([])
 
     function getProduto() {
         return api.get('api/produto/list').then(
@@ -54,10 +53,10 @@ export default function Pedido() {
         produtoSelecionados.map(p => {
             setProdutosAdicionados(produtosAdicionados => [...produtosAdicionados, p])
         })
-        console.log(produtoSelecionados)
-        console.log(produtosAdicionados)
-
-        ItemsPedidos()
+        
+        if(produtoSelecionados.length != 0){
+            ItemsPedidos()
+        }
     }
 
     function finalizarPedido() {
@@ -86,7 +85,8 @@ export default function Pedido() {
         produtosAdicionados.map((p, index) => {
             const prod = p.produto
             if (prod.codProduto == id) {
-                setProdutosAdicionados([...produtosAdicionados.splice(index, 1)])
+                produtosAdicionados.splice(index, 1)
+                setProdutosAdicionados([...produtosAdicionados])
             }
         })
         console.log(produtosAdicionados);
@@ -116,7 +116,7 @@ export default function Pedido() {
                     </div>
 
                     <div className={styles.pedidoOff} id="itemsPedidos">
-                        {produtosAdicionados.map((p, key) => <ItemPedido tirarProduto={tirarProdutoLista} produto={p.produto} key={key} quantidade={p.quantidade}></ItemPedido>)}
+                        {produtosAdicionados.length == 0 ? <div>Nenhum produto adicionado</div> : produtosAdicionados.map((p, key) => <ItemPedido tirarProduto={tirarProdutoLista} produto={p.produto} key={key} quantidade={p.quantidade}></ItemPedido>)}
                     </div>
 
                 </div>
