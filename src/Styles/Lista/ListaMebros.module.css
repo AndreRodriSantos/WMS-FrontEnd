@@ -234,7 +234,7 @@ td button:hover {
 .listPesquisa {
     position: absolute;
     width: 320px;
-    max-height: 100%;
+    max-height: 0%;
     border-radius: 0 0 50px 0;
     background-color: #fff;
     top: 20%;
