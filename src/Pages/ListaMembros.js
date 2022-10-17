@@ -16,18 +16,20 @@ export default function ListaMembros() {
     const [list, setList] = useState([])
 
     function AbrirList() {
-       
+
         const btnAddMembro = document.getElementById('btnAddMembro')
         const pesquisa = document.getElementById('pesquisa')
-        const list = document.getElementById('listMembros')
+        const lista = document.getElementById('listMembros')
 
         btnAddMembro.style.width = "350px"
         pesquisa.style.left = '0'
-        list.style.left = "0"
+        lista.style.left = "0"
 
         setTimeout(() => {
-            list.style.maxHeight = "100%"
-            setList(alunos)
+            lista.style.maxHeight = "100%"
+            if (list.length == 0) {
+                setList(alunos)
+            }
         }, 500);
     }
 
@@ -86,17 +88,24 @@ export default function ListaMembros() {
     }
 
     async function getAlunos() {
+        const membroTurma = await getMembrosTurma(localStorage.getItem("idTurma"))
+
         return api.get("api/aluno/list").then(
             response => {
                 const listAlunos = response.data
 
-                listAlunos.map((a) => {
-
-                    setAlunos(alunos => [...alunos, a])
+                membroTurma.map((mt) => {
+                    listAlunos.map((a) => {                      
+                        if(mt.aluno.id != a.id ){
+                            setAlunos(alunos => [...alunos, a])
+                        }                  
+                    })
                 })
+
+                
+              
             },
         )
-
     }
 
     async function getMembros() {
@@ -107,10 +116,15 @@ export default function ListaMembros() {
         })
     }
 
+    function getMembrosTurma(id) {
+        return api.get(`api/membros/teste/${id}`).then(response => response.data)
+    }
+
     useEffect(() => {
         getMembros()
         getAlunos()
     }, [])
+
 
     return (
         <section className={styles.container}>

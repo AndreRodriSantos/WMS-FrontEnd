@@ -1,35 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../Styles/ItensHome/Home.module.css"
 import { SideBar } from "../Components/ItensHome/SideBar";
+import { ListHome } from "../Components/ItensHome/ListHome";
 import Caixas from '../IMG/Caixas.png'
+import api from "../Services/api";
 
 export default function Home() {
 
-    function abrirChat() {
-        const btnOn = document.getElementById('btnOn')
-        const btnOff = document.getElementById('btnOff')
-        const BotChat = document.getElementById('chatbot')
-        const balao = document.getElementById('balao')
-        btnOn.style.opacity = '0'
-        btnOn.style.zIndex = '0'
-        btnOff.style.opacity = '1'
-        btnOff.style.zIndex = '1'
-        BotChat.style.bottom = '0%'
-        balao.style.opacity = '0'
+    const [fornecedor, setFornecedor] = useState([])
+    const [pedido, setPedido] = useState([])
+    const [produto, setProduto] = useState([])
+
+    function getFornecedor() {
+        api.get(`api/fornecedor/list`).then(
+            response => {
+                setFornecedor(response.data)
+            }
+        )
+    }
+    function getPedido() {
+        api.get(`api/pedido/list`).then(
+            response => {
+                console.log(response.data);
+                setPedido(response.data)
+            }
+        )
+    }
+    function getProduto() {
+        api.get(`api/produto/list`).then(
+            response => {
+                console.log(response.data);
+                setProduto(response.data)
+            }
+        )
     }
 
-    function fecharChat() {
-        const btnOn = document.getElementById('btnOn')
-        const btnOff = document.getElementById('btnOff')
-        const BotChat = document.getElementById('chatbot')
-        const balao = document.getElementById('balao')
-        btnOn.style.opacity = '1'
-        btnOn.style.zIndex = '1'
-        btnOff.style.opacity = '0'
-        btnOff.style.zIndex = '0'
-        BotChat.style.bottom = '-57%'
-        balao.style.opacity = '1'
-    }
+
+    useEffect(() => {
+        getFornecedor()
+        getPedido()
+        getProduto()
+    }, [])
 
     return (
         <section className={styles.components}>
@@ -62,14 +73,35 @@ export default function Home() {
 
                 <div className={styles.base}>
                     <div className={styles.btnsList}>
-                        <button id="btnPedodos" type="button" className={styles.btnPedidos}>Pedidos</button>
-                        <button id="btnFornecedor" type="button" className={styles.btnFornecedor}>Fornecedor</button>
-                        <button id="btnProdutos" type="button" className={styles.btnProdutos}>Produtos</button>
+                        <button id="btnPedodos" onClick={pedidoList} type="button" className={styles.btnPedidos}>Pedidos</button>
+                        <button id="btnFornecedor" onClick={fornecedorList} type="button" className={styles.btnFornecedor}>Fornecedor</button>
+                        <button id="btnProdutos" onClick={produtoList} type="button" className={styles.btnProdutos}>Produtos</button>
                     </div>
                     <div className={styles.base_form}>
-                        <div className={styles.listaFornecedor}>
-                            
-                        </div> 
+                        <div id='pedidoList' className={styles.listaPedidos}>
+                            {
+                                pedido.map((f) => <ListHome key={f.id} objeto={f} />)
+                            }
+                        </div>
+                        <div id='fornecedorList' className={styles.listaFornecedor}>
+                            <div className={styles.headerList}>
+                                <span className={styles.headerTitle}>
+
+                                </span>
+                                <a href="/CadastroFornecedores" className={styles.addFornecedor}>
+                                    <i className="fa-solid fa-circle-plus"></i>
+                                    <p className={styles.addTitle}>Novo Fornecedor</p>
+                                </a>
+                            </div>
+                            {
+                                fornecedor.map((f) => <ListHome key={f.id} objeto={f} />)
+                            }
+                        </div>
+                        <div id='produtoList' className={styles.listaProdutos}>
+                            {
+                                produto.map((f) => <ListHome key={f.id} objeto={f} />)
+                            }
+                        </div>
                     </div>
                 </div>
 
@@ -103,4 +135,58 @@ export default function Home() {
 
         </section>
     );
+
+    function abrirChat() {
+        const btnOn = document.getElementById('btnOn')
+        const btnOff = document.getElementById('btnOff')
+        const BotChat = document.getElementById('chatbot')
+        const balao = document.getElementById('balao')
+        btnOn.style.opacity = '0'
+        btnOn.style.zIndex = '0'
+        btnOff.style.opacity = '1'
+        btnOff.style.zIndex = '1'
+        BotChat.style.bottom = '0%'
+        balao.style.opacity = '0'
+    }
+
+    function fecharChat() {
+        const btnOn = document.getElementById('btnOn')
+        const btnOff = document.getElementById('btnOff')
+        const BotChat = document.getElementById('chatbot')
+        const balao = document.getElementById('balao')
+        btnOn.style.opacity = '1'
+        btnOn.style.zIndex = '1'
+        btnOff.style.opacity = '0'
+        btnOff.style.zIndex = '0'
+        BotChat.style.bottom = '-57%'
+        balao.style.opacity = '1'
+    }
+
+    function produtoList() {
+        const produto = document.getElementById('produtoList')
+        const fornecedor = document.getElementById('fornecedorList')
+        produto.style.right = '0'
+        fornecedor.style.right = '500px'
+
+    }
+
+    function fornecedorList() {
+        const produto = document.getElementById('produtoList')
+        const pedido = document.getElementById('produtoList')
+        const fornecedor = document.getElementById('fornecedorList')
+        produto.style.right = '500px'
+        fornecedor.style.right = '0'
+
+    }
+
+    function pedidoList() {
+        const pedido = document.getElementById('pedidoList')
+        const produto = document.getElementById('produtoList')
+        const fornecedor = document.getElementById('fornecedorList')
+        pedido.style.left = '0'
+        fornecedor.style.right = '500px'
+        produto.style.right = '500px'
+
+    }
+
 }
