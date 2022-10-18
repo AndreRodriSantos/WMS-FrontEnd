@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../../Styles/Lista/ListaMebros.module.css'
+import styles from '../../Styles/ItensHome/ListHome.module.css'
 
 export class ListHome extends React.Component {
     render() {
@@ -7,7 +7,7 @@ export class ListHome extends React.Component {
         const { objeto } = this.props;
 
         return (
-            <tr>
+            <tr className={styles.container}>
                 <td className={styles.titleList}>
                     <span className={styles.nome}>{objeto.nome == undefined ? objeto.numPedido : objeto.nome}</span>
                 </td>

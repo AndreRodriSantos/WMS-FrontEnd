@@ -78,11 +78,24 @@ export default function Home() {
                         <button id="btnProdutos" onClick={produtoList} type="button" className={styles.btnProdutos}>Produtos</button>
                     </div>
                     <div className={styles.base_form}>
+
                         <div id='pedidoList' className={styles.listaPedidos}>
-                            {
-                                pedido.map((f) => <ListHome key={f.id} objeto={f} />)
-                            }
+                            <div className={styles.headerList}>
+                                <span className={styles.headerTitle}>
+
+                                </span>
+                                <a href="/Pedido" className={styles.addFornecedor}>
+                                    <i className="fa-solid fa-circle-plus"></i>
+                                    <p className={styles.addTitle}>Novo Pedido</p>
+                                </a>
+                            </div>
+                            <div className={styles.lista}>
+                                {
+                                    pedido.map((f) => <ListHome key={f.id} objeto={f} />)
+                                }
+                            </div>
                         </div>
+
                         <div id='fornecedorList' className={styles.listaFornecedor}>
                             <div className={styles.headerList}>
                                 <span className={styles.headerTitle}>
@@ -93,20 +106,34 @@ export default function Home() {
                                     <p className={styles.addTitle}>Novo Fornecedor</p>
                                 </a>
                             </div>
-                            {
-                                fornecedor.map((f) => <ListHome key={f.id} objeto={f} />)
-                            }
+                            <div className={styles.lista}>
+                                {
+                                    fornecedor.map((f) => <ListHome key={f.id} objeto={f} />)
+                                }
+                            </div>
                         </div>
+
                         <div id='produtoList' className={styles.listaProdutos}>
-                            {
-                                produto.map((f) => <ListHome key={f.id} objeto={f} />)
-                            }
+                            <div className={styles.headerList}>
+                                <span className={styles.headerTitle}>
+
+                                </span>
+                                <a href="/CadastroProduto" className={styles.addFornecedor}>
+                                    <i className="fa-solid fa-circle-plus"></i>
+                                    <p className={styles.addTitle}>Novo Produto</p>
+                                </a>
+                            </div>
+                            <div className={styles.lista}>
+                                {
+                                    produto.map((f) => <ListHome key={f.id} objeto={f} />)
+                                }
+                            </div>
                         </div>
+
                     </div>
                 </div>
-
-
             </div>
+
             <div id='chatbot' className={styles.BaseBotChat}>
                 <div className={styles.baseAI}>
                     <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
@@ -163,10 +190,12 @@ export default function Home() {
     }
 
     function produtoList() {
+        const pedido = document.getElementById('pedidoList')
         const produto = document.getElementById('produtoList')
         const fornecedor = document.getElementById('fornecedorList')
         produto.style.right = '0'
         fornecedor.style.right = '500px'
+        pedido.style.left = '500px'
 
     }
 
