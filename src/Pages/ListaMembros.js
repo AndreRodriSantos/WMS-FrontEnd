@@ -11,12 +11,11 @@ export default function ListaMembros() {
 
     const [alunos, setAlunos] = useState([])
     const [membrosCheck, setMembrosCheck] = useState([])
-    const [pesquisa, setPesquisa] = useState([])
-    const [membrosTurma, setMembrosTurma] = useState([])
+    const [pesquisa, setPesquisa] = useState('')
     const [list, setList] = useState([])
+    const [membrosTurma, setMembrosTurma] = useState([])
 
     function AbrirList() {
-
         const btnAddMembro = document.getElementById('btnAddMembro')
         const pesquisa = document.getElementById('pesquisa')
         const lista = document.getElementById('listMembros')
@@ -31,28 +30,43 @@ export default function ListaMembros() {
                 setList(alunos)
             }
         }, 500);
+
     }
 
     async function AdicionarList() {
         const turma = await getTurma(localStorage.getItem("idTurma"))
 
-        membrosCheck.map((m) => {
-            const body = { turma, "aluno": m };
-
-            api.post(`api/membros/save`, body)
-        })
-
-        if (membrosCheck.length != 0) {
-            window.location.reload()
-        }
+            api.patch(`api/aluno/${turma.id}`, membrosCheck)
     }
 
+    function tirarAluno(id) {
+        const turma = {}
+        api.patch(`api/aluno/${id}`, turma)
+       
+    }
+
+    function onCheck(membro) {
+        setMembrosCheck(membrosCheck => [...membrosCheck, membro])
+    }
+
+    function offCheck(membro) {
+        membrosCheck.map((m, index) => {
+            if (m.id == membro.id) {
+                membrosCheck.splice(index, 1)
+            }
+        })
+    }
+
+    //Ordernando busca de A & Z
     const OrdenarList = () => {
-        var newList = [...alunos]
+        let newList = [...alunos]
+
         newList.sort((a, b) => (a.nome > b.nome ? 1 : b.nome > a.nome ? -1 : 0))
+
         setList(newList)
     }
 
+    //Fazendo Busca pelo Membro
     useEffect(() => {
         if (pesquisa === '') {
             setList(alunos)
@@ -61,70 +75,42 @@ export default function ListaMembros() {
                 alunos.filter((item) =>
                     item.nome.toLowerCase().indexOf(pesquisa.toLowerCase()) > -1
                 )
-            )
+            );
         }
     }, [pesquisa]);
-
-    function onCheck(membro) {
-        setMembrosCheck(membrosCheck => [...membrosCheck, membro])
-    }
-
-    function offCheck(membro) {
-        membrosCheck.map((m, index) => {
-
-            if (m.id == membro.id) {
-                membrosCheck.splice(index, 1)
-            }
-        })
-    }
-
-    function tirarAluno(id) {
-        api.delete(`api/membros/${id}`)
-        window.location.reload()
-    }
 
     function getTurma(id) {
         return api.get(`api/turma/${id}`).then(response => response.data)
     }
+    
 
-    async function getAlunos() {
-        const membroTurma = await getMembrosTurma(localStorage.getItem("idTurma"))
-
+    function getAluno() {
         return api.get("api/aluno/list").then(
             response => {
-                const listAlunos = response.data
-
-                membroTurma.map((mt) => {
-                    listAlunos.map((a) => {                      
-                        if(mt.aluno.id != a.id ){
-                            setAlunos(alunos => [...alunos, a])
-                        }                  
-                    })
+                const alu = response.data
+                alu.map(a => {
+                    if (a.turma == null) {
+                        setAlunos(alunos => [...alunos, a])
+                    }
                 })
-
-                
-              
-            },
+            }
         )
     }
 
     async function getMembros() {
-        const turma = await getTurma(localStorage.getItem("idTurma"))
-        const membros = turma.membros
-        membros.map(m => {
-            setMembrosTurma(membrosTurma => [...membrosTurma, m])
+        api.get("api/aluno/list").then(response => {
+            const membros = response.data
+            membros.map(m => {
+                if(m.turma.id == localStorage.getItem("idTurma"))
+                setMembrosTurma(membrosTurma => [...membrosTurma, m])
+            })
         })
-    }
-
-    function getMembrosTurma(id) {
-        return api.get(`api/membros/teste/${id}`).then(response => response.data)
     }
 
     useEffect(() => {
         getMembros()
-        getAlunos()
+        getAluno()
     }, [])
-
 
     return (
         <section className={styles.container}>
@@ -165,7 +151,7 @@ export default function ListaMembros() {
                             </thead>
                             <tbody id="lista" className={styles.body}>
                                 {
-                                    membrosTurma.map((m) => <LinhaMembros key={m.id} funcao={m.nif == undefined ? "ALUNO" : "PROFESSOR"} aluno={m.aluno} membro={m} tirarAluno={tirarAluno} />)
+                                    membrosTurma.map((m) => <LinhaMembros key={m.id} funcao={m.nif == undefined ? "ALUNO" : "PROFESSOR"} membro={m} tirarAluno={tirarAluno} />)
                                 }
                             </tbody>
                         </table>
