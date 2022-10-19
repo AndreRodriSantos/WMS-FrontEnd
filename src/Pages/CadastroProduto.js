@@ -66,7 +66,7 @@ export default function CadastroProduto() {
 
 
         const body = {
-            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms,imagem
+            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms, imagem
         }
 
         api.post("api/produto/save", body)
@@ -142,6 +142,7 @@ export default function CadastroProduto() {
                                 <label className={styles.label}>Produto Importado</label>
 
                                 <div className={styles.importado}>
+
                                     <div>
                                         <label className={styles.label}>Sim</label>
                                         <input onChange={(e) => setimportado(e.target.value)} id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
@@ -151,6 +152,7 @@ export default function CadastroProduto() {
                                         <label className={styles.label}>Não</label>
                                         <input onChange={(e) => setimportado(e.target.value)} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
                                     </div>
+
                                 </div>
 
                             </div>

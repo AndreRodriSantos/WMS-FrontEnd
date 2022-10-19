@@ -30,19 +30,19 @@ export default function ListaMembros() {
                 setList(alunos)
             }
         }, 500);
-
     }
 
     async function AdicionarList() {
         const turma = await getTurma(localStorage.getItem("idTurma"))
 
-            api.patch(`api/aluno/${turma.id}`, membrosCheck)
+        membrosCheck.map((m) => {
+            api.patch(`api/aluno/${m.id}`, turma)
+        })
     }
 
-    function tirarAluno(id) {
-        const turma = {}
-        api.patch(`api/aluno/${id}`, turma)
-       
+    async function tirarAluno(id) {
+        const turma = await getTurma(localStorage.getItem("idTurma"))
+        api.patch(`api/aluno/delete/${id}`, turma)
     }
 
     function onCheck(membro) {
@@ -82,7 +82,6 @@ export default function ListaMembros() {
     function getTurma(id) {
         return api.get(`api/turma/${id}`).then(response => response.data)
     }
-    
 
     function getAluno() {
         return api.get("api/aluno/list").then(
@@ -98,10 +97,10 @@ export default function ListaMembros() {
     }
 
     async function getMembros() {
-        api.get("api/aluno/list").then(response => {
+        api.get(`api/aluno/turma/${localStorage.getItem("idTurma")}`).then(response => {
             const membros = response.data
+            console.log(response.data);
             membros.map(m => {
-                if(m.turma.id == localStorage.getItem("idTurma"))
                 setMembrosTurma(membrosTurma => [...membrosTurma, m])
             })
         })
