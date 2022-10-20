@@ -46,6 +46,8 @@ export default function Home() {
         <section className={styles.components}>
             <div className={styles.home}>
                 <SideBar />
+   
+                <div className={styles.homeRidth}>
                 <div className={styles.cardTutorial}>
                     <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
                     <div className={styles.subCard}>
@@ -70,19 +72,21 @@ export default function Home() {
                 <div className={styles.listHistorico}>
 
                 </div>
+                </div>
 
                 <div className={styles.base}>
                     <div className={styles.btnsList}>
-                        <button id="btnPedodos" onClick={pedidoList} type="button" className={styles.btnPedidos}>Pedidos</button>
-                        <button id="btnFornecedor" onClick={fornecedorList} type="button" className={styles.btnFornecedor}>Fornecedor</button>
-                        <button id="btnProdutos" onClick={produtoList} type="button" className={styles.btnProdutos}>Produtos</button>
+                        <button id="btnPedidos" onClick={pedidoList} type="button" className={styles.buttons}><i className="fa-solid fa-cart-plus"></i></button>
+                        <button id="btnFornecedor" onClick={fornecedorList} type="button" className={styles.buttonsFocus}><i className="fa-solid fa-address-book"></i></button>
+                        <button id="btnProdutos" onClick={produtoList} type="button" className={styles.buttons}><i className="fa-solid fa-box"></i></button>
                     </div>
-                    <div className={styles.base_form}>
+                    <div id="baseForm" className={styles.base_form}>
 
                         <div id='pedidoList' className={styles.listaPedidos}>
                             <div className={styles.headerList}>
                                 <span className={styles.headerTitle}>
-
+                                    <i className="fa-solid fa-cart-plus"></i>
+                                    <p className={styles.SubTitle}>Pedido</p>
                                 </span>
                                 <a href="/Pedido" className={styles.addFornecedor}>
                                     <i className="fa-solid fa-circle-plus"></i>
@@ -99,7 +103,8 @@ export default function Home() {
                         <div id='fornecedorList' className={styles.listaFornecedor}>
                             <div className={styles.headerList}>
                                 <span className={styles.headerTitle}>
-
+                                    <i className="fa-solid fa-address-book"></i>
+                                    <p className={styles.SubTitle}>Fornecedor</p>
                                 </span>
                                 <a href="/CadastroFornecedores" className={styles.addFornecedor}>
                                     <i className="fa-solid fa-circle-plus"></i>
@@ -116,7 +121,8 @@ export default function Home() {
                         <div id='produtoList' className={styles.listaProdutos}>
                             <div className={styles.headerList}>
                                 <span className={styles.headerTitle}>
-
+                                    <i className="fa-solid fa-box"></i>
+                                    <p className={styles.SubTitle}>Produto</p>
                                 </span>
                                 <a href="/CadastroProduto" className={styles.addFornecedor}>
                                     <i className="fa-solid fa-circle-plus"></i>
@@ -185,37 +191,51 @@ export default function Home() {
         btnOn.style.zIndex = '1'
         btnOff.style.opacity = '0'
         btnOff.style.zIndex = '0'
-        BotChat.style.bottom = '-57%'
+        BotChat.style.bottom = '-67%'
         balao.style.opacity = '1'
     }
 
     function produtoList() {
-        const pedido = document.getElementById('pedidoList')
-        const produto = document.getElementById('produtoList')
-        const fornecedor = document.getElementById('fornecedorList')
-        produto.style.right = '0'
-        fornecedor.style.right = '500px'
-        pedido.style.left = '500px'
+        const baseForm = document.getElementById('baseForm')
+        const fornecedor = document.getElementById('btnFornecedor')
+        const pedidos = document.getElementById('btnPedidos')
+        const produtos = document.getElementById('btnProdutos')
+      
+        fornecedor.classList.replace(styles.buttonsFocus, styles.buttons )
+        pedidos.classList.replace(styles.buttonsFocus, styles.buttons )
+
+        produtos.classList.replace(styles.buttons, styles.buttonsFocus )
+        
+        baseForm.style.left = '-900px'
 
     }
 
     function fornecedorList() {
-        const produto = document.getElementById('produtoList')
-        const pedido = document.getElementById('produtoList')
-        const fornecedor = document.getElementById('fornecedorList')
-        produto.style.right = '500px'
-        fornecedor.style.right = '0'
+        const baseForm = document.getElementById('baseForm')
+        const fornecedor = document.getElementById('btnFornecedor')
+        const pedidos = document.getElementById('btnPedidos')
+        const produtos = document.getElementById('btnProdutos')
+      
+        produtos.classList.replace(styles.buttonsFocus, styles.buttons )
+        pedidos.classList.replace(styles.buttonsFocus, styles.buttons )
 
+        fornecedor.classList.replace(styles.buttons, styles.buttonsFocus )
+        
+        baseForm.style.left = '-450px'
     }
 
     function pedidoList() {
-        const pedido = document.getElementById('pedidoList')
-        const produto = document.getElementById('produtoList')
-        const fornecedor = document.getElementById('fornecedorList')
-        pedido.style.left = '0'
-        fornecedor.style.right = '500px'
-        produto.style.right = '500px'
+        const baseForm = document.getElementById('baseForm')
+        const fornecedor = document.getElementById('btnFornecedor')
+        const pedidos = document.getElementById('btnPedidos')
+        const produtos = document.getElementById('btnProdutos')
+      
+        fornecedor.classList.replace(styles.buttonsFocus, styles.buttons )
+        produtos.classList.replace(styles.buttonsFocus, styles.buttons )
 
+        pedidos.classList.replace(styles.buttons, styles.buttonsFocus )
+
+        baseForm.style.left = '0'
     }
 
 }
