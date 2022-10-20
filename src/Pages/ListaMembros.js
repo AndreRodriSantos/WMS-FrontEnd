@@ -38,11 +38,16 @@ export default function ListaMembros() {
         membrosCheck.map((m) => {
             api.patch(`api/aluno/${m.id}`, turma)
         })
+
+        if (membrosCheck.length != 0) {
+            window.location.reload()
+        }
     }
 
     async function tirarAluno(id) {
         const turma = await getTurma(localStorage.getItem("idTurma"))
         api.patch(`api/aluno/delete/${id}`, turma)
+        window.location.reload()
     }
 
     function onCheck(membro) {
@@ -89,6 +94,7 @@ export default function ListaMembros() {
                 const alu = response.data
                 alu.map(a => {
                     if (a.turma == null) {
+                        console.log(a);
                         setAlunos(alunos => [...alunos, a])
                     }
                 })
@@ -122,7 +128,7 @@ export default function ListaMembros() {
                         <span onClick={OrdenarList} className={styles.btnOrderTitle}>
                             <i className="fa-solid fa-arrow-up-a-z"></i>
                         </span>
-                        <SearchInput id='pesquisa' placeholder="Pesquise um pessoa" value={pesquisa} onChange={(search) => setPesquisa(search)} />
+                        <SearchInput id='pesquisa' placeholder="Pesquise uma pessoa" value={pesquisa} onChange={(search) => setPesquisa(search)} />
                     </div>
                 </div>
                 <ul id="listMembros" className={styles.listPesquisa}>
@@ -140,12 +146,12 @@ export default function ListaMembros() {
                         <table id="tabela" className={styles.tabelaMembro} >
                             <thead>
                                 <tr className={styles.header_list}>
-                                    <td className={styles.mes}></td>
+                                    <td className={styles.mes}>Membro</td>
                                     <td className={styles.mes}>Nome</td>
                                     <td className={styles.mes}>Email</td>
                                     <td className={styles.mes}>Nif / Matrícula</td>
                                     <td className={styles.mes}>Função</td>
-                                    <td className={styles.mes}></td>
+                                    <td className={styles.mes}>Excluir</td>
                                 </tr>
                             </thead>
                             <tbody id="lista" className={styles.body}>

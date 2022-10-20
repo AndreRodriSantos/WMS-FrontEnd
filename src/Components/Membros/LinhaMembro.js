@@ -4,11 +4,11 @@ import styles from '../../Styles/Lista/ListaMebros.module.css'
 export default class LinhaMembros extends React.Component {
     render() {
 
-        const { membro,funcao, imgMembro , tirarAluno} = this.props;
+        const { membro, funcao, imgMembro, tirarAluno } = this.props;
 
-            function tirarAlu(){
-                tirarAluno(membro.id)
-            }
+        function tirarAlu() {
+            tirarAluno(membro.id)
+        }
 
         return (
             <tr>
@@ -18,8 +18,14 @@ export default class LinhaMembros extends React.Component {
                 <td className={styles.titleList}>{membro.codMatricula}</td>
                 <td className={styles.titleList}>{funcao}</td>
                 <td className={styles.titleList}>
-                    <div onClick={tirarAlu} href="#" className={styles.btnConfig}>
-                        <i className="fa-solid fa-ellipsis"></i>
+                    <div onClick={tirarAlu} href="#" className={styles.btnExcluir}> 
+                        <lord-icon
+                            src="https://cdn.lordicon.com/jmkrnisz.json"
+                            trigger="hover"
+                            colors="primary:#121331"
+                            state="hover-empty"
+                            style={{width:32,height:32}}>
+                        </lord-icon>
                     </div>
                 </td>
             </tr>
