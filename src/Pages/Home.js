@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../Styles/ItensHome/Home.module.css"
 import { SideBar } from "../Components/ItensHome/SideBar";
 import { ListHome } from "../Components/ItensHome/ListHome";
+import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
 
@@ -35,6 +36,12 @@ export default function Home() {
         )
     }
 
+    function getProduto() {
+        api.get(`api/movimentacao/list`).then(
+
+        )
+    }
+
 
     useEffect(() => {
         getFornecedor()
@@ -46,32 +53,46 @@ export default function Home() {
         <section className={styles.components}>
             <div className={styles.home}>
                 <SideBar />
-   
-                <div className={styles.homeRidth}>
-                <div className={styles.cardTutorial}>
-                    <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
-                    <div className={styles.subCard}>
-                        <p className={styles.subTitle}>
-                            Está com duvidas?
-                        </p>
-                        <p className={styles.subTitle}>
-                            Venha Conhecer nosso tutorial Rapido e Fácil!
-                        </p>
-                        <p className={styles.subTitle}>
-                            Aprender nunca foi tão divertido
-                        </p>
-                    </div>
-                    <div className={styles.btns}>
-                        <button className={styles.tutorial}>TUTORIAL</button>
-                        <button className={styles.simulacao}>simulação</button>
-                    </div>
-                    <div className={styles.Caixa}>
-                        <img className={styles.C1} src={Caixas} />
-                    </div>
-                </div>
-                <div className={styles.listHistorico}>
 
-                </div>
+                <div className={styles.homeRidth}>
+                    <div className={styles.cardTutorial}>
+                        <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
+                        <div className={styles.subCard}>
+                            <p className={styles.subTitle}>
+                                Está com duvidas?
+                            </p>
+                            <p className={styles.subTitle}>
+                                Venha Conhecer nosso tutorial Rapido e Fácil!
+                            </p>
+                            <p className={styles.subTitle}>
+                                Aprender nunca foi tão divertido
+                            </p>
+                        </div>
+                        <div className={styles.btns}>
+                            <button className={styles.tutorial}>TUTORIAL</button>
+                            <button className={styles.simulacao}>simulação</button>
+                        </div>
+                        <div className={styles.Caixa}>
+                            <img className={styles.C1} src={Caixas} />
+                        </div>
+                    </div>
+
+                    <div className={styles.listHistorico}>
+                        <div className={styles.headerListMovimentacao}>
+                            <span className={styles.headerTitleMovimentacao}>
+                                <i className="fa-solid fa-users"></i>
+                                <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
+                            </span>
+                            <InputPesquisa />
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>Data</tr>
+                                <tr>Estoque</tr>
+                                <tr></tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
 
                 <div className={styles.base}>
@@ -162,10 +183,8 @@ export default function Home() {
                         <i className="fa-solid fa-comment"></i>
                         <h3>ChatBot</h3>
                     </span>
-
                 </div>
             </div>
-
         </section>
     );
 
@@ -200,12 +219,12 @@ export default function Home() {
         const fornecedor = document.getElementById('btnFornecedor')
         const pedidos = document.getElementById('btnPedidos')
         const produtos = document.getElementById('btnProdutos')
-      
-        fornecedor.classList.replace(styles.buttonsFocus, styles.buttons )
-        pedidos.classList.replace(styles.buttonsFocus, styles.buttons )
 
-        produtos.classList.replace(styles.buttons, styles.buttonsFocus )
-        
+        fornecedor.classList.replace(styles.buttonsFocus, styles.buttons)
+        pedidos.classList.replace(styles.buttonsFocus, styles.buttons)
+
+        produtos.classList.replace(styles.buttons, styles.buttonsFocus)
+
         baseForm.style.left = '-900px'
 
     }
@@ -215,12 +234,12 @@ export default function Home() {
         const fornecedor = document.getElementById('btnFornecedor')
         const pedidos = document.getElementById('btnPedidos')
         const produtos = document.getElementById('btnProdutos')
-      
-        produtos.classList.replace(styles.buttonsFocus, styles.buttons )
-        pedidos.classList.replace(styles.buttonsFocus, styles.buttons )
 
-        fornecedor.classList.replace(styles.buttons, styles.buttonsFocus )
-        
+        produtos.classList.replace(styles.buttonsFocus, styles.buttons)
+        pedidos.classList.replace(styles.buttonsFocus, styles.buttons)
+
+        fornecedor.classList.replace(styles.buttons, styles.buttonsFocus)
+
         baseForm.style.left = '-450px'
     }
 
@@ -229,11 +248,11 @@ export default function Home() {
         const fornecedor = document.getElementById('btnFornecedor')
         const pedidos = document.getElementById('btnPedidos')
         const produtos = document.getElementById('btnProdutos')
-      
-        fornecedor.classList.replace(styles.buttonsFocus, styles.buttons )
-        produtos.classList.replace(styles.buttonsFocus, styles.buttons )
 
-        pedidos.classList.replace(styles.buttons, styles.buttonsFocus )
+        fornecedor.classList.replace(styles.buttonsFocus, styles.buttons)
+        produtos.classList.replace(styles.buttonsFocus, styles.buttons)
+
+        pedidos.classList.replace(styles.buttons, styles.buttonsFocus)
 
         baseForm.style.left = '0'
     }

@@ -127,8 +127,7 @@
     width: 950px;
     height: 430px;
     border-radius: 20px;
-    background-color: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(0, 0, 0, 0.274) 0 0px 24px 10px
 }
 .BaseBotChat{
     position: absolute;
@@ -166,6 +165,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     z-index: 1;
 }
+
 .foto{
     position: absolute;
     width: 100px;
@@ -175,6 +175,7 @@
     background-color: #000;
     z-index: 2;
 }
+
 .btnOn{
     position: absolute;
     width: 40px;
@@ -356,6 +357,36 @@
     font-weight: bold;
     margin: 0 5px;
 }
+
+.headerListMovimentacao{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.headerTitleMovimentacao{
+    position: relative;
+    height: 30px;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.SubTitleMovimetacao{
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+    width: 220px;
+    display: flex;
+    align-items: center;
+}
+
 .addFornecedor{
     position: relative;
     width: 150px;
