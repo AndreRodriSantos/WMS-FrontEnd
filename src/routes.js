@@ -15,6 +15,8 @@ import Loading from './Components/Loading'
 
 const history = createBrowserHistory()
 
+export {history}
+
 export default function Routes() {
     return(
         <Router history={history}>
