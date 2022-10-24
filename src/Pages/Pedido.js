@@ -8,10 +8,9 @@ import styles from "../Styles/Pedido.module.css"
 
 export default function Pedido() {
 
-    const [pesquisa, setPesquisa] = useState('')
     const [produto, setProduto] = useState([])
-    let [produtoSelecionados, setProdutoSelecionados] = useState([])
-    let [produtosAdicionados, setProdutosAdicionados] = useState([])
+    const [produtoSelecionados, setProdutoSelecionados] = useState([])
+    const [produtosAdicionados, setProdutosAdicionados] = useState([])
 
     function getProduto() {
         return api.get('api/produto/list').then(
@@ -54,10 +53,10 @@ export default function Pedido() {
         produtoSelecionados.map(p => {
             setProdutosAdicionados(produtosAdicionados => [...produtosAdicionados, p])
         })
-        console.log(produtoSelecionados)
-        console.log(produtosAdicionados)
         
-        ItemsPedidos()
+        if(produtoSelecionados.length != 0){
+            ItemsPedidos()
+        }
     }
 
     function finalizarPedido() {
@@ -70,8 +69,8 @@ export default function Pedido() {
         api.post("api/pedido/save", pedido)
     }
 
-    function Pesquisar(texto){
-        api.get(`api/produto/findbyall/${texto}`).then( response => {
+    function Pesquisar(texto) {
+        api.get(`api/produto/findbyall/${texto}`).then(response => {
             setProduto(response.data)
             console.log(produto)
         })
@@ -81,14 +80,16 @@ export default function Pedido() {
         getProduto()
     }, [])
 
-    function tirarProdutoLista(id){
-
-        console.log(produtosAdicionados);
+    function tirarProdutoLista(id) {
+        console.log();
         produtosAdicionados.map((p, index) => {
-            if(p.id == id){
+            const prod = p.produto
+            if (prod.codProduto == id) {
                 produtosAdicionados.splice(index, 1)
+                setProdutosAdicionados([...produtosAdicionados])
             }
         })
+        console.log(produtosAdicionados);
     }
 
     return (
@@ -98,7 +99,7 @@ export default function Pedido() {
                 <header className={styles.header}>
 
                     <div className={styles.divPesquisa}>
-                        <InputPesquisa  id="pesquisaProduto" search={Pesquisar} placeholder="Pesquise pelo Produto"></InputPesquisa>
+                        <InputPesquisa id="pesquisaProduto" search={Pesquisar} placeholder="Pesquise pelo Produto"></InputPesquisa>
                     </div>
 
                     <div className={styles.btns} >
@@ -115,7 +116,7 @@ export default function Pedido() {
                     </div>
 
                     <div className={styles.pedidoOff} id="itemsPedidos">
-                        {produtosAdicionados.map((p, key) => <ItemPedido tirarProduto={tirarProdutoLista} produto={p.produto} key={key} quantidade={p.quantidade}></ItemPedido>)}
+                        {produtosAdicionados.length == 0 ? <div>Nenhum produto adicionado</div> : produtosAdicionados.map((p, key) => <ItemPedido tirarProduto={tirarProdutoLista} produto={p.produto} key={key} quantidade={p.quantidade}></ItemPedido>)}
                     </div>
 
                 </div>

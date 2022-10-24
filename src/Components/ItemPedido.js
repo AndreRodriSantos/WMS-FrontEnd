@@ -7,7 +7,7 @@ export default class ItemPedido extends React.Component {
         const { id, produto, quantidade, tirarProduto } = this.props
 
         function tiraProdutoLista(){
-            tirarProduto(produto.id)
+            tirarProduto(produto.codProduto)
         }
         
         return (
