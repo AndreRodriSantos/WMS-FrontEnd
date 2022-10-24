@@ -111,7 +111,16 @@ export default function CadastroProduto() {
 
 
         const produto = {
-            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, fornecedores, importado, ipi, pis, cofins, icms, imagem
+            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, "fornecedores":
+                    fornecedoresCheck.map(f => (
+                        {
+                            "fornecedor":{
+                                "id": f.id
+                            }
+                        }
+                    )
+                    )
+            , importado, ipi, pis, cofins, icms, imagem
         }
 
         api.post("api/produto/save", produto)
