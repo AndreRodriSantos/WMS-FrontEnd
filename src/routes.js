@@ -10,6 +10,7 @@ import Login from './Pages/Login';
 import Turmas from './Pages/Turmas'
 import Home from './Pages/Home';
 import Pedido from './Pages/Pedido';
+import VerificarPedidos from './Pages/VerificarPedidos';
 import ListaMembros from './Pages/ListaMembros';
 import Loading from './Components/Loading'
 
@@ -31,6 +32,7 @@ export default function Routes() {
                 <Route path='/CadastroProfessores' component={CadastroProfessores} ></Route>
                 <Route path='/CadastroTurma' component={CadastroTurma}></Route>
                 <Route path='/Pedido' component={Pedido}></Route>
+                <Route path='/VerificarPedidos' component={VerificarPedidos}></Route>
                 <Route path='/CadastroFornecedores' component={CadastroFornecedor} ></Route>
                 <Route path='/CadastroProduto' component={CadastroProduto}></Route>
             </Switch>

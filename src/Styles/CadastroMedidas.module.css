@@ -4,15 +4,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.384);
 }
 .form__base{
     width: 610px;
     height: 750px;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    background-color: #fff;
     display: flex;
-   
-   
+}
+.close {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    color: #000;
+    top: 40px;
+    right: -540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    transition: .2s ease-in;
+}
+.close:hover{
+    color: red;
 }
 .logo{
     position: relative;

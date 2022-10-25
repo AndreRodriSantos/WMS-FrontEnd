@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { Button } from "../Button"
-import { Input } from "../Components/Inputs/Input"
-import logo from "../IMG/Logo WMS.png"
-import styles from "../Styles/CadastroMedidas.module.css"
+import { Input } from "../Inputs/InputText"
+import logo from "../../IMG/Logo WMS.png"
+import styles from "../../Styles/CadastroMedidas.module.css"
 
 import api from '../../Services/api'
 
 export default class CadastroMedidas extends React.Component {
     render() {
         return (
-            <div className={styles.conteiner}>
-                <div className={styles.form__base}>
+            <div className={styles.conteiner} id='containerMedida'>
+                <div className={styles.form__base} id='base'>
+                    <span className={styles.close} onClick={Fechar} ><i className="fa-regular fa-circle-xmark"></i></span>
                     <div className={styles.logo}>
                         <img src={logo}></img>
                     </div>
@@ -44,3 +45,13 @@ function CadastrarMedida(event) {
         "api/unidade/save", body
     );
 }
+
+function Fechar() {
+    const base = document.getElementById("base");
+    const containerMedida = document.getElementById("containerMedida");
+    const popUpMedidas = document.getElementById("popUpMedidas");
+
+    base.style.display = "none"
+    containerMedida.style.display = "none"
+    popUpMedidas.style.zIndex = "-1"
+} 

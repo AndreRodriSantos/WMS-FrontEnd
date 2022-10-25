@@ -1,0 +1,244 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: #82BFF5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.voltar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+.Pedidos{
+    position: absolute;
+    width: 1200px;
+    height: 750px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+}
+.estocagem{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+}
+.headerList{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.headerLogo{
+    width: 150px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    width: 100px;
+}
+.headerTitle{
+    position: relative;
+    width: 150px;
+    height: 30px;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SubTitle{
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 5px;
+}
+.notaFiscal{
+    position: relative;
+    width: 150px;
+    height: 30px;
+    color: #4D71FF;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notaFiscalTitle{
+    color: #4D71FF;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 0 5px;
+}
+.lists{
+    position: absolute;
+    width: 100%;
+    height: 85%;
+    bottom: 5%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.box{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 5% 10%;
+    cursor: pointer;
+    transition: .2s;
+    transform: scale(0.8);
+    transition: all ease 0.2s;
+}
+.box:hover{
+    transform: scale(1);
+}
+.imgBox{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.BasePoup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.384);
+    z-index: 10;
+}
+.PopUpInfo {
+    width: 700px;
+    height: 450px;
+    background-color: #fff;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 11;
+}
+.close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    color: #000;
+    top: 40px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    transition: .2s ease-in;
+}
+.close:hover{
+    color: red;
+}
+.BaseInfo{
+    position: relative;
+    width: 100%;
+    height: 40%;
+    top: -10%;
+}
+.InfoLeft{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    left: 0;
+    width: 50%;
+    height: 100%;
+}
+.InfoRight{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    right: 0;
+    width: 50%;
+    height: 100%;
+}
+.titleInfo{
+    width: 250px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+.info{
+    font-size: 20px;
+    font-weight: 300;
+    color: #4D71FF;
+}
+
+.InfoBottom{
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+}
+.QrCode{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.QrCodeImg{
+    position: relative;
+    width: 100px;
+}
+.CodBarra{
+    position: relative;
+    width: 300px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.CodBarraImg{
+    position: relative;
+    width: 200px;
+}
