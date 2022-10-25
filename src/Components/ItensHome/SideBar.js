@@ -14,7 +14,7 @@ export class SideBar extends React.Component {
                     <i className="fa-solid fa-arrow-right"></i>
                 </div>
                 <div id='offBtn' onClick={offSideBar} className={styles.btnOff}>
-                    <i class="fa-solid fa-arrow-left"></i>
+                    <i className="fa-solid fa-arrow-left"></i>
                 </div>
                 <ul className={styles.nav_links}>
                     <li className={styles.link}>

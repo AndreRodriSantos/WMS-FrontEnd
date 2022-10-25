@@ -1,10 +1,11 @@
 .inputPesquisa {
-    width: 90%;
+    width: 85%;
     height: 50px;
     outline: none;
     border: none;
     font-size: 20px;
     font-weight: bold;
+    padding-left: 10px;
 }
 
 .lupa {
@@ -12,6 +13,7 @@
     background-color: transparent;
     font-size: 20px;
     cursor: pointer;
+    text-align: center;
 }
 
 .inputBox {

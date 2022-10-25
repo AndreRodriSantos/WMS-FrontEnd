@@ -12,6 +12,7 @@ import Home from './Pages/Home';
 import Pedido from './Pages/Pedido';
 import ListaMembros from './Pages/ListaMembros';
 import Loading from './Components/Loading'
+import Picking from './Pages/Picking';
 
 const history = createBrowserHistory()
 
@@ -33,6 +34,7 @@ export default function Routes() {
                 <Route path='/Pedido' component={Pedido}></Route>
                 <Route path='/CadastroFornecedores' component={CadastroFornecedor} ></Route>
                 <Route path='/CadastroProduto' component={CadastroProduto}></Route>
+                <Route path='/Picking' component={Picking}></Route>
             </Switch>
         </Router>
     );

@@ -112,14 +112,14 @@ export default function CadastroProduto() {
 
         const produto = {
             nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, "fornecedores":
-                    fornecedoresCheck.map(f => (
-                        {
-                            "fornecedor":{
-                                "id": f.id
-                            }
+                fornecedoresCheck.map(f => (
+                    {
+                        "fornecedor": {
+                            "id": f.id
                         }
-                    )
-                    )
+                    }
+                )
+                )
             , importado, ipi, pis, cofins, icms, imagem
         }
 
@@ -188,7 +188,7 @@ export default function CadastroProduto() {
                             <div className={styles.fornecedoresDiv}>
                                 <div className={styles.labelFornecedores}>
                                     <span>Fornecedores</span>
-                                    <span className={styles.cadastrarBtn} onClick={() => history.push("/CadastroFornecedores")}><p className={styles.fornecedor}>Cadastrar Fornecedor</p><i className="fa-solid fa-circle-plus"></i></span>
+                                    <a className={styles.cadastrarBtn} href="/CadastroFornecedores" ><p className={styles.fornecedor}>Cadastrar Fornecedor</p><i className="fa-solid fa-circle-plus"></i></a>
                                 </div>
                                 <ul className={styles.listaFornecedores}>
                                     {fornecedores.map((f, index) =>

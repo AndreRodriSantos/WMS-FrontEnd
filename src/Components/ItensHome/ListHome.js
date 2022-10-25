@@ -4,15 +4,15 @@ import styles from '../../Styles/ItensHome/ListHome.module.css'
 export class ListHome extends React.Component {
     render() {
 
-        const { objeto } = this.props;
+        const { Info1, Info2, Info3 } = this.props;
 
         return (
             <tr className={styles.container}>
                 <td className={styles.titleList}>
-                    <span className={styles.nome}>{objeto.nome == undefined ? objeto.numPedido : objeto.nome}</span>
+                    <span className={styles.nome}>{Info1}</span>
                 </td>
-                <td className={styles.titleList}>{objeto.cnpj}</td>
-                <td className={styles.titleList}>{objeto.uf}</td>
+                <td className={styles.titleList}>{Info2}</td>
+                <td className={styles.titleList}>{Info3}</td>
             </tr>
         );
     }

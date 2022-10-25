@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Children } from "react";
 import styles from "../Styles/ItensHome/Home.module.css"
 import { SideBar } from "../Components/ItensHome/SideBar";
 import { ListHome } from "../Components/ItensHome/ListHome";
@@ -11,6 +11,7 @@ export default function Home() {
     const [fornecedor, setFornecedor] = useState([])
     const [pedido, setPedido] = useState([])
     const [produto, setProduto] = useState([])
+    const [movimentacoes, setMovimentacoes] = useState([])
 
     function getFornecedor() {
         api.get(`api/fornecedor/list`).then(
@@ -36,10 +37,16 @@ export default function Home() {
         )
     }
 
-    function getProduto() {
-        api.get(`api/movimentacao/list`).then(
+    function getMovimentacao() {
+        api.get(`api/movimentacao`).then(response => {
+            setMovimentacoes(response.data)
+        })
+    }
 
-        )
+    function search(texto){
+        api.get(`api/movimentacao/findbyall/${texto}`).then(response => {
+            setMovimentacoes(response.data)
+        })
     }
 
 
@@ -47,6 +54,7 @@ export default function Home() {
         getFornecedor()
         getPedido()
         getProduto()
+        getMovimentacao()
     }, [])
 
     return (
@@ -83,14 +91,25 @@ export default function Home() {
                                 <i className="fa-solid fa-users"></i>
                                 <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
                             </span>
-                            <InputPesquisa />
+                            <InputPesquisa placeholder={"Pesquise uma Movimentação"} search={search}/>
                         </div>
-                        <table>
-                            <thead>
-                                <tr>Data</tr>
-                                <tr>Estoque</tr>
-                                <tr></tr>
+                        <table className={styles.tabelaMovimentacao}>
+                            <thead className={styles.tabelaMovimentacaoHead}>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Data</th>
+                                    <th>Tipo</th>
+                                </tr>
                             </thead>
+                            <tbody className={styles.tabelaMovimentacaoBody}>
+                                {movimentacoes.map((m, key) =>
+                                    <tr key={key}>
+                                        <td className={styles.produtoNome}>{m.produto.nome}</td>
+                                        <td className={styles.data}>{m.data}</td>
+                                        <td style={m.tipo == "ENTRADA" ? {color: "green"} : {color: "red"}} className={styles.tipo}>{m.tipo}</td>
+                                    </tr>
+                                )}
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -116,7 +135,7 @@ export default function Home() {
                             </div>
                             <div className={styles.lista}>
                                 {
-                                    pedido.map((f) => <ListHome key={f.id} objeto={f} />)
+                                    pedido.map((p) => <ListHome key={p.id} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
                                 }
                             </div>
                         </div>
@@ -134,7 +153,7 @@ export default function Home() {
                             </div>
                             <div className={styles.lista}>
                                 {
-                                    fornecedor.map((f) => <ListHome key={f.id} objeto={f} />)
+                                    fornecedor.map((f) => <ListHome key={f.id} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
                                 }
                             </div>
                         </div>
@@ -152,7 +171,7 @@ export default function Home() {
                             </div>
                             <div className={styles.lista}>
                                 {
-                                    produto.map((f) => <ListHome key={f.id} objeto={f} />)
+                                    produto.map((p) => <ListHome key={p.id} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
                                 }
                             </div>
                         </div>
