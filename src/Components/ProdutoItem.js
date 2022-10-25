@@ -1,4 +1,5 @@
 import React from "react";
+import api from "../Services/api";
 import styles from "../Styles/ProdutoItem.module.css"
 
 export default class ProdutoItem extends React.Component {

@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react"
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
+import LinhaPicking from "../Components/LinhaPicking"
+import api from "../Services/api"
 import styles from "../Styles/Picking.module.css"
 
 export default function Picking() {
+
+    const [enderecamentos, setEnderecamentos] = useState([])
+
+    function getEnderecamento() {
+        api.get("api/enderecamento/list").then(response =>
+            setEnderecamentos(response.data)
+        )
+    }
+
+    useEffect(() => {
+        getEnderecamento()
+    }, [])
+
     return (
         <div className={styles.container}>
             <div className={styles.pickingContainer}>
@@ -24,7 +40,11 @@ export default function Picking() {
                             <td>Check</td>
                         </tr>
                     </thead>
-                    <tbody className={styles.tabelaBody}></tbody>
+                    <tbody className={styles.tabelaBody}>
+                        {enderecamentos.map(e =>
+                            <LinhaPicking item={e }produto={e.itens}></LinhaPicking>
+                        )}
+                    </tbody>
                 </table>
             </div>
         </div>
