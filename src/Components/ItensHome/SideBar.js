@@ -27,24 +27,58 @@ export class SideBar extends React.Component {
                             </div>
                         </a>
                     </li>
+                    {/* LISTA DE MEMBROS */}
                     <li className={styles.link}>
                         <span className={styles.navOf}></span>
-                        <a href="/VerificarPedidos">
+                        <a href="/Membros">
                             <div className={styles.icon}>
-                                <i className="fa-solid fa-list-check"></i>
+                                <i className="fa-solid fa-users"></i>
                             </div>
                         </a>
                     </li>
-
+                    {/* EDITAR USUARIO */}
                     <li className={styles.link}>
                         <span className={styles.navOf}></span>
-                        <a className={styles.baseIcon} href="#">
-                            <div className={styles.OnIcon}>
-                                <i className="fa-solid fa-house"></i>
+                        <a href="#">
+                            <div className={styles.icon}>
+                                <i className="fa-solid fa-pen"></i>
                             </div>
-                            <span className={styles.inconTitle}>
-                                Tele Principal
-                            </span>
+                        </a>
+                    </li>
+                    {/* CADASTRO DE PROFESSORES */}
+                    <li className={styles.link}>
+                        <span className={styles.navOf}></span>
+                        <a href="/CadastroProfessores">
+                            <div className={styles.icon}>
+                                <i className="fa-solid fa-user-plus"></i>
+                            </div>
+                        </a>
+                    </li>
+                    {/* PEDIDOS */}
+                    <li className={styles.link}>
+                        <span className={styles.navOf}></span>
+                        <a href="/Pedido">
+                            <div className={styles.icon}>
+                                <i className="fa-solid fa-cart-plus"></i>
+                            </div>
+                        </a>
+                    </li>         
+                    {/* ENDEREÇAMENTO */}
+                    <li className={styles.link}>
+                        <span className={styles.navOf}></span>
+                        <a href="/CadastroEnderecamento">
+                            <div className={styles.icon}>
+                                <i className="fa-solid fa-location-dot"></i>
+                            </div>
+                        </a>
+                    </li>
+                    {/* ESTOQUE */}
+                    <li className={styles.link}>
+                        <span className={styles.navOf}></span>
+                        <a href="#">
+                            <div className={styles.icon}>
+                                <i className="fa-solid fa-box"></i>
+                            </div>
                         </a>
                     </li>
                     {/* MEDIDAS */}
@@ -59,19 +93,19 @@ export class SideBar extends React.Component {
                             <span className={styles.textNcm}>NCM</span>
                         </a>
                     </li>
-                    {/* Sair */}
+                    {/* Sair 
                     <li className={styles.logout}>
                         <a className={styles.iconLogout} href="#">
                             <i className="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
-                    </li>
+                    </li> */}
                 </ul>
                 <div id="popUp" className={styles.popUp}>
                     <CadastroNcm />
                 </div>
                 <div id="popUpMedidas" className={styles.popUpMedidas}>
                     <CadastroMedidas />
-                </div>               
+                </div>
             </div>
         );
     }

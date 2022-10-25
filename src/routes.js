@@ -13,6 +13,7 @@ import Pedido from './Pages/Pedido';
 import VerificarPedidos from './Pages/VerificarPedidos';
 import ListaMembros from './Pages/ListaMembros';
 import Loading from './Components/Loading'
+import CadastroEnderecamento from './Pages/CadastroEnderecamento';
 
 const history = createBrowserHistory()
 
@@ -34,6 +35,7 @@ export default function Routes() {
                 <Route path='/Pedido' component={Pedido}></Route>
                 <Route path='/VerificarPedidos' component={VerificarPedidos}></Route>
                 <Route path='/CadastroFornecedores' component={CadastroFornecedor} ></Route>
+                <Route path='/CadastroEnderecamento' component={CadastroEnderecamento} ></Route>
                 <Route path='/CadastroProduto' component={CadastroProduto}></Route>
             </Switch>
         </Router>
