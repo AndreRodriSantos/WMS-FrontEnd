@@ -43,7 +43,7 @@ export default function Home() {
         })
     }
 
-    function search(texto){
+    function search(texto) {
         api.get(`api/movimentacao/findbyall/${texto}`).then(response => {
             setMovimentacoes(response.data)
         })
@@ -91,26 +91,28 @@ export default function Home() {
                                 <i className="fa-solid fa-users"></i>
                                 <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
                             </span>
-                            <InputPesquisa placeholder={"Pesquise uma Movimentação"} search={search}/>
+                            <InputPesquisa placeholder={"Pesquise uma Movimentação"} search={search} />
                         </div>
-                        <table className={styles.tabelaMovimentacao}>
-                            <thead className={styles.tabelaMovimentacaoHead}>
-                                <tr>
-                                    <th>Produto</th>
-                                    <th>Data</th>
-                                    <th>Tipo</th>
-                                </tr>
-                            </thead>
-                            <tbody className={styles.tabelaMovimentacaoBody}>
-                                {movimentacoes.map((m, key) =>
-                                    <tr key={key}>
-                                        <td className={styles.produtoNome}>{m.produto.nome}</td>
-                                        <td className={styles.data}>{m.data}</td>
-                                        <td style={m.tipo == "ENTRADA" ? {color: "green"} : {color: "red"}} className={styles.tipo}>{m.tipo}</td>
+                        <div className={styles.tabelaContainer}>
+                            <table className={styles.tabelaMovimentacao}>
+                                <thead className={styles.tabelaMovimentacaoHead}>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Data</th>
+                                        <th>Tipo</th>
                                     </tr>
-                                )}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody className={styles.tabelaMovimentacaoBody}>
+                                    {movimentacoes.map((m, key) =>
+                                        <tr key={key}>
+                                            <td className={styles.produtoNome}>{m.produto.nome}</td>
+                                            <td className={styles.data}>{m.data}</td>
+                                            <td style={m.tipo == "ENTRADA" ? { color: "green" } : { color: "red" }} className={styles.tipo}>{m.tipo}</td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 

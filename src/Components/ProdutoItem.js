@@ -50,7 +50,7 @@ export default class ProdutoItem extends React.Component {
                     <div className={styles.dados}>
 
                         <div className={styles.divQtd}>
-                            <p>Qtd</p><input type="number" id={`qtd ${id}`} defaultValue={1} className={styles.qtd}></input>
+                            <p>Qtd</p><input type="number" min={"1"} id={`qtd ${id}`} defaultValue={1} className={styles.qtd}></input>
                         </div>
 
                         <div>

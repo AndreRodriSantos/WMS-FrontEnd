@@ -31,6 +31,7 @@ export default function Pedido() {
         setProdutoSelecionados(produtosSelecionados => [...produtosSelecionados, {
             produto, quantidade
         }])
+
     }
 
     function unCheck(produto, qtd) {

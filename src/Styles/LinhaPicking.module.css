@@ -1,7 +1,25 @@
 /* CheckBox Style */
 
+
+.container{
+    height: 150px;
+}
+
+.img{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.qtd{
+    width: 80px;
+    border: 3px solid black;
+    font-weight: bold;
+    border-radius: 10px;
+    padding-left: 3px;
+}
 .check{
-    
+    visibility: hidden;
 }
 
 .checkboxAnimate {
