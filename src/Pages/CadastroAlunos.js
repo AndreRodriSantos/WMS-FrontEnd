@@ -14,7 +14,7 @@ export default function CadastroAlunos() {
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
         console.log(imagem)
         event.preventDefault()
-        var body = {"nome":nome , "codMatricula":matricula , "email":emailAluno ,"senha":senha };
+        var body = {"nome":nome , "codMatricula":matricula , imagem , "email":emailAluno ,"senha":senha };
         console.log(body)
         api.post(
             "api/aluno/save",body

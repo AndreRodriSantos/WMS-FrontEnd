@@ -140,6 +140,7 @@ export default function CadastroProduto() {
                             <div className={styles.etapaCircle}>
                                 <i className="fa-sharp fa-solid fa-bars"></i>
                             </div>
+                            <span className={`${styles.etapaTitle} ${styles.titleOn}`}>Dados Principais</span>
                         </div>
 
                         <div className={styles.linhaEtapa}></div>
@@ -148,17 +149,18 @@ export default function CadastroProduto() {
                             <div className={styles.etapaCircle}>
                                 <i className="fa-sharp fa-solid fa-dollar-sign"></i>
                             </div>
+                            <span className={`${styles.etapaTitle} ${styles.titleOn}`}>Impostos</span>
                         </div>
 
                         <div className={styles.linhaEtapa}></div>
 
                         <div className={styles.etapa} id="etapa3">
-                            <div className={styles.etapaCircle}>
+                            <div className={styles.etapaCircle} >
                                 <i className="fa-sharp fa-solid fa-image"></i>
                             </div>
+                            <span className={styles.etapa3Title}>Foto</span>
                         </div>
                     </div>
-
                 </header>
 
                 <div className={styles.div_forms} id="forms">

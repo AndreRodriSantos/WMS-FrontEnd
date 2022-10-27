@@ -12,6 +12,7 @@ export default class ProdutoItem extends React.Component {
             const checkBox = document.getElementById(id)
             const qtd = document.getElementById(`qtd ${id}`).value
             const qtdInput = document.getElementById(`qtd ${id}`)
+            console.log(produto);
 
             if (checked == true) {
                 checkBox.checked = true
@@ -22,13 +23,14 @@ export default class ProdutoItem extends React.Component {
                 qtdInput.disabled = false
                 unCheck(produto, qtd)
             }
+            console.log(produto);
         }
 
         return (
             <div className={styles.container} key={id} >
 
                 <div className={styles.imgDiv}>
-                    <img src="https://images.uncyc.org/pt/d/db/Ednaldo.jpg"></img>
+                    <img src={produto.imagem == null ? "https://cdns.iconmonstr.com/wp-content/releases/preview/2019/240/iconmonstr-product-3.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${produto.imagem}?alt=media`}></img>
                 </div>
 
                 <div className={styles.produtoDados}>

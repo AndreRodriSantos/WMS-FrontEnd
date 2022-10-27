@@ -4,7 +4,7 @@ import styles from '../../Styles/Lista/ListaMebros.module.css'
 export default class LinhaMembros extends React.Component {
     render() {
 
-        const { membro, funcao, imgMembro, tirarAluno } = this.props;
+        const { membro, funcao, tirarAluno } = this.props;
 
         function tirarAlu() {
             tirarAluno(membro.id)
@@ -12,7 +12,7 @@ export default class LinhaMembros extends React.Component {
 
         return (
             <tr>
-                <th className={styles.titleList}><div className={styles.imgMembro}>{imgMembro}</div></th>
+                <th className={styles.titleList}><div className={styles.imgMembro}><img className={styles.img} src={membro.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${membro.imagem}?alt=media`}></img></div></th>
                 <td className={styles.titleList}><span className={styles.nome}>{membro.nome}</span></td>
                 <td className={styles.titleList}>{membro.email == undefined ? "Sem Email" : membro.email}</td>
                 <td className={styles.titleList}>{membro.codMatricula}</td>

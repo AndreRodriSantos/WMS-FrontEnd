@@ -39,8 +39,10 @@ export default function Picking() {
 
     function EnviarProdutos() {
         enderecamentoSelecionados.map(e =>{
+            e.enderecamento.quantidade =  e.enderecamento.quantidade - e.quantidade  
             api.put(`api/pedido/saida/${e.enderecamento.id}`, e.enderecamento)
         })
+        window.location.reload()
     }
 
     useEffect(() => {

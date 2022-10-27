@@ -4,8 +4,6 @@ import styles from '../../Styles/LinhaPesquisa.module.css'
 export default class LinhaPesquisa extends React.Component {
     render() {
 
-        const img = 'https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/b8e0abca-53ef-411c-ae4e-debcb2e937ab24416098.png?alt=media'
-
         const { membro, onCheck, offCheck } = this.props
 
         const idMembro = membro.id
@@ -24,7 +22,7 @@ export default class LinhaPesquisa extends React.Component {
             <li className={styles.linhaPesqusa}>
                 <span className={styles.Membro}>
                     <div className={styles.imgMembro}>
-                        <img src={img}></img>
+                        <img src={membro.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${membro.imagem}?alt=media`}></img>
                     </div>
                     <div className={styles.infoMembro}>
                         <span className={styles.nameMembro}>{membro.nome}</span>
