@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../Styles/ItensHome/Home.module.css"
 import { SideBar } from "../Components/ItensHome/SideBar";
 import { ListHome } from "../Components/ItensHome/ListHome";
+import  PopUp  from "../Components/PopUp/PopUp";
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
 
@@ -45,9 +46,10 @@ export default function Home() {
 
     return (
         <section className={styles.components}>
+            <PopUp />
             <div className={styles.home}>
                 <SideBar />
-   
+                
                 <div className={styles.homeRidth}>
                 <div className={styles.cardTutorial}>
                     <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
