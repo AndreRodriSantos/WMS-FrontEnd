@@ -74,6 +74,22 @@
     font-size: 25px;
 }
 
+.etapaTitle{
+    position: absolute;
+    top: +140px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s linear;
+    opacity: 0;
+}
+
+.titleOn{
+    top: +130px;
+    color: #4D71FF;
+    opacity: 100%;
+    transition: 0.3s ease-in-out;
+}
+
 .etapa1On{
     left: 0px;
 }
@@ -184,7 +200,6 @@
 .fornecedoresDiv{
     width: 35%;
     padding: 65px 25px;
-   
 }
 
 .listaFornecedores{
@@ -220,6 +235,20 @@
     transition: .5s linear;
 }
 
+.etapa{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.etapaPass{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .etapaPass .etapaCircle{
     border: 3px solid #4D71FF;
     color: #4D71FF;
@@ -229,6 +258,7 @@
 .linhaEtapaPass{
     background-color: #4D71FF ;
 }
+
 
 .cadastrarBtn{
     display: flex;

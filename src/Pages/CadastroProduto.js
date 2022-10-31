@@ -24,6 +24,7 @@ export default function CadastroProduto() {
     const [importado, setimportado] = useState('')
     const [fornecedores, setFornecedores] = useState([])
     const [fornecedoresCheck, setFornecedoresCheck] = useState([])
+    const [valorImportacao, setValorImportacao] = useState([])
 
     const getCompPasso = () => {
         const etapa1 = document.getElementById("etapa1Div")
@@ -34,6 +35,10 @@ export default function CadastroProduto() {
         const etap2 = document.getElementById("etapa2")
         const etap3 = document.getElementById("etapa3")
 
+        const etap1Title = document.getElementById("etapaTitle1")
+        const etap2Title = document.getElementById("etapaTitle2")
+        const etap3Title = document.getElementById("etapaTitle3")
+
         switch (passo) {
             case 1:
                 etapa1.classList.replace(styles.etapa1Off, styles.etapa1On)
@@ -42,6 +47,10 @@ export default function CadastroProduto() {
 
                 etap2.classList.replace(styles.etapaPass, styles.etapa)
                 etap3.classList.replace(styles.etapaPass, styles.etapa)
+
+                etap1Title.classList.add(styles.titleOn)
+                etap2Title.classList.remove(styles.titleOn)
+                etap3Title.classList.remove(styles.titleOn)
 
                 break;
             case 2:
@@ -55,6 +64,10 @@ export default function CadastroProduto() {
 
                 etap2.classList.replace(styles.etapa, styles.etapaPass)
                 etap3.classList.replace(styles.etapaPass, styles.etapa)
+
+                etap1Title.classList.remove(styles.titleOn)
+                etap2Title.classList.add(styles.titleOn)
+                etap3Title.classList.remove(styles.titleOn)
                 break;
             case 3:
                 etapa1.classList.replace(styles.etapa1On, styles.etapa1Off)
@@ -63,6 +76,10 @@ export default function CadastroProduto() {
 
                 etap2.classList.replace(styles.etapa, styles.etapaPass)
                 etap3.classList.replace(styles.etapa, styles.etapaPass)
+
+                etap1Title.classList.remove(styles.titleOn)
+                etap2Title.classList.remove(styles.titleOn)
+                etap3Title.classList.add(styles.titleOn)
                 break;
         }
     }
@@ -91,11 +108,18 @@ export default function CadastroProduto() {
 
     useEffect(() => {
         getCompPasso()
+
     })
 
     useEffect(() => {
         getFornecedores()
     }, [])
+
+    function disableImportacao(tipo){
+        const valorImportacaoInput = document.getElementById("valorImportacao")
+        
+        tipo == "sim" ? valorImportacaoInput.removeAttribute("disabled") : valorImportacaoInput.setAttribute("disabled", "true")
+    }
 
 
     async function CadastrarProduto(e) {
@@ -111,7 +135,7 @@ export default function CadastroProduto() {
 
 
         const produto = {
-            nome, descricao, medida, pontoPedido, valorUnitario, demanda, ncm, sku, "fornecedores":
+            nome, descricao, medida, pontoPedido, valorImportacao, valorUnitario, demanda, ncm, sku, "fornecedores":
                 fornecedoresCheck.map(f => (
                     {
                         "fornecedor": {
@@ -140,7 +164,7 @@ export default function CadastroProduto() {
                             <div className={styles.etapaCircle}>
                                 <i className="fa-sharp fa-solid fa-bars"></i>
                             </div>
-                            <span className={`${styles.etapaTitle} ${styles.titleOn}`}>Dados Principais</span>
+                            <span className={`${styles.etapaTitle} ${styles.titleOn}`} id="etapaTitle1">Dados Principais</span>
                         </div>
 
                         <div className={styles.linhaEtapa}></div>
@@ -149,7 +173,7 @@ export default function CadastroProduto() {
                             <div className={styles.etapaCircle}>
                                 <i className="fa-sharp fa-solid fa-dollar-sign"></i>
                             </div>
-                            <span className={`${styles.etapaTitle} ${styles.titleOn}`}>Impostos</span>
+                            <span className={`${styles.etapaTitle}`} id="etapaTitle2">Impostos</span>
                         </div>
 
                         <div className={styles.linhaEtapa}></div>
@@ -158,7 +182,8 @@ export default function CadastroProduto() {
                             <div className={styles.etapaCircle} >
                                 <i className="fa-sharp fa-solid fa-image"></i>
                             </div>
-                            <span className={styles.etapa3Title}>Foto</span>
+                            <span className={styles.etapaTitle} id="etapaTitle3">Foto</span>
+
                         </div>
                     </div>
                 </header>
@@ -242,16 +267,17 @@ export default function CadastroProduto() {
 
                                     <div>
                                         <label className={styles.label}>Sim</label>
-                                        <input onChange={(e) => setimportado(e.target.value)} id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
+                                        <input onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("sim")} id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
                                     </div>
 
                                     <div>
                                         <label className={styles.label}>Não</label>
-                                        <input onChange={(e) => setimportado(e.target.value)} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
+                                        <input onChange={(e) => setimportado(e.target.value)} onClick={() =>disableImportacao("não")} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
                                     </div>
 
                                 </div>
                             </div>
+                            <Input onChange={(e) => setValorImportacao(e.target.value)} disabled={true} label="Valor de Importação" id="valorImportacao" type="number" name="valorImportacao" ></Input>
                         </div>
 
                         <div className={styles.footerButtons}>
