@@ -1,38 +1,48 @@
-
-.sidebar{
+.container {
+    position: relative;
+}
+.base {
     position: relative;
     top: 10px;
     left: 20px;
-    height: 98%;
     width: 100px;
+    height: 98%;
     border-radius: 20px;
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     display: flex;
-    justify-content: left;
-    transition: .5s ease-in;
-}
-.logo{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    top: 4%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    z-index: 1;
+    transition: .2s ease-in;
 }
-.logoBox{
+
+.btnsList {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+
+.logo {
+    position: relative;
     width: 50px;
 }
-.btn{
+
+.btn {
     position: absolute;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #000;
-    right: -15px;
+    right: -35px;
     top: 10%;
-    z-index: 1;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,58 +50,119 @@
     font-size: 20px;
     cursor: pointer;
 }
-.nav_links{
+
+.btnOff {
     position: absolute;
-    width: 100%;
-    height: 85%;
-    bottom: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #000;
+    right: -35px;
+    top: 10%;
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+.base_form {
+    position: absolute;
+    height: 72%;
     display: flex;
     flex-direction: column;
-}
-.link{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    margin: 20% 0;
-    
-}
-.iconOn{
-    font-size: 25px;
-    color: #EE9AE5;
-}
-.link .navOn{
-    position: absolute;
-    top: 0;
     left: 0;
+    bottom: 13%;
+    transition: 0.5s;
+    overflow: scroll;
+    overflow-x: hidden;  
+}
+
+.list {
+    position: relative;
+    width: 300px;
     height: 50px;
-    width: 5px;
-    border-radius: 20px;
-    background: #EE9AE5;
+    margin-bottom: 80px;
+    cursor: pointer;
 }
-.icon{
-    font-size: 25px;
-    color: #000;
-}
-.icon:hover{
+
+.icon {
+    position: absolute;
+    left: 8%;
     width: 50px;
     height: 50px;
-    background-color: rgba(0, 0, 0, 0.568);
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    font-size: 18px;
-    color: #fff;
-    text-decoration: none;
+    font-size: 20px;
+    color: #000;
     border-radius: 5px;
-    transition: .2s ease;
+    scale: (1);
+    transition: .2s ease-in;
+    z-index: 2;
 }
-.navOf{
-   display: none;
+.iconoff{
+    position: absolute;
+    left: 8%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #000;
+    border-radius: 5px;
+    scale: (1);
+    transition: .2s ease-in;
+    z-index: -1;
 }
-.iconNCM{
+
+.icon:hover {
+    scale: (0.9);
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    z-index: 2;
+}
+
+.iconTitle {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 20px;
+    color: #000;
+    font-weight: 400;
+}
+.IconText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    
+    left: 120px;
+    width: 150px;
+    height: 70px;
+    
+    background-color: #000;
+    border-radius: 0 20px 20px 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px -10px;
+
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    transition: 0.3s;
+    opacity: 2;
+    z-index: -1;
+}
+
+.textNcm{
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -102,71 +173,163 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    
-}
-.textNcm{
     font-size: 14px;
     font-weight: bold;
     color: #fff;
-   
-}
-/* Sair */
-
-.logout{
-    position: absolute;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    margin: 20% 0;
-    bottom: 0;
-}
-.iconLogout{
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.568);
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    font-size: 18px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: .2s all ease-in;
-}
-.iconLogout:hover{
-    font-size: 23px;
-    transform: rotate(180deg);
-    background-color: red;
-
 }
 
-.linkSelect{
+/* select */
+
+.list_select {
     position: relative;
-    width: 100%;
+    width: 300px;
     height: 50px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    margin: 20% 0;
-    background-color: red;
-    
+    margin-bottom: 80px;
+    cursor: pointer;
 }
-.icon_select{
-    font-size: 25px;
-    color: #000;
-}
-.select{
+.arrowOn{
     position: absolute;
-    right: 10px;
-    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 20%;
+    z-index: 1;
+}
+
+.arrowOff{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    right: 20%;
+    z-index: -1;
 }
 .sub_menu{
-    position: absolute;
+    display: none;
     padding: 6px 6px 14px 80px;
-
 }
+.sub_menuOff{
+    padding: 15px 6px 6px 10px;
+    position: absolute;
+    left: 120px;
+    background-color: #fff;
+    border-radius: 0 20px 20px 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px -10px;
+    transition: .3s;
+    opacity: 1;
+    z-index: -1;
+}
+.sub_link{
+    position: relative;
+    list-style: none;
+    height: 50px;
+    transition: all 0.4s ease;
+}
+.link_container{
+    display: none;
+}
+.link_containerOff{
+    color: #000;
+    font-size: 20px;
+    padding: 5px 0;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.link_name{
+    color: #000;
+    font-size: 18px;
+    padding: 5px 0;
+    text-decoration: none;
+    white-space: nowrap;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+.link_name:hover{
+    opacity: 1;
+}
+/* sobre */
+
+.sobre {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 12px 0;
+    transition: all 0.5s ease;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.ImgUser {
+    height: 52px;
+    width: 52px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 0px 24px 0 22px;
+    background: transparent;
+    transition: all 0.5s ease;
+}
+
+.ImgUser_focus {
+    height: 52px;
+    width: 52px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 0px 24px 0 22px;
+    padding: 10px;
+    background: #000;
+    transition: all 0.5s ease;
+}
+
+.InfoUser {
+    display: none;
+}
+
+.Nome {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.Email {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.logOut {
+    height: 50px;
+    min-width: 78px;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: none;
+    transition: .2s all ease-in;
+}
+
+.logOut:hover {
+    font-size: 23px;
+    transform: rotate(180deg);
+    color: red;
+}
+
+/* POPUP */
 
 .popUp{
     position: fixed;
@@ -179,82 +342,14 @@
     right: 0;
     z-index: -1;
 }
-
-/* SIDE BAR ON */
-.Onsidebar{
-    position: relative;
-    top: 10px;
-    left: 20px;
-    height: 98%;
-    width: 300px;
-    border-radius: 20px;
-    background-color: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    display: flex;
-    justify-content: left;
-    transition: .5s ease-in; 
-}
-
-.onLogo{
-    position: relative;
+.popUpMedidas{
+    position: fixed;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 50px;
-    top: 4%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:red;
-}
-
-.btnOff{
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #000;
-    right: -15px;
-    top: 10%;
-    z-index: 1;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.baseIcon{
-    display: none;
-    justify-content: space-around;
-    align-items: center;
-    width: 90%;
-    height: 50px;  
-    text-decoration: none;
-    color: #000;
-    border-radius: 5px;
-    transition: .2s ease;
-}
-
-.baseIcon:hover{
-    background-color: rgba(0, 0, 0, 0.568);
-    color: #fff;
-}
-
-.OnIcon{
-    position: relative;
-    width: 40px;
     height: 100%;
-    font-size: 25px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-}
-.inconTitle{
-    position: relative;
-    width: 150px;
-    height: 100%;
-    font-size: 25px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
+    top: 0;
+    right: 0;
+    z-index: -1;
 }

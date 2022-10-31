@@ -2,6 +2,7 @@ import React, { useState, useEffect, Children } from "react";
 import styles from "../Styles/ItensHome/Home.module.css"
 import { SideBar } from "../Components/ItensHome/SideBar";
 import { ListHome } from "../Components/ItensHome/ListHome";
+import  PopUp  from "../Components/PopUp/PopUp";
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
@@ -54,14 +55,13 @@ export default function Home() {
         getFornecedor()
         getPedido()
         getProduto()
-        getMovimentacao()
     }, [])
 
     return (
         <section className={styles.components}>
             <div className={styles.home}>
                 <SideBar />
-
+             
                 <div className={styles.homeRidth}>
                     <div className={styles.cardTutorial}>
                         <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>

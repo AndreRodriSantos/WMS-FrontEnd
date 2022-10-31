@@ -9,10 +9,10 @@ export class ListHome extends React.Component {
         return (
             <tr className={styles.container}>
                 <td className={styles.titleList}>
-                    <span className={styles.nome}>{Info1}</span>
+                    <span className={styles.nome}>{objeto.nome == undefined ? objeto.numPedido : objeto.nome}</span>
                 </td>
-                <td className={styles.titleList}>{Info2}</td>
-                <td className={styles.titleList}>{Info3}</td>
+                <td className={styles.titleList}>{objeto.cnpj}</td>
+                <td className={styles.titleList}>{objeto.uf}</td>
             </tr>
         );
     }

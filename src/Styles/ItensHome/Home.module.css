@@ -149,7 +149,7 @@
     display: flex;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    z-index: 1;
+    z-index: 15;
     transition: .5s;
 }
 .baseAI{
@@ -173,7 +173,7 @@
     top: -11%;
     border-radius: 50%;
     background-color: #000;
-    z-index: 2;
+    z-index: 16;
 }
 
 .btnOn{
@@ -268,7 +268,7 @@
     align-items: center;
     justify-content: space-around;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    z-index: 15;
+    z-index: 9;
 }
 .buttons{
     width: 50px;
