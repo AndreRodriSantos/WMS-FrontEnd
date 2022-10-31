@@ -140,7 +140,7 @@ export class SideBar extends React.Component {
                             </span>
                         </a>
                         {/* PICKING */}
-                        <a href="#" onMouseEnter={offSub} className={styles.list}>
+                        <a href="/Picking" onMouseEnter={offSub} className={styles.list}>
                             <span onMouseEnter={onSubTextPicking} id='chamaTextPI' className={styles.icon}>
                                 <i className="fa-solid fa-boxes-packing"></i>
                             </span>

@@ -55,6 +55,7 @@ export default function Home() {
         getFornecedor()
         getPedido()
         getProduto()
+        localStorage.removeItem('idPedido')
     }, [])
 
     return (
@@ -137,7 +138,7 @@ export default function Home() {
                             </div>
                             <div className={styles.lista}>
                                 {
-                                    pedido.map((p) => <ListHome key={p.id} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
+                                    pedido.map((p) => <ListHome id={p.numPedido} key={p.id} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
                                 }
                             </div>
                         </div>
@@ -155,7 +156,7 @@ export default function Home() {
                             </div>
                             <div className={styles.lista}>
                                 {
-                                    fornecedor.map((f) => <ListHome key={f.id} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
+                                    fornecedor.map((f) => <ListHome objeto={f} key={f.id} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
                                 }
                             </div>
                         </div>
@@ -173,7 +174,7 @@ export default function Home() {
                             </div>
                             <div className={styles.lista}>
                                 {
-                                    produto.map((p) => <ListHome key={p.id} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
+                                    produto.map((p) => <ListHome objeto={p} key={p.id} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
                                 }
                             </div>
                         </div>
