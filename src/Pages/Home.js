@@ -46,7 +46,6 @@ export default function Home() {
 
     return (
         <section className={styles.components}>
-            <PopUp />
             <div className={styles.home}>
                 <SideBar />
                 
