@@ -1,3 +1,4 @@
+import { wait } from "@testing-library/user-event/dist/utils";
 import React, { useEffect, useState } from "react";
 import CardTurma from "../Components/CardTurma";
 import api from "../Services/api";
@@ -12,10 +13,20 @@ export default function Turmas() {
         return api.get("api/turma/list").then(
             response => {                
                 setTurmas(response.data)
-                console.log(response.data);
+                /* console.log(response.data); */
                 return response.data
             }
         )
+    }
+
+    function tirarTurma(id){
+        api.delete(`api/turma/${id}`)
+    }
+
+    async function novosDados(id){
+
+        localStorage.setItem("idTurma", id)
+        window.location.href=`/cadastroTurma`
     }
 
     useEffect(() => {
@@ -25,7 +36,7 @@ export default function Turmas() {
 
     return (
         <section className={styles.container}>          
-            {turmas.map((t, key) => <CardTurma id={t.id} key={t.id} nomeTurma={t.nome} periodo={t.periodo} dataComeco={t.dataInicio} membros={t.numeroMembro} imgTurma={t.imagem}/>)}
+            {turmas.map((t, key) => <CardTurma id={t.id} config={t.id + 'config'} key={t.id} turma={t} imgTurma={t.imagem} tirarTurma={tirarTurma} novosDados={novosDados}/>)}
             {turmas.length <= 0 && 
                 <div className={styles.semTurmas}>
                     <span className={styles.titleSemTurma}>Nenhuma Turma Cadastrada</span> 

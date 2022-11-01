@@ -43,7 +43,7 @@ export default function ListaMembros() {
             window.location.reload()
         }
     }
-
+ 
     async function tirarAluno(id) {
         const turma = await getTurma(localStorage.getItem("idTurma"))
         api.patch(`api/aluno/delete/${id}`, turma)
