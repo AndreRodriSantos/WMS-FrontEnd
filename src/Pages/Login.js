@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from '../Styles/Login.module.css'
 import { Button } from "../Components/Button"
 import { Input } from "../Components/Inputs/InputText"
 import { InputSenha } from "../Components/Inputs/InputSenha"
 import logo from "../IMG/Logo WMS.png"
+import api from "../Services/api";
 
 export default function Login() {
+
+    const [codMatricula, setCodMatricula] = useState("")
+    const [senha, setSenha] = useState("")
+
+    function LogAluno(e) {
+        e.preventDefault()
+
+        const body = {
+            codMatricula, senha
+        }
+
+        api.post("api/aluno/login", body).then(
+            response => {
+                localStorage.setItem("token", response.data),
+                console.log(localStorage.getItem("token"));
+            })
+
+    }
+
+    function LogProf() {
+
+    }
 
     return (
         <div className={styles.container}>
@@ -24,14 +47,14 @@ export default function Login() {
                 </div>
                 <span className={styles.title}>Gerenciamento de estoque nunca foi tão fácil</span>
                 <div className={styles.base_form}>
-                    <form id="loginAluno" className={styles.alunoOn}>
-                        <Input id="numero" label="Número de Matrícula" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                        <InputSenha id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
+                    <form id="loginAluno" className={styles.alunoOn} onSubmit={LogAluno} >
+                        <Input onChange={(e) => setCodMatricula(e.target.value)} id="numero" label="Número de Matrícula" type="number" placeholder="Digite o Número de Matricula" name="numero" />
+                        <InputSenha onChange={(e) => setSenha(e.target.value)} id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
                         <Button>Entrar</Button>
                         <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroAlunos" className={styles.btnCadastro}>Crie aqui!</a></p>
                     </form>
 
-                    <form id="loginProf" className={styles.profOff}>
+                    <form id="loginProf" className={styles.profOff} onSubmit={LogProf}>
                         <Input id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
                         <InputSenha id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
                         <Button>Entrar</Button>
