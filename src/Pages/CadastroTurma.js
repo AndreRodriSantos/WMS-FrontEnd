@@ -8,6 +8,7 @@ import styles from "../Styles/Cadastros/CadastroTurma.module.css"
 
 import api from "../Services/api"
 import { fazOptionsPeriodo } from "../Services/gets"
+import { erro, sucesso } from "../Components/Avisos/Alert"
 
 export default function CadastroTurma() {
 
@@ -31,7 +32,16 @@ export default function CadastroTurma() {
     
         api.post(
             "api/turma/save",body
-        );
+        ).then(
+            response => {
+                if (response.status == 201 || response.status == 200){
+                    sucesso(`A turma ${nome} cadastrado com sucesso!!!`)
+                }
+            },
+             err => {
+                erro("Ocorreu um erro ao Cadastrar esta Turma:" + err)
+            }
+        )
     }
 
     var [nome, setNome] = useState('')

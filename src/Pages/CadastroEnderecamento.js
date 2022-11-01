@@ -6,6 +6,7 @@ import { Button } from "../Components/Button"
 import api from "../Services/api"
 import { useState } from "react"
 import { fazOptionsDemanda, fazOptionsProdutos } from "../Services/gets";
+import { erro, sucesso } from "../Components/Avisos/Alert"
 
 export default function CadastroEnderecamento() {
 
@@ -41,7 +42,16 @@ export default function CadastroEnderecamento() {
 
         console.log(body)
 
-        api.post("api/enderecamento/save", body)
+        api.post("api/enderecamento/save", body).then(
+            response => {
+                if (response.status == 201 || response.status == 200){
+                    sucesso("Endereçamento cadastrado com sucesso!!!")
+                }
+            },
+             err => {
+                erro("Ocorreu um erro ao Cadastrar este Endereçamento:" + err)
+            }
+        )
     }
 
 

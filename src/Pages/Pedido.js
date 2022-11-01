@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { render } from "react-dom"
+import { erro, sucesso } from "../Components/Avisos/Alert"
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import ItemPedido from "../Components/ItemPedido"
 import ProdutoItem from "../Components/ProdutoItem"
@@ -67,7 +68,16 @@ export default function Pedido() {
             "valor": valorTotal
         }
 
-        api.post("api/pedido/save", pedido)
+        api.post("api/pedido/save", pedido).then(
+            response => {
+                if (response.status == 201 || response.status == 200){
+                    sucesso(`Pedido relizado com sucesso!!!`)
+                }
+            },
+             err => {
+                erro("Ocorreu um erro ao Finalizar este Pedido" + err)
+            }
+        )
     }
 
     function Pesquisar(texto) {

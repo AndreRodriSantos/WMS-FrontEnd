@@ -8,6 +8,7 @@ import { Select } from "../Components/Inputs/Select";
 import { fazOptionsDemanda, fazOptionsFornecedor, fazOptionsMedida, fazOptionsNcm, getFornecedorID, getMedidaID, getNcmID } from "../Services/gets"
 import { Redirect } from "react-router-dom";
 import { history } from "../routes";
+import { erro, sucesso } from "../Components/Avisos/Alert";
 
 export default function CadastroProduto() {
 
@@ -147,7 +148,16 @@ export default function CadastroProduto() {
             , importado, ipi, pis, cofins, icms, imagem
         }
 
-        api.post("api/produto/save", produto)
+        api.post("api/produto/save", produto).then(
+            response => {
+                if (response.status == 201 || response.status == 200){
+                    sucesso("Produto cadastrado com sucesso!!!")
+                }
+            },
+             err => {
+                erro("Ocorreu um erro ao Cadastrar este Produto:" + err)
+            }
+        )
         console.log(produto)
     }
 

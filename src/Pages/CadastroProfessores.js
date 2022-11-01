@@ -7,6 +7,7 @@ import logo from "../IMG/Logo WMS.png"
 import { Foto } from "../Components/Inputs/InputFoto"
 
 import api from '../Services/api'
+import { erro, sucesso } from "../Components/Avisos/Alert"
 
 export default function CadastroProfessores() {
 
@@ -29,6 +30,15 @@ export default function CadastroProfessores() {
     
         api.post(
             "api/professor/save", body
+        ).then(
+            response => {
+                if (response.status == 201 || response.status == 200){
+                    sucesso("Professor cadastrado com sucesso!!!")
+                }
+            },
+             err => {
+                erro("Ocorreu um erro ao Cadastrar este Professor:" + err)
+            }
         )
     }
 

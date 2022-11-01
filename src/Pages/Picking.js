@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { erro, sucesso } from "../Components/Avisos/Alert"
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import LinhaPicking from "../Components/LinhaPicking"
 import api from "../Services/api"
@@ -38,9 +39,18 @@ export default function Picking() {
     }
 
     function EnviarProdutos() {
-        enderecamentoSelecionados.map(e =>{
-            e.enderecamento.quantidade =  e.enderecamento.quantidade - e.quantidade  
-            api.put(`api/pedido/saida/${e.enderecamento.id}`, e.enderecamento)
+        enderecamentoSelecionados.map(e => {
+            e.enderecamento.quantidade = e.enderecamento.quantidade - e.quantidade
+            api.put(`api/pedido/saida/${e.enderecamento.id}`, e.enderecamento).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        sucesso(`Produtos Enviados com sucesso!!!`)
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Enviar os Produtos Selecionados: " + err)
+                }
+            )
         })
         window.location.reload()
     }
@@ -81,12 +91,12 @@ export default function Picking() {
                 </div>
             </div>
             <button className={styles.enviarProdutos} onClick={EnviarProdutos} id="btnEnviar">Enviar <i className="fa-solid fa-box-archive"></i><lord-icon
-                    src="https://cdn.lordicon.com/zmkotitn.json"
-                    trigger="hover"
-                    colors="primary:#ffffff"
-                    state="hover-1"
-                    style={{width:24,height:24}}>
-                </lord-icon>
+                src="https://cdn.lordicon.com/zmkotitn.json"
+                trigger="hover"
+                colors="primary:#ffffff"
+                state="hover-1"
+                style={{ width: 24, height: 24 }}>
+            </lord-icon>
             </button>
         </div>
     )

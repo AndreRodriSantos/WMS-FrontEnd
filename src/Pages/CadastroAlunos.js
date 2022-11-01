@@ -7,7 +7,7 @@ import logo from "../IMG/Logo WMS.png"
 import { Foto } from "../Components/Inputs/InputFoto"
 
 import api from "../Services/api"
-import PopUp, { erro, sucesso } from "../Components/PopUp/PopUp"
+import { erro, sucesso } from "../Components/Avisos/Alert"
 
 export default function CadastroAlunos() {
 
@@ -21,11 +21,12 @@ export default function CadastroAlunos() {
             "api/aluno/save", body
         ).then(
             response => {
-                if (response.status == 201) {
-                    sucesso("cadastro realizado com sucesso")
-                } else {
-                    erro("erro ao realizar o cadastro")
+                if (response.status == 201 || response.status == 200){
+                    sucesso("Aluno cadastrado com sucesso!!!")
                 }
+            },
+            err => {
+                erro("Ocorreu um erro ao Cadastrar o Usuario:" + err)
             }
         )
     }

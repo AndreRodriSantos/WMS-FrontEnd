@@ -4,6 +4,7 @@ import { Input } from "../Components/Inputs/InputText"
 import { Button } from "../Components/Button"
 import api from "../Services/api"
 import { useState } from "react"
+import { erro, sucesso } from "../Components/Avisos/Alert"
 
 export default function CadastroFornecedor() {
 
@@ -22,7 +23,16 @@ export default function CadastroFornecedor() {
 
         console.log(body)
 
-        api.post("api/fornecedor/save", body)
+        api.post("api/fornecedor/save", body).then(
+            response => {
+                if (response.status == 201 || response.status == 200){
+                    sucesso("Fornecedor cadastrado com sucesso!!!")
+                }
+            },
+             err => {
+                erro("Ocorreu um erro ao Cadastrar este Fornecedor:" + err)
+            }
+        )
     }
 
     const [nome, setNome] = useState('')
