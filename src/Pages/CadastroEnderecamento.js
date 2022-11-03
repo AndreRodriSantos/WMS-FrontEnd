@@ -54,18 +54,16 @@ export default function CadastroEnderecamento() {
         )
     }
 
-
     return (
         <div className={styles.container}>
             <div className={styles.formContainer}>
                 <header className={styles.header}>
                     <img src={logo} className={styles.logo}></img>
+
                     <h1 className={styles.titulo}>Cadastro de Endereçamento</h1>
                 </header>
                 <form className={styles.form} onSubmit={CadastrarEnderecamento}>
-
                     <div className={styles.column}>
-
                         <Input label="Corredor" id="corredor" type="text" onChange={(e) => setCorredor(e.target.value)} placeholder="Digite o Corredor" name="corredor" ></Input>
 
                         <Input label="Edificio" id="edificio" type="text" onChange={(e) => setEdificio(e.target.value)} placeholder="Digite o Edificio" name="edificio" ></Input>
@@ -73,7 +71,6 @@ export default function CadastroEnderecamento() {
                         <Input label="Andar" id="andar" type="text" onChange={(e) => setAndar(e.target.value)} placeholder="Digite o Andar" name="andar" ></Input>
 
                         <Input label="Modulo" id="modulo" type="text" onChange={(e) => setModulo(e.target.value)} placeholder="Digite o Modulo" name="modulo" ></Input>
-
                     </div>
 
                     <div className={styles.column}>
@@ -82,11 +79,8 @@ export default function CadastroEnderecamento() {
                         <Select data={fazOptionsProdutos()} idArrow="arrow2" id="itens" name="itens"></Select>
 
                         <Input label="Quantidade" id="quantidade" type="text" onChange={(e) => setQuantidade(e.target.value)} placeholder="Digite o Quantidade" name="quantidade" ></Input>
-
                     </div>
-
                     <Button>Cadastrar Endereçamento</Button>
-
                 </form>
             </div>
         </div>

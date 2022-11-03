@@ -1,5 +1,5 @@
-import {Router, Route, Switch} from 'react-router-dom'
-import {createBrowserHistory} from 'history'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 
 import CadastroAlunos from './Pages/CadastroAlunos';
 import CadastroProfessores from './Pages/CadastroProfessores';
@@ -14,32 +14,70 @@ import VerificarPedidos from './Pages/VerificarPedidos';
 import ListaMembros from './Pages/ListaMembros';
 import Loading from './Components/Loading'
 import Picking from './Pages/Picking';
-import { Alert } from './Components/Avisos/Alert';
+import { Alert, erro } from './Components/Avisos/Alert';
 import CadastroEnderecamento from './Pages/CadastroEnderecamento';
+import { isAuthenticated, isAuthenticatedPedido, isAuthenticatedProfessor, isAuthenticatedTurma } from './Services/auth';
 
 const history = createBrowserHistory()
 
-export {history}
+export { history }
+
+const PrivateRouteProfessor = function (props) {
+    isAuthenticatedProfessor().then(response => {
+        if (response === true) {
+            return <Route {...props} />
+        } else {
+            return <Redirect to="/" push></Redirect>
+        }
+    })
+}
+
+const PrivateRoute = (props) => {
+    if (isAuthenticated() == true) {
+        return <Route {...props} />
+    } else {
+        erro("Precisa estar logado para acessar aquela página")
+        return <Redirect to="/" push></Redirect>
+    }
+}
+
+const PrivateRouteTurma = (props) => {
+    if (isAuthenticatedTurma() == true) {
+        return <Route {...props} />
+    } else {
+        erro("Precisa estar logado para acessar aquela página")
+        return <Redirect to="/" push></Redirect>
+    }
+}
+
+const PrivateRoutePedido = (props) => {
+    if (isAuthenticatedPedido() == true) {
+        return <Route {...props} />
+    } else {
+        erro("Precisa estar logado para acessar aquela página")
+        return <Redirect to="/" push></Redirect>
+    }
+}
 
 export default function Routes() {
-    return(
+    return (
         <Router history={history}>
             <Switch>
                 <Route path='/' exact component={Login}></Route>
                 <Route path='/Loading' exact component={Loading}></Route>
                 <Route path='/Login' component={Login}></Route>
-                <Route path='/Turmas' component={Turmas}></Route>
-                <Route path='/Membros' component={ListaMembros}></Route>
+                <PrivateRouteProfessor path='/Turmas' component={Turmas}></PrivateRouteProfessor>
+                <PrivateRouteTurma path='/Membros' component={ListaMembros}></PrivateRouteTurma>
                 <Route path='/Home' component={Home}></Route>
                 <Route path='/CadastroAlunos' component={CadastroAlunos} ></Route>
                 <Route path='/CadastroProfessores' component={CadastroProfessores} ></Route>
                 <Route path='/CadastroTurma' component={CadastroTurma}></Route>
-                <Route path='/Pedido' component={Pedido}></Route>
-                <Route path='/VerificarPedidos' component={VerificarPedidos}></Route>
-                <Route path='/CadastroFornecedores' component={CadastroFornecedor} ></Route>
-                <Route path='/CadastroEnderecamento' component={CadastroEnderecamento} ></Route>
-                <Route path='/CadastroProduto' component={CadastroProduto}></Route>
-                <Route path='/Picking' component={Picking}></Route>
+                <PrivateRoutePedido path='/Pedido' component={Pedido}></PrivateRoutePedido>
+                <PrivateRoute path='/VerificarPedidos' component={VerificarPedidos}></PrivateRoute>
+                <PrivateRoute path='/CadastroFornecedores' component={CadastroFornecedor} ></PrivateRoute>
+                <PrivateRoute path='/CadastroEnderecamento' component={CadastroEnderecamento} ></PrivateRoute>
+                <PrivateRoute path='/CadastroProduto' component={CadastroProduto}></PrivateRoute>
+                <PrivateRoute path='/Picking' component={Picking}></PrivateRoute>
                 <Route path='/alert' component={Alert}></Route>
             </Switch>
         </Router>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { sucesso } from "../Components/Avisos/Alert";
 import CardTurma from "../Components/CardTurma";
 import api from "../Services/api";
 import styles from '../Styles/Turmas/Turmas.module.css'
@@ -21,6 +22,10 @@ export default function Turmas() {
     useEffect(() => {
         getTurma()
         localStorage.removeItem("idTurma")
+        if (localStorage.getItem("logou") != undefined) {
+            sucesso("Bem-vindo!!! Login Realizado com Sucesso!!")
+            localStorage.removeItem('logou')
+        }
     }, [])
 
     return (

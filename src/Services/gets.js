@@ -91,4 +91,24 @@ export  function fazListaTurma() {
     return turmas
 }
 
+//Usuario
+
+export async function sendIdAluno(){
+    const response = await api.get("api/aluno/sendId", { headers: { Authorization: localStorage.getItem("token") } });
+    return response.data
+}
+
+export async function sendIdProf(){
+    const response = await api.get("api/professor/sendId", { headers: { Authorization: localStorage.getItem("token") } });
+    return response.data
+}
+
+export function getProfessor(id){
+    return api.get(`api/professor/${id}`)
+}
+
+export function getAluno(id){
+    return api.get(`api/aluno/${id}`)
+}
+
 

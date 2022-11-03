@@ -53,7 +53,7 @@ export function sucesso(mensagem) {
                 fechar()
                 clearInterval(intervalsucesso)
             }
-        }, 20)
+        }, 30)
     }, 500);
 
 }
@@ -83,7 +83,7 @@ export function erro(mensagem) {
                 fechar(intervalerro)
                 clearInterval(intervalerro)
             }
-        }, 20)
+        }, 30)
     }, 500);
 
 }

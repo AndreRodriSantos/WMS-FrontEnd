@@ -5,29 +5,66 @@ import { Input } from "../Components/Inputs/InputText"
 import { InputSenha } from "../Components/Inputs/InputSenha"
 import logo from "../IMG/Logo WMS.png"
 import api from "../Services/api";
+import { erro, sucesso } from "../Components/Avisos/Alert";
 
 export default function Login() {
 
     const [codMatricula, setCodMatricula] = useState("")
-    const [senha, setSenha] = useState("")
+    const [nif, setNif] = useState("")
+    const [senhaAluno, setSenhaAluno] = useState("")
+    const [senhaProf, setSenhaProf] = useState("")
 
     function LogAluno(e) {
         e.preventDefault()
 
-        const body = {
-            codMatricula, senha
+        if(localStorage.getItem("token") != undefined){
+            erro("Você já está logado")
+        }else{
+
+            const body = {
+                codMatricula, "senha": senhaAluno
+            }
+
+            console.log(body);
+    
+            api.post("api/aluno/login", body).then(
+                response => {
+                    localStorage.setItem("token", response.data.token)
+                    localStorage.setItem("logou", true)
+                    window.location.href = "/Home"
+                },
+                err => {
+                    erro("Erro ao Realizar o Login, não foi encontrado um usuário com essas informaçoes, verifique se os dados estão corretos e tente novamente")
+                }
+            )
         }
-
-        api.post("api/aluno/login", body).then(
-            response => {
-                localStorage.setItem("token", response.data),
-                console.log(localStorage.getItem("token"));
-            })
-
     }
 
-    function LogProf() {
+    function LogProf(e) {
 
+        e.preventDefault()
+
+        if(localStorage.getItem("token") != undefined){
+            erro("Você já está logado")
+        }else{
+            
+            const body = {
+                nif, "senha": senhaProf
+            }
+
+            console.log(body);
+    
+            api.post("api/professor/login", body).then(
+                response => {
+                    localStorage.setItem("token", response.data.token)
+                    localStorage.setItem("logou", true)
+                    window.location.href = "/Turmas"
+                },
+                err => {
+                    erro("Erro ao Realizar o Login, não foi encontrado um usuário com essas informações, verifique se os dados estão corretos e tente novamente")
+                }
+            )
+        }
     }
 
     return (
@@ -46,24 +83,24 @@ export default function Login() {
                     <button id="btnProf" type="button" className={styles.btn} onClick={loginProf}>Professor</button>
                 </div>
                 <span className={styles.title}>Gerenciamento de estoque nunca foi tão fácil</span>
-                <div className={styles.base_form}>
+                <div className={styles.base_form} method="post">
                     <form id="loginAluno" className={styles.alunoOn} onSubmit={LogAluno} >
                         <Input onChange={(e) => setCodMatricula(e.target.value)} id="numero" label="Número de Matrícula" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                        <InputSenha onChange={(e) => setSenha(e.target.value)} id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
+                        <InputSenha onChange={(e) => setSenhaAluno(e.target.value)} id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
                         <Button>Entrar</Button>
                         <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroAlunos" className={styles.btnCadastro}>Crie aqui!</a></p>
                     </form>
 
-                    <form id="loginProf" className={styles.profOff} onSubmit={LogProf}>
-                        <Input id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                        <InputSenha id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
+                    <form id="loginProf" className={styles.profOff} onSubmit={LogProf} method="post">
+                        <Input onChange={(e) => setNif(e.target.value)} id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
+                        <InputSenha onChange={(e) => setSenhaProf(e.target.value)} id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
                         <Button>Entrar</Button>
                         <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroProfessores" className={styles.btnCadastro}>Crie aqui!</a></p>
                     </form>
                 </div>
             </div>
             <div className={styles.cubo}>
-                <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameborder='0' width='100%' height='100%'></iframe>
+                <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameBorder='0' width='100%' height='100%'></iframe>
             </div>
             <div className={styles.seila}></div>
         </div>

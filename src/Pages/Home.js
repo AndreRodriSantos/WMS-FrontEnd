@@ -5,6 +5,8 @@ import { ListHome } from "../Components/ItensHome/ListHome";
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
+import { sucesso } from "../Components/Avisos/Alert";
+import { sendIdAluno } from "../Services/gets";
 
 export default function Home() {
 
@@ -55,13 +57,18 @@ export default function Home() {
         getPedido()
         getProduto()
         localStorage.removeItem('idPedido')
+        if (localStorage.getItem("logou") != undefined) {
+            sucesso("Bem-vindo!!! Login Realizado com Sucesso!!")
+            localStorage.removeItem('logou')
+        }
+        sendIdAluno()
     }, [])
 
     return (
         <section className={styles.components}>
             <div className={styles.home}>
                 <SideBar />
-             
+
                 <div className={styles.homeRidth}>
                     <div className={styles.cardTutorial}>
                         <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
@@ -135,11 +142,13 @@ export default function Home() {
                                     <p className={styles.addTitle}>Novo Pedido</p>
                                 </a>
                             </div>
-                            <div className={styles.lista}>
-                                {
-                                    pedido.map((p) => <ListHome id={p.numPedido} key={p.id} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
-                                }
-                            </div>
+                            <table>
+                                <tbody className={styles.lista}>
+                                    {
+                                        pedido.map((p, key) => <ListHome id={p.numPedido} key={key} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
+                                    }
+                                </tbody>
+                            </table>
                         </div>
 
                         <div id='fornecedorList' className={styles.listaFornecedor}>
@@ -153,11 +162,13 @@ export default function Home() {
                                     <p className={styles.addTitle}>Novo Fornecedor</p>
                                 </a>
                             </div>
-                            <div className={styles.lista}>
-                                {
-                                    fornecedor.map((f) => <ListHome objeto={f} key={f.id} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
-                                }
-                            </div>
+                            <table>
+                                <tbody className={styles.lista}>
+                                    {
+                                        fornecedor.map((f, key) => <ListHome objeto={f} key={key} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
+                                    }
+                                </tbody>
+                            </table>
                         </div>
 
                         <div id='produtoList' className={styles.listaProdutos}>
@@ -171,11 +182,13 @@ export default function Home() {
                                     <p className={styles.addTitle}>Novo Produto</p>
                                 </a>
                             </div>
-                            <div className={styles.lista}>
-                                {
-                                    produto.map((p) => <ListHome objeto={p} key={p.id} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
-                                }
-                            </div>
+                            <table>
+                                <tbody className={styles.lista}>
+                                    {
+                                        produto.map((p, key) => <ListHome objeto={p} key={key} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -205,7 +218,7 @@ export default function Home() {
                     </span>
                 </div>
             </div>
-        </section>
+        </section >
     );
 
     function abrirChat() {

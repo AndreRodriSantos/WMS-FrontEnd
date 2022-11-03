@@ -30,7 +30,7 @@ export class SideBar extends React.Component {
                         <a className={styles.link_name} href="/Membros"> <i className="fa-solid fa-users"></i> MEMBROS</a>
                     </li>
                     <li className={styles.sub_link}>
-                        <a className={styles.link_name} href="/Turmas"> <i class="fa-solid fa-graduation-cap"></i> TURMA</a>
+                        <a className={styles.link_name} href="/Turmas"> <i className="fa-solid fa-graduation-cap"></i> TURMA</a>
                     </li>
                 </ul>
                 {/* UL OFF */}
@@ -69,9 +69,9 @@ export class SideBar extends React.Component {
                             <span className={styles.iconTitle}>HOME</span>
                         </a>
                         {/* select EDUCAÇÃO*/}
-                        <a id='select' onMouseEnter={offSubLinkC} className={styles.list_select}>
+                        <div id='select' onMouseEnter={offSubLinkC} className={styles.list_select}>
                             <span onMouseEnter={onSubLink} id='chamaListSub' className={styles.icon}>
-                                <i class="fa-solid fa-book"></i>
+                                <i className="fa-solid fa-book"></i>
                             </span>
                             <span className={styles.iconTitle}>
                                 <span className={styles.suTitle}>EDUCAÇÃO</span>
@@ -79,12 +79,11 @@ export class SideBar extends React.Component {
                                     <i className="fa-solid fa-chevron-down"></i>
                                 </span>
                                 <span id='arrowOff' onClick={LinkSelectOff} className={styles.arrowOff}>
-                                    <i class="fa-solid fa-chevron-up"></i>
+                                    <i className="fa-solid fa-chevron-up"></i>
                                 </span>
                             </span>
                             <ul id="sub_menu" className={styles.sub_menu}>
                                 <li className={styles.sub_link}>
-
                                     <a className={styles.link_container} href="#">EDUCAÇÃO</a>
                                 </li>
                                 <li className={styles.sub_link}>
@@ -94,15 +93,15 @@ export class SideBar extends React.Component {
                                     <a className={styles.link_name} href="/Membros"> <i className="fa-solid fa-users"></i> MEMBROS</a>
                                 </li>
                                 <li className={styles.sub_link}>
-                                    <a className={styles.link_name} href="/Turmas"> <i class="fa-solid fa-graduation-cap"></i> TURMA</a>
+                                    <a className={styles.link_name} href="/Turmas"> <i className="fa-solid fa-graduation-cap"></i> TURMA</a>
                                 </li>
                             </ul>
 
-                        </a>
+                        </div>
                         {/* select CADASTRO*/}
-                        <a id='select_cadastro' onMouseEnter={offSubLink} className={styles.list_select}>
+                        <div id='select_cadastro' onMouseEnter={offSubLink} className={styles.list_select}>
                             <span onMouseEnter={onSubLinkC} id='chamaListSubC' className={styles.icon}>
-                                <i class="fa-solid fa-folder-plus"></i>
+                                <i className="fa-solid fa-folder-plus"></i>
                             </span>
                             <span className={styles.iconTitle}>
                                 <span className={styles.suTitle}>CADASTRO</span>
@@ -110,7 +109,7 @@ export class SideBar extends React.Component {
                                     <i className="fa-solid fa-chevron-down"></i>
                                 </span>
                                 <span id='arrowCadastroOff' onClick={CadastroSelectOff} className={styles.arrowOff}>
-                                    <i class="fa-solid fa-chevron-up"></i>
+                                    <i className="fa-solid fa-chevron-up"></i>
                                 </span>
                             </span>
                             <ul id="sub_menuCadastro" className={styles.sub_menu}>
@@ -128,7 +127,7 @@ export class SideBar extends React.Component {
                                 </li>
                             </ul>
 
-                        </a>
+                        </div>
 
                         {/* PEDIDOS */}
                         <a href="/Pedido" onMouseEnter={offSub} className={styles.list}>
