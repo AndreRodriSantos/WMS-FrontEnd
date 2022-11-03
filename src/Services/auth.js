@@ -12,7 +12,6 @@ export const isAuthenticatedProfessor = async function () {
         } else {
             return false
         }
-
     } else {
         return false
     }

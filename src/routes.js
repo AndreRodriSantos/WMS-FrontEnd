@@ -27,7 +27,7 @@ const PrivateRouteProfessor = function (props) {
         if (response === true) {
             return <Route {...props} />
         } else {
-            return <Redirect to="/" push></Redirect>
+            return window.location.href = "/Home"
         }
     })
 }
@@ -36,8 +36,7 @@ const PrivateRoute = (props) => {
     if (isAuthenticated() == true) {
         return <Route {...props} />
     } else {
-        erro("Precisa estar logado para acessar aquela página")
-        return <Redirect to="/" push></Redirect>
+        return window.location.href = "/Login"
     }
 }
 
@@ -45,8 +44,7 @@ const PrivateRouteTurma = (props) => {
     if (isAuthenticatedTurma() == true) {
         return <Route {...props} />
     } else {
-        erro("Precisa estar logado para acessar aquela página")
-        return <Redirect to="/" push></Redirect>
+        return window.location.href = "/Home"
     }
 }
 
@@ -54,8 +52,7 @@ const PrivateRoutePedido = (props) => {
     if (isAuthenticatedPedido() == true) {
         return <Route {...props} />
     } else {
-        erro("Precisa estar logado para acessar aquela página")
-        return <Redirect to="/" push></Redirect>
+        return window.location.href = "/Home"
     }
 }
 
@@ -68,7 +65,7 @@ export default function Routes() {
                 <Route path='/Login' component={Login}></Route>
                 <PrivateRouteProfessor path='/Turmas' component={Turmas}></PrivateRouteProfessor>
                 <PrivateRouteTurma path='/Membros' component={ListaMembros}></PrivateRouteTurma>
-                <Route path='/Home' component={Home}></Route>
+                <PrivateRoute path='/Home' component={Home}></PrivateRoute>
                 <Route path='/CadastroAlunos' component={CadastroAlunos} ></Route>
                 <Route path='/CadastroProfessores' component={CadastroProfessores} ></Route>
                 <Route path='/CadastroTurma' component={CadastroTurma}></Route>

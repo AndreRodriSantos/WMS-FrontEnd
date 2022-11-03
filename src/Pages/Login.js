@@ -41,7 +41,6 @@ export default function Login() {
     }
 
     function LogProf(e) {
-
         e.preventDefault()
 
         if(localStorage.getItem("token") != undefined){
