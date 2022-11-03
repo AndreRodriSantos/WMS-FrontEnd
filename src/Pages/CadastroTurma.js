@@ -9,60 +9,81 @@ import styles from "../Styles/Cadastros/CadastroTurma.module.css"
 import api from "../Services/api"
 import { fazOptionsPeriodo } from "../Services/gets"
 import { erro, sucesso } from "../Components/Avisos/Alert"
+import { dataDesformatada } from "../Services/formatter"
 
 export default function CadastroTurma() {
 
     function getTurma() {
         const id = localStorage.getItem("idTurma")
         const periodo = document.getElementById("periodo")
-        const participantes = document.getElementById("participantes")
-        
+        const participantes = document.getElementById("participantes") 
 
         if(id != undefined || id != null){
             api.get(`api/turma/${id}`).then(
                 response => {
                     const turma = response.data
-                    participantes.innerHTML = turma.numParticipantes
+                    participantes.innerHTML = turma.numParticipantes 
                     setNome(turma.nome)
                     setDataComeco(turma.dataInicio)
                     setDataFinal(turma.dataFinal)
-                    periodo.setAttribute('checked', turma.periodo)
+                    periodo.value = turma.periodo                     
                 }
             )
         }
         
     }
 
-    function CadastrarTurma(event) {
+    function CadastrarAlterar(event){      
         event.preventDefault()
+
+        const id = localStorage.getItem('idTurma')  
 
         const periodo = document.getElementById("periodo").value
         const participantes = document.getElementById("participantes").textContent
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
 
+        setDataComeco(dataDesformatada(dataC))
+        setDataFinal(dataDesformatada(dataF))
+
         const body = {
+            id,
             'nome': nome,
             'periodo': periodo,
             'dataInicio': dataC,
             'dataFinal': dataF,
-            'numeroMembro': participantes,
+            'numParticipantes': participantes,
             imagem
         };
 
         console.log(body)
 
-        api.post(
-            "api/turma/save", body
-        ).then(
-            response => {
-                if (response.status == 201 || response.status == 200) {
-                    sucesso(`A turma ${nome} cadastrado com sucesso!!!`)
+        if(id){
+            api.put(
+                `api/turma/${id}`, body
+            ).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        sucesso(`A turma ${nome} alterada com sucesso!!!`)
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Alterar esta Turma:" + err)
                 }
-            },
-            err => {
-                erro("Ocorreu um erro ao Cadastrar esta Turma:" + err)
-            }
-        )
+            )
+        }else{
+            api.post(
+                "api/turma/save", body
+            ).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        sucesso(`A turma ${nome} cadastrado com sucesso!!!`)
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Cadastrar esta Turma:" + err)
+                }
+            )
+        }  
     }
 
     useEffect(() => {
@@ -87,7 +108,7 @@ export default function CadastroTurma() {
                         <h1 className={styles.title}>Cadastro de Turmas</h1>
                         <span className={styles.subTitle}>Lógistica</span>
                     </div>
-                    <form onSubmit={CadastrarTurma}>
+                    <form onSubmit={CadastrarAlterar}>
                         <Input id="nome" label="Nome da Turma" defaultValue={nome} onChange={(e) => setNome(e.target.value)} type="text" name="nome" placeholder="Digite o Nome"></Input>
                         <Select data={fazOptionsPeriodo()} id="periodo" idArrow="arrow" title="Periodo"></Select>
                         <Input id="dataComeco" label="Data de Começo" defaultValue={dataC} onChange={(e) => setDataComeco(e.target.value)} type="date" name="nome" placeholder="Selecione a Data" ></Input>

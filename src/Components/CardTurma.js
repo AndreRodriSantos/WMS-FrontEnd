@@ -1,10 +1,13 @@
 import React from "react";
+import { useEffect } from "react";
+import api from "../Services/api";
+import { dataFormatada } from "../Services/formatter";
 import styles from '../Styles/Turmas/CardTurmas.module.css'
 
 export default class CardTurma extends React.Component {
     render() {
 
-        const { imgTurma, id, config, turma,  tirarTurma, novosDados } = this.props;
+        const { imgTurma, id, config, turma, tirarTurma, novosDados } = this.props;
 
         function setStorage() {
             localStorage.setItem("idTurma", id)
@@ -13,11 +16,25 @@ export default class CardTurma extends React.Component {
         function removeTurma() {
             tirarTurma(turma.id)
             window.location.reload()
-        } 
+        }
 
-        function alterarTurma(){
+        function alterarTurma() {
             novosDados(turma.id)
         }
+
+ 
+            var count = 0;
+            
+            api.get(`api/aluno/turma/${id}`).then(
+                response => {
+                    const span = document.getElementById(id + "numMembro")
+                    const alunos = response.data
+                    alunos.map((a) => {count++})      
+                    span.innerHTML = count + "/" + turma.numParticipantes
+                }
+            )
+
+        const dataInicio = dataFormatada(turma.dataInicio)
 
         return (
             <div className={styles.Card} onMouseEnter={removeOpcoes}>
@@ -29,13 +46,13 @@ export default class CardTurma extends React.Component {
                     <h2 className={styles.titleTurma}>{turma.nome}</h2>
                     <span className={styles.basePedido}>
                         <p className={styles.titlePeriodo}>{turma.periodo}</p>
-                        <p className={styles.periodo}>{turma.dataInicio}</p>
+                        <p className={styles.periodo}>{dataInicio}</p>
                         <span className={styles.barra}></span>
                     </span>
                     <span className={styles.baseMembro}>
                         <a href="/Membros" onClick={setStorage} className={styles.membros}><i className="fa-solid fa-users"></i></a>
                         <p className={styles.titleMembros}>Membros</p>
-                        <span className={styles.NuMembro}>{turma.numParticipantes}</span>
+                        <span className={styles.NuMembro} id={id + "numMembro"}></span>
                     </span>
                 </div>
                 {/* UL OFF */}

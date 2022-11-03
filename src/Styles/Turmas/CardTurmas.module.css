@@ -5,7 +5,7 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    margin: 50px auto;
+    margin: 50px 5%;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 
 }
 .config{
@@ -22,7 +22,7 @@
     scale: (0.9);
     transition: .2s ease-in;
     font-size: 20px;
-    color: #fff;
+    color: #000;
 }
 .config:hover{
     scale: (1);

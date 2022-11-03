@@ -13,7 +13,7 @@ export default function Turmas() {
         return api.get("api/turma/list").then(
             response => {                
                 setTurmas(response.data)
-                /* console.log(response.data); */
+                console.log(response.data);
                 return response.data
             }
         )
