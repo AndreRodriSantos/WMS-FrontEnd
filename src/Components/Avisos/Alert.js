@@ -28,63 +28,72 @@ export class Alert extends React.Component {
 let count = 1
 
 export function sucesso(mensagem) {
-    const container = document.getElementById("alertDiv")
-    const alert = document.getElementById("alert")
-    const barra = document.getElementById("barra")
-    const msg = document.getElementById("mensagem")
-    const title = document.getElementById("title")
-
-    container.style.display = "flex"
-    alert.classList.add(styles.alertOn)
-    barra.style.backgroundColor = "green"
-    msg.innerHTML = mensagem
-    title.style.color = "green"
-    title.innerHTML = "Sucesso"
-
-
 
     setTimeout(() => {
-        count = 1
-        var intervalsucesso = setInterval(() => {
-            if (count < 101) {
-                count += 1
-                barra.style.height = count + "%"
-            } else {
-                fechar()
-                clearInterval(intervalsucesso)
-            }
-        }, 30)
-    }, 500);
+        const container = document.getElementById("alertDiv")
+        const alert = document.getElementById("alert")
+        const barra = document.getElementById("barra")
+        const msg = document.getElementById("mensagem")
+        const title = document.getElementById("title")
+
+        container.style.display = "flex"
+        alert.classList.add(styles.alertOn)
+        barra.style.backgroundColor = "green"
+        msg.innerHTML = mensagem
+        title.style.color = "green"
+        title.innerHTML = "Sucesso"
+
+
+        setTimeout(() => {
+            count = 1
+            var intervalsucesso = setInterval(() => {
+                if (count < 101) {
+                    count += 1
+                    barra.style.height = count + "%"
+                } else {
+                    fechar()
+                    clearInterval(intervalsucesso)
+                }
+            }, 30)
+        }, 500);
+
+    }, 100);
 
 }
 
 export function erro(mensagem) {
-    const container = document.getElementById("alertDiv")
-    const alert = document.getElementById("alert")
-    const barra = document.getElementById("barra")
-    const msg = document.getElementById("mensagem")
-    const title = document.getElementById("title")
 
-    container.style.display = "flex"
-    alert.classList.add(styles.alertOn)
-    barra.style.backgroundColor = "red"
-    msg.innerHTML = mensagem
-    title.style.color = "red"
-    title.innerHTML = "Erro"
 
     setTimeout(() => {
-        count = 1
-        var intervalerro = setInterval(() => {
-            
-            if (count < 101) {
-                count += 1
-                barra.style.height = count + "%"
-            } else {
-                fechar(intervalerro)
-                clearInterval(intervalerro)
-            }
-        }, 30)
-    }, 500);
+
+        const container = document.getElementById("alertDiv")
+        const alert = document.getElementById("alert")
+        const barra = document.getElementById("barra")
+        const msg = document.getElementById("mensagem")
+        const title = document.getElementById("title")
+
+        container.style.display = "flex"
+        alert.classList.add(styles.alertOn)
+        barra.style.backgroundColor = "red"
+        msg.innerHTML = mensagem
+        title.style.color = "red"
+        title.innerHTML = "Erro"
+
+        setTimeout(() => {
+            count = 1
+            var intervalerro = setInterval(() => {
+
+                if (count < 101) {
+                    count += 1
+                    barra.style.height = count + "%"
+                } else {
+                    fechar(intervalerro)
+                    clearInterval(intervalerro)
+                }
+            }, 30)
+        }, 500);
+
+    }, 100);
 
 }
 

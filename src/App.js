@@ -1,12 +1,12 @@
 import './App.css';
 import { Alert } from './Components/Avisos/Alert';
-import Routes from './routes';
+import Rotas from './routes';
 
 function App() {
   return (
     <div className="App">
       <Alert/>
-      <Routes />
+      <Rotas />
       <p title='sabe ler não?' style={{color: "red", position: "fixed",bottom: "0", fontWeight: 'bolder', fontSize: "20px", marginLeft: "10px"}}>Em Desenvolvimento...</p>
     </div>
   );

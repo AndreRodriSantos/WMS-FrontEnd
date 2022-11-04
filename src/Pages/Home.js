@@ -57,10 +57,6 @@ export default function Home() {
         getPedido()
         getProduto()
         localStorage.removeItem('idPedido')
-        if (localStorage.getItem("logou") != undefined) {
-            sucesso("Bem-vindo!!! Login Realizado com Sucesso!!")
-            localStorage.removeItem('logou')
-        }
         sendIdAluno()
     }, [])
 

@@ -4,6 +4,7 @@ import api from "./api"
 
 // Components
 import CardTurma from "../Components/CardTurma";
+import { sucesso } from "../Components/Avisos/Alert";
 
 export function getFornecedores(e) {
     return api.get("api/fornecedor/list").then(response => response.data)
@@ -111,4 +112,29 @@ export function getAluno(id){
     return api.get(`api/aluno/${id}`)
 }
 
+window.onload = function () {
+    var reloading = sessionStorage.getItem("reloading");
+    if (reloading == "login") {
+        sucesso("Usuário Logado com sucesso!!")
+        sessionStorage.removeItem("reloading");
+    } else if (reloading == "cadastro") {
+        sucesso("Cadastrado realizado com sucesso")
+        sessionStorage.removeItem("reloading");
+    } else if (reloading == "alteracao") {
+        sucesso("Alteração realizada com sucesso!!")
+        sessionStorage.removeItem("reloading")
+    } else if (reloading == "deleteTurma") {
+        sucesso("Turma deletado com sucesso")
+        sessionStorage.removeItem("reloading")
+    } else if (reloading == "delete") {
+        sucesso("Exclusão feita com sucesso")
+        sessionStorage.removeItem("reloading")
+    }
+}
+
+
+export function refresh(r) {
+    sessionStorage.setItem("reloading", r);
+    window.location.reload()
+}
 

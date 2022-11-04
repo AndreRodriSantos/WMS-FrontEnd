@@ -1,4 +1,3 @@
-import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
 import CadastroAlunos from './Pages/CadastroAlunos';
@@ -17,66 +16,59 @@ import Picking from './Pages/Picking';
 import { Alert, erro } from './Components/Avisos/Alert';
 import CadastroEnderecamento from './Pages/CadastroEnderecamento';
 import { isAuthenticated, isAuthenticatedPedido, isAuthenticatedProfessor, isAuthenticatedTurma } from './Services/auth';
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 
 const history = createBrowserHistory()
 
 export { history }
 
-const PrivateRouteProfessor = function (props) {
-    isAuthenticatedProfessor().then(response => {
-        if (response === true) {
-            return <Route {...props} />
-        } else {
-            return window.location.href = "/Home"
-        }
-    })
+const PrivateRouteProfessor = () => {
+    if (isAuthenticatedProfessor() == true) {
+        return <Outlet />
+    } else {
+        erro("É preciso estar logado como um Professor para acessar aquela página, faça seu login e tente novamente")
+        return <Navigate to="/Login" />
+    }
 }
 
-const PrivateRoute = (props) => {
+
+const PrivateRoute = () => {
     if (isAuthenticated() == true) {
-        return <Route {...props} />
+        return <Outlet />
     } else {
-        return window.location.href = "/Login"
+        erro("É preciso estar logado para acessar aquela página, faça seu login e tente novamente")
+        return <Navigate to="/Login" />
     }
 }
 
-const PrivateRouteTurma = (props) => {
-    if (isAuthenticatedTurma() == true) {
-        return <Route {...props} />
-    } else {
-        return window.location.href = "/Home"
-    }
-}
-
-const PrivateRoutePedido = (props) => {
-    if (isAuthenticatedPedido() == true) {
-        return <Route {...props} />
-    } else {
-        return window.location.href = "/Home"
-    }
-}
-
-export default function Routes() {
+export default function Rotas() {
     return (
-        <Router history={history}>
-            <Switch>
-                <Route path='/' exact component={Login}></Route>
-                <Route path='/Loading' exact component={Loading}></Route>
-                <Route path='/Login' component={Login}></Route>
-                <PrivateRouteProfessor path='/Turmas' component={Turmas}></PrivateRouteProfessor>
-                <PrivateRouteTurma path='/Membros' component={ListaMembros}></PrivateRouteTurma>
-                <PrivateRoute path='/Home' component={Home}></PrivateRoute>
-                <Route path='/CadastroAlunos' component={CadastroAlunos} ></Route>
-                <Route path='/CadastroProfessores' component={CadastroProfessores} ></Route>
-                <Route path='/CadastroTurma' component={CadastroTurma}></Route>
-                <PrivateRoutePedido path='/Pedido' component={Pedido}></PrivateRoutePedido>
-                <PrivateRoute path='/VerificarPedidos' component={VerificarPedidos}></PrivateRoute>
-                <PrivateRoute path='/CadastroFornecedores' component={CadastroFornecedor} ></PrivateRoute>
-                <PrivateRoute path='/CadastroEnderecamento' component={CadastroEnderecamento} ></PrivateRoute>
-                <PrivateRoute path='/CadastroProduto' component={CadastroProduto}></PrivateRoute>
-                <PrivateRoute path='/Picking' component={Picking}></PrivateRoute>
-                <Route path='/alert' component={Alert}></Route>
-            </Switch>
-        </Router>
+        <BrowserRouter history={history}>
+            <Routes>
+                <Route path='/' exact element={<Login />} />
+                <Route path='/Login' element={<Login />} />
+                <Route path='/Loading' exact element={<Login />} />
+
+                <Route element={<PrivateRoute />}>
+                    <Route element={<Home />} path='/Home'></Route>
+                    <Route path='/VerificarPedidos' element={<VerificarPedidos />}></Route>
+                    <Route path='/CadastroFornecedores' element={<CadastroFornecedor />} ></Route>
+                    <Route path='/CadastroEnderecamento' element={<CadastroEnderecamento />} ></Route>
+                    <Route path='/CadastroProduto' element={<CadastroProduto />}></Route>
+                    <Route path='/Membros' element={<ListaMembros />}></Route>
+                    <Route path='/Pedido' element={<Pedido />}></Route>
+                    <Route path='/CadastroAlunos' element={<CadastroAlunos />}></Route>
+                    <Route path='/Picking' element={<Picking />}></Route>
+                </Route>
+
+                <Route element={<PrivateRouteProfessor />}>
+                    <Route path='/CadastroProfessores' component={<CadastroProfessores />} ></Route>
+                    <Route path='/CadastroTurma' element={<CadastroTurma />}></Route>
+                    <Route path='/Turmas' element={<Turmas />}></Route>
+                </Route>
+
+                <Route path='*' exact element={<Login />}></Route>
+            </Routes>
+        </BrowserRouter>
     );
 }

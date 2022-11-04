@@ -6,6 +6,7 @@ import { InputSenha } from "../Components/Inputs/InputSenha"
 import logo from "../IMG/Logo WMS.png"
 import api from "../Services/api";
 import { erro, sucesso } from "../Components/Avisos/Alert";
+import { refresh } from "../Services/gets";
 
 export default function Login() {
 
@@ -30,7 +31,7 @@ export default function Login() {
             api.post("api/aluno/login", body).then(
                 response => {
                     localStorage.setItem("token", response.data.token)
-                    localStorage.setItem("logou", true)
+                    refresh("login")
                     window.location.href = "/Home"
                 },
                 err => {
@@ -56,7 +57,7 @@ export default function Login() {
             api.post("api/professor/login", body).then(
                 response => {
                     localStorage.setItem("token", response.data.token)
-                    localStorage.setItem("logou", true)
+                    refresh("login")
                     window.location.href = "/Turmas"
                 },
                 err => {
