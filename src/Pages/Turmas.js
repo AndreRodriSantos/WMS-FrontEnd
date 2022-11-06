@@ -45,4 +45,4 @@ export default function Turmas() {
             <a href='/cadastroTurma' className={styles.addTurmas} ><i className="fa-solid fa-plus"></i></a>
         </section>
     );
-}
+} 

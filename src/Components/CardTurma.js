@@ -22,17 +22,16 @@ export default class CardTurma extends React.Component {
             novosDados(turma.id)
         }
 
- 
-            var count = 0;
-            
-            api.get(`api/aluno/turma/${id}`).then(
-                response => {
-                    const span = document.getElementById(id + "numMembro")
-                    const alunos = response.data
-                    alunos.map((a) => {count++})      
-                    span.innerHTML = count + "/" + turma.numParticipantes
-                }
-            )
+        var count = 0;
+
+        api.get(`api/aluno/turma/${id}`).then(
+            response => {
+                const span = document.getElementById(id + "numMembro")
+                const alunos = response.data
+                alunos.map((a) => { count++ })
+                span.innerHTML = count + "/" + turma.numParticipantes
+            }
+        )
 
         const dataInicio = dataFormatada(turma.dataInicio)
 
