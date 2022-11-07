@@ -6,7 +6,7 @@ import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
 import { sucesso } from "../Components/Avisos/Alert";
-import { sendIdAluno } from "../Services/gets";
+import { getAluno, getProfessor, sendIdAluno } from "../Services/gets";
 
 export default function Home() {
 
@@ -25,7 +25,6 @@ export default function Home() {
     function getPedido() {
         api.get(`api/pedido/list`).then(
             response => {
-                console.log(response.data);
                 setPedido(response.data)
             }
         )
@@ -33,7 +32,6 @@ export default function Home() {
     function getProduto() {
         api.get(`api/produto/list`).then(
             response => {
-                console.log(response.data);
                 setProduto(response.data)
             }
         )
@@ -51,13 +49,37 @@ export default function Home() {
         })
     }
 
+    async function getUserLogado() {
+
+        const img = document.getElementById("ImgUser")
+        const userNome = document.getElementById("UserNome")
+        const userEmail = document.getElementById("UserEmail")
+
+        if (localStorage.getItem("professor")) {
+            console.log("aaa");
+            let idProf = localStorage.getItem("idProf")
+            let professor = (await getProfessor(idProf)).data
+
+            img.setAttribute("src", professor.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${professor.imagem}?alt=media`)
+            userNome.innerText = professor.nome
+            userEmail.innerText = professor.email
+
+        } else if (localStorage.getItem("aluno")) {
+            let idAluno = localStorage.getItem("idAluno")
+            let aluno = (await getAluno(idAluno)).data
+            img.setAttribute("src", aluno.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${aluno.imagem}?alt=media`)
+            userNome.innerText = aluno.nome
+            userEmail.innerText = aluno.email
+        }
+    }
 
     useEffect(() => {
+        getUserLogado()
         getFornecedor()
         getPedido()
         getProduto()
+        getMovimentacao()
         localStorage.removeItem('idPedido')
-        sendIdAluno()
     }, [])
 
     return (
@@ -108,7 +130,7 @@ export default function Home() {
                                 <tbody className={styles.tabelaMovimentacaoBody}>
                                     {movimentacoes.map((m, key) =>
                                         <tr key={key}>
-                                            <td className={styles.produtoNome}>{m.produto.nome}</td>
+                                            <td className={styles.produtoNome}>{m.id}</td>
                                             <td className={styles.data}>{m.data}</td>
                                             <td style={m.tipo == "ENTRADA" ? { color: "green" } : { color: "red" }} className={styles.tipo}>{m.tipo}</td>
                                         </tr>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { erro, sucesso } from "../Components/Avisos/Alert"
+import { closeConfirmacao, Confirmacao, openConfirmacao } from "../Components/Avisos/Confirmacao"
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import LinhaPicking from "../Components/LinhaPicking"
 import api from "../Services/api"
@@ -10,18 +11,16 @@ export default function Picking() {
     const [enderecamentos, setEnderecamentos] = useState([])
     const [enderecamentoSelecionados, setEnderecamentoSelecionados] = useState([])
 
-    function getEnderecamento() {
+    function getEnderecamento(){
         api.get("api/enderecamento/list").then(response =>
             setEnderecamentos(response.data)
         )
     }
 
     function onCheck(enderecamento, quantidade) {
-
         setEnderecamentoSelecionados(enderecamentoSelecionados => [...enderecamentoSelecionados, {
             enderecamento, quantidade
         }])
-
         console.log(enderecamentoSelecionados);
     }
 
@@ -34,7 +33,6 @@ export default function Picking() {
                 enderecamentoSelecionados.splice(index, 1)
             }
         })
-
         console.log(enderecamentoSelecionados);
     }
 
@@ -52,6 +50,8 @@ export default function Picking() {
                 }
             )
         })
+
+        closeConfirmacao()
         window.location.reload()
     }
 
@@ -61,6 +61,7 @@ export default function Picking() {
 
     return (
         <div className={styles.container}>
+            <Confirmacao funcao={EnviarProdutos}></Confirmacao>
             <div className={styles.pickingContainer}>
                 <header className={styles.header}>
                     <span>
@@ -90,7 +91,7 @@ export default function Picking() {
                     </table>
                 </div>
             </div>
-            <button className={styles.enviarProdutos} onClick={EnviarProdutos} id="btnEnviar">Enviar <i className="fa-solid fa-box-archive"></i><lord-icon
+            <button className={styles.enviarProdutos}  onClick={() => openConfirmacao("Ao pressionar CONFIRMAR, sua lista de produtos separados saíram do estoque e serão enviados.", "Deseja enviar os produtos selecionados?")} id="btnEnviar">Enviar <i className="fa-solid fa-box-archive"></i><lord-icon
                 src="https://cdn.lordicon.com/zmkotitn.json"
                 trigger="hover"
                 colors="primary:#ffffff"

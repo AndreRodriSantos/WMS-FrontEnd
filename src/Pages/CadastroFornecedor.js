@@ -84,9 +84,7 @@ export default function CadastroFornecedor() {
                                     <input id="nao" className={styles.radio} onChange={(e) => setHomologado(e.target.value)} type="radio" value="false" name="homologado"></input>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
 
                     <Button>Cadastrar Fornecedor</Button>

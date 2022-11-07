@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { render } from "react-dom"
 import { erro, sucesso } from "../Components/Avisos/Alert"
+import { closeConfirmacao, Confirmacao, openConfirmacao } from "../Components/Avisos/Confirmacao"
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import ItemPedido from "../Components/ItemPedido"
 import ProdutoItem from "../Components/ProdutoItem"
@@ -78,6 +79,8 @@ export default function Pedido() {
                 erro("Ocorreu um erro ao Finalizar este Pedido" + err)
             }
         )
+
+        closeConfirmacao()
     }
 
     function Pesquisar(texto) {
@@ -105,6 +108,7 @@ export default function Pedido() {
 
     return (
         <div className={styles.container}>
+            <Confirmacao funcao={finalizarPedido} ></Confirmacao>
             <div className={styles.pedidoDiv}>
 
                 <header className={styles.header}>
@@ -144,7 +148,7 @@ export default function Pedido() {
 
                     <div className={styles.btnsFooter}>
                         <button className={styles.addProdutos} onClick={addLista} id="btnAdicionar">Adicionar</button>
-                        <button className={styles.finalizarPedido} style={{ visibility: "hidden" }} onClick={finalizarPedido} id="btnFinalizar">Finalizar</button>
+                        <button className={styles.finalizarPedido} style={{ visibility: "hidden" }} onClick={() => openConfirmacao("Ao pressionar em CONFIRMAR sua lista de Itens, será entregue e não poderá ser alterada pois os pedidos chegam imediatamente após a confirmacão", "Deseja finalizar seu pedido?")} id="btnFinalizar">Finalizar</button>
                     </div>
                 </div>
             </div>

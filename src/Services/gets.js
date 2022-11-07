@@ -4,7 +4,7 @@ import api from "./api"
 
 // Components
 import CardTurma from "../Components/CardTurma";
-import { sucesso } from "../Components/Avisos/Alert";
+import { erro, sucesso } from "../Components/Avisos/Alert";
 
 export function getFornecedores(e) {
     return api.get("api/fornecedor/list").then(response => response.data)
@@ -128,6 +128,9 @@ window.onload = function () {
         sessionStorage.removeItem("reloading")
     } else if (reloading == "delete") {
         sucesso("Exclusão feita com sucesso")
+        sessionStorage.removeItem("reloading")
+    } else if (reloading == "semTurma") {
+        erro("Alunos sem turma não podem logar, peça a seu professor para o adicionar em uma turma")
         sessionStorage.removeItem("reloading")
     }
 }

@@ -10,7 +10,7 @@ export default function Turmas() {
     const [turmas, setTurmas] = useState([])
 
     function getTurma() {
-        return api.get("api/turma/list").then(
+        return api.get(`api/turma/turmaByProf/${localStorage.getItem("idProf")}`).then(
             response => {                
                 setTurmas(response.data)
                 console.log(response.data);
@@ -21,7 +21,6 @@ export default function Turmas() {
 
     useEffect(() => {
         getTurma()
-        localStorage.removeItem("idTurma")
         if (localStorage.getItem("logou") != undefined) {
             sucesso("Bem-vindo!!! Login Realizado com Sucesso!!")
             localStorage.removeItem('logou')

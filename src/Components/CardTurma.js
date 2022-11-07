@@ -10,10 +10,15 @@ export default class CardTurma extends React.Component {
             localStorage.setItem("idTurma", id)
         }
 
+        function SelectTurma(){
+            localStorage.setItem("idTurma", id)
+            window.location.href = "/Home"
+        }
+
         return (
             <div className={styles.Card}>
                 <span className={styles.config}><i className="fa-solid fa-gear"></i></span>
-                <div className={styles.imgTurma}>
+                <div className={styles.imgTurma} onClick={SelectTurma}>
                     <img src={imgTurma == null ? "https://www.pngkit.com/png/detail/800-8001301_png-file-green-user-group-icon.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${imgTurma}?alt=media`}></img>
                 </div>
                 <div className={styles.InformTurma}>

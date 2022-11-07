@@ -17,6 +17,7 @@ import { Alert, erro } from './Components/Avisos/Alert';
 import CadastroEnderecamento from './Pages/CadastroEnderecamento';
 import { isAuthenticated, isAuthenticatedPedido, isAuthenticatedProfessor, isAuthenticatedTurma } from './Services/auth';
 import { BrowserRouter, Routes, Route, Outlet, Navigate } from 'react-router-dom';
+import { Confirmacao } from './Components/Avisos/Confirmacao';
 
 const history = createBrowserHistory()
 
@@ -41,6 +42,30 @@ const PrivateRoute = () => {
     }
 }
 
+const PrivateRoutePedido = () => {
+    if (isAuthenticatedPedido() == true) {
+        return <Outlet />
+    } else if (isAuthenticatedPedido() == "semToken") {
+        erro("É preciso estar logado para acessar aquela página, faça seu login e tente novamente")
+        return <Navigate to="/Login" />
+    } else {
+        erro("É preciso selecionar um pedido para acessar aquela página")
+        return <Navigate to="/Home" />
+    }
+}
+
+const PrivateRouteTurma = () => {
+    if (isAuthenticatedTurma() == true) {
+        return <Outlet />
+    } else if (isAuthenticatedPedido() == "semToken") {
+        erro("É preciso estar logado para acessar aquela página, faça seu login e tente novamente")
+        return <Navigate to="/Login" />
+    } else {
+        erro("É preciso selecionar uma Turma para acessar aquela página")
+        return <Navigate to="/Turmas" />
+    }
+}
+
 export default function Rotas() {
     return (
         <BrowserRouter history={history}>
@@ -48,23 +73,26 @@ export default function Rotas() {
                 <Route path='/' exact element={<Login />} />
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Loading' exact element={<Login />} />
+                <Route path='/CadastroAlunos' element={<CadastroAlunos />}></Route>
 
-                <Route element={<PrivateRoute />}>
-                    <Route element={<Home />} path='/Home'></Route>
+                <Route element={<PrivateRouteProfessor />}>
+                    <Route path='/CadastroProfessores' element={<CadastroProfessores />} ></Route>
+                    <Route path='/CadastroTurma' element={<CadastroTurma />}></Route>
+                    <Route path='/Turmas' element={<Turmas />}></Route>
+                </Route>
+
+                <Route element={<PrivateRoutePedido />}>
                     <Route path='/VerificarPedidos' element={<VerificarPedidos />}></Route>
+                </Route>
+
+                <Route element={<PrivateRouteTurma />}>
+                    <Route element={<Home />} path='/Home'></Route>
                     <Route path='/CadastroFornecedores' element={<CadastroFornecedor />} ></Route>
                     <Route path='/CadastroEnderecamento' element={<CadastroEnderecamento />} ></Route>
                     <Route path='/CadastroProduto' element={<CadastroProduto />}></Route>
-                    <Route path='/Membros' element={<ListaMembros />}></Route>
                     <Route path='/Pedido' element={<Pedido />}></Route>
-                    <Route path='/CadastroAlunos' element={<CadastroAlunos />}></Route>
                     <Route path='/Picking' element={<Picking />}></Route>
-                </Route>
-
-                <Route element={<PrivateRouteProfessor />}>
-                    <Route path='/CadastroProfessores' component={<CadastroProfessores />} ></Route>
-                    <Route path='/CadastroTurma' element={<CadastroTurma />}></Route>
-                    <Route path='/Turmas' element={<Turmas />}></Route>
+                    <Route path='/Membros' element={<ListaMembros />}></Route>
                 </Route>
 
                 <Route path='*' exact element={<Login />}></Route>

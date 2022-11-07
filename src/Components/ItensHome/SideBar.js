@@ -2,14 +2,20 @@
 import React from "react";
 import styles from "../../Styles/ItensHome/SideBar.module.css"
 import logoBox from "../../IMG/Logo WMS2.png"
-import user from "../../IMG/Group 119.png"
 import { CadastroNcm } from "./CadastroNcm"
 import CadastroMedidas from "../Forms/CadastroMedidas";
+import { getAluno, getProfessor } from "../../Services/gets";
+
+export function logout() {
+    localStorage.clear()
+    window.location.href = "/Login"
+}
 
 export class SideBar extends React.Component {
+
     render() {
         return (
-            <div className={styles.container}>
+            <div  className={styles.container}>
                 {/* BTN ON SIDEBAR */}
                 <div id='onBtn' onClick={onSideBar} className={styles.btn}>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -169,14 +175,14 @@ export class SideBar extends React.Component {
                     {/* SOBRE */}
                     <div id='sobre' className={styles.sobre}>
                         <div className={styles.user}>
-                            <img id='ImgUser' src={user} className={styles.ImgUser_focus} />
+                            <img id='ImgUser' className={styles.ImgUser_focus} />
                         </div>
                         <div id='InfoUser' className={styles.InfoUser}>
-                            <div className={styles.Nome}>Caio</div>
-                            <div className={styles.Email}>caio@gmail.com</div>
+                            <div id='UserNome' className={styles.Nome}></div>
+                            <div  id='UserEmail' className={styles.Email}></div>
                         </div>
                         {/* LOG OUT */}
-                        <a id="logOut" className={styles.logOut}>
+                        <a id="logOut" onClick={logout} className={styles.logOut}>
                             <i className="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </div>

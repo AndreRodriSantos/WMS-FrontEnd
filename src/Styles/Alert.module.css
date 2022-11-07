@@ -14,12 +14,31 @@
     height: 200px;
     background-color: white;
     border-radius:  0 20px 20px 0;
-    box-shadow: rgba(0, 0, 0, 0.274) 0 0px 24px 10px
+    box-shadow: rgba(0, 0, 0, 0.274) 0 0px 24px 10px;
 }
 
 .alertOn{
     animation-name: alert-animate;
     animation-duration: 0.3s;
+}
+
+.close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    color: #000;
+    top: 40px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    transition: .2s ease-in;
+}
+
+.close:hover{
+    color: red;
 }
 
 @keyframes alert-animate {
@@ -77,8 +96,28 @@
     cursor: pointer;
 }
 
+.btnSair{
+    width: 130px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: red;
+    border: none;
+    font-weight: bold;
+    font-size: 15;
+    color: white;
+    text-align: center;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
 .title{
     font-size: 20px;
     color: red;
     font-weight: bold
+}
+
+.alertBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

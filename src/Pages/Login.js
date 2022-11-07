@@ -6,7 +6,7 @@ import { InputSenha } from "../Components/Inputs/InputSenha"
 import logo from "../IMG/Logo WMS.png"
 import api from "../Services/api";
 import { erro, sucesso } from "../Components/Avisos/Alert";
-import { refresh } from "../Services/gets";
+import { getAluno, getProfessor, refresh, sendIdAluno, sendIdProf } from "../Services/gets";
 
 export default function Login() {
 
@@ -29,10 +29,21 @@ export default function Login() {
             console.log(body);
     
             api.post("api/aluno/login", body).then(
-                response => {
+                async response => {
                     localStorage.setItem("token", response.data.token)
-                    refresh("login")
-                    window.location.href = "/Home"
+                    const idAluno = await sendIdAluno()
+                    localStorage.setItem("idAluno", idAluno)
+                    let aluno = (await getAluno(idAluno)).data
+                    localStorage.setItem("aluno", true)
+                    console.log(aluno.turma);
+                    if(aluno.turma == null || aluno.turma == undefined){
+                        localStorage.clear()
+                        refresh("semTurma")
+                    }else{
+                        localStorage.setItem("idTurma", aluno.turma.id)
+                        refresh("login")
+                        window.location.href = "/Home"
+                    }
                 },
                 err => {
                     erro("Erro ao Realizar o Login, não foi encontrado um usuário com essas informaçoes, verifique se os dados estão corretos e tente novamente")
@@ -55,8 +66,13 @@ export default function Login() {
             console.log(body);
     
             api.post("api/professor/login", body).then(
-                response => {
+                async response => {
                     localStorage.setItem("token", response.data.token)
+                    const idProf = await sendIdProf()
+                    localStorage.setItem("idProf", idProf)
+                    let professor = await getProfessor(idProf)
+                    professor = professor.data
+                    localStorage.setItem("professor", true)
                     refresh("login")
                     window.location.href = "/Turmas"
                 },

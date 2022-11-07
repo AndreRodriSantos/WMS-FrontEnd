@@ -44,5 +44,5 @@ function fileChange() {
         photo.src = reader.result;
     }
 
-    reader.readAsDataURL(file.files[0]);
+    return reader.readAsDataURL(file.files[0]);
 }

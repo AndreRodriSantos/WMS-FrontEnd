@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../Styles/Alert.module.css"
+import { logout } from "../ItensHome/SideBar";
 
 
 export class Alert extends React.Component {
@@ -14,9 +15,17 @@ export class Alert extends React.Component {
                         <p className={styles.title} id="title"></p>
                         <span id="mensagem"></span>
 
-                        <button onClick={fechar} className={styles.btn}>
-                            OK
-                        </button>
+                        <div className={styles.alertBtn}>
+
+                            <button id="sairBtn" style={{ visibility: "hidden" }} onClick={logout} className={styles.btnSair}>
+                                Sair <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                            </button>
+
+                            <button onClick={fechar} className={styles.btn}>
+                                OK
+                            </button>
+
+                        </div>
 
                     </div>
                 </div>
@@ -30,6 +39,9 @@ let count = 1
 export function sucesso(mensagem) {
 
     setTimeout(() => {
+        
+        const btnSair = document.getElementById("sairBtn")
+        btnSair.style.visibility = "hidden"
         const container = document.getElementById("alertDiv")
         const alert = document.getElementById("alert")
         const barra = document.getElementById("barra")
@@ -63,8 +75,13 @@ export function sucesso(mensagem) {
 
 export function erro(mensagem) {
 
-
     setTimeout(() => {
+        const btnSair = document.getElementById("sairBtn")
+
+        if (mensagem == "Você já está logado") {
+
+            btnSair.style.visibility = "visible"
+        }
 
         const container = document.getElementById("alertDiv")
         const alert = document.getElementById("alert")
@@ -87,6 +104,7 @@ export function erro(mensagem) {
                     count += 1
                     barra.style.height = count + "%"
                 } else {
+                    btnSair.style.visibility = "hidden"
                     fechar(intervalerro)
                     clearInterval(intervalerro)
                 }

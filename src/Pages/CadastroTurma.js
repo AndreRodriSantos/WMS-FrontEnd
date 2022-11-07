@@ -18,14 +18,16 @@ export default function CadastroTurma() {
         const periodo = document.getElementById("periodo").value
         const participantes = document.getElementById("participantes").textContent
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
+        const prof = {"id": localStorage.getItem("idProf")} 
     
         const body = {
-            'nome':nome, 
+            'nome':nome,
             'periodo':periodo,
             'dataInicio':dataC,
             'dataFinal': dataF,
-            'numeroMembro':participantes ,
-            imagem
+            'numeroMembro':participantes,
+            imagem,
+            prof
         };
     
         console.log(body)

@@ -1,13 +1,10 @@
 import { getProfessor, sendIdProf } from "./gets"
 
-export const isAuthenticatedProfessor = async function () {
+export const isAuthenticatedProfessor = function () {
     const token = localStorage.getItem("token")
     if (token){
-        const idProf = await sendIdProf()
-        const professor = await getProfessor(idProf)
-        console.log(professor.data);
-
-        if (professor.data.nif != undefined) {
+        const professor = localStorage.getItem("professor")
+        if (professor) {
             return true
         } else {
             return false
@@ -36,7 +33,7 @@ export const isAuthenticatedPedido = function () {
             return false
         }
     } else {
-        return false
+        return "semToken"
     }
 }
 
@@ -51,7 +48,7 @@ export const isAuthenticatedTurma = function () {
             return false
         }
     } else {
-        return false
+        return "semToken"
     }
 }
 
