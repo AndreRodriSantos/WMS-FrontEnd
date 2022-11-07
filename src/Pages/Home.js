@@ -3,6 +3,7 @@ import styles from "../Styles/ItensHome/Home.module.css"
 import { SideBar } from "../Components/ItensHome/SideBar";
 import { ListHome } from "../Components/ItensHome/ListHome";
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
+import { PopUpInfo } from "../Components/ItensHome/PopUpInfo"
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
 
@@ -20,6 +21,7 @@ export default function Home() {
             }
         )
     }
+
     function getPedido() {
         api.get(`api/pedido/list`).then(
             response => {
@@ -49,19 +51,20 @@ export default function Home() {
         })
     }
 
-
     useEffect(() => {
         getFornecedor()
         getPedido()
         getProduto()
         localStorage.removeItem('idPedido')
+        localStorage.removeItem('idFornecedor')
     }, [])
 
     return (
         <section className={styles.components}>
+            <PopUpInfo  />
             <div className={styles.home}>
                 <SideBar />
-             
+
                 <div className={styles.homeRidth}>
                     <div className={styles.cardTutorial}>
                         <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
@@ -155,7 +158,7 @@ export default function Home() {
                             </div>
                             <div className={styles.lista}>
                                 {
-                                    fornecedor.map((f) => <ListHome objeto={f} key={f.id} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
+                                    fornecedor.map((f) => <ListHome id={f.id} objeto={f} key={f.id} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
                                 }
                             </div>
                         </div>
