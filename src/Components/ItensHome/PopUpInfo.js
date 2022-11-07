@@ -2,6 +2,8 @@ import React from "react";
 import styles from '../../Styles/ItensHome/PopUpInfo.module.css'
 import logo from "../../IMG/Logo WMS.png"
 import api from "../../Services/api";
+import { erro, sucesso } from "../Avisos/Alert";
+import { refresh } from "../../Services/gets";
 
 export class PopUpInfo extends React.Component {
     render() {
@@ -16,9 +18,14 @@ export class PopUpInfo extends React.Component {
             let id = document.getElementById('id').value
             localStorage.setItem('idFornecedor', id)
 
-            api.delete(`api/fornecedor/${id}`)
-            window.location.reload()
-
+            api.delete(`api/fornecedor/${id}`).then(
+                response => {
+                    refresh("alteracao")
+                },
+                err => {
+                    refresh("erroFornecedor")
+                }
+            )
         }
 
         return (
@@ -83,7 +90,7 @@ export class PopUpInfo extends React.Component {
         function Fechar() {
             const container = document.getElementById("container");
             const PopUpInfo = document.getElementById("PopUpInfo");
-
+            localStorage.removeItem("idFornecedor")
             container.style.zIndex = "-1"
             PopUpInfo.style.display = 'none'
         }

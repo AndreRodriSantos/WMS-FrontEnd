@@ -54,7 +54,7 @@ export async function fazOptionsFornecedor() {
     return options
 }
 
-export async function fazOptionsDemanda() {
+export async function fazOptionsDemanda(){
     const demanda = await getDemandas()
     const options = demanda.map((d) => `<option value=${d}>${d}</option>`)
     return options
@@ -131,6 +131,9 @@ window.onload = function () {
         sessionStorage.removeItem("reloading")
     } else if (reloading == "semTurma") {
         erro("Alunos sem turma não podem logar, peça a seu professor para o adicionar em uma turma")
+        sessionStorage.removeItem("reloading")
+    }else if(reloading == "erroFornecedor"){
+        erro("Este fornecedor não pode ser excluido, pois existem produtos cadastrados com ele!!")
         sessionStorage.removeItem("reloading")
     }
 }

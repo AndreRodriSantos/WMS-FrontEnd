@@ -25,11 +25,22 @@ export default function Home() {
     }
 
     function getPedido() {
-        api.get(`api/pedido/list`).then(
-            response => {
-                setPedido(response.data)
-            }
-        )
+        const idAluno = localStorage.getItem("idAluno")
+
+        if (idAluno) {
+            api.get(`api/pedido/pedidosAluno/${idAluno}`).then(
+                response => {
+                    setPedido(response.data)
+
+                }
+            )
+        }else{
+            api.get(`api/pedido/list`).then(
+                response => {
+                    setPedido(response.data)
+                }
+            )
+        }
     }
     function getProduto() {
         api.get(`api/produto/list`).then(
@@ -87,7 +98,7 @@ export default function Home() {
 
     return (
         <section className={styles.components}>
-            <PopUpInfo  />
+            <PopUpInfo />
             <div className={styles.home}>
                 <SideBar />
 

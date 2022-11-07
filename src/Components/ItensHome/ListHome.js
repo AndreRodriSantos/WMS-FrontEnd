@@ -18,6 +18,7 @@ export class ListHome extends React.Component {
             else {
                 alert('aaaa')
             }
+
         }
 
         function chamarPopUp() {
@@ -49,19 +50,18 @@ export class ListHome extends React.Component {
             localidade.innerText = objeto.localidade
             logradouro.innerText = objeto.logradouro
             uf.innerText = objeto.uf
-
         }
 
         return (
-            <a className={styles.linha} onClick={objeto == objeto.cnpj ? chamarPopUp : onClickId} >
+            <a className={styles.linha} onClick={objeto == objeto.cnpj ? chamarPopUp : onClickId}>
                 <tr className={styles.container}>
                     <td className={styles.titleList}>
                         <span className={styles.nome}>{Info1}</span>
                     </td>
                     <td className={styles.titleList}>{Info2}</td>
                     <td className={styles.titleList}>{Info3}</td>
-                    {objeto.numPedido == undefined ? "" : (<td> <a className={styles.linha} href={"/VerificarPedidos"} onClick={setPedidoId}><i className="fa-solid fa-check"></i></a></td>)}
                 </tr>
+
             </a>
         );
 

@@ -64,9 +64,12 @@ export default function Pedido() {
 
     function finalizarPedido() {
         const valorTotal = document.getElementById("valorTotalSelec").textContent
+        const aluno = {id : localStorage.getItem("idAluno")}
+
         const pedido = {
             "itens": produtosAdicionados,
-            "valor": valorTotal
+            "valor": valorTotal,
+            aluno
         }
 
         api.post("api/pedido/save", pedido).then(
