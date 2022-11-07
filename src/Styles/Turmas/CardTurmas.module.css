@@ -6,8 +6,12 @@
     display: flex;
     flex-direction: column;
     margin: 50px 5%;
+    transition: .5s linear;
+    scale: 1;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 
 }
+
+
 .config{
     position: absolute;
     width: 50px;
@@ -29,12 +33,22 @@
     background-color: #000;
     font-size: 18px;
     color: #fff;
+
 }
 
+.config:hover i {
+    transition: .5s linear;
+    transform: rotate(360deg);
+}
 .imgTurma{ 
     width: 100%;
     height: 300px;
     cursor: pointer;
+}
+
+.Card:hover{
+    transform: scale(1.1);
+    transition: .5s linear;
 }
 .imgTurma img{
    width: 100%;

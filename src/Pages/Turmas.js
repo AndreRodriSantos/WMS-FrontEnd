@@ -32,6 +32,7 @@ export default function Turmas() {
 
     useEffect(() => {
         getTurma()
+        localStorage.removeItem("idTurma")
         if (localStorage.getItem("logou") != undefined) {
             sucesso("Bem-vindo!!! Login Realizado com Sucesso!!")
             localStorage.removeItem('logou')

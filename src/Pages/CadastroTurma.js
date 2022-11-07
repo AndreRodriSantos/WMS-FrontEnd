@@ -10,6 +10,7 @@ import api from "../Services/api"
 import { fazOptionsPeriodo } from "../Services/gets"
 import { erro, sucesso } from "../Components/Avisos/Alert"
 import { dataDesformatada } from "../Services/formatter"
+import base64 from "react-native-base64"
 
 export default function CadastroTurma() {
 
@@ -17,16 +18,20 @@ export default function CadastroTurma() {
         const id = localStorage.getItem("idTurma")
         const periodo = document.getElementById("periodo")
         const participantes = document.getElementById("participantes") 
+        const img = document.getElementById("imgPhoto")
 
         if(id != undefined || id != null){
             api.get(`api/turma/${id}`).then(
                 response => {
                     const turma = response.data
-                    participantes.innerHTML = turma.numParticipantes 
+                    participantes.innerHTML = turma.numParticipantes
                     setNome(turma.nome)
                     setDataComeco(turma.dataInicio)
                     setDataFinal(turma.dataFinal)
-                    periodo.value = turma.periodo                     
+                    periodo.value = turma.periodo
+                    if(turma.imagem != null){
+                        img.setAttribute("src", `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${turma.imagem}?alt=media`)
+                    }
                 }
             )
         }
@@ -40,22 +45,18 @@ export default function CadastroTurma() {
         const participantes = document.getElementById("participantes").textContent
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
 
-        setDataComeco(dataDesformatada(dataC))
-        setDataFinal(dataDesformatada(dataF))
-
         const prof = {"id": localStorage.getItem("idProf")} 
+        const id = localStorage.getItem("idTurma")
     
         const body = {
+            id,
             'nome':nome,
             'periodo':periodo,
             'dataInicio':dataC,
             'dataFinal': dataF,
             'numParticipantes': participantes,
-            imagem,
             prof
         };
-
-        console.log(body)
 
         if(id){
             api.put(
@@ -71,6 +72,7 @@ export default function CadastroTurma() {
                 }
             )
         }else{
+            body.imagem = imagem
             api.post(
                 "api/turma/save", body
             ).then(

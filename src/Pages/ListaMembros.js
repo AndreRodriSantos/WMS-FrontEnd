@@ -35,29 +35,23 @@ export default function ListaMembros() {
 
     async function AdicionarList() {
         const turma = await getTurma(localStorage.getItem("idTurma"))
-
         var count = 0;
 
-        api.get(`api/aluno/turma/${turma.id}`).then(
-            response => {
-                const span = document.getElementById(turma.id + "numMembro")
-                const alunos = response.data
-                alunos.map((a) => { count++ })
-                span.innerHTML = count + "/" + turma.numParticipantes
-            }
-        )
+        const alunos = (await api.get(`api/aluno/turma/${turma.id}`)).data
+        await alunos.map((a) => { count++ })
+        console.log(count);
 
-        if (turma.numParticipantes < count) {
-            if (membrosCheck.length != 0) {
+        if (membrosCheck.length != 0) {
+            if (count < turma.numParticipantes) {
                 membrosCheck.map((m) => {
                     api.patch(`api/aluno/${m.id}`, turma)
                 })
                 window.location.reload()
+            } else {
+                erro(
+                    `Limite de Membros foi alcançado! ${count}/${turma.numParticipantes} de Membros na Turma`
+                )
             }
-        } else {
-            erro(
-                'Limite de Membros foi alcançados!'
-            )
         }
     }
 
