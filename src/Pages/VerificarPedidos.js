@@ -41,7 +41,7 @@ export default function VerificarPedidos() {
     }
 
     useEffect(() => {
-        getPedido(localStorage.getItem('idPedido'))
+        getPedido(localStorage.getItem('idPedido')) 
 
     }, [])
 

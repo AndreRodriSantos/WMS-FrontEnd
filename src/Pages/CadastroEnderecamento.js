@@ -14,7 +14,7 @@ export default function CadastroEnderecamento() {
     const [edificio, setEdificio] = useState('')
     const [andar, setAndar] = useState('')
     const [modulo, setModulo] = useState('')
-    const [quantidade, setQuantidade] = useState('')
+    //const [quantidade, setQuantidade] = useState('')
 
     function getProdutoId(id){
         return api.get(`api/produto/${id}`).then(
@@ -25,8 +25,8 @@ export default function CadastroEnderecamento() {
     async function CadastrarEnderecamento(event) {
         event.preventDefault()
 
-        let idProduto = document.getElementById("itens").value
-        let itens = await getProdutoId(idProduto)
+        //let idProduto = document.getElementById("itens").value
+        //let itens = await getProdutoId(idProduto)
 
         let demanda = document.getElementById("demanda").value
 
@@ -35,9 +35,7 @@ export default function CadastroEnderecamento() {
            'edificio' : edificio,
            'andar' : andar,
            'modulo' : modulo,
-           'demanda' : demanda,
-           'itens' : itens,
-           'quantidade' : quantidade,
+           'demanda' : demanda,  
         };
 
         console.log(body)
@@ -75,10 +73,7 @@ export default function CadastroEnderecamento() {
 
                     <div className={styles.column}>
                         <Select data={fazOptionsDemanda()} idArrow="arrow1" id="demanda" name="demanda"></Select>
-                                    
-                        <Select data={fazOptionsProdutos()} idArrow="arrow2" id="itens" name="itens"></Select>
-
-                        <Input label="Quantidade" id="quantidade" type="text" onChange={(e) => setQuantidade(e.target.value)} placeholder="Digite o Quantidade" name="quantidade" ></Input>
+                                        
                     </div>
                     <Button>Cadastrar Endereçamento</Button>
                 </form>

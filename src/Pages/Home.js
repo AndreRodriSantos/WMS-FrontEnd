@@ -3,6 +3,7 @@ import styles from "../Styles/ItensHome/Home.module.css"
 import { SideBar } from "../Components/ItensHome/SideBar";
 import { ListHome } from "../Components/ItensHome/ListHome";
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
+import { PopUpInfo } from "../Components/ItensHome/PopUpInfo"
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
 import { sucesso } from "../Components/Avisos/Alert";
@@ -22,6 +23,7 @@ export default function Home() {
             }
         )
     }
+
     function getPedido() {
         api.get(`api/pedido/list`).then(
             response => {
@@ -80,10 +82,12 @@ export default function Home() {
         getProduto()
         getMovimentacao()
         localStorage.removeItem('idPedido')
+        localStorage.removeItem('idFornecedor')
     }, [])
 
     return (
         <section className={styles.components}>
+            <PopUpInfo  />
             <div className={styles.home}>
                 <SideBar />
 
@@ -183,7 +187,7 @@ export default function Home() {
                             <table>
                                 <tbody className={styles.lista}>
                                     {
-                                        fornecedor.map((f, key) => <ListHome objeto={f} key={key} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
+                                        fornecedor.map((f, key) => <ListHome id={f.id} objeto={f} key={key} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
                                     }
                                 </tbody>
                             </table>

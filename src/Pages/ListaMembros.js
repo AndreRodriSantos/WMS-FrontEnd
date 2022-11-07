@@ -6,6 +6,7 @@ import LinhaPesquisa from "../Components/Membros/LinhaPesquisa";
 import SearchInput from "../Components/Inputs/SearchInput";
 import api from "../Services/api";
 import LinhaMembros from "../Components/Membros/LinhaMembro";
+import { erro } from "../Components/Avisos/Alert";
 
 export default function ListaMembros() {
 
@@ -35,12 +36,28 @@ export default function ListaMembros() {
     async function AdicionarList() {
         const turma = await getTurma(localStorage.getItem("idTurma"))
 
-        membrosCheck.map((m) => {
-            api.patch(`api/aluno/${m.id}`, turma)
-        })
+        var count = 0;
 
-        if (membrosCheck.length != 0) {
-            window.location.reload()
+        api.get(`api/aluno/turma/${turma.id}`).then(
+            response => {
+                const span = document.getElementById(turma.id + "numMembro")
+                const alunos = response.data
+                alunos.map((a) => { count++ })
+                span.innerHTML = count + "/" + turma.numParticipantes
+            }
+        )
+
+        if (turma.numParticipantes < count) {
+            if (membrosCheck.length != 0) {
+                membrosCheck.map((m) => {
+                    api.patch(`api/aluno/${m.id}`, turma)
+                })
+                window.location.reload()
+            }
+        } else {
+            erro(
+                'Limite de Membros foi alcançados!'
+            )
         }
     }
 

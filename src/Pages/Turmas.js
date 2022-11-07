@@ -1,3 +1,4 @@
+import { wait } from "@testing-library/user-event/dist/utils";
 import React, { useEffect, useState } from "react";
 import { sucesso } from "../Components/Avisos/Alert";
 import CardTurma from "../Components/CardTurma";
@@ -19,6 +20,16 @@ export default function Turmas() {
         )
     }
 
+    function tirarTurma(id){
+        api.delete(`api/turma/${id}`)
+    }
+
+    async function novosDados(id){
+
+        localStorage.setItem("idTurma", id)
+        window.location.href=`/cadastroTurma`
+    }
+
     useEffect(() => {
         getTurma()
         if (localStorage.getItem("logou") != undefined) {
@@ -29,7 +40,7 @@ export default function Turmas() {
 
     return (
         <section className={styles.container}>          
-            {turmas.map((t, key) => <CardTurma id={t.id} key={t.id} nomeTurma={t.nome} periodo={t.periodo} dataComeco={t.dataInicio} membros={t.numeroMembro} imgTurma={t.imagem}/>)}
+            {turmas.map((t, key) => <CardTurma id={t.id} config={t.id + 'config'} key={t.id} turma={t} imgTurma={t.imagem} tirarTurma={tirarTurma} novosDados={novosDados}/>)}
             {turmas.length <= 0 && 
                 <div className={styles.semTurmas}>
                     <span className={styles.titleSemTurma}>Nenhuma Turma Cadastrada</span> 
@@ -38,4 +49,4 @@ export default function Turmas() {
             <a href='/cadastroTurma' className={styles.addTurmas} ><i className="fa-solid fa-plus"></i></a>
         </section>
     );
-}
+} 
