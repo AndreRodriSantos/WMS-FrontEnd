@@ -10,17 +10,15 @@ export class PopUpInfo extends React.Component {
 
         function alterar() {
             let id = document.getElementById('id').value
-            localStorage.setItem('idFornecedor', id)
             window.location.href = "/CadastroFornecedores"
         }
 
         function excluir() {
             let id = document.getElementById('id').value
-            localStorage.setItem('idFornecedor', id)
 
             api.delete(`api/fornecedor/${id}`).then(
                 response => {
-                    refresh("alteracao")
+                    refresh("delete")
                 },
                 err => {
                     refresh("erroFornecedor")
@@ -39,15 +37,15 @@ export class PopUpInfo extends React.Component {
                     <div className={styles.InfoLeft}>
 
                         <span className={styles.titleInfo}>
-                            CEP:<p id='cep' className={styles.info}></p>
+                            <p id="info1Title"></p><p id='info1' className={styles.info}></p>
                         </span>
 
                         <span className={styles.titleInfo}>
-                            CNPJ:<p id='cnpj' className={styles.info}></p>
+                            <p id="info2Title"></p><p id='info2' className={styles.info}></p>
                         </span>
 
                         <span className={styles.titleInfo}>
-                            UF:<p id='uf' className={styles.info}></p>
+                            <p id="info3Title"></p><p id='info3' className={styles.info}></p>
                         </span>
 
                     </div>
@@ -55,15 +53,15 @@ export class PopUpInfo extends React.Component {
                     <div className={styles.InfoRight}>
 
                         <span className={styles.titleInfo}>
-                            Homologado:<p id='homologado' className={styles.info}></p>
+                            <p id="info4Title"></p><p id='info4' className={styles.info}></p>
                         </span>
 
                         <span className={styles.titleInfo}>
-                            Logradouro:<p id='logradouro' className={styles.info}></p>
+                            <p id="info5Title"></p><p id='info5' className={styles.info}></p>
                         </span>
 
                         <span className={styles.titleInfo}>
-                            Localidade:<p id='localidade' className={styles.info}></p>
+                            <p id="info6Title"></p><p id='info6' className={styles.info}></p>
                         </span>
 
                     </div>
@@ -73,7 +71,6 @@ export class PopUpInfo extends React.Component {
                             <span className={styles.rounded2}>
                                 <span className={styles.text_green}>alterar</span>
                             </span>
-
                         </button>
 
                         <button onClick={excluir} id='btnX' className={styles.btn} >
@@ -91,6 +88,7 @@ export class PopUpInfo extends React.Component {
             const container = document.getElementById("container");
             const PopUpInfo = document.getElementById("PopUpInfo");
             localStorage.removeItem("idFornecedor")
+            localStorage.removeItem("idProduto")
             container.style.zIndex = "-1"
             PopUpInfo.style.display = 'none'
         }

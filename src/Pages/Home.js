@@ -69,7 +69,6 @@ export default function Home() {
         const userEmail = document.getElementById("UserEmail")
 
         if (localStorage.getItem("professor")) {
-            console.log("aaa");
             let idProf = localStorage.getItem("idProf")
             let professor = (await getProfessor(idProf)).data
 
@@ -211,7 +210,7 @@ export default function Home() {
                             <table>
                                 <tbody className={styles.lista}>
                                     {
-                                        produto.map((p, key) => <ListHome objeto={p} key={key} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
+                                        produto.map((p, key) => <ListHome objeto={p} key={key} id={p.codProduto} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
                                     }
                                 </tbody>
                             </table>
@@ -237,7 +236,6 @@ export default function Home() {
 
                 </div>
                 <div className={styles.BotChat}>
-
                     <span className={styles.title}>
                         <i className="fa-solid fa-comment"></i>
                         <h3>ChatBot</h3>

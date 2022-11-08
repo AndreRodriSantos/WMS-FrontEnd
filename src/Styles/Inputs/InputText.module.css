@@ -20,17 +20,6 @@
 
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button,
-input::-webkit-calendar-picker-indicator {
-  -webkit-appearance: none;
-}
-
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-}
 
 .inputBox input[type=date]:required:invalid::-webkit-datetime-edit {
   color: black;
