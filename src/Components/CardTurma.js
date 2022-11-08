@@ -35,6 +35,9 @@ export default class CardTurma extends React.Component {
                 const alunos = response.data
                 alunos.map((a) => { count++ })
                 span.innerHTML = count + "/" + turma.numParticipantes
+                if(count == turma.numParticipantes){
+                    span.style.color = "tomato"
+                }
             }
         )
 
@@ -69,6 +72,9 @@ export default class CardTurma extends React.Component {
                     </li>
                     <li className={styles.sub_link}>
                         <span onClick={alterarTurma} className={styles.link_name} > <i className="fa-solid fa-pen"></i> ALTERAR</span >
+                    </li>
+                    <li className={styles.sub_link}>
+                        <a href="/Membros" onClick={setStorage} className={styles.link_name} > <i className="fa-solid fa-users"></i> MEMBROS</a>
                     </li>
                 </ul>
                 {/* UL OFF */}

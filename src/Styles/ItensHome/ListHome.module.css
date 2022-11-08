@@ -3,13 +3,21 @@
     width: 100%;
     height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 10px;
+    transform: scale(1);
+    transition: 0.2s linear;
 }
+
+.container:hover{
+    background-color:rgb(218, 238, 255) ;
+    transform: scale(1.05);
+    transition: 0.2s linear;
+}
+
 .titleList{
     margin: 30px;
-}
-.linha{
-    text-decoration: none;
-    color: #000;
 }

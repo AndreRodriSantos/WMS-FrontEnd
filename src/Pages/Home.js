@@ -34,7 +34,7 @@ export default function Home() {
 
                 }
             )
-        }else{
+        } else {
             api.get(`api/pedido/list`).then(
                 response => {
                     setPedido(response.data)
@@ -135,13 +135,6 @@ export default function Home() {
                         </div>
                         <div className={styles.tabelaContainer}>
                             <table className={styles.tabelaMovimentacao}>
-                                <thead className={styles.tabelaMovimentacaoHead}>
-                                    <tr>
-                                        <th>Produto</th>
-                                        <th>Data</th>
-                                        <th>Tipo</th>
-                                    </tr>
-                                </thead>
                                 <tbody className={styles.tabelaMovimentacaoBody}>
                                     {movimentacoes.map((m, key) =>
                                         <tr key={key}>
@@ -168,14 +161,14 @@ export default function Home() {
                             <div className={styles.headerList}>
                                 <span className={styles.headerTitle}>
                                     <i className="fa-solid fa-cart-plus"></i>
-                                    <p className={styles.SubTitle}>Pedido</p>
+                                    <p className={styles.SubTitle}>Pedidos</p>
                                 </span>
                                 <a href="/Pedido" className={styles.addFornecedor}>
                                     <i className="fa-solid fa-circle-plus"></i>
                                     <p className={styles.addTitle}>Novo Pedido</p>
                                 </a>
                             </div>
-                            <table>
+                            <table className={styles.tabela}>
                                 <tbody className={styles.lista}>
                                     {
                                         pedido.map((p, key) => <ListHome id={p.numPedido} key={key} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
@@ -188,7 +181,7 @@ export default function Home() {
                             <div className={styles.headerList}>
                                 <span className={styles.headerTitle}>
                                     <i className="fa-solid fa-address-book"></i>
-                                    <p className={styles.SubTitle}>Fornecedor</p>
+                                    <p className={styles.SubTitle}>Fornecedores</p>
                                 </span>
                                 <a href="/CadastroFornecedores" className={styles.addFornecedor}>
                                     <i className="fa-solid fa-circle-plus"></i>
@@ -208,7 +201,7 @@ export default function Home() {
                             <div className={styles.headerList}>
                                 <span className={styles.headerTitle}>
                                     <i className="fa-solid fa-box"></i>
-                                    <p className={styles.SubTitle}>Produto</p>
+                                    <p className={styles.SubTitle}>Produtos</p>
                                 </span>
                                 <a href="/CadastroProduto" className={styles.addFornecedor}>
                                     <i className="fa-solid fa-circle-plus"></i>

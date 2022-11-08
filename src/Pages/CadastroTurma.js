@@ -9,8 +9,6 @@ import styles from "../Styles/Cadastros/CadastroTurma.module.css"
 import api from "../Services/api"
 import { fazOptionsPeriodo } from "../Services/gets"
 import { erro, sucesso } from "../Components/Avisos/Alert"
-import { dataDesformatada } from "../Services/formatter"
-import base64 from "react-native-base64"
 
 export default function CadastroTurma() {
 
@@ -19,6 +17,8 @@ export default function CadastroTurma() {
         const periodo = document.getElementById("periodo")
         const participantes = document.getElementById("participantes") 
         const img = document.getElementById("imgPhoto")
+        const range = document.getElementById("myRange")
+        range.setAttribute("value", 1) 
 
         if(id != undefined || id != null){
             api.get(`api/turma/${id}`).then(
@@ -26,6 +26,7 @@ export default function CadastroTurma() {
                     const turma = response.data
                     participantes.innerHTML = turma.numParticipantes
                     setNome(turma.nome)
+                    range.setAttribute("value", turma.numParticipantes) 
                     setDataComeco(turma.dataInicio)
                     setDataFinal(turma.dataFinal)
                     periodo.value = turma.periodo
@@ -117,8 +118,8 @@ export default function CadastroTurma() {
                         <Input id="dataFinal" label="Data Final" defaultValue={dataF} onChange={(e) => setDataFinal(e.target.value)} type="date" name="nome" placeholder="Selecione a Data"></Input>
                         <label>Número de Participantes</label>
                         <div className={styles.slidecontainer}>
-                            <input type="range" min="1" max="40" id="myRange" onChange={numero} className={styles.slider} />
-                            <p className={styles.value}><span id="participantes"></span></p>
+                            <input type="range" min="1" max="45" id="myRange" onChange={numero} className={styles.slider} />
+                            <p className={styles.value}><span id="participantes">1</span></p>
                         </div>
                         <Button>Criar Turma</Button>
                     </form>

@@ -298,16 +298,20 @@
 
 .Nome {
     color: #fff;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
     white-space: nowrap;
+    max-width: 120px;
+    overflow-x: hidden;
 }
 
 .Email {
     color: #fff;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     white-space: nowrap;
+    max-width: 120px;
+    overflow-x: hidden;
 }
 
 .logOut {
