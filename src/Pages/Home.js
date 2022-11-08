@@ -8,6 +8,8 @@ import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
 import { sucesso } from "../Components/Avisos/Alert";
 import { getAluno, getProfessor, sendIdAluno } from "../Services/gets";
+import CadastroMedidas, { getMedida } from "../Components/Forms/CadastroMedidas";
+import { CadastroNcm } from "../Components/ItensHome/CadastroNcm";
 
 export default function Home() {
 
@@ -15,6 +17,7 @@ export default function Home() {
     const [pedido, setPedido] = useState([])
     const [produto, setProduto] = useState([])
     const [movimentacoes, setMovimentacoes] = useState([])
+    const [medidas, setMedidas] = useState([])
 
     function getFornecedor() {
         api.get(`api/fornecedor/list`).then(
@@ -69,7 +72,6 @@ export default function Home() {
         const userEmail = document.getElementById("UserEmail")
 
         if (localStorage.getItem("professor")) {
-            console.log("aaa");
             let idProf = localStorage.getItem("idProf")
             let professor = (await getProfessor(idProf)).data
 
@@ -85,6 +87,7 @@ export default function Home() {
             userEmail.innerText = aluno.email
         }
     }
+    
 
     useEffect(() => {
         getUserLogado()
@@ -92,6 +95,7 @@ export default function Home() {
         getPedido()
         getProduto()
         getMovimentacao()
+        getMedida()
         localStorage.removeItem('idPedido')
         localStorage.removeItem('idFornecedor')
     }, [])
@@ -99,6 +103,12 @@ export default function Home() {
     return (
         <section className={styles.components}>
             <PopUpInfo />
+            <div id="popUpMedidas" className={styles.popUpMedidas}>
+                <CadastroMedidas />
+            </div>
+            <div id="popUp" className={styles.popUp}>
+                <CadastroNcm />
+            </div>
             <div className={styles.home}>
                 <SideBar />
 

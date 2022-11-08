@@ -53,13 +53,13 @@ export class ListHome extends React.Component {
         }
 
         return (
-                <tr className={styles.container} onClick={objeto == objeto.cnpj ? chamarPopUp : onClickId}>
-                    <td className={styles.titleList}>
-                        <span className={styles.nome}>{Info1}</span>
-                    </td>
-                    <td className={styles.titleList}>{Info2}</td>
-                    <td className={styles.titleList}>{Info3}</td>
-                </tr>
+            <tr className={styles.container} onClick={objeto == objeto.cnpj ? chamarPopUp : onClickId}>
+                <td className={styles.titleList}>
+                    <span className={styles.nome}>{Info1}</span>
+                </td>
+                <td className={styles.titleList}>{Info2}</td>
+                <td className={styles.titleList}>{Info3}</td>
+            </tr>
         );
 
     }

@@ -186,13 +186,7 @@ export class SideBar extends React.Component {
                             <i className="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </div>
-                </div>
-                <div id="popUp" className={styles.popUp}>
-                    <CadastroNcm />
-                </div>
-                <div id="popUpMedidas" className={styles.popUpMedidas}>
-                    <CadastroMedidas />
-                </div>
+                </div>  
             </div>
         );
     }
@@ -463,7 +457,7 @@ function chamarNCM() {
 
     payment.style.display = "flex"
     principal.style.display = "flex"
-    popUp.style.zIndex = 10
+    popUp.style.zIndex = 20
 }
 
 function chamarMedidas() {
@@ -473,6 +467,6 @@ function chamarMedidas() {
 
     base.style.display = "flex"
     containerMedida.style.display = "flex"
-    popUpMedidas.style.zIndex = 10
+    popUpMedidas.style.zIndex = 20
 
 }

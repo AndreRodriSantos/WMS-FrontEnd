@@ -452,3 +452,28 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+/* POPUP */
+
+.popUp{
+    position: fixed;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+.popUpMedidas{
+    position: fixed;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
