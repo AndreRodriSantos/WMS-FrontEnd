@@ -30,7 +30,7 @@ export class PopUpInfo extends React.Component {
                         refresh("erroFornecedor")
                     }
                 )
-            } else if (localStorage.getItem("idProduto")) {
+            }else if (localStorage.getItem("idProduto")) {
                 api.delete(`api/produto/${id}`).then(
                     response => {
                         refresh("delete")

@@ -43,7 +43,7 @@ export default function CadastroProduto() {
                     setSku(produto.sku)
                     setValor(produto.valorUnitario)
                     setPedido(produto.pontoPedido)
-                    setValorImportacao(produto.valor)
+                    setValorImportacao(produto.valorImportacao)
                     setPis(produto.pis)
                     setIpi(produto.ipi)
                     setCofins(produto.cofins)
