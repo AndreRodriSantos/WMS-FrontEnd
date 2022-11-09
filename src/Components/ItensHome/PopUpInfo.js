@@ -10,7 +10,7 @@ export class PopUpInfo extends React.Component {
 
         function alterar() {
             let id = document.getElementById('id').value
-            localStorage.setItem('idFornecedor', id)
+            localStorage.setItem('idFornecedor', id) 
             window.location.href = "/CadastroFornecedores"
         }
 

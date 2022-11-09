@@ -8,7 +8,7 @@ import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
 import { sucesso } from "../Components/Avisos/Alert";
 import { getAluno, getProfessor, sendIdAluno } from "../Services/gets";
-import CadastroMedidas, { getMedida } from "../Components/Forms/CadastroMedidas";
+import CadastroMedidas, { getMedida, getPelaMedida } from "../Components/Forms/CadastroMedidas";
 import { CadastroNcm } from "../Components/ItensHome/CadastroNcm";
 
 export default function Home() {
@@ -88,7 +88,6 @@ export default function Home() {
         }
     }
     
-
     useEffect(() => {
         getUserLogado()
         getFornecedor()
@@ -96,6 +95,7 @@ export default function Home() {
         getProduto()
         getMovimentacao()
         getMedida()
+        localStorage.removeItem('idMedida')
         localStorage.removeItem('idPedido')
         localStorage.removeItem('idFornecedor')
     }, [])

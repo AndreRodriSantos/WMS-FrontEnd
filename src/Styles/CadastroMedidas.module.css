@@ -128,12 +128,12 @@
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    background-color: black;
-    color: #fff;
-    cursor: pointer;
+    background-color: transparent;
+    cursor: not-allowed;
+    pointer-events: none ;
     opacity: 0.5;
 }
-/* 
+
 .rounded {
     border-radius: 50px;
     width: 50px;
@@ -189,4 +189,4 @@
     position: absolute;
     color: #fff;
     mix-blend-mode: difference;
-} */
+}

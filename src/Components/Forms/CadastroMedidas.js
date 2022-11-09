@@ -6,9 +6,64 @@ import styles from "../../Styles/CadastroMedidas.module.css"
 
 import api from '../../Services/api'
 import { erro, sucesso } from "../Avisos/Alert";
+import MedidaLinha from "./MedidaLinha";
+import { refresh } from "../../Services/gets";
 
 export default class CadastroMedidas extends React.Component {
     render() {
+
+        function pegaId(id) {
+            localStorage.setItem('idMedida', id)
+
+            const nome = document.getElementById('nomeMedida')
+            const sigla = document.getElementById('sigla')
+
+            const btn = document.getElementById('b')
+            const btnAlterar = document.getElementById('btnAlterar')
+            const btnExcluir = document.getElementById('btnExcluir')
+               
+            btn.setAttribute('disabled', true)
+            btn.style.opacity = '0.5'
+            btn.style.cursor = 'not-allowed'
+            btn.style.pointerEvents = 'none'
+
+            btnAlterar.style.cursor = 'pointer'
+            btnAlterar.style.pointerEvents = 'auto'
+            btnAlterar.style.opacity = '1'
+
+            
+            btnExcluir.style.cursor = 'pointer'
+            btnExcluir.style.pointerEvents = 'auto'
+            btnExcluir.style.opacity = '1'
+            
+
+            if (id) {
+                api.get(`api/unidade/${id}`).then(
+                    response => {
+                        const medida = response.data
+                        console.log(medida);
+                        nome.value = medida.nome
+                        sigla.value = medida.sigla
+                    }
+                )
+            }
+
+        }
+
+        function excluir() {
+            const id = localStorage.getItem('idMedida')
+            console.log(id);
+
+            api.delete(`api/unidade/${id}`).then(
+                response => {
+                    refresh("delete")
+                },
+                err => {
+                    erro('erro')
+                }
+            )
+
+        }
 
         return (
             <div className={styles.conteiner} id='containerMedida'>
@@ -25,7 +80,7 @@ export default class CadastroMedidas extends React.Component {
                             <Input id="nomeMedida" label="Nome" type="text" placeholder="Digite o Nome" ></Input>
                             <Input id="sigla" label="Sigla" type="text" placeholder="Digite a Sigla"></Input>
 
-                            <Button>Criar Medida</Button>
+                            <Button id='b' >Criar Medida</Button>
                             <br />
                             <div className={styles.listaMedida}>
                                 <div className={styles.labelMedida}>
@@ -33,28 +88,30 @@ export default class CadastroMedidas extends React.Component {
                                 </div>
                                 <ul id="listMedidas" className={styles.ListMedidas}>
                                     {medidas.map((m, index) => {
-                                        return <li onClick={chamarBtns} className={styles.linhaMedida} key={index}><p>Nome: {m.nome}</p> <p>Sigla: {m.sigla}</p></li>
+                                        return <MedidaLinha chamarBtns={pegaId}
+                                            id={m.id}
+                                            key={index}
+                                            medida={m}
+                                        />
                                     })}
                                 </ul>
                             </div>
                         </form>
                     </div>
-                    <div id="BtnsOption" className={styles.btns}>
-                    <button id='btnY' onClick={alterar} className={styles.btn} >
+                    <div className={styles.btns}>
+                        <a id='btnAlterar' onClick={CadastrarMedida} className={styles.btn} >
                             <span className={styles.rounded2}>
                                 <span className={styles.text_green}>alterar</span>
                             </span>
+                        </a>
 
-                        </button>
-
-                        <button id='btnX' className={styles.btn} onClick={excluir} >
+                        <button id='btnExcluir' className={styles.btn} onClick={excluir} >
                             <span id='btnAnimation' className={styles.rounded}>
                                 <span className={styles.text_green}>excluir</span>
                             </span>
-
                         </button>
                     </div>
-                </div>    
+                </div>
             </div>
         );
     }
@@ -65,8 +122,10 @@ let medidas = [];
 export function getMedida() {
     return api.get(`api/unidade/list`).then(response => {
         medidas = response.data
+        console.log(medidas);
     })
 }
+
 
 function CadastrarMedida(event) {
     event.preventDefault()
@@ -74,25 +133,43 @@ function CadastrarMedida(event) {
     const nomeMedida = document.getElementById('nomeMedida').value
     const siglaMedida = document.getElementById('sigla').value
 
+    const id = localStorage.getItem('idMedida')
+
     const body = {
+        id,
         'nome': nomeMedida,
         'sigla': siglaMedida
     }
 
     console.log(body)
 
-    api.post(
-        "api/unidade/save", body
-    ).then(
-        response => {
-            if (response.status == 201 || response.status == 200) {
-                sucesso(`Medida ${nomeMedida} cadastrada com sucesso!!!`)
+    if (id) {
+
+        api.put(`api/unidade/${id}`, body).then(
+            response => {
+                if (response.status == 201 || response.status == 200) {                
+                    refresh('alteracao')
+                }
+            },
+            err => {
+                erro("Ocorreu um erro ao Alterar a Medida:" + err)
             }
-        },
-        err => {
-            erro("Ocorreu um erro ao Cadastrar a Medida:" + err)
-        }
-    )
+        )
+    } else {
+        api.post(
+            "api/unidade/save", body
+        ).then(
+            response => {
+                if (response.status == 201 || response.status == 200) {
+                    sucesso(`Medida ${nomeMedida} cadastrada com sucesso!!!`)
+                }
+            },
+            err => {
+                erro("Ocorreu um erro ao Cadastrar a Medida:" + err)
+            }
+        )
+    }
+
 }
 
 function Fechar() {
@@ -103,16 +180,17 @@ function Fechar() {
     base.style.display = "none"
     containerMedida.style.display = "none"
     popUpMedidas.style.zIndex = "-1"
-} 
 
-function chamarBtns(){  
-    const btnY = document.getElementById('btnY')
+    localStorage.removeItem('idMedida')
+    document.getElementById('nomeMedida').value = ''
+    document.getElementById('sigla').value = ''
+
+    const btn = document.getElementById('b')
+    
+    btn.setAttribute('disabled', false)
+    btn.style.opacity = '1'
+    btn.style.cursor = 'pointer'
+    btn.style.pointerEvents = 'auto'
+
 }
 
-function alterar(){
-    alert('aaaaaa')
-}
-
-function excluir(){
-    alert('excluir')
-}
