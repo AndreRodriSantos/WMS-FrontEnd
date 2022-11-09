@@ -74,9 +74,10 @@ export default function Rotas() {
                 <Route path='/Login' element={<Login />} />
                 <Route path='/Loading' exact element={<Login />} />
                 <Route path='/CadastroAlunos' element={<CadastroAlunos />}></Route>
-
+                <Route path='/CadastroProfessores' element={<CadastroProfessores />} ></Route>
+                
                 <Route element={<PrivateRouteProfessor />}>
-                    <Route path='/CadastroProfessores' element={<CadastroProfessores />} ></Route>
+                    
                     <Route path='/CadastroTurma' element={<CadastroTurma />}></Route>
                     <Route path='/Turmas' element={<Turmas />}></Route>
                 </Route>

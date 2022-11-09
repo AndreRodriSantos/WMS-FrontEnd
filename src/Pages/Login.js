@@ -18,7 +18,7 @@ export default function Login() {
     function LogAluno(e) {
         e.preventDefault()
 
-        if(localStorage.getItem("token") != undefined){
+        if(localStorage.getItem("token")){
             erro("Você já está logado")
         }else{
 
@@ -55,7 +55,7 @@ export default function Login() {
     function LogProf(e) {
         e.preventDefault()
 
-        if(localStorage.getItem("token") != undefined){
+        if(localStorage.getItem("token")){
             erro("Você já está logado")
         }else{
             
@@ -123,7 +123,6 @@ export default function Login() {
     );
 
     function loginProf() {
-        console.log('aaaa')
         const aluno = document.getElementById('loginAluno')
         const prof = document.getElementById('loginProf')
 

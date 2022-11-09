@@ -93,6 +93,7 @@ export default function Home() {
         getMovimentacao()
         localStorage.removeItem('idPedido')
         localStorage.removeItem('idFornecedor')
+        localStorage.removeItem('idProduto')
     }, [])
 
     return (

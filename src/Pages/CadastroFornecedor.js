@@ -26,7 +26,6 @@ export default function CadastroFornecedor() {
                 }
             )
         }
-
     }
 
     function CadastrarAlterar(event) {

@@ -10,20 +10,37 @@ export class PopUpInfo extends React.Component {
 
         function alterar() {
             let id = document.getElementById('id').value
-            window.location.href = "/CadastroFornecedores"
+
+            if (localStorage.getItem("idFornecedor")) {
+                window.location.href = "/CadastroFornecedores"
+            } else if (localStorage.getItem("idProduto")) {
+                window.location.href = "/CadastroProduto"
+            }
         }
 
         function excluir() {
             let id = document.getElementById('id').value
 
-            api.delete(`api/fornecedor/${id}`).then(
-                response => {
-                    refresh("delete")
-                },
-                err => {
-                    refresh("erroFornecedor")
-                }
-            )
+            if (localStorage.getItem("idFornecedor")) {
+                api.delete(`api/fornecedor/${id}`).then(
+                    response => {
+                        refresh("delete")
+                    },
+                    err => {
+                        refresh("erroFornecedor")
+                    }
+                )
+            } else if (localStorage.getItem("idProduto")) {
+                api.delete(`api/produto/${id}`).then(
+                    response => {
+                        refresh("delete")
+                    },
+                    err => {
+                        refresh("erroProduto")
+                    }
+                )
+            }
+
         }
 
         return (

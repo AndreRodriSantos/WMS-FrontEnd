@@ -135,6 +135,9 @@ window.onload = function () {
     }else if(reloading == "erroFornecedor"){
         erro("Este fornecedor não pode ser excluido, pois existem produtos cadastrados com ele!!")
         sessionStorage.removeItem("reloading")
+    }else if(reloading == "erroProduto"){
+        erro("Este produto não pode ser excluido, pois existem pedidos cadastrados com ele!!")
+        sessionStorage.removeItem("reloading")
     }
 }
 
