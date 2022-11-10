@@ -25,7 +25,6 @@ export default function Turmas() {
     }
 
     async function novosDados(id){
-
         localStorage.setItem("idTurma", id)
         window.location.href=`/cadastroTurma`
     }
@@ -50,4 +49,4 @@ export default function Turmas() {
             <a href='/cadastroTurma' className={styles.addTurmas} ><i className="fa-solid fa-plus"></i></a>
         </section>
     );
-} 
+}

@@ -25,25 +25,37 @@ export default function CadastroProduto() {
     const [importado, setimportado] = useState('')
     const [fornecedores, setFornecedores] = useState([])
     const [fornecedoresCheck, setFornecedoresCheck] = useState([])
-    const [valorImportacao, setValorImportacao] = useState([])
+    const [valorImportacao, setValorImportacao] = useState()
 
     function getProduto() {
         const id = localStorage.getItem("idProduto")
         let demanda = document.getElementById("demanda")
         let medida = document.getElementById("medida")
         let ncm = document.getElementById("ncm")
+        const valorImportacaoInput = document.getElementById("valorImportacao")
 
-        if(id){
+        if (id) {
             api.get(`api/produto/${id}`).then(
                 response => {
                     const produto = response.data
-                    
+
                     setNome(produto.nome)
                     setDescricao(produto.descricao)
                     setSku(produto.sku)
                     setValor(produto.valorUnitario)
                     setPedido(produto.pontoPedido)
-                    setValorImportacao(produto.valorImportacao)
+
+                    if (produto.valorImportacao != null) {
+                        valorImportacaoInput.removeAttribute("disabled")
+                        setValorImportacao(produto.valorImportacao)
+                    }
+
+                    produto.fornecedores.map(f => {
+                        setFornecedoresCheck(fornecedoresCheck => [...fornecedoresCheck, f.fornecedor])
+                    })
+
+
+                    setimportado(produto.importado)
                     setPis(produto.pis)
                     setIpi(produto.ipi)
                     setCofins(produto.cofins)
@@ -52,10 +64,10 @@ export default function CadastroProduto() {
                     demanda.value = produto.demanda
                     medida.value = produto.medida.id
                     ncm.value = produto.ncm.id
+
                 }
             )
         }
-
     }
 
     const getCompPasso = () => {
@@ -222,7 +234,6 @@ export default function CadastroProduto() {
                                 <i className="fa-sharp fa-solid fa-image"></i>
                             </div>
                             <span className={styles.etapaTitle} id="etapaTitle3">Foto</span>
-
                         </div>
                     </div>
                 </header>
@@ -239,7 +250,6 @@ export default function CadastroProduto() {
                                     <Input width={"325px"} defaultValue={descricao} onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
                                     <Select width={"325px"} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                                     <Input width={"325px"} defaultValue={pontoPedido} onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="number" id="nome" name="pontoPedido"></Input>
-
                                 </div>
 
                                 <div className={styles.column}>
@@ -260,19 +270,15 @@ export default function CadastroProduto() {
                                     {fornecedores.map((f, index) =>
                                         <li className={styles.linhaFornecedor} key={index}>
                                             <p>{f.nome}</p>
-
                                             <div className={styles.checkboxAnimate}>
                                                 <label>
-                                                    <input id={f.nome + index} className={styles.check} onClick={() => checkFornecedor(f, f.nome + index)} type="checkbox" name="check" />
+                                                    <input defaultChecked={() => fornecedoresCheck.map(fc => fc.id == f.id ? true : false)} id={f.nome + index} className={styles.check} onClick={() => checkFornecedor(f, f.nome + index)} type="checkbox" name="check" />
                                                     <span className={styles.inputCheck}></span>
                                                 </label>
-
                                             </div>
-
                                         </li>
                                     )}
                                 </ul>
-
                             </div>
 
                         </div>
@@ -306,14 +312,13 @@ export default function CadastroProduto() {
 
                                     <div>
                                         <label className={styles.label}>Sim</label>
-                                        <input onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("sim")} id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
+                                        <input checked={importado == 1 ? true : false} onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("sim")} id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
                                     </div>
 
                                     <div>
                                         <label className={styles.label}>Não</label>
-                                        <input onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("não")} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
+                                        <input checked={importado == 1 ? false : true} onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("não")} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
                                     </div>
-
                                 </div>
                             </div>
                             <Input defaultValue={valorImportacao} onChange={(e) => setValorImportacao(e.target.value)} disabled={true} label="Valor de Importação" id="valorImportacao" type="number" name="valorImportacao" ></Input>

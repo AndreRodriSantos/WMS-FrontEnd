@@ -42,7 +42,6 @@ export default class CardTurma extends React.Component {
         )
 
         const dataInicio = dataFormatada(turma.dataInicio)
-
         return (
             <div className={styles.Card} onMouseLeave={removeOpcoes}>
                 <span onMouseEnter={chamarOpcoes} className={styles.config}><i className="fa-solid fa-gear"></i></span>

@@ -77,7 +77,6 @@ export default function Rotas() {
                 <Route path='/CadastroProfessores' element={<CadastroProfessores />} ></Route>
                 
                 <Route element={<PrivateRouteProfessor />}>
-                    
                     <Route path='/CadastroTurma' element={<CadastroTurma />}></Route>
                     <Route path='/Turmas' element={<Turmas />}></Route>
                 </Route>

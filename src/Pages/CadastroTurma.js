@@ -15,10 +15,10 @@ export default function CadastroTurma() {
     function getTurma() {
         const id = localStorage.getItem("idTurma")
         const periodo = document.getElementById("periodo")
-        const participantes = document.getElementById("participantes") 
+        const participantes = document.getElementById("participantes")
         const img = document.getElementById("imgPhoto")
         const range = document.getElementById("myRange")
-        range.setAttribute("value", 1) 
+        range.setAttribute("value", 1)
 
         if(id != undefined || id != null){
             api.get(`api/turma/${id}`).then(
@@ -26,7 +26,7 @@ export default function CadastroTurma() {
                     const turma = response.data
                     participantes.innerHTML = turma.numParticipantes
                     setNome(turma.nome)
-                    range.setAttribute("value", turma.numParticipantes) 
+                    range.setAttribute("value", turma.numParticipantes)
                     setDataComeco(turma.dataInicio)
                     setDataFinal(turma.dataFinal)
                     periodo.value = turma.periodo

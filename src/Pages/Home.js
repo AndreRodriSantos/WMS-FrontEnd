@@ -34,6 +34,7 @@ export default function Home() {
 
                 }
             )
+
         } else {
             api.get(`api/pedido/list`).then(
                 response => {
@@ -101,7 +102,6 @@ export default function Home() {
             <PopUpInfo />
             <div className={styles.home}>
                 <SideBar />
-
                 <div className={styles.homeRidth}>
                     <div className={styles.cardTutorial}>
                         <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
