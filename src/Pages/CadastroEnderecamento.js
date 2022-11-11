@@ -1,4 +1,4 @@
-import styles from "../Styles/Cadastros/Fornecedor.module.css"
+import styles from "../Styles/Cadastros/Enderecamento.module.css"
 import logo from "../IMG/Logo WMS.png"
 import { Input } from "../Components/Inputs/InputText"
 import { Select } from "../Components/Inputs/Select";
@@ -7,6 +7,7 @@ import api from "../Services/api"
 import { useState } from "react"
 import { fazOptionsDemanda, fazOptionsProdutos } from "../Services/gets";
 import { erro, sucesso } from "../Components/Avisos/Alert"
+import gif from '../IMG/Endereçamento.mp4'
 
 export default function CadastroEnderecamento() {
 
@@ -16,9 +17,9 @@ export default function CadastroEnderecamento() {
     const [modulo, setModulo] = useState('')
     //const [quantidade, setQuantidade] = useState('')
 
-    function getProdutoId(id){
+    function getProdutoId(id) {
         return api.get(`api/produto/${id}`).then(
-            response=> response.data
+            response => response.data
         )
     }
 
@@ -31,22 +32,22 @@ export default function CadastroEnderecamento() {
         let demanda = document.getElementById("demanda").value
 
         var body = {
-           'corredor' : corredor,
-           'edificio' : edificio,
-           'andar' : andar,
-           'modulo' : modulo,
-           'demanda' : demanda,  
+            'corredor': corredor,
+            'edificio': edificio,
+            'andar': andar,
+            'modulo': modulo,
+            'demanda': demanda,
         };
 
         console.log(body)
 
         api.post("api/enderecamento/save", body).then(
             response => {
-                if (response.status == 201 || response.status == 200){
+                if (response.status == 201 || response.status == 200) {
                     sucesso("Endereçamento cadastrado com sucesso!!!")
                 }
             },
-             err => {
+            err => {
                 erro("Ocorreu um erro ao Cadastrar este Endereçamento:" + err)
             }
         )
@@ -54,12 +55,16 @@ export default function CadastroEnderecamento() {
 
     return (
         <div className={styles.container}>
+
+            <a className={styles.voltar} href="/Home">
+                <i className="fa-solid fa-arrow-rotate-left"></i>
+            </a>
+
             <div className={styles.formContainer}>
                 <header className={styles.header}>
                     <img src={logo} className={styles.logo}></img>
-
-                    <h1 className={styles.titulo}>Cadastro de Endereçamento</h1>
                 </header>
+
                 <form className={styles.form} onSubmit={CadastrarEnderecamento}>
                     <div className={styles.column}>
                         <Input label="Corredor" id="corredor" type="text" onChange={(e) => setCorredor(e.target.value)} placeholder="Digite o Corredor" name="corredor" ></Input>
@@ -73,10 +78,17 @@ export default function CadastroEnderecamento() {
 
                     <div className={styles.column}>
                         <Select data={fazOptionsDemanda()} idArrow="arrow1" id="demanda" name="demanda"></Select>
-                                        
+
                     </div>
-                    <Button>Cadastrar Endereçamento</Button>
+                    <div className={styles.btn}>
+                        <Button>Cadastrar Endereçamento</Button>
+                    </div>               
                 </form>
+            </div>
+
+            <div className={styles.design_video}>
+                <h1 className={styles.title}>Cadastro de Endereçamento</h1>
+                <video className={styles.video} src={gif} autoPlay loop muted type="mp4"></video>
             </div>
         </div>
     )
