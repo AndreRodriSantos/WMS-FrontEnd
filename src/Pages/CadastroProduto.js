@@ -268,11 +268,11 @@ export default function CadastroProduto() {
                                 </div>
                                 <ul className={styles.listaFornecedores}>
                                     {fornecedores.map((f, index) =>
-                                        <li className={styles.linhaFornecedor} key={index}>
+                                        <li className={styles.linhaFornecedor} key={index} onClick={() => console.log(fornecedores)}>
                                             <p>{f.nome}</p>
                                             <div className={styles.checkboxAnimate}>
                                                 <label>
-                                                    <input defaultChecked={() => fornecedoresCheck.map(fc => fc.id == f.id ? true : false)} id={f.nome + index} className={styles.check} onClick={() => checkFornecedor(f, f.nome + index)} type="checkbox" name="check" />
+                                                    <input defaultChecked={fornecedoresCheck.length == 0 ? undefined : fornecedoresCheck.map(fc => fc.id == f.id ? true : undefined)} id={f.nome + index} className={styles.check} onClick={() => checkFornecedor(f, f.nome + index)} type="checkbox" name="check" />
                                                     <span className={styles.inputCheck}></span>
                                                 </label>
                                             </div>
@@ -312,12 +312,12 @@ export default function CadastroProduto() {
 
                                     <div>
                                         <label className={styles.label}>Sim</label>
-                                        <input checked={importado == 1 ? true : false} onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("sim")} id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
+                                        <input defaultChecked={importado == null ? false : importado == 1 ? true : false} onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("sim")} id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
                                     </div>
 
                                     <div>
                                         <label className={styles.label}>Não</label>
-                                        <input checked={importado == 1 ? false : true} onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("não")} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
+                                        <input defaultChecked={importado == null ? false : importado == 1 ? false : true} onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("não")} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
                                     </div>
                                 </div>
                             </div>
