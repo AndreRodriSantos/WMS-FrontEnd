@@ -21,8 +21,7 @@ export default class CadastroMedidas extends React.Component {
             const btn = document.getElementById('b')
             const btnAlterar = document.getElementById('btnAlterar')
             const btnExcluir = document.getElementById('btnExcluir')
-               
-            btn.setAttribute('disabled', true)
+
             btn.style.opacity = '0.5'
             btn.style.cursor = 'not-allowed'
             btn.style.pointerEvents = 'none'
@@ -31,11 +30,11 @@ export default class CadastroMedidas extends React.Component {
             btnAlterar.style.pointerEvents = 'auto'
             btnAlterar.style.opacity = '1'
 
-            
+
             btnExcluir.style.cursor = 'pointer'
             btnExcluir.style.pointerEvents = 'auto'
             btnExcluir.style.opacity = '1'
-            
+
 
             if (id) {
                 api.get(`api/unidade/${id}`).then(
@@ -81,7 +80,7 @@ export default class CadastroMedidas extends React.Component {
                             <Input id="sigla" label="Sigla" type="text" placeholder="Digite a Sigla"></Input>
 
                             <Button id='b' >Criar Medida</Button>
-                            <br />
+
                             <div className={styles.listaMedida}>
                                 <div className={styles.labelMedida}>
                                     <span>Medidas Cadastradas</span>
@@ -122,7 +121,6 @@ let medidas = [];
 export function getMedida() {
     return api.get(`api/unidade/list`).then(response => {
         medidas = response.data
-        console.log(medidas);
     })
 }
 
@@ -147,7 +145,7 @@ function CadastrarMedida(event) {
 
         api.put(`api/unidade/${id}`, body).then(
             response => {
-                if (response.status == 201 || response.status == 200) {                
+                if (response.status == 201 || response.status == 200) {
                     refresh('alteracao')
                 }
             },
@@ -186,11 +184,21 @@ function Fechar() {
     document.getElementById('sigla').value = ''
 
     const btn = document.getElementById('b')
-    
-    btn.setAttribute('disabled', false)
+
     btn.style.opacity = '1'
     btn.style.cursor = 'pointer'
     btn.style.pointerEvents = 'auto'
+
+    const btnAlterar = document.getElementById('btnAlterar')
+    const btnExcluir = document.getElementById('btnExcluir')
+
+    btnAlterar.style.opacity = '0.5'
+    btnAlterar.style.cursor = 'not-allowed'
+    btnAlterar.style.pointerEvents = 'none'
+
+    btnExcluir.style.opacity = '0.5'
+    btnExcluir.style.cursor = 'not-allowed'
+    btnExcluir.style.pointerEvents = 'none'
 
 }
 

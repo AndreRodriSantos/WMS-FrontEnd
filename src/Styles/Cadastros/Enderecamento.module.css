@@ -22,7 +22,7 @@
     text-decoration: none;
 }
 
-header {
+.header {
     position: absolute;
     display: flex;
     justify-content: center;

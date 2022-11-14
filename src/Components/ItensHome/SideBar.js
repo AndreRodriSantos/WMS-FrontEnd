@@ -213,6 +213,13 @@ function onSideBar() {
     const chamaTextME = document.getElementById("chamaTextME");
     const chamaTextNcm = document.getElementById("chamaTextNcm");
 
+    const CardTutoria = document.getElementById("CardTutoria");
+    const ListHistorico = document.getElementById("ListHistorico");
+
+    CardTutoria.style.width = '900px'
+    ListHistorico.style.width = '900px'
+
+
     sideBar.style.width = '300px'
     onBtn.style.display = 'none'
     offBtn.style.display = 'flex'
@@ -249,6 +256,13 @@ function offSideBar() {
     const arrowOff = document.getElementById("arrowOff");
     const arrowCadastroOn = document.getElementById("arrowCadastroOn");
     const arrowCadastroOff = document.getElementById("arrowCadastroOff");
+
+
+    const CardTutoria = document.getElementById("CardTutoria");
+    const ListHistorico = document.getElementById("ListHistorico");
+
+    CardTutoria.style.width = '1100px'
+    ListHistorico.style.width = '1100px'
 
     sub_menu.style.display = 'none'
     select.style.height = "50px"

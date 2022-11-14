@@ -1,4 +1,6 @@
 .inputPesquisa {
+    position: relative;
+    left: 5%;
     width: 85%;
     height: 50px;
     outline: none;
@@ -6,6 +8,13 @@
     font-size: 20px;
     font-weight: bold;
     padding-left: 10px;
+}
+
+.inputPesquisa[type="search"]::-webkit-search-decoration,
+.inputPesquisa[type="search"]::-webkit-search-cancel-button,
+.inputPesquisa[type="search"]::-webkit-search-results-button,
+.inputPesquisa[type="search"]::-webkit-search-results-decoration {
+  display: none; 
 }
 
 .lupa {
@@ -17,12 +26,12 @@
 }
 
 .inputBox {
-    width: 345px;
+    width: 400px;
     height: 50px;
     position: relative;
     top: 10px;
     left: -20px;
-    border-radius: 0 50px 50px 0;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 50px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 

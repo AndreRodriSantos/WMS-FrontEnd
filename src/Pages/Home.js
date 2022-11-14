@@ -7,9 +7,9 @@ import { PopUpInfo } from "../Components/ItensHome/PopUpInfo"
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
 import { sucesso } from "../Components/Avisos/Alert";
-import { getAluno, getProfessor, sendIdAluno } from "../Services/gets";
+import { getAluno, getNcm, getProfessor, sendIdAluno } from "../Services/gets";
 import CadastroMedidas, { getMedida, getPelaMedida } from "../Components/Forms/CadastroMedidas";
-import { CadastroNcm } from "../Components/ItensHome/CadastroNcm";
+import { CadastroNcm, getListaNcm } from "../Components/ItensHome/CadastroNcm";
 
 export default function Home() {
 
@@ -18,7 +18,14 @@ export default function Home() {
     const [produto, setProduto] = useState([])
     const [movimentacoes, setMovimentacoes] = useState([])
     const [medidas, setMedidas] = useState([])
+    const [ncms, setNcms] = useState([])
 
+    async function getListaNcm() {
+        const ncms = await getNcm()
+        setNcms(ncms)
+        console.log(ncms);
+    }
+     
     function getFornecedor() {
         api.get(`api/fornecedor/list`).then(
             response => {
@@ -87,7 +94,7 @@ export default function Home() {
             userEmail.innerText = aluno.email
         }
     }
-    
+
     useEffect(() => {
         getUserLogado()
         getFornecedor()
@@ -95,7 +102,9 @@ export default function Home() {
         getProduto()
         getMovimentacao()
         getMedida()
+        getListaNcm()
         localStorage.removeItem('idMedida')
+        localStorage.removeItem('idNcm')
         localStorage.removeItem('idPedido')
         localStorage.removeItem('idFornecedor')
     }, [])
@@ -107,13 +116,13 @@ export default function Home() {
                 <CadastroMedidas />
             </div>
             <div id="popUp" className={styles.popUp}>
-                <CadastroNcm />
+                <CadastroNcm ncms={ncms} />
             </div>
             <div className={styles.home}>
                 <SideBar />
 
                 <div className={styles.homeRidth}>
-                    <div className={styles.cardTutorial}>
+                    <div id='CardTutoria' className={styles.cardTutorial}>
                         <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
                         <div className={styles.subCard}>
                             <p className={styles.subTitle}>
@@ -135,7 +144,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className={styles.listHistorico}>
+                    <div id='ListHistorico' className={styles.listHistorico}>
                         <div className={styles.headerListMovimentacao}>
                             <span className={styles.headerTitleMovimentacao}>
                                 <i className="fa-solid fa-users"></i>
@@ -228,31 +237,68 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div id='chatbot' className={styles.BaseBotChat}>
-                <div className={styles.baseAI}>
-                    <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
-                        <i className="fa-solid fa-arrow-down"></i>
+                <div id='chatbot' className={styles.BaseBotChat}>
+                    <div className={styles.baseAI}>
+                        {/* <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
+                            <i className="fa-solid fa-arrow-down"></i>
+                        </div>
+                        <div id='btnOn' onClick={abrirChat} className={styles.btnOn}>
+                            <i className="fa-solid fa-arrow-up"></i>
+                        </div> */}
+
                     </div>
-                    <div id='btnOn' onClick={abrirChat} className={styles.btnOn}>
-                        <i className="fa-solid fa-arrow-up"></i>
+                    <div className={styles.foto}>
+
                     </div>
                     <div id='balao' className={styles.interogacao}>
                         <i className="fa-solid fa-question"></i>
                         <span className={styles.triangulo}></span>
                     </div>
-                </div>
-                <div className={styles.foto}>
+                    <div className={styles.BotChat}>
 
-                </div>
-                <div className={styles.BotChat}>
+                        <span className={styles.title}>
+                            <i className="fa-solid fa-comment"></i>
+                            <h3>ChatBot</h3>
+                        </span>
 
-                    <span className={styles.title}>
-                        <i className="fa-solid fa-comment"></i>
-                        <h3>ChatBot</h3>
-                    </span>
+                        <div className={styles.conversa}>
+
+                            <div className={styles.msgBot}>
+                                <div className={styles.MsgImgBot}></div>
+                                <span className={styles.MsgNameBot}>BOT</span>
+                                <div className={styles.MsgBot}>
+                                    <p className={styles.InfoMsg}>
+                                        Como posso ajudar ?
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className={styles.msgUser}>
+                                <div className={styles.MsgImgUser}></div>
+                                <span className={styles.MsgName}>Nome</span>
+                                <div className={styles.Msg}>
+                                    <p className={styles.InfoMsg}>
+                                        Seu Pai é Padeiro ?
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className={styles.msgBot}>
+                                <div className={styles.MsgImgBot}></div>
+                                <span className={styles.MsgNameBot}>BOT</span>
+                                <div className={styles.MsgBot}>
+                                    <p className={styles.InfoMsg}>
+                                        Não pq ?
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <input className={styles.Duvida} type='text'></input>
+                    </div>
                 </div>
+
             </div>
         </section >
     );
