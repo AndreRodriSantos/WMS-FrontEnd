@@ -5,6 +5,7 @@ import { Button } from "../Components/Button"
 import api from "../Services/api"
 import { useEffect, useState } from "react"
 import { erro, sucesso } from "../Components/Avisos/Alert"
+import gif from '../IMG/telaFornecedor.mp4'
 
 export default function CadastroFornecedor() {
 
@@ -89,30 +90,37 @@ export default function CadastroFornecedor() {
 
     return (
         <div className={styles.container}>
+
+            <a className={styles.voltar} href="/Home">
+                <i className="fa-solid fa-arrow-rotate-left"></i>
+            </a>
+
+            <div className={styles.design_video}>
+                <span className={styles.title}>Cadastre novos Fornecedores aqui!</span>
+                <video className={styles.video} src={gif} autoPlay loop muted type="mp4"></video>
+            </div>
+
             <div className={styles.formContainer}>
                 <header className={styles.header}>
                     <img src={logo} className={styles.logo}></img>
-                    <h1 className={styles.titulo}>Cadastro de Fornecedor</h1>
                 </header>
+
                 <form className={styles.form} onSubmit={CadastrarAlterar}>
 
-                    <div className={styles.column}>
+                    <Input label="Nome" id="nome" type="text" defaultValue={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o Nome do Fornecedor" name="nome" ></Input>
 
-                        <Input label="Nome" id="nome" type="text" defaultValue={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o Nome do Fornecedor" name="nome" ></Input>
+                    <div className={styles.doubleInput1}>
+                        <Input width={210} label="CNPJ" id="cnpj" defaultValue={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" placeholder="Digite o CNPJ" name="cpnj" ></Input>
 
-                        <Input label="CNPJ" id="cnpj" defaultValue={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" placeholder="Digite o CNPJ" name="cpnj" ></Input>
-
-                        <Input label="CEP" id="cep" type="text" defaultValue={cep} onChange={(e) => setCep(e.target.value)} placeholder="Digite o CEP" name="cep" ></Input>
-
-                        <Input label="Logradouro" id="logradouro" type="text" defaultValue={logradouro} onChange={(e) => setLogradouro(e.target.value)} placeholder="Digite o Logradouro" name="nome" ></Input>
-
+                        <Input width={210} label="CEP" id="cep" type="text" defaultValue={cep} onChange={(e) => setCep(e.target.value)} placeholder="Digite o CEP" name="cep" ></Input>
                     </div>
 
-                    <div className={styles.column}>
+                    <Input label="Logradouro" id="logradouro" type="text" defaultValue={logradouro} onChange={(e) => setLogradouro(e.target.value)} placeholder="Digite o Logradouro" name="nome" ></Input>
 
-                        <Input label="Localidade" id="localidade" type="text" defaultValue={localidade} onChange={(e) => setLocalidade(e.target.value)} placeholder="Digite o localidade" name="localidade" ></Input>
+                    <Input label="Localidade" id="localidade" type="text" defaultValue={localidade} onChange={(e) => setLocalidade(e.target.value)} placeholder="Digite o localidade" name="localidade" ></Input>
 
-                        <Input label="UF" id="uf" type="text" defaultValue={uf} onChange={(e) => setUf(e.target.value)} placeholder="Digite o UF" name="uf" ></Input>
+                    <div className={styles.doubleInput}>
+                        <Input width={210} label="UF" id="uf" type="text" defaultValue={uf} onChange={(e) => setUf(e.target.value)} placeholder="Digite o UF" name="uf" ></Input>
 
                         <div className={styles.divInput}>
                             <label className={styles.label}>Homologado</label>
@@ -126,7 +134,11 @@ export default function CadastroFornecedor() {
                         </div>
                     </div>
 
-                    <Button>Cadastrar Fornecedor</Button>
+
+
+                    <div className={styles.btn}>
+                        <Button>Cadastrar Fornecedor</Button>
+                    </div>
 
                 </form>
             </div>

@@ -16,3 +16,18 @@
     font-size: 23px;
     font-weight: bolder;
 }
+
+.botaoDisabled{
+    width: 465px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    cursor: not-allowed;
+    pointer-events: none;
+    transition: 0.5s;
+    opacity: 0.5;
+}

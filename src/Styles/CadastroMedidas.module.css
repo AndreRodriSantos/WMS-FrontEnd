@@ -13,6 +13,7 @@
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
     background-color: #fff;
     display: flex;
+    position: absolute;
 }
 .close {
     width: 20px;
@@ -27,6 +28,7 @@
     cursor: pointer;
     font-size: 22px;
     transition: .2s ease-in;
+    z-index: 2;
 }
 .close:hover{
     color: red;
@@ -39,7 +41,7 @@
 }
 .titles{
     position: absolute;
-    top: 25%;
+    top: 12%;
     left: 0;
     right: 0;
     text-align: center;
@@ -50,7 +52,7 @@
 
 .formContainer{
     position: relative;
-    top: 15%;
+    top: 5%;
     width: 500px;
     height: 500px;  
     display: flex;
@@ -61,5 +63,130 @@
 
 .formContainer Button{
     position: relative;
-    bottom: -50px;
+}
+
+.listaMedida{
+    position: absolute;
+    width: 93.5%;
+    bottom: -15%;
+}
+.labelMedida{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.ListMedidas{
+    border: 2px solid black;
+    height: 150px;
+    border-radius: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.linhaMedida{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    text-transform: capitalize;
+    background-color: #D9D9D9;
+    margin: 10px;
+    border-radius: 5px;
+    height: 40px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+.linhaMedida:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+/* BTNS INFO */
+
+.btns {
+    position: absolute;
+    bottom: 5%;
+    left: 15%;
+    width: 75%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.btn{
+    border: none;
+    width: 150px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: transparent;
+    cursor: not-allowed;
+    pointer-events: none ;
+    opacity: 0.5;
+}
+
+.rounded {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    background: #000;
+    position: absolute;
+    display: flex;
+    color: #000;
+    justify-content: right;
+    align-items: center;
+    left: 0;
+    transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+}
+
+.rounded:hover {
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    color: #fff;
+    position: absolute;
+}
+
+
+.rounded2 {
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    position: absolute;
+    display: flex;
+    color: #000;
+    justify-content: right;
+    align-items: center;
+    left: 0;
+    transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+}
+
+.rounded2:hover {
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    color: #fff;
+    position: absolute;
+    
+}
+
+.text_green {
+    font-size: 33px;
+    left: 30px;
+    position: absolute;
+    color: #fff;
+    mix-blend-mode: difference;
 }

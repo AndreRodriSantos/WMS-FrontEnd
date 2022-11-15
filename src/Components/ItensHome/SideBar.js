@@ -186,13 +186,7 @@ export class SideBar extends React.Component {
                             <i className="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </div>
-                </div>
-                <div id="popUp" className={styles.popUp}>
-                    <CadastroNcm />
-                </div>
-                <div id="popUpMedidas" className={styles.popUpMedidas}>
-                    <CadastroMedidas />
-                </div>
+                </div>  
             </div>
         );
     }
@@ -218,6 +212,13 @@ function onSideBar() {
     const chamaTextPI = document.getElementById("chamaTextPI");
     const chamaTextME = document.getElementById("chamaTextME");
     const chamaTextNcm = document.getElementById("chamaTextNcm");
+
+    const CardTutoria = document.getElementById("CardTutoria");
+    const ListHistorico = document.getElementById("ListHistorico");
+
+    CardTutoria.style.width = '900px'
+    ListHistorico.style.width = '900px'
+
 
     sideBar.style.width = '300px'
     onBtn.style.display = 'none'
@@ -255,6 +256,13 @@ function offSideBar() {
     const arrowOff = document.getElementById("arrowOff");
     const arrowCadastroOn = document.getElementById("arrowCadastroOn");
     const arrowCadastroOff = document.getElementById("arrowCadastroOff");
+
+
+    const CardTutoria = document.getElementById("CardTutoria");
+    const ListHistorico = document.getElementById("ListHistorico");
+
+    CardTutoria.style.width = '1100px'
+    ListHistorico.style.width = '1100px'
 
     sub_menu.style.display = 'none'
     select.style.height = "50px"
@@ -463,7 +471,7 @@ function chamarNCM() {
 
     payment.style.display = "flex"
     principal.style.display = "flex"
-    popUp.style.zIndex = 10
+    popUp.style.zIndex = 20
 }
 
 function chamarMedidas() {
@@ -473,6 +481,6 @@ function chamarMedidas() {
 
     base.style.display = "flex"
     containerMedida.style.display = "flex"
-    popUpMedidas.style.zIndex = 10
+    popUpMedidas.style.zIndex = 20
 
 }
