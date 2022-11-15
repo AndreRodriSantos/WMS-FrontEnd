@@ -1,11 +1,11 @@
 import styles from "../Styles/Cadastros/CadastroProduto.module.css"
 import logo from "../IMG/Logo WMS.png"
-import { useEffect, useState } from "react"
+import { Children, useEffect, useState } from "react"
 import api from "../Services/api"
 import { Foto } from "../Components/Inputs/InputFoto";
 import { Input } from "../Components/Inputs/InputText";
 import { Select } from "../Components/Inputs/Select";
-import { fazOptionsDemanda, fazOptionsFornecedor, fazOptionsMedida, fazOptionsNcm, getFornecedorID, getMedidaID, getNcmID } from "../Services/gets"
+import { fazOptionsDemanda, fazOptionsFornecedor, fazOptionsMedida, fazOptionsNcm, getFornecedorID, getMedidaID, getNcmID, refresh } from "../Services/gets"
 import { Redirect } from "react-router-dom";
 import { history } from "../routes";
 import { erro, sucesso } from "../Components/Avisos/Alert";
@@ -26,6 +26,7 @@ export default function CadastroProduto() {
     const [fornecedores, setFornecedores] = useState([])
     const [fornecedoresCheck, setFornecedoresCheck] = useState([])
     const [valorImportacao, setValorImportacao] = useState()
+    const [check, setCheck] = useState([])
 
     function getProduto() {
         const id = localStorage.getItem("idProduto")
@@ -52,6 +53,10 @@ export default function CadastroProduto() {
 
                     produto.fornecedores.map(f => {
                         setFornecedoresCheck(fornecedoresCheck => [...fornecedoresCheck, f.fornecedor])
+                    })
+
+                    produto.fornecedores.map(f => {
+                        setCheck(check => [...check, f.fornecedor])
                     })
 
 
@@ -136,6 +141,8 @@ export default function CadastroProduto() {
         const checked = document.getElementById(id).checked
         const checkBox = document.getElementById(id)
 
+        console.log(checked);
+
         if (checked == true) {
             checkBox.checked = true
             setFornecedoresCheck(fornecedoresCheck => [...fornecedoresCheck, fornecedor])
@@ -176,6 +183,8 @@ export default function CadastroProduto() {
         ncm = await getNcmID(ncm)
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
 
+        const id = localStorage.getItem("idProduto")
+
         const produto = {
             nome, descricao, medida, pontoPedido, valorImportacao, valorUnitario, demanda, ncm, sku, "fornecedores":
                 fornecedoresCheck.map(f => (
@@ -189,17 +198,33 @@ export default function CadastroProduto() {
             , importado, ipi, pis, cofins, icms, imagem
         }
 
-        api.post("api/produto/save", produto).then(
-            response => {
-                if (response.status == 201 || response.status == 200) {
-                    sucesso("Produto cadastrado com sucesso!!!")
+        if (id) {
+            produto.codProduto = id
+            api.put(`api/produto/${id}`, produto).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        refresh("alteracao")
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Alterar este Produto:" + err)
                 }
-            },
-            err => {
-                erro("Ocorreu um erro ao Cadastrar este Produto:" + err)
-            }
-        )
-        console.log(produto)
+            )
+        } else {
+            api.post("api/produto/save", produto).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        sucesso("Produto cadastrado com sucesso!!!")
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Cadastrar este Produto:" + err)
+                }
+            )
+        }
+
+        console.log(produto);
+
     }
 
     return (
@@ -263,20 +288,41 @@ export default function CadastroProduto() {
 
                             <div className={styles.fornecedoresDiv}>
                                 <div className={styles.labelFornecedores}>
-                                    <span>Fornecedores</span>
+                                    <span className={styles.spanFornecedores}>Fornecedores</span>
                                     <a className={styles.cadastrarBtn} href="/CadastroFornecedores" ><p className={styles.fornecedor}>Cadastrar Fornecedor</p><i className="fa-solid fa-circle-plus"></i></a>
                                 </div>
                                 <ul className={styles.listaFornecedores}>
-                                    {fornecedores.map((f, index) =>
-                                        <li className={styles.linhaFornecedor} key={index} onClick={() => console.log(fornecedores)}>
+                                    {fornecedores.map((f, index) => {
+                                        let isBreak = false
+                                        return <li className={styles.linhaFornecedor} key={index}>
                                             <p>{f.nome}</p>
                                             <div className={styles.checkboxAnimate}>
-                                                <label>
-                                                    <input defaultChecked={fornecedoresCheck.length == 0 ? undefined : fornecedoresCheck.map(fc => fc.id == f.id ? true : undefined)} id={f.nome + index} className={styles.check} onClick={() => checkFornecedor(f, f.nome + index)} type="checkbox" name="check" />
+                                                <label id={"label" + index} onClick={()=> localStorage.getItem("idProduto") == undefined ? "" : erro("Fornecedores de um produto não podem ser alterados")}>
+                                                    {
+                                                        localStorage.getItem("idProduto") == undefined || localStorage.getItem("idProduto") == null ?
+                                                            <input key={index} id={f.nome + index} className={styles.check} onClick={() => checkFornecedor(f, f.nome + index)} type="checkbox" name={"check" + index} /> :
+                                                            check.map((fc, key) => {
+                                                                console.log(isBreak);
+                                                                if (fc.id == f.id) {
+                                                                    isBreak = true
+                                                                    check.splice(key, 1)
+                                                                    return <input disabled key={index + key} id={fc.nome + index} defaultChecked className={styles.check} type="checkbox" name={"check" + index} />
+                                                                } else {
+                                                                    if (!isBreak) {
+                                                                        isBreak = true
+                                                                        return <input disabled key={index + key} id={fc.nome + index} className={styles.check} type="checkbox" name={"check" + index} />
+                                                                    } else {
+                                                                        return
+                                                                    }
+                                                                }
+                                                            }
+                                                            )}
+
                                                     <span className={styles.inputCheck}></span>
                                                 </label>
                                             </div>
                                         </li>
+                                    }
                                     )}
                                 </ul>
                             </div>
