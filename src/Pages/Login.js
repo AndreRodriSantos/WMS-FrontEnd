@@ -11,6 +11,7 @@ import { RecuperacaoSenha } from "../Components/Avisos/RecuperacaoSenha";
 
 export default function Login() {
 
+
     const [codMatricula, setCodMatricula] = useState("")
     const [nif, setNif] = useState("")
     const [senhaAluno, setSenhaAluno] = useState("")
@@ -113,6 +114,7 @@ export default function Login() {
                                 <Input onChange={(e) => setNif(e.target.value)} id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
                                 <InputSenha esqueceu={true} onChange={(e) => setSenhaProf(e.target.value)} id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
                                 <Button>Entrar</Button>
+
                                 <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroProfessores" className={styles.btnCadastro}>Crie aqui!</a></p>
                             </form>
                         </div>
@@ -128,10 +130,10 @@ export default function Login() {
                     </div>
 
                     <div className={styles.cubo}>
-                        <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameBorder='0' width='100%' height='100%'></iframe>
-                    </div>
 
-                    <div className={styles.seila}></div>
+                        <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameborder='0' width='100%' height='100%'></iframe>
+
+                    </div>
 
                 </div>
 

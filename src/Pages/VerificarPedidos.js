@@ -48,8 +48,14 @@ export default function VerificarPedidos() {
     return (
         <section className={styles.container}>
 
-            <a className={styles.voltar} onClick={() => window.history.back()}>
-                <i class="fa-solid fa-arrow-left"></i>
+            <a className='voltar' onClick={() => window.history.back()}>
+                <lord-icon
+                    src="https://cdn.lordicon.com/jxwksgwv.json"
+                    trigger="hover"
+                    colors="primary:#121331"
+                    state="hover-1"
+                    style={{ width: 32, height: 32 }}>
+                </lord-icon>
             </a>
 
             <a className={styles.estocagem} href="#">

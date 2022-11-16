@@ -130,6 +130,17 @@ export default function ListaMembros() {
 
     return (
         <section className={styles.container}>
+
+            <a className='voltar' onClick={() => window.history.back()}>
+                <lord-icon
+                    src="https://cdn.lordicon.com/jxwksgwv.json"
+                    trigger="hover"
+                    colors="primary:#121331"
+                    state="hover-1"
+                    style={{ width: 32, height: 32 }}>
+                </lord-icon>
+            </a>
+            
             <div className={styles.AddMembros}>
                 <div id='btnAddMembro' onClick={AbrirList} className={styles.baseAddMembros}>
                     <span onClick={AdicionarList} className={styles.button}>
