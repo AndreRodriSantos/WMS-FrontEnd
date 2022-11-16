@@ -61,6 +61,12 @@
     border: solid 1.5px black;
     outline: none;
     padding-left: 2px;
+    transition: 0.2s all linear;
+}
+
+.qtd:disabled{
+    color: gray;
+    border: solid 1.5px gray;
 }
 
 .divQtd{

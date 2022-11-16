@@ -8,27 +8,61 @@ import foto from "../IMG/image-icon.png"
 
 import api from "../Services/api"
 import { erro, sucesso } from "../Components/Avisos/Alert"
+import { getAluno, refresh } from "../Services/gets"
 
 export default function CadastroAlunos() {
 
-    function CadastrarAluno(event) {
+    async function CadastrarAluno(event) {
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
-        console.log(imagem)
         event.preventDefault()
         var body = { "nome": nome, "codMatricula": matricula, imagem, "email": emailAluno, "senha": senha };
         console.log(body)
-        api.post(
-            "api/aluno/save", body
-        ).then(
-            response => {
-                if (response.status == 201 || response.status == 200) {
-                    sucesso("Aluno cadastrado com sucesso!!!")
+
+        if (localStorage.getItem("alterandoAluno")) {
+            const id = localStorage.getItem("idAluno")
+            const aluno = (await getAluno(id)).data
+            body.id = id
+            body.turma = aluno.turma
+            api.put(
+                `api/aluno/${id}`, body
+            ).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        refresh("alteracao")
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Alterar o Usuario:" + err)
                 }
-            },
-            err => {
-                erro("Ocorreu um erro ao Cadastrar o Usuario:" + err)
-            }
-        )
+            )
+        } else {
+            api.post(
+                "api/aluno/save", body
+            ).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        sucesso("Aluno cadastrado com sucesso!!!")
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Cadastrar o Usuario:" + err)
+                }
+            )
+        }
+
+    }
+
+    async function getAlunoAlterar() {
+
+        if (localStorage.getItem("alterandoAluno")) {
+            const id = localStorage.getItem("idAluno")
+            const aluno = (await getAluno(id)).data
+
+            setNome(aluno.nome)
+            setMatricula(aluno.codMatricula)
+            setEmailAluno(aluno.email)
+        }
+
     }
 
     const [nome, setNome] = useState('')
@@ -46,31 +80,35 @@ export default function CadastroAlunos() {
         const iconEmal = document.getElementById('iconEmal')
         const iconMatricula = document.getElementById('iconMatricula')
 
-        if(nome === ''){
+        if (nome === '') {
             nomeUser.style.display = 'none'
-        }else{
+        } else {
             nomeUser.style.display = 'flex'
         }
-        
-        if(email === ''){
+
+        if (email === '') {
             iconEmal.style.display = 'none'
-        }else{
+        } else {
             iconEmal.style.display = 'block'
         }
 
-        if(matricula === ''){
+        if (matricula === '') {
             iconMatricula.style.display = 'none'
-        }else{
+        } else {
             iconMatricula.style.display = 'block'
         }
 
-    }, [nome, matricula , emailAluno]);
+    }, [nome, matricula, emailAluno]);
+
+    useEffect(() => {
+        getAlunoAlterar()
+    }, [])
 
     return (
         <div className={styles.container}>
 
-            <a className={styles.voltar} href="/">
-                <i className="fa-solid fa-arrow-rotate-left"></i>
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+                <i class="fa-solid fa-arrow-left"></i>
             </a>
 
             <div className={styles.logoDiv}>
@@ -81,9 +119,9 @@ export default function CadastroAlunos() {
                 <div className={styles.Form}>
                     <h1 className={styles.h1}>Cadastro de Aluno(a)</h1>
                     <form onSubmit={CadastrarAluno}>
-                        <Input caracter='18' label="Nome" id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" />
-                        <Input label="N° Matricula" id="numMatricula" type="number" onChange={(e) => setMatricula(e.target.value)} name="numMatricula" placeholder="Digite o N° Matrícula" />
-                        <Input caracter='20' label="Email" id="emailAluno" type="email" onChange={(e) => setEmailAluno(e.target.value)} name="emailAluno" placeholder="Digite o Email" />
+                        <Input defaultValue={nome} caracter='25' label="Nome" id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" />
+                        <Input defaultValue={matricula} label="N° Matricula" id="numMatricula" type="number" onChange={(e) => setMatricula(e.target.value)} name="numMatricula" placeholder="Digite o N° Matrícula" />
+                        <Input defaultValue={emailAluno} caracter='30' label="Email" id="emailAluno" type="email" onChange={(e) => setEmailAluno(e.target.value)} name="emailAluno" placeholder="Digite o Email" />
                         <InputSenha label="Senha" id="senha" id_eye="eye" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" />
                         <Button>Cadastrar</Button>
                     </form>
@@ -97,7 +135,7 @@ export default function CadastroAlunos() {
                                     <input type="file" id="fileImage" onChange={fileChange} accept=".jpg" />
                                     <span className={styles.btnFile}>
                                         <i className="fa-solid fa-file-circle-plus"></i>
-                                    </span>                                   
+                                    </span>
                                     <figure className={styles.personal_figure}>
                                         <img className={styles.personal_avatar} id="imgPhoto" />
                                     </figure>

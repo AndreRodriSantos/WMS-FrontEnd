@@ -11,7 +11,7 @@ export default function Picking() {
     const [enderecamentos, setEnderecamentos] = useState([])
     const [enderecamentoSelecionados, setEnderecamentoSelecionados] = useState([])
 
-    function getEnderecamento(){
+    function getEnderecamento() {
         api.get("api/enderecamento/list").then(response =>
             setEnderecamentos(response.data)
         )
@@ -61,6 +61,11 @@ export default function Picking() {
 
     return (
         <div className={styles.container}>
+
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            
             <Confirmacao funcao={EnviarProdutos}></Confirmacao>
             <div className={styles.pickingContainer}>
                 <header className={styles.header}>
@@ -91,7 +96,7 @@ export default function Picking() {
                     </table>
                 </div>
             </div>
-            <button className={styles.enviarProdutos}  onClick={() => openConfirmacao("Ao pressionar CONFIRMAR, sua lista de produtos separados saíram do estoque e serão enviados.", "Deseja enviar os produtos selecionados?")} id="btnEnviar">Enviar <i className="fa-solid fa-box-archive"></i><lord-icon
+            <button className={styles.enviarProdutos} onClick={() => openConfirmacao("Ao pressionar CONFIRMAR, sua lista de produtos separados saíram do estoque e serão enviados.", "Deseja enviar os produtos selecionados?")} id="btnEnviar">Enviar <i className="fa-solid fa-box-archive"></i><lord-icon
                 src="https://cdn.lordicon.com/zmkotitn.json"
                 trigger="hover"
                 colors="primary:#ffffff"

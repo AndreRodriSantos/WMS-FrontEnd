@@ -30,7 +30,7 @@ export class PopUpInfo extends React.Component {
                         refresh("erroFornecedor")
                     }
                 )
-            }else if (localStorage.getItem("idProduto")) {
+            } else if (localStorage.getItem("idProduto")) {
                 api.delete(`api/produto/${id}`).then(
                     response => {
                         refresh("delete")
@@ -40,61 +40,64 @@ export class PopUpInfo extends React.Component {
                     }
                 )
             }
-
         }
 
         return (
             <div id="container" className={styles.container}>
                 <div id="PopUpInfo" className={styles.PopUp}>
-                    <span className={styles.close} onClick={Fechar} ><i className="fa-regular fa-circle-xmark"></i></span>
-                    <div className={styles.titleNome}>
-                        <p id='nome' className={styles.infoName}></p>
-                    </div>
-                    <input type="hidden" id='id'></input>
-                    <div className={styles.InfoLeft}>
 
-                        <span className={styles.titleInfo}>
-                            <p id="info1Title"></p><p id='info1' className={styles.info}></p>
-                        </span>
+                    <header className={styles.headerInfo}>
+                        <div className={styles.titleNome}>
+                            <p id='nome' className={styles.infoName}></p>
+                        </div>
+                        <span className={styles.close} onClick={Fechar} ><i className="fa-regular fa-circle-xmark"></i></span>
+                    </header>
 
-                        <span className={styles.titleInfo}>
-                            <p id="info2Title"></p><p id='info2' className={styles.info}></p>
-                        </span>
+                    <div className={styles.dados}>
 
-                        <span className={styles.titleInfo}>
-                            <p id="info3Title"></p><p id='info3' className={styles.info}></p>
-                        </span>
+                        <input type="hidden" id='id'></input>
 
-                    </div>
+                        <div className={styles.InfoLeft}>
 
-                    <div className={styles.InfoRight}>
+                            <span className={styles.titleInfo}>
+                                <p id="info1Title"></p><p id='info1' className={styles.info}></p>
+                            </span>
 
-                        <span className={styles.titleInfo}>
-                            <p id="info4Title"></p><p id='info4' className={styles.info}></p>
-                        </span>
+                            <span className={styles.titleInfo}>
+                                <p id="info2Title"></p><p id='info2' className={styles.info}></p>
+                            </span>
 
-                        <span className={styles.titleInfo}>
-                            <p id="info5Title"></p><p id='info5' className={styles.info}></p>
-                        </span>
+                            <span className={styles.titleInfo}>
+                                <p id="info3Title"></p><p id='info3' className={styles.info}></p>
+                            </span>
 
-                        <span className={styles.titleInfo}>
-                            <p id="info6Title"></p><p id='info6' className={styles.info}></p>
-                        </span>
+                        </div>
+
+                        <div className={styles.InfoRight}>
+
+                            <span className={styles.titleInfo}>
+                                <p id="info4Title"></p><p id='info4' className={styles.info}></p>
+                            </span>
+
+                            <span className={styles.titleInfo}>
+                                <p id="info5Title"></p><p id='info5' className={styles.info}></p>
+                            </span>
+
+                            <span className={styles.titleInfo}>
+                                <p id="info6Title"></p><p id='info6' className={styles.info}></p>
+                            </span>
+
+                        </div>
 
                     </div>
 
                     <div id='btns' className={styles.btns}>
-                        <button id='btnY' onClick={alterar} className={styles.btn} >
-                            <span className={styles.rounded2}>
-                                <span className={styles.text_green}>alterar</span>
-                            </span>
+                        <button id='btnY' onClick={alterar} className={styles.alterar} >
+                            Alterar
                         </button>
 
-                        <button onClick={excluir} id='btnX' className={styles.btn} >
-                            <span id='btnAnimation' className={styles.rounded}>
-                                <span className={styles.text_green}>excluir</span>
-                            </span>
-
+                        <button onClick={excluir} id='btnX' className={styles.excluir} >
+                            Excluir
                         </button>
                     </div>
                 </div>
@@ -108,6 +111,7 @@ export class PopUpInfo extends React.Component {
             localStorage.removeItem("idProduto")
             container.style.zIndex = "-1"
             PopUpInfo.style.display = 'none'
+            PopUpInfo.classList.remove(styles.alertOn)
         }
 
         /*   function btnOn(){

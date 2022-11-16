@@ -8,6 +8,7 @@ import { Foto } from "../Components/Inputs/InputFoto"
 
 import api from '../Services/api'
 import { erro, sucesso } from "../Components/Avisos/Alert"
+import { getProfessor, refresh } from "../Services/gets"
 
 export default function CadastroProfessores() {
 
@@ -16,7 +17,7 @@ export default function CadastroProfessores() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
-    function CadastrarProf(event) {
+    async function CadastrarProf(event) {
         event.preventDefault()
 
         const nomeProf = document.getElementById('nome').value
@@ -28,19 +29,57 @@ export default function CadastroProfessores() {
 
         console.log(body)
 
-        api.post(
-            "api/professor/save", body
-        ).then(
-            response => {
-                if (response.status == 201 || response.status == 200) {
-                    sucesso("Professor cadastrado com sucesso!!!")
+        if (localStorage.getItem("alterandoProf")) {
+            const id = localStorage.getItem("idProf")
+            const prof = (await getProfessor(id)).data
+            body.id = id
+            api.put(
+                `api/professor/${id}`, body
+            ).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        refresh("alteracao")
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Alterar o Usuario:" + err)
                 }
-            },
-            err => {
-                erro("Ocorreu um erro ao Cadastrar este Professor:" + err)
-            }
-        )
+            )
+        } else {
+            api.post(
+                "api/professor/save", body
+            ).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        sucesso("Professor cadastrado com sucesso!!!")
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Cadastrar este Professor:" + err)
+                }
+            )
+        }
+
+
     }
+
+    async function getProfAlterar() {
+
+        if (localStorage.getItem("alterandoProf")) {
+            const id = localStorage.getItem("idProf")
+            const prof = (await getProfessor(id)).data
+
+            console.log(prof);
+
+            setNome(prof.nome)
+            setNif(prof.nif)
+            setEmail(prof.email)
+        }
+    }
+
+    useEffect(() => {
+        getProfAlterar()
+    }, [])
 
     //Fazendo o Perfil do Usuario
     useEffect(() => {
@@ -75,9 +114,10 @@ export default function CadastroProfessores() {
     return (
         <div className={styles.container}>
 
-            <a className={styles.voltar} href="/">
-                <i className="fa-solid fa-arrow-rotate-left"></i>
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+                <i class="fa-solid fa-arrow-left"></i>
             </a>
+
 
             <div className={styles.logoDiv}>
                 <img src={logo} className={styles.logo}></img>
@@ -87,9 +127,9 @@ export default function CadastroProfessores() {
                 <div className={styles.Form}>
                     <h1 className={styles.h1}>Cadastro de Professor(a)</h1>
                     <form onSubmit={CadastrarProf}>
-                        <Input id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" label="Nome" />
-                        <Input id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif" />
-                        <Input label="Email" id="email" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Digite o Email" />
+                        <Input defaultValue={nomeProf} id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" label="Nome" />
+                        <Input defaultValue={nif} id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif" />
+                        <Input defaultValue={email} label="Email" id="email" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Digite o Email" />
                         <InputSenha id="senha" id_eye="eye" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" label="Senha" />
                         <Button>Cadastrar</Button>
                     </form>

@@ -7,6 +7,7 @@ import logo from "../IMG/Logo WMS.png"
 import api from "../Services/api";
 import { erro, sucesso } from "../Components/Avisos/Alert";
 import { getAluno, getProfessor, refresh, sendIdAluno, sendIdProf } from "../Services/gets";
+import { RecuperacaoSenha } from "../Components/Avisos/RecuperacaoSenha";
 
 export default function Login() {
 
@@ -18,16 +19,16 @@ export default function Login() {
     function LogAluno(e) {
         e.preventDefault()
 
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
             erro("Você já está logado")
-        }else{
+        } else {
 
             const body = {
                 codMatricula, "senha": senhaAluno
             }
 
             console.log(body);
-    
+
             api.post("api/aluno/login", body).then(
                 async response => {
                     localStorage.setItem("token", response.data.token)
@@ -36,10 +37,10 @@ export default function Login() {
                     let aluno = (await getAluno(idAluno)).data
                     localStorage.setItem("aluno", true)
                     console.log(aluno.turma);
-                    if(aluno.turma == null || aluno.turma == undefined){
+                    if (aluno.turma == null || aluno.turma == undefined) {
                         localStorage.clear()
                         refresh("semTurma")
-                    }else{
+                    } else {
                         localStorage.setItem("idTurma", aluno.turma.id)
                         refresh("login")
                         window.location.href = "/Home"
@@ -55,16 +56,16 @@ export default function Login() {
     function LogProf(e) {
         e.preventDefault()
 
-        if(localStorage.getItem("token")){
+        if (localStorage.getItem("token")) {
             erro("Você já está logado")
-        }else{
-            
+        } else {
+
             const body = {
                 nif, "senha": senhaProf
             }
 
             console.log(body);
-    
+
             api.post("api/professor/login", body).then(
                 async response => {
                     localStorage.setItem("token", response.data.token)
@@ -85,40 +86,58 @@ export default function Login() {
 
     return (
         <div className={styles.container}>
+            <RecuperacaoSenha></RecuperacaoSenha>
+            <header className={styles.headerLogin}>
+                <img src={logo} className={styles.logo}></img>
+                <a href="/Home"><i className="fa-solid fa-house"></i></a>
+            </header>
 
-            <div className={styles.div_title}>
-                <a className="navigation-link navigation-link-1" href="#">
-                    <span data-text="Warehouse Management System" className={styles.span}>Warehouse Management System</span>
-                </a>
-            </div>
+            <div className={styles.Login_Cubo}>
 
-            <img src={logo} className={styles.logo}></img>
-            <div className={styles.base}>
-                <div className={styles.btns}>
-                    <button id="btnAluno" type="button" className={styles.btnOn} onClick={loginAluno}>Aluno</button>
-                    <button id="btnProf" type="button" className={styles.btn} onClick={loginProf}>Professor</button>
+                <div className={styles.LoginContainer}>
+                    <div className={styles.base}>
+                        <div className={styles.btns}>
+                            <button id="btnAluno" type="button" className={styles.btnOn} onClick={loginAluno}>Aluno</button>
+                            <button id="btnProf" type="button" className={styles.btn} onClick={loginProf}>Professor</button>
+                        </div>
+                        <span className={styles.title}>Gerenciamento de estoque nunca foi tão fácil</span>
+                        <div className={styles.base_form} method="post">
+                            <form id="loginAluno" className={styles.alunoOn} onSubmit={LogAluno} >
+                                <Input width={"100%"} onChange={(e) => setCodMatricula(e.target.value)} id="numero" label="Número de Matrícula" type="number" placeholder="Digite o Número de Matricula" name="numero" />
+                                <InputSenha esqueceu={true} width={"100%"} onChange={(e) => setSenhaAluno(e.target.value)} id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
+                                <Button>Entrar</Button>
+                                <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroAlunos" className={styles.btnCadastro}>Crie aqui!</a></p>
+                            </form>
+
+                            <form id="loginProf" className={styles.profOff} onSubmit={LogProf} method="post">
+                                <Input onChange={(e) => setNif(e.target.value)} id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
+                                <InputSenha esqueceu={true} onChange={(e) => setSenhaProf(e.target.value)} id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
+                                <Button>Entrar</Button>
+                                <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroProfessores" className={styles.btnCadastro}>Crie aqui!</a></p>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <span className={styles.title}>Gerenciamento de estoque nunca foi tão fácil</span>
-                <div className={styles.base_form} method="post">
-                    <form id="loginAluno" className={styles.alunoOn} onSubmit={LogAluno} >
-                        <Input onChange={(e) => setCodMatricula(e.target.value)} id="numero" label="Número de Matrícula" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                        <InputSenha onChange={(e) => setSenhaAluno(e.target.value)} id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
-                        <Button>Entrar</Button>
-                        <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroAlunos" className={styles.btnCadastro}>Crie aqui!</a></p>
-                    </form>
 
-                    <form id="loginProf" className={styles.profOff} onSubmit={LogProf} method="post">
-                        <Input onChange={(e) => setNif(e.target.value)} id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                        <InputSenha onChange={(e) => setSenhaProf(e.target.value)} id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
-                        <Button>Entrar</Button>
-                        <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroProfessores" className={styles.btnCadastro}>Crie aqui!</a></p>
-                    </form>
+                <div className={styles.cuboContainer}>
+
+                    <div className={styles.div_title}>
+                        <a className="navigation-link navigation-link-1" href="#">
+                            <span data-text="Warehouse Management System" className={styles.span}>Warehouse Management System</span>
+                        </a>
+                    </div>
+
+                    <div className={styles.cubo}>
+                        <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameBorder='0' width='100%' height='100%'></iframe>
+                    </div>
+
+                    <div className={styles.seila}></div>
+
                 </div>
+
             </div>
-            <div className={styles.cubo}>
-                <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameBorder='0' width='100%' height='100%'></iframe>
-            </div>
-            <div className={styles.seila}></div>
+
+
         </div>
     );
 

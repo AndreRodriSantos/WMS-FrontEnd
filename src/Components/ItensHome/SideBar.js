@@ -5,6 +5,7 @@ import logoBox from "../../IMG/Logo WMS2.png"
 import { CadastroNcm } from "./CadastroNcm"
 import CadastroMedidas from "../Forms/CadastroMedidas";
 import { getAluno, getProfessor } from "../../Services/gets";
+import { AbrirPerfil } from "./Perfil";
 
 export function logout() {
     localStorage.clear()
@@ -15,7 +16,7 @@ export class SideBar extends React.Component {
 
     render() {
         return (
-            <div  className={styles.container}>
+            <div  className={styles.container} onMouseLeave={offSub}>
                 {/* BTN ON SIDEBAR */}
                 <div id='onBtn' onClick={onSideBar} className={styles.btn}>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -163,7 +164,7 @@ export class SideBar extends React.Component {
                             </span>
                         </a>
                         {/* NCM */}
-                        <a onClick={chamarNCM} onMouseEnter={offSub} className={styles.list}>
+                        <a onClick={chamarNCM} onMouseEnter={offSub}  className={styles.list}>
                             <span onMouseEnter={onSubTextNcm} id='chamaTextNcm' className={styles.icon}>
                                 <span className={styles.textNcm}>NCM</span>
                             </span>
@@ -174,7 +175,7 @@ export class SideBar extends React.Component {
                     </div>
                     {/* SOBRE */}
                     <div id='sobre' className={styles.sobre}>
-                        <div className={styles.user}>
+                        <div className={styles.user} onClick={AbrirPerfil}>
                             <img id='ImgUser' className={styles.ImgUser_focus} />
                         </div>
                         <div id='InfoUser' className={styles.InfoUser}>

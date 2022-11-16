@@ -56,15 +56,15 @@ export default function Pedido() {
         produtoSelecionados.map(p => {
             setProdutosAdicionados(produtosAdicionados => [...produtosAdicionados, p])
         })
-        
-        if(produtoSelecionados.length != 0){
+
+        if (produtoSelecionados.length != 0) {
             ItemsPedidos()
         }
     }
 
     function finalizarPedido() {
         const valorTotal = document.getElementById("valorTotalSelec").textContent
-        const aluno = {id : localStorage.getItem("idAluno")}
+        const aluno = { id: localStorage.getItem("idAluno") }
 
         const pedido = {
             "itens": produtosAdicionados,
@@ -74,11 +74,11 @@ export default function Pedido() {
 
         api.post("api/pedido/save", pedido).then(
             response => {
-                if (response.status == 201 || response.status == 200){
+                if (response.status == 201 || response.status == 200) {
                     sucesso(`Pedido relizado com sucesso!!!`)
                 }
             },
-             err => {
+            err => {
                 erro("Ocorreu um erro ao Finalizar este Pedido" + err)
             }
         )
@@ -111,6 +111,11 @@ export default function Pedido() {
 
     return (
         <div className={styles.container}>
+
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
             <Confirmacao funcao={finalizarPedido} ></Confirmacao>
             <div className={styles.pedidoDiv}>
 

@@ -1,12 +1,14 @@
 .container{
     width: 100%;
     height: 100vh;
-    background-color: #82BFF5;
+    background: linear-gradient(90deg, rgba(114, 237, 242, 1) 0%, rgba(83, 88, 230, 1) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .voltar{
+    cursor: pointer;
     position: fixed;
     top: 0;
     left: 0;
@@ -18,8 +20,8 @@
     color: #000;
     font-size: 20px;
     text-decoration: none;
-
 }
+
 .Pedidos{
     position: absolute;
     width: 1200px;

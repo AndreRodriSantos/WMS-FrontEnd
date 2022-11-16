@@ -4,11 +4,12 @@ import eye_off from '../../IMG/eye-off.png'
 import eye_on from '../../IMG/eye-on.png'
 import eye_open from '../../IMG/eye-open.gif'
 import eye_close from '../../IMG/eye-close.gif'
+import { abrirRecuperacao } from "../Avisos/RecuperacaoSenha";
 
 export class InputSenha extends React.Component {
     render() {
 
-        const { name, label, id, id_eye, onChange } = this.props
+        const { name, label, id, id_eye, onChange, width, esqueceu } = this.props
 
         function hash() {
             var senha = document.getElementById(id)
@@ -31,12 +32,13 @@ export class InputSenha extends React.Component {
         }
 
         return (
-            <div className={styles.inputBox}>
-                <input type="password" autoComplete="off" onChange={onChange} required name={name} id={id}></input>
+            <div className={styles.inputBox} style={{width: width}}>
+                <input width={width} type="password" autoComplete="off" onChange={onChange} required name={name} id={id}></input>
                 <label>{label}</label>
                 <div onClick={hash} type="button" id="btn" className={styles.btn}>
                     <img id={id_eye} width="30px" height="30px" src={eye_off} ></img>
                 </div>
+                {esqueceu == true? <a className={styles.esqueceu} onClick={abrirRecuperacao}>Esqueceu a <strong>Senha?</strong></a>: ""}
             </div>
         );
     }

@@ -22,7 +22,7 @@ export default function VerificarPedidos() {
         )
     }
 
-    function ItemCall(item){
+    function ItemCall(item) {
         let produto = document.getElementById('produto')
         let descricao = document.getElementById('descricao')
         let qnd = document.getElementById('qnd')
@@ -41,15 +41,15 @@ export default function VerificarPedidos() {
     }
 
     useEffect(() => {
-        getPedido(localStorage.getItem('idPedido')) 
+        getPedido(localStorage.getItem('idPedido'))
 
     }, [])
 
     return (
         <section className={styles.container}>
 
-            <a className={styles.voltar} href="/Home">
-                <i className="fa-solid fa-arrow-rotate-left"></i>
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+                <i class="fa-solid fa-arrow-left"></i>
             </a>
 
             <a className={styles.estocagem} href="#">
@@ -69,7 +69,7 @@ export default function VerificarPedidos() {
                     </a>
                 </div>
                 <div className={styles.lists}>
-                    {itens.map((i) => <ListaPedidos item={i} chamarItem={ItemCall}/>)}
+                    {itens.map((i) => <ListaPedidos item={i} chamarItem={ItemCall} />)}
                 </div>
             </div>
 

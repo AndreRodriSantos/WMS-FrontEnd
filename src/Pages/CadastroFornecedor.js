@@ -91,8 +91,8 @@ export default function CadastroFornecedor() {
     return (
         <div className={styles.container}>
 
-            <a className={styles.voltar} href="/Home">
-                <i className="fa-solid fa-arrow-rotate-left"></i>
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+                <i class="fa-solid fa-arrow-left"></i>
             </a>
 
             <div className={styles.design_video}>

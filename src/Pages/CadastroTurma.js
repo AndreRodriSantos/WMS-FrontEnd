@@ -20,7 +20,7 @@ export default function CadastroTurma() {
         const range = document.getElementById("myRange")
         range.setAttribute("value", 1)
 
-        if(id != undefined || id != null){
+        if (id != undefined || id != null) {
             api.get(`api/turma/${id}`).then(
                 response => {
                     const turma = response.data
@@ -30,36 +30,36 @@ export default function CadastroTurma() {
                     setDataComeco(turma.dataInicio)
                     setDataFinal(turma.dataFinal)
                     periodo.value = turma.periodo
-                    if(turma.imagem != null){
+                    if (turma.imagem != null) {
                         img.setAttribute("src", `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${turma.imagem}?alt=media`)
                     }
                 }
             )
         }
-        
+
     }
 
-    function CadastrarAlterar(event){      
+    function CadastrarAlterar(event) {
         event.preventDefault()
 
         const periodo = document.getElementById("periodo").value
         const participantes = document.getElementById("participantes").textContent
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
 
-        const prof = {"id": localStorage.getItem("idProf")} 
+        const prof = { "id": localStorage.getItem("idProf") }
         const id = localStorage.getItem("idTurma")
-    
+
         const body = {
             id,
-            'nome':nome,
-            'periodo':periodo,
-            'dataInicio':dataC,
+            'nome': nome,
+            'periodo': periodo,
+            'dataInicio': dataC,
             'dataFinal': dataF,
             'numParticipantes': participantes,
             prof
         };
 
-        if(id){
+        if (id) {
             api.put(
                 `api/turma/${id}`, body
             ).then(
@@ -72,7 +72,7 @@ export default function CadastroTurma() {
                     erro("Ocorreu um erro ao Alterar esta Turma:" + err)
                 }
             )
-        }else{
+        } else {
             body.imagem = imagem
             api.post(
                 "api/turma/save", body
@@ -86,12 +86,12 @@ export default function CadastroTurma() {
                     erro("Ocorreu um erro ao Cadastrar esta Turma:" + err)
                 }
             )
-        }  
+        }
     }
 
     useEffect(() => {
         getTurma()
-    },[])
+    }, [])
 
     var [nome, setNome] = useState('')
     var [dataC, setDataComeco] = useState('')
@@ -99,6 +99,11 @@ export default function CadastroTurma() {
 
     return (
         <div className={styles.container}>
+
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
             <div className={styles.baseForm}>
                 <div className={styles.logo}>
                     <img src={logo} className={styles.logo}></img>

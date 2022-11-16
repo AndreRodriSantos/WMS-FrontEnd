@@ -18,6 +18,13 @@
   background: none;
 }
 
+.esqueceu{
+  position: absolute;
+  top: 90%;
+  right: 10px;
+  cursor: pointer;
+}
+
 .inputBox label {
   position: absolute;
   left: 5px;

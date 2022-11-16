@@ -10,6 +10,7 @@ import { sucesso } from "../Components/Avisos/Alert";
 import { getAluno, getNcm, getProfessor, sendIdAluno } from "../Services/gets";
 import CadastroMedidas, { getMedida, getPelaMedida } from "../Components/Forms/CadastroMedidas";
 import { CadastroNcm, getListaNcm } from "../Components/ItensHome/CadastroNcm";
+import { Perfil } from "../Components/ItensHome/Perfil";
 
 export default function Home() {
 
@@ -19,6 +20,12 @@ export default function Home() {
     const [movimentacoes, setMovimentacoes] = useState([])
     const [medidas, setMedidas] = useState([])
     const [ncms, setNcms] = useState([])
+
+    const [nome, setNome] = useState()
+    const [email, setEmail] = useState()
+    const [nif, setNif] = useState()
+    const [codMatricula, setCodMatricula] = useState()
+    const [imagemUser, setImagemUser] = useState()
 
     async function getListaNcm() {
         const ncms = await getNcm()
@@ -87,12 +94,23 @@ export default function Home() {
             userNome.innerText = professor.nome
             userEmail.innerText = professor.email
 
+            setEmail(professor.email)
+            setNome(professor.nome)
+            setNif(professor.nif)
+            professor.imagem == null ? setImagemUser("https://www.somadesenvolvimento.com.br/application/assets/img/male.png") : setImagemUser(`https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${professor.imagem}?alt=media`)
+            
+
         } else if (localStorage.getItem("aluno")) {
             let idAluno = localStorage.getItem("idAluno")
             let aluno = (await getAluno(idAluno)).data
             img.setAttribute("src", aluno.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${aluno.imagem}?alt=media`)
             userNome.innerText = aluno.nome
             userEmail.innerText = aluno.email
+
+            setEmail(aluno.email)
+            setNome(aluno.nome)
+            setCodMatricula(aluno.codMatricula)
+            aluno.imagem == null ? setImagemUser("https://www.somadesenvolvimento.com.br/application/assets/img/male.png") : setImagemUser(`https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${aluno.imagem}?alt=media`)
         }
     }
 
@@ -105,6 +123,8 @@ export default function Home() {
         getMedida()
         getListaNcm()
         localStorage.removeItem('idMedida')
+        localStorage.removeItem('alterandoProf')
+        localStorage.removeItem('alterandoAluno')
         localStorage.removeItem('idNcm')
         localStorage.removeItem('idPedido')
         localStorage.removeItem('idFornecedor')
@@ -114,6 +134,7 @@ export default function Home() {
     return (
         <section className={styles.components}>
             <PopUpInfo />
+            <Perfil nome={nome} email={email} nif={nif} matricula={codMatricula} img={imagemUser}></Perfil>
             <div id="popUpMedidas" className={styles.popUpMedidas}>
                 <CadastroMedidas />
             </div>
@@ -239,14 +260,14 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div id='chatbot' className={styles.BaseBotChat}>
+                {/* <div id='chatbot' className={styles.BaseBotChat}>
                     <div className={styles.baseAI}>
-                        {/* <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
+                        { <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
                             <i className="fa-solid fa-arrow-down"></i>
                         </div>
                         <div id='btnOn' onClick={abrirChat} className={styles.btnOn}>
                             <i className="fa-solid fa-arrow-up"></i>
-                        </div> */}
+                        </div> }
 
                     </div>
                     <div className={styles.foto}>
@@ -298,7 +319,7 @@ export default function Home() {
                         </div>
                         <input className={styles.Duvida} type='text'></input>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         </section >

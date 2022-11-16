@@ -229,6 +229,11 @@ export default function CadastroProduto() {
 
     return (
         <div className={styles.container} onChange={(e) => getCompPasso(e)}>
+
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+            <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
             <div className={styles.formContainer}>
 
                 <header className={styles.header}>
@@ -297,7 +302,7 @@ export default function CadastroProduto() {
                                         return <li className={styles.linhaFornecedor} key={index}>
                                             <p>{f.nome}</p>
                                             <div className={styles.checkboxAnimate}>
-                                                <label id={"label" + index} onClick={()=> localStorage.getItem("idProduto") == undefined ? "" : erro("Fornecedores de um produto não podem ser alterados")}>
+                                                <label id={"label" + index} onClick={() => localStorage.getItem("idProduto") == undefined ? "" : erro("Fornecedores de um produto não podem ser alterados")}>
                                                     {
                                                         localStorage.getItem("idProduto") == undefined || localStorage.getItem("idProduto") == null ?
                                                             <input key={index} id={f.nome + index} className={styles.check} onClick={() => checkFornecedor(f, f.nome + index)} type="checkbox" name={"check" + index} /> :

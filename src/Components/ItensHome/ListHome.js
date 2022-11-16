@@ -25,6 +25,7 @@ export class ListHome extends React.Component {
         function chamarPopUp() {
             const container = document.getElementById("container");
             const PopUpInfo = document.getElementById("PopUpInfo");
+            PopUpInfo.classList.add(styles.alertOn)
 
             container.style.zIndex = "20"
             PopUpInfo.style.display = 'flex'

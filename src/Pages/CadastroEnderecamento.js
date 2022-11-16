@@ -56,8 +56,8 @@ export default function CadastroEnderecamento() {
     return (
         <div className={styles.container}>
 
-            <a className={styles.voltar} href="/Home">
-                <i className="fa-solid fa-arrow-rotate-left"></i>
+            <a className={styles.voltar} onClick={() => window.history.back()}>
+                <i class="fa-solid fa-arrow-left"></i>
             </a>
 
             <div className={styles.formContainer}>
@@ -82,7 +82,7 @@ export default function CadastroEnderecamento() {
                     </div>
                     <div className={styles.btn}>
                         <Button>Cadastrar Endereçamento</Button>
-                    </div>               
+                    </div>
                 </form>
             </div>
 
