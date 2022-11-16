@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../Styles/Recuperacao.module.css"
 import { Input } from "../Inputs/InputText";
 
 
 export class RecuperacaoSenha extends React.Component {
     render() {
+
+        const { onChange } = this.props
+
         return (
             <div className={styles.container} id="recuperacaoDiv" >
                 <div className={styles.recuperacao} id="recuperacao">
@@ -14,19 +17,18 @@ export class RecuperacaoSenha extends React.Component {
                         <span className={styles.close} onClick={fechar}><i className="fa-regular fa-circle-xmark"></i></span>
                     </header>
 
-                    <div className={styles.rec}>
 
                         <div className={styles.recuperacaoContainer}>
                             <p>Não se preocupe, fizemos um sistema de recuperação de senha para pessoas como você que esquecem a própria senha que cadastrou. Digite seu email e um link será enviado para alterar sua senha</p>
-                            <Input type={"email"} label={"Email"} ></Input>
+                            <i className="fa-solid fa-key"></i>
                         </div>
 
                         <div className={styles.btn}>
-                            <i className="fa-solid fa-key"></i>
-                            <button className={styles.botao}>Enviar</button>
+                            <form>
+                                <Input onChange={onChange} type={"email"} label={"Email"} ></Input>
+                                <button className={styles.botao}>Enviar</button>
+                            </form>
                         </div>
-
-                    </div>
                 </div>
             </div>
         )

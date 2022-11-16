@@ -16,6 +16,8 @@ export default function Login() {
     const [senhaAluno, setSenhaAluno] = useState("")
     const [senhaProf, setSenhaProf] = useState("")
 
+    const [email, setEmail] = useState("")
+
     function LogAluno(e) {
         e.preventDefault()
 
@@ -84,9 +86,17 @@ export default function Login() {
         }
     }
 
+    function RecuperarSenha(){
+        api.post("api/email/sending-email", email).then(
+            response => {
+                
+            }
+        )
+    }
+
     return (
         <div className={styles.container}>
-            <RecuperacaoSenha></RecuperacaoSenha>
+            <RecuperacaoSenha onClick={RecuperarSenha} onChange={(e) => setEmail(e.target.value)}></RecuperacaoSenha>
             <header className={styles.headerLogin}>
                 <img src={logo} className={styles.logo}></img>
                 <a href="/Home"><i className="fa-solid fa-house"></i></a>
@@ -104,14 +114,14 @@ export default function Login() {
                         <div className={styles.base_form} method="post">
                             <form id="loginAluno" className={styles.alunoOn} onSubmit={LogAluno} >
                                 <Input width={"100%"} onChange={(e) => setCodMatricula(e.target.value)} id="numero" label="Número de Matrícula" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                                <InputSenha esqueceu={true} width={"100%"} onChange={(e) => setSenhaAluno(e.target.value)} id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
+                                <InputSenha user={"aluno"} esqueceu={true} width={"100%"} onChange={(e) => setSenhaAluno(e.target.value)} id="senhaAluno" id_eye="eye1" label="Senha" type="password" placeholder="Digite a senha" name="senhaAluno" />
                                 <Button>Entrar</Button>
                                 <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroAlunos" className={styles.btnCadastro}>Crie aqui!</a></p>
                             </form>
 
                             <form id="loginProf" className={styles.profOff} onSubmit={LogProf} method="post">
                                 <Input onChange={(e) => setNif(e.target.value)} id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
-                                <InputSenha esqueceu={true} onChange={(e) => setSenhaProf(e.target.value)} id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
+                                <InputSenha user={"professor"} esqueceu={true} onChange={(e) => setSenhaProf(e.target.value)} id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
                                 <Button>Entrar</Button>
                                 <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroProfessores" className={styles.btnCadastro}>Crie aqui!</a></p>
                             </form>
@@ -136,8 +146,6 @@ export default function Login() {
                 </div>
 
             </div>
-
-
         </div>
     );
 
