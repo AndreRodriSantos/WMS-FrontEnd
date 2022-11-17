@@ -12,7 +12,7 @@ export default function Turmas() {
 
     function getTurma() {
         return api.get(`api/turma/turmaByProf/${localStorage.getItem("idProf")}`).then(
-            response => {                
+            response => {
                 setTurmas(response.data)
                 console.log(response.data);
                 return response.data
@@ -20,13 +20,13 @@ export default function Turmas() {
         )
     }
 
-    function tirarTurma(id){
+    function tirarTurma(id) {
         api.delete(`api/turma/${id}`)
     }
 
-    async function novosDados(id){
+    async function novosDados(id) {
         localStorage.setItem("idTurma", id)
-        window.location.href=`/cadastroTurma`
+        window.location.href = `/cadastroTurma`
     }
 
     useEffect(() => {
@@ -39,11 +39,12 @@ export default function Turmas() {
     }, [])
 
     return (
-        <section className={styles.container}>          
-            {turmas.map((t, key) => <CardTurma id={t.id} config={t.id + 'config'} key={t.id} turma={t} imgTurma={t.imagem} tirarTurma={tirarTurma} novosDados={novosDados}/>)}
-            {turmas.length <= 0 && 
+        <section className={styles.container}>
+            
+            {turmas.map((t, key) => <CardTurma id={t.id} config={t.id + 'config'} key={t.id} turma={t} imgTurma={t.imagem} tirarTurma={tirarTurma} novosDados={novosDados} />)}
+            {turmas.length <= 0 &&
                 <div className={styles.semTurmas}>
-                    <span className={styles.titleSemTurma}>Nenhuma Turma Cadastrada</span> 
+                    <span className={styles.titleSemTurma}>Nenhuma Turma Cadastrada</span>
                 </div>
             }
             <a href='/cadastroTurma' className={styles.addTurmas} ><i className="fa-solid fa-plus"></i></a>

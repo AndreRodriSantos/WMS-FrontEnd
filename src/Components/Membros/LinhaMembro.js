@@ -1,5 +1,6 @@
 import React from "react";
 import styles from '../../Styles/Lista/ListaMebros.module.css'
+import { erro } from "../Avisos/Alert";
 
 export default class LinhaMembros extends React.Component {
     render() {
@@ -7,11 +8,16 @@ export default class LinhaMembros extends React.Component {
         const { membro, funcao, tirarAluno } = this.props;
 
         function tirarAlu() {
-            tirarAluno(membro.id)
+            if(localStorage.getItem("professor")){
+                tirarAluno(membro.id)
+            }else{
+                erro("Somente Professores tem permissão para remover membros de uma Turma")
+            }
+            
         }
 
         return (
-            <tr>
+            <tr> 
                 <th className={styles.titleList}><div className={styles.imgMembro}><img className={styles.img} src={membro.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${membro.imagem}?alt=media`}></img></div></th>
                 <td className={styles.titleList}><span className={styles.nome}>{membro.nome}</span></td>
                 <td className={styles.titleList}>{membro.email == undefined ? "Sem Email" : membro.email}</td>

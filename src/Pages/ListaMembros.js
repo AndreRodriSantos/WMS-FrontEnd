@@ -7,6 +7,7 @@ import SearchInput from "../Components/Inputs/SearchInput";
 import api from "../Services/api";
 import LinhaMembros from "../Components/Membros/LinhaMembro";
 import { erro } from "../Components/Avisos/Alert";
+import { InputPesquisa } from "../Components/Inputs/InputPesquisa";
 
 export default function ListaMembros() {
 
@@ -42,17 +43,22 @@ export default function ListaMembros() {
         console.log(count);
 
         if (membrosCheck.length != 0) {
-            if (count < turma.numParticipantes) {
-                membrosCheck.map((m) => {
-                    api.patch(`api/aluno/${m.id}`, turma)
-                })
-                window.location.reload()
+            if (localStorage.getItem("professor")) {
+                if (count < turma.numParticipantes) {
+                    membrosCheck.map((m) => {
+                        api.patch(`api/aluno/${m.id}`, turma)
+                    })
+                    window.location.reload()
+                } else {
+                    erro(
+                        `Limite de Membros foi alcançado! ${count}/${turma.numParticipantes} de Membros na Turma`
+                    )
+                }
             } else {
-                erro(
-                    `Limite de Membros foi alcançado! ${count}/${turma.numParticipantes} de Membros na Turma`
-                )
+                erro("Somente Professores tem permissão para adicionar membros em uma Turma")
             }
         }
+
     }
 
     async function tirarAluno(id) {
@@ -123,6 +129,25 @@ export default function ListaMembros() {
         })
     }
 
+    function Pesquisar(texto) {
+        api.get(`api/aluno/findbyall/${texto}`).then(response => {
+            const membros = response.data
+            console.log(membros);
+
+            if (membros.length == []) {
+                erro('Nenhum Membro encontrado')
+            } else {
+                membros.map((m) => {
+                    if (m.turma.id == localStorage.getItem('idTurma')) {
+                        setMembrosTurma(response.data)
+                    }
+                })
+
+            }
+
+        })
+    }
+
     useEffect(() => {
         getMembros()
         getAluno()
@@ -130,6 +155,17 @@ export default function ListaMembros() {
 
     return (
         <section className={styles.container}>
+
+            <a className='voltar' onClick={() => window.history.back()}>
+                <lord-icon
+                    src="https://cdn.lordicon.com/jxwksgwv.json"
+                    trigger="hover"
+                    colors="primary:#121331"
+                    state="hover-1"
+                    style={{ width: 32, height: 32 }}>
+                </lord-icon>
+            </a>
+
             <div className={styles.AddMembros}>
                 <div id='btnAddMembro' onClick={AbrirList} className={styles.baseAddMembros}>
                     <span onClick={AdicionarList} className={styles.button}>
@@ -152,19 +188,23 @@ export default function ListaMembros() {
 
             <div className={styles.baseList}>
                 <span className={styles.title}><i className="fa-solid fa-users"></i>Lista de Membros</span>
+
+                <div className={styles.basePesquisa}>
+                    <InputPesquisa placeholder={"Pesquise por um Membro"} search={Pesquisar} />
+                </div>
+
                 <div className={styles.div_lista}>
+                    <div className={styles.headerList}>
+                        <span className={styles.titleHeader1}></span>
+                        <span className={styles.titleHeader}>Nome</span>
+                        <span className={styles.titleHeader}>Email</span>
+                        <span className={styles.titleHeader}>Nif / Matrícula</span>
+                        <span className={styles.titleHeader}>Função</span>
+                        <span className={styles.titleHeader}><p className={styles.titleDelete}>Excluir</p></span>
+                        <span className={styles.barra}></span>
+                    </div>
                     <ul className={styles.lista}>
                         <table id="tabela" className={styles.tabelaMembro} >
-                            <thead>
-                                <tr className={styles.header_list}>
-                                    <td className={styles.mes}>Membro</td>
-                                    <td className={styles.mes}>Nome</td>
-                                    <td className={styles.mes}>Email</td>
-                                    <td className={styles.mes}>Nif / Matrícula</td>
-                                    <td className={styles.mes}>Função</td>
-                                    <td className={styles.mes}>Excluir</td>
-                                </tr>
-                            </thead>
                             <tbody id="lista" className={styles.body}>
                                 {
                                     membrosTurma.map((m) => <LinhaMembros key={m.id} funcao={m.nif == undefined ? "ALUNO" : "PROFESSOR"} membro={m} tirarAluno={tirarAluno} />)

@@ -4,11 +4,19 @@
     background: rgb(114, 237, 242);
     background: linear-gradient(90deg, rgba(114, 237, 242, 1) 0%, rgba(83, 88, 230, 1) 100%);
     overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }
 
-.headerLogin{
+.logo {
+    position: relative;
+    top: 3%;
+    left: 1%;
+}
+
+.headerLogin {
     width: 100%;
     height: 5%;
     display: flex;
@@ -16,21 +24,24 @@
     justify-content: space-between;
 }
 
-.headerLogin a{
+.headerLogin a {
+    position: relative;
+    top: 3%;
+    right: 1%;
     text-decoration: none;
     outline: none;
     color: black;
     font-size: 30px;
 }
 
-.Login_Cubo{
+.Login_Cubo {
     display: flex;
     flex-direction: column;
     height: 95%;
     width: 100%;
 }
 
-.LoginContainer{
+.LoginContainer {
     width: 50%;
     height: 100%;
     display: flex;
@@ -51,25 +62,17 @@
 }
 
 .cubo {
-    position: absolute;
-    top: 6%;
-    right: 10%;
+    position: fixed;
+    background-color: transparent;
+    top: -30%;
+    right: 15%;
     width: 600px;
-    height: 800px;
+    height: 150%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.seila {
-    position: fixed;
-    width: 250px;
-    height: 50px;
-    background: rgb(114, 237, 242);
-    background: linear-gradient(90deg, rgb(90 123 233) 0%, rgb(86 102 231) 100%);
-    right: 10%;
-    bottom: 9%;
-}
 
 .btns {
     position: absolute;
@@ -192,26 +195,30 @@
 
 .div_title {
     position: absolute;
-    top: 20%;
-    right: 25%;
-    width: 750px;
+    right: 0;
+    bottom: 20%;
+    width: 1200px;
     height: 100px;
     display: flex;
     justify-content: center;
     justify-items: center;
     align-items: center;
     z-index: 1;
+    overflow: hidden;
 }
+
 .div_title a {
+    position: absolute;
     font-family: "Cosi Azure";
-    font-size: 75px;
+    font-size: 50px;
     font-weight: 800;
     text-decoration: none;
     text-transform: uppercase;
     color: #fefefe00;
     -webkit-text-stroke: 1px #FFF;
-   /*  margin-right: 100%; */
+    overflow: hidden;
 }
+
 .div_title span::before {
     width: 0;
     color: #fff;
@@ -219,25 +226,172 @@
     position: absolute;
     content: attr(data-text);
     transition: all 1s cubic-bezier(0.84, 0, 0.08, 0.99);
-}   
+}
+
 .div_title span:hover::before {
     width: 100%;
 }
 
-@media screen and (max-width: 1500px) {
-    .base{
-        transform: scale(0.9);
+
+/* Tamanho de telas */
+
+@media screen and (max-width:1800px) {
+    .div_title {
+        width: 1000px;
     }
-    .LoginContainer{
-        padding-left: 5%;
+
+    .div_title a {
+        font-size: 45px;
+    }
+
+    .cubo {
+        right: 12%;
+    }
+
+}
+
+@media screen and (max-width:1673px) {
+    .div_title {
+        width: 900px;
+    }
+
+    .div_title a {
+        font-size: 40px;
+    }
+
+    .cubo {
+        right: 10%;
+    }
+
+}
+
+@media screen and (max-width:1520px) {
+    .div_title {
+        width: 800px;
+    }
+
+    .div_title a {
+        font-size: 35px;
     }
 }
 
-@media screen and (max-width: 900px) {
-    .base{
-        transform: scale(0.7);
+
+@media screen and (max-width:1520px) {
+    .div_title {
+        width: 800px;
     }
-    .LoginContainer{
-        padding-left: 0;
+
+    .div_title a {
+        font-size: 35px;
     }
+
+    .cubo {
+        right: 8%;
+    }
+}
+
+
+@media screen and (max-width:1440px) {
+    .div_title {
+        width: 700px;
+    }
+
+    .div_title a {
+        font-size: 30px;
+    }
+
+    .cubo {
+        right: 4%;
+    }
+}
+
+@media screen and (max-width:1300px) {
+    .div_title {
+        display: none;
+    }
+
+    .cubo {
+        right: 2%;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .cubo {
+        right: -2%;
+    }
+}
+
+@media screen and (max-width:1150px) {
+    .div_title {
+        display: none;
+    }
+
+    .cubo {
+        display: none;
+    }
+
+    .LoginContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0%;
+    }
+
+}
+
+
+@media screen and (max-height:800px) {
+
+    .telaCadastro {
+        bottom: -70%;
+    }
+
+    .base {
+        height: 700px;      
+    }
+
+    .div_title{ 
+        bottom: 10%;
+    }
+
+}
+
+
+@media screen and (max-height:750px) {
+
+    .telaCadastro {
+        bottom: -50%;
+    }
+
+    .base {
+        height: 650px;      
+    }
+
+}
+
+@media screen and (max-height:690px) {
+
+    .telaCadastro {
+        bottom: -40%;
+    }
+
+    .base {
+        height: 600px;      
+    }
+
+}
+
+
+@media screen and (max-height:650px) {
+
+    .telaCadastro {
+        bottom: -40%;
+    }
+
+    .base {
+        height: 550px;      
+    }
+
 }

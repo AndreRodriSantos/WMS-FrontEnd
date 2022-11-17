@@ -1,8 +1,15 @@
 import React from 'react';
+import { refresh } from '../Services/gets';
 import styles from '../Styles/Loading.module.css'
 
 export default class Loading extends React.Component {
     render() {
+
+
+        setTimeout(() => {
+            window.location.href = "/Home"
+            
+        }, 8000)
 
         return (
             <div className={styles.container}>

@@ -48,3 +48,21 @@ body,
 .erro{
     background-color: rgb(206, 7, 0);
 }
+
+
+.voltar{
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+    transform: rotate(180deg);
+    z-index: 10;
+}

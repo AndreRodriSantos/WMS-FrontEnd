@@ -73,7 +73,7 @@ export default function Rotas() {
             <Routes>
                 <Route path='/' exact element={<Login />} />
                 <Route path='/Login' element={<Login />} />
-                <Route path='/Loading' exact element={<Login />} />
+                <Route path='/Loading' exact element={<Loading />} />
                 <Route path='/CadastroAlunos' element={<CadastroAlunos />}></Route>
                 <Route path='/CadastroProfessores' element={<CadastroProfessores />} ></Route>
                 <Route path='/Perfil' element={<Perfil />} ></Route>
