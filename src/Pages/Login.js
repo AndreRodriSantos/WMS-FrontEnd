@@ -91,8 +91,14 @@ export default function Login() {
         const user = document.getElementById("user").value
 
         if (user == "aluno") {
+            console.log(email);
 
-            api.post("api/email/sending-email", email).then(
+            api.post(`api/email/sending-email?email=${email}`, email, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then(
                 response => {
                     refresh("email")
                 },
@@ -102,9 +108,8 @@ export default function Login() {
             )
 
         } else if (user == "professor") {
-
+            
         }
-
     }
 
     return (
