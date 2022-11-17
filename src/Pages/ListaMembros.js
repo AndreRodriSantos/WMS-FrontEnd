@@ -43,17 +43,22 @@ export default function ListaMembros() {
         console.log(count);
 
         if (membrosCheck.length != 0) {
-            if (count < turma.numParticipantes) {
-                membrosCheck.map((m) => {
-                    api.patch(`api/aluno/${m.id}`, turma)
-                })
-                window.location.reload()
+            if (localStorage.getItem("professor")) {
+                if (count < turma.numParticipantes) {
+                    membrosCheck.map((m) => {
+                        api.patch(`api/aluno/${m.id}`, turma)
+                    })
+                    window.location.reload()
+                } else {
+                    erro(
+                        `Limite de Membros foi alcançado! ${count}/${turma.numParticipantes} de Membros na Turma`
+                    )
+                }
             } else {
-                erro(
-                    `Limite de Membros foi alcançado! ${count}/${turma.numParticipantes} de Membros na Turma`
-                )
+                erro("Somente Professores tem permissão para adicionar membros em uma Turma")
             }
         }
+
     }
 
     async function tirarAluno(id) {
@@ -124,6 +129,25 @@ export default function ListaMembros() {
         })
     }
 
+    function Pesquisar(texto) {
+        api.get(`api/aluno/findbyall/${texto}`).then(response => {
+            const membros = response.data
+            console.log(membros);
+
+            if (membros.length == []) {
+                erro('Nenhum Membro encontrado')
+            } else {
+                membros.map((m) => {
+                    if (m.turma.id == localStorage.getItem('idTurma')) {
+                        setMembrosTurma(response.data)
+                    }
+                })
+
+            }
+
+        })
+    }
+
     useEffect(() => {
         getMembros()
         getAluno()
@@ -164,11 +188,11 @@ export default function ListaMembros() {
 
             <div className={styles.baseList}>
                 <span className={styles.title}><i className="fa-solid fa-users"></i>Lista de Membros</span>
-                
+
                 <div className={styles.basePesquisa}>
-                    <InputPesquisa placeholder={"Pesquise por um Membro"} />
+                    <InputPesquisa placeholder={"Pesquise por um Membro"} search={Pesquisar} />
                 </div>
-                
+
                 <div className={styles.div_lista}>
                     <div className={styles.headerList}>
                         <span className={styles.titleHeader1}></span>

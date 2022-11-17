@@ -43,8 +43,7 @@ export default function Login() {
                         refresh("semTurma")
                     } else {
                         localStorage.setItem("idTurma", aluno.turma.id)
-                        refresh("login")
-                        window.location.href = "/Home"
+                        window.location.href = "/Loading"
                     }
                 },
                 err => {

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from '../../Styles/Lista/ListaMebros.module.css'
+import { erro } from "../Avisos/Alert";
 
 export default class LinhaMembros extends React.Component {
     render() {
@@ -7,7 +8,12 @@ export default class LinhaMembros extends React.Component {
         const { membro, funcao, tirarAluno } = this.props;
 
         function tirarAlu() {
-            tirarAluno(membro.id)
+            if(localStorage.getItem("professor")){
+                tirarAluno(membro.id)
+            }else{
+                erro("Somente Professores tem permissão para remover membros de uma Turma")
+            }
+            
         }
 
         return (
