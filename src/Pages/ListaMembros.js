@@ -7,6 +7,7 @@ import SearchInput from "../Components/Inputs/SearchInput";
 import api from "../Services/api";
 import LinhaMembros from "../Components/Membros/LinhaMembro";
 import { erro } from "../Components/Avisos/Alert";
+import { InputPesquisa } from "../Components/Inputs/InputPesquisa";
 
 export default function ListaMembros() {
 
@@ -140,7 +141,7 @@ export default function ListaMembros() {
                     style={{ width: 32, height: 32 }}>
                 </lord-icon>
             </a>
-            
+
             <div className={styles.AddMembros}>
                 <div id='btnAddMembro' onClick={AbrirList} className={styles.baseAddMembros}>
                     <span onClick={AdicionarList} className={styles.button}>
@@ -163,19 +164,23 @@ export default function ListaMembros() {
 
             <div className={styles.baseList}>
                 <span className={styles.title}><i className="fa-solid fa-users"></i>Lista de Membros</span>
+                
+                <div className={styles.basePesquisa}>
+                    <InputPesquisa placeholder={"Pesquise por um Membro"} />
+                </div>
+                
                 <div className={styles.div_lista}>
+                    <div className={styles.headerList}>
+                        <span className={styles.titleHeader1}></span>
+                        <span className={styles.titleHeader}>Nome</span>
+                        <span className={styles.titleHeader}>Email</span>
+                        <span className={styles.titleHeader}>Nif / Matrícula</span>
+                        <span className={styles.titleHeader}>Função</span>
+                        <span className={styles.titleHeader}><p className={styles.titleDelete}>Excluir</p></span>
+                        <span className={styles.barra}></span>
+                    </div>
                     <ul className={styles.lista}>
                         <table id="tabela" className={styles.tabelaMembro} >
-                            <thead>
-                                <tr className={styles.header_list}>
-                                    <td className={styles.mes}>Membro</td>
-                                    <td className={styles.mes}>Nome</td>
-                                    <td className={styles.mes}>Email</td>
-                                    <td className={styles.mes}>Nif / Matrícula</td>
-                                    <td className={styles.mes}>Função</td>
-                                    <td className={styles.mes}>Excluir</td>
-                                </tr>
-                            </thead>
                             <tbody id="lista" className={styles.body}>
                                 {
                                     membrosTurma.map((m) => <LinhaMembros key={m.id} funcao={m.nif == undefined ? "ALUNO" : "PROFESSOR"} membro={m} tirarAluno={tirarAluno} />)
