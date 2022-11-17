@@ -86,12 +86,25 @@ export default function Login() {
         }
     }
 
-    function RecuperarSenha(){
-        api.post("api/email/sending-email", email).then(
-            response => {
-                
-            }
-        )
+    function RecuperarSenha(e) {
+        e.preventDefault()
+        const user = document.getElementById("user").value
+
+        if (user == "aluno") {
+
+            api.post("api/email/sending-email", email).then(
+                response => {
+                    refresh("email")
+                },
+                err => {
+                    erro("Email não encontrado, verifique se digitou corretamente e tente novamente")
+                }
+            )
+
+        } else if (user == "professor") {
+
+        }
+
     }
 
     return (

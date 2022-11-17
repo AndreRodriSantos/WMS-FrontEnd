@@ -6,7 +6,7 @@ import { Input } from "../Inputs/InputText";
 export class RecuperacaoSenha extends React.Component {
     render() {
 
-        const { onChange } = this.props
+        const { onChange, onClick } = this.props
 
         return (
             <div className={styles.container} id="recuperacaoDiv" >
@@ -18,17 +18,18 @@ export class RecuperacaoSenha extends React.Component {
                     </header>
 
 
-                        <div className={styles.recuperacaoContainer}>
-                            <p>Não se preocupe, fizemos um sistema de recuperação de senha para pessoas como você que esquecem a própria senha que cadastrou. Digite seu email e um link será enviado para alterar sua senha</p>
-                            <i className="fa-solid fa-key"></i>
-                        </div>
+                    <div className={styles.recuperacaoContainer}>
+                        <p>Não se preocupe, fizemos um sistema de recuperação de senha para pessoas como você que esquecem a própria senha que cadastrou. Digite seu email e um link será enviado para alterar sua senha</p>
+                        <i className="fa-solid fa-key"></i>
+                    </div>
 
-                        <div className={styles.btn}>
-                            <form>
-                                <Input onChange={onChange} type={"email"} label={"Email"} ></Input>
-                                <button className={styles.botao}>Enviar</button>
-                            </form>
-                        </div>
+                    <div className={styles.btn}>
+                        <form onSubmit={onClick}>
+                            <input type={"hidden"} id={"user"}></input>
+                            <Input onChange={onChange} type={"email"} label={"Email"} ></Input>
+                            <button className={styles.botao}>Enviar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
@@ -44,12 +45,13 @@ export function fechar() {
 
 }
 
-export function abrirRecuperacao() {
+export function abrirRecuperacao(usuario) {
     const container = document.getElementById("recuperacaoDiv")
     const popup = document.getElementById("recuperacao")
+    const inputUser = document.getElementById("user")
+    inputUser.value = usuario
 
     popup.style.display = "flex"
     popup.classList.add(styles.alertOn)
     container.style.display = "flex"
-
 }

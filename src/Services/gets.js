@@ -138,6 +138,9 @@ window.onload = function () {
     }else if(reloading == "erroProduto"){
         erro("Este produto não pode ser excluido, pois existem pedidos cadastrados com ele!!")
         sessionStorage.removeItem("reloading")
+    }else if(reloading == "email"){
+        sucesso("Verifique seu email e acesse o link para alterar sua senha")
+        sessionStorage.removeItem("reloading")
     }
 }
 
