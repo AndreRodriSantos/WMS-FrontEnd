@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../Styles/Recuperacao.module.css"
 import { Input } from "../Inputs/InputText";
-
+import loading from "../../IMG/loading.gif"
 
 export class RecuperacaoSenha extends React.Component {
     render() {
@@ -14,7 +14,7 @@ export class RecuperacaoSenha extends React.Component {
 
                     <header className={styles.header}>
                         <span className={styles.title}>Esqueceu a Senha?</span>
-                        <span className={styles.close} onClick={fechar}><i className="fa-regular fa-circle-xmark"></i></span>
+                        <span className={styles.close} id="close" onClick={fechar}><i className="fa-regular fa-circle-xmark"></i></span>
                     </header>
 
 
@@ -26,8 +26,8 @@ export class RecuperacaoSenha extends React.Component {
                     <div className={styles.btn}>
                         <form onSubmit={onClick}>
                             <input type={"hidden"} id={"user"}></input>
-                            <Input onChange={onChange} type={"email"} label={"Email"} ></Input>
-                            <button className={styles.botao}>Enviar</button>
+                            <Input width={400} onChange={onChange} type={"email"} label={"Email"} ></Input>
+                            <button className={styles.botao}>Enviar</button><img title={"Aguarde..."} id="loading" className={styles.loading} src={loading}></img>
                         </form>
                     </div>
                 </div>
@@ -37,12 +37,14 @@ export class RecuperacaoSenha extends React.Component {
 }
 
 export function fechar() {
-    const container = document.getElementById("recuperacaoDiv")
-    const popup = document.getElementById("recuperacao")
 
-    popup.classList.remove(styles.alertOn)
-    container.style.display = "none"
+    if (document.getElementById("loading").style.visibility != "visible") {
+        const container = document.getElementById("recuperacaoDiv")
+        const popup = document.getElementById("recuperacao")
 
+        popup.classList.remove(styles.alertOn)
+        container.style.display = "none"
+    }
 }
 
 export function abrirRecuperacao(usuario) {

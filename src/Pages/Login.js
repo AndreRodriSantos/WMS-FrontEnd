@@ -91,24 +91,48 @@ export default function Login() {
         const user = document.getElementById("user").value
 
         if (user == "aluno") {
-            console.log(email);
 
-            api.post(`api/email/sending-email?email=${email}`, email, {
+            const aluno = { "email": email }
+            console.log(aluno);
+            api.post(`api/aluno/buscarEmail/${email}`, aluno, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
+                }, onUploadProgress() {
+                    document.getElementById("loading").style.visibility = "visible"
                 }
             }).then(
                 response => {
-                    refresh("email")
+                    document.getElementById("loading").style.visibility = "hidden"
+                    sucesso("O Email com o código de recuperação foi enviado, digite-o a seguir")
                 },
                 err => {
+                    document.getElementById("loading").style.visibility = "hidden"
+                    document.getElementById("close").removeAttribute("disabled")
                     erro("Email não encontrado, verifique se digitou corretamente e tente novamente")
                 }
             )
-
         } else if (user == "professor") {
-            
+            const professor = { "email": email }
+            console.log(professor);
+            api.post(`api/professor/buscarEmail/${email}`, professor, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }, onUploadProgress() {
+                    document.getElementById("loading").style.visibility = "visible"
+                }
+            }).then(
+                response => {
+                    document.getElementById("loading").style.visibility = "hidden"
+                    sucesso("O Email com o código de recuperação foi enviado, digite-o a seguir")
+                },
+                err => {
+                    document.getElementById("loading").style.visibility = "hidden"
+                    document.getElementById("close").removeAttribute("disabled")
+                    erro("Email não encontrado, verifique se digitou corretamente e tente novamente")
+                }
+            )
         }
     }
 
