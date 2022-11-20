@@ -7,6 +7,9 @@ import ItemPedido from "../Components/ItemPedido"
 import ProdutoItem from "../Components/ProdutoItem"
 import api from "../Services/api"
 import styles from "../Styles/Pedido.module.css"
+import logo from "../IMG/Logo WMS.png"
+import CaixaRight from "../IMG/CaixaRight.png"
+import DesignPedido from "../IMG/DesignPedido.png"
 
 export default function Pedido() {
 
@@ -18,6 +21,7 @@ export default function Pedido() {
         return api.get('api/produto/list').then(
             response => {
                 setProduto(response.data)
+                console.log(response.data);
                 return response.data
             }
         )
@@ -150,10 +154,6 @@ export default function Pedido() {
 
                 </div>
 
-                <div>
-
-                </div>
-
                 <div className={styles.footer}>
                     <div>
                         <span className={styles.spanValor}>Valor: R$ </span>
@@ -166,6 +166,22 @@ export default function Pedido() {
                     </div>
                 </div>
             </div>
+
+            <div className={styles.containerCircle}>
+                <img src={logo} className={styles.logo}></img>
+                <span className={styles.titleCircle}>
+                    Faça seu Pedido de Forma Simples e Prática aqui
+                </span>
+
+                <div className={styles.Caixa}>
+                    <img src={CaixaRight} className={styles.CaixaRight}></img>
+                </div>
+                
+                <div className={styles.BaseDesignPedido}>
+                    <img src={DesignPedido} className={styles.DesignPedido}></img>
+                </div>
+            </div>
+
         </div>
     )
 }
@@ -182,7 +198,6 @@ function Produtos() {
 
     const btnProduto = document.getElementById('btnProduto')
     const btnPedido = document.getElementById('btnPedido')
-
 
 
     produto.classList.replace(styles.produtoOff, styles.produtoOn)

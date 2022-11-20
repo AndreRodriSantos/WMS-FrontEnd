@@ -406,7 +406,6 @@ export default function CadastroProduto() {
                                             /* defaultChecked={importado == null ? false : importado == 1 ? false : true} */
                                             onChange={(e) => setimportado(e.target.value)}
                                             onClick={() => disableImportacao()}
-                                            value="false"
                                         />
                                         <span className={styles.slider}></span>
                                     </label>
