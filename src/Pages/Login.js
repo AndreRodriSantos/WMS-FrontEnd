@@ -86,7 +86,7 @@ export default function Login() {
         }
     }
 
-    function RecuperarSenha(e) {
+    function VerificarEmail(e) {
         e.preventDefault()
         const user = document.getElementById("user").value
 
@@ -103,8 +103,14 @@ export default function Login() {
                 }
             }).then(
                 response => {
-                    document.getElementById("loading").style.visibility = "hidden"
-                    sucesso("O Email com o código de recuperação foi enviado, digite-o a seguir")
+                    const codeDiv = document.getElementById("codDiv")
+                    const emailDiv = document.getElementById("emailDiv")
+
+                    if (codeDiv.style.top == "-350px") {
+                        codeDiv.style.top = "-130px"
+                        emailDiv.style.top = "350px"
+                        document.getElementById("loading").style.visibility = "hidden"
+                    }
                 },
                 err => {
                     document.getElementById("loading").style.visibility = "hidden"
@@ -124,8 +130,14 @@ export default function Login() {
                 }
             }).then(
                 response => {
-                    document.getElementById("loading").style.visibility = "hidden"
-                    sucesso("O Email com o código de recuperação foi enviado, digite-o a seguir")
+                    const codeDiv = document.getElementById("codDiv")
+                    const emailDiv = document.getElementById("emailDiv")
+
+                    if (codeDiv.style.top == "-350px") {
+                        codeDiv.style.top = "-130px"
+                        emailDiv.style.top = "350px"
+                        document.getElementById("loading").style.visibility = "hidden"
+                    }
                 },
                 err => {
                     document.getElementById("loading").style.visibility = "hidden"
@@ -138,7 +150,7 @@ export default function Login() {
 
     return (
         <div className={styles.container}>
-            <RecuperacaoSenha onClick={RecuperarSenha} onChange={(e) => setEmail(e.target.value)}></RecuperacaoSenha>
+            <RecuperacaoSenha onClick={VerificarEmail} onChange={(e) => setEmail(e.target.value)}></RecuperacaoSenha>
             <header className={styles.headerLogin}>
                 <img src={logo} className={styles.logo}></img>
                 <a href="/Home"><i className="fa-solid fa-house"></i></a>
@@ -165,7 +177,6 @@ export default function Login() {
                                 <Input onChange={(e) => setNif(e.target.value)} id="nif" label="Nif" type="number" placeholder="Digite o Número de Matricula" name="numero" />
                                 <InputSenha user={"professor"} esqueceu={true} onChange={(e) => setSenhaProf(e.target.value)} id="senhaProf" id_eye="eye2" label="Senha" type="password" placeholder="Digite a senha" name="senhaProf" />
                                 <Button>Entrar</Button>
-
                                 <p className={styles.telaCadastro}>Não tem uma conta? <a href="../CadastroProfessores" className={styles.btnCadastro}>Crie aqui!</a></p>
                             </form>
                         </div>
@@ -181,9 +192,7 @@ export default function Login() {
                     </div>
 
                     <div className={styles.cubo}>
-
-                        <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameborder='0' width='100%' height='100%'></iframe>
-
+                        <iframe src='https://my.spline.design/untitled-da98f9f4bfe0d99057aa680c0c7ba3e8/' frameBorder='0' width='100%' height='100%'></iframe>
                     </div>
 
                 </div>

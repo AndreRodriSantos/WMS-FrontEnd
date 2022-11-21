@@ -32,7 +32,7 @@ export default function Home() {
         setNcms(ncms)
         console.log(ncms);
     }
-     
+
     function getFornecedor() {
         api.get(`api/fornecedor/list`).then(
             response => {
@@ -98,7 +98,7 @@ export default function Home() {
             setNome(professor.nome)
             setNif(professor.nif)
             professor.imagem == null ? setImagemUser("https://www.somadesenvolvimento.com.br/application/assets/img/male.png") : setImagemUser(`https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${professor.imagem}?alt=media`)
-            
+
 
         } else if (localStorage.getItem("aluno")) {
             let idAluno = localStorage.getItem("idAluno")
@@ -143,7 +143,7 @@ export default function Home() {
             </div>
             <div className={styles.home}>
                 <SideBar />
-                <div className={styles.homeRidth}>
+                <div className={styles.homeCenter} id="HomeCenter">
                     <div id='CardTutoria' className={styles.cardTutorial}>
                         <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
                         <div className={styles.subCard}>
@@ -190,135 +190,127 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className={styles.base}>
-                    <div className={styles.btnsList}>
-                        <button id="btnPedidos" onClick={pedidoList} type="button" className={styles.buttons}><i className="fa-solid fa-cart-plus"></i></button>
-                        <button id="btnFornecedor" onClick={fornecedorList} type="button" className={styles.buttonsFocus}><i className="fa-solid fa-address-book"></i></button>
-                        <button id="btnProdutos" onClick={produtoList} type="button" className={styles.buttons}><i className="fa-solid fa-box"></i></button>
-                    </div>
-                    <div id="baseForm" className={styles.base_form}>
+                <div className={styles.HomeRight}>
 
-                        <div id='pedidoList' className={styles.listaPedidos}>
-                            <div className={styles.headerList}>
-                                <span className={styles.headerTitle}>
-                                    <i className="fa-solid fa-cart-plus"></i>
-                                    <p className={styles.SubTitle}>Pedidos</p>
-                                </span>
-                                <a href="/Pedido" className={styles.addFornecedor}>
-                                    <i className="fa-solid fa-circle-plus"></i>
-                                    <p className={styles.addTitle}>Novo Pedido</p>
-                                </a>
-                            </div>
-                            <table className={styles.tabela}>
-                                <tbody className={styles.lista}>
-                                    {
-                                        pedido.map((p, key) => <ListHome id={p.numPedido} key={key} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div id='fornecedorList' className={styles.listaFornecedor}>
-                            <div className={styles.headerList}>
-                                <span className={styles.headerTitle}>
-                                    <i className="fa-solid fa-address-book"></i>
-                                    <p className={styles.SubTitle}>Fornecedores</p>
-                                </span>
-                                <a href="/CadastroFornecedores" className={styles.addFornecedor}>
-                                    <i className="fa-solid fa-circle-plus"></i>
-                                    <p className={styles.addTitle}>Novo Fornecedor</p>
-                                </a>
-                            </div>
-                            <table>
-                                <tbody className={styles.lista}>
-                                    {
-                                        fornecedor.map((f, key) => <ListHome id={f.id} objeto={f} key={key} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div id='produtoList' className={styles.listaProdutos}>
-                            <div className={styles.headerList}>
-                                <span className={styles.headerTitle}>
-                                    <i className="fa-solid fa-box"></i>
-                                    <p className={styles.SubTitle}>Produtos</p>
-                                </span>
-                                <a href="/CadastroProduto" className={styles.addFornecedor}>
-                                    <i className="fa-solid fa-circle-plus"></i>
-                                    <p className={styles.addTitle}>Novo Produto</p>
-                                </a>
-                            </div>
-                            <table>
-                                <tbody className={styles.lista}>
-                                    {
-                                        produto.map((p, key) => <ListHome objeto={p} key={key} id={p.codProduto} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                {/* <div id='chatbot' className={styles.BaseBotChat}>
-                    <div className={styles.baseAI}>
-                        { <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
-                            <i className="fa-solid fa-arrow-down"></i>
-                        </div>
-                        <div id='btnOn' onClick={abrirChat} className={styles.btnOn}>
-                            <i className="fa-solid fa-arrow-up"></i>
-                        </div> }
-
-                    </div>
-                    <div className={styles.foto}>
-
-                    </div>
-                    <div id='balao' className={styles.interogacao}>
-                        <i className="fa-solid fa-question"></i>
-                        <span className={styles.triangulo}></span>
-                    </div>
-                    <div className={styles.BotChat}>
-
-                        <span className={styles.title}>
-                            <i className="fa-solid fa-comment"></i>
-                            <h3>ChatBot</h3>
+                    <div className={styles.estatisticas}>
+                        <span>
+                            Estátisticas
                         </span>
 
-                        <div className={styles.conversa}>
-
-                            <div className={styles.msgBot}>
-                                <div className={styles.MsgImgBot}></div>
-                                <span className={styles.MsgNameBot}>BOT</span>
-                                <div className={styles.MsgBot}>
-                                    <p className={styles.InfoMsg}>
-                                        Como posso ajudar ?
-                                    </p>
+                        <div className={styles.statusContainer}>
+                            <div className={styles.status1}>
+                                <div className={styles.circleStatus}>
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/hbvyhtse.json"
+                                        trigger="hover"
+                                        colors="primary:#e4e4e4"
+                                        state="hover"
+                                        style={{ width: 32, height: 32 }}>
+                                    </lord-icon>
                                 </div>
+
                             </div>
 
-                            <div className={styles.msgUser}>
-                                <div className={styles.MsgImgUser}></div>
-                                <span className={styles.MsgName}>Nome</span>
-                                <div className={styles.Msg}>
-                                    <p className={styles.InfoMsg}>
-                                        Seu Pai é Padeiro ?
-                                    </p>
-                                </div>
+                            <div className={styles.status2}>
+                                <div className={styles.circleStatus}>
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/slduhdil.json"
+                                        trigger="hover"
+                                        colors="primary:#ffffff"
+                                        style={{ width: 32, height: 32 }}>
+                                    </lord-icon></div>
+
                             </div>
 
-                            <div className={styles.msgBot}>
-                                <div className={styles.MsgImgBot}></div>
-                                <span className={styles.MsgNameBot}>BOT</span>
-                                <div className={styles.MsgBot}>
-                                    <p className={styles.InfoMsg}>
-                                        Não pq ?
-                                    </p>
-                                </div>
+                            <div className={styles.status3}>
+                                <div className={styles.circleStatus}></div>
+
                             </div>
 
+                            <div className={styles.status4}>
+                                <div className={styles.circleStatus}></div>
+
+                            </div>
                         </div>
-                        <input className={styles.Duvida} type='text'></input>
+
+
                     </div>
+
+                    <div className={styles.base}>
+                        <div className={styles.btnsList}>
+                            <button id="btnPedidos" onClick={pedidoList} type="button" className={styles.buttons}><i className="fa-solid fa-cart-plus"></i></button>
+                            <button id="btnFornecedor" onClick={fornecedorList} type="button" className={styles.buttonsFocus}><i className="fa-solid fa-address-book"></i></button>
+                            <button id="btnProdutos" onClick={produtoList} type="button" className={styles.buttons}><i className="fa-solid fa-box"></i></button>
+                        </div>
+                        <div id="baseForm" className={styles.base_form}>
+
+                            <div id='pedidoList' className={styles.listaPedidos}>
+                                <div className={styles.headerList}>
+                                    <span className={styles.headerTitle}>
+                                        <i className="fa-solid fa-cart-plus"></i>
+                                        <p className={styles.SubTitle}>Pedidos</p>
+                                    </span>
+                                    <a href="/Pedido" className={styles.addFornecedor}>
+                                        <i className="fa-solid fa-circle-plus"></i>
+                                        <p className={styles.addTitle}>Novo Pedido</p>
+                                    </a>
+                                </div>
+                                <table className={styles.tabela}>
+                                    <tbody className={styles.lista}>
+                                        {
+                                            pedido.map((p, key) => <ListHome id={p.numPedido} key={key} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id='fornecedorList' className={styles.listaFornecedor}>
+                                <div className={styles.headerList}>
+                                    <span className={styles.headerTitle}>
+                                        <i className="fa-solid fa-address-book"></i>
+                                        <p className={styles.SubTitle}>Fornecedores</p>
+                                    </span>
+                                    <a href="/CadastroFornecedores" className={styles.addFornecedor}>
+                                        <i className="fa-solid fa-circle-plus"></i>
+                                        <p className={styles.addTitle}>Novo Fornecedor</p>
+                                    </a>
+                                </div>
+                                <table>
+                                    <tbody className={styles.lista}>
+                                        {
+                                            fornecedor.map((f, key) => <ListHome id={f.id} objeto={f} key={key} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id='produtoList' className={styles.listaProdutos}>
+                                <div className={styles.headerList}>
+                                    <span className={styles.headerTitle}>
+                                        <i className="fa-solid fa-box"></i>
+                                        <p className={styles.SubTitle}>Produtos</p>
+                                    </span>
+                                    <a href="/CadastroProduto" className={styles.addFornecedor}>
+                                        <i className="fa-solid fa-circle-plus"></i>
+                                        <p className={styles.addTitle}>Novo Produto</p>
+                                    </a>
+                                </div>
+                                <table>
+                                    <tbody className={styles.lista}>
+                                        {
+                                            produto.map((p, key) => <ListHome objeto={p} key={key} id={p.codProduto} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                {/* <div id='chatbot' className={styles.BaseBotChat}>
+
                 </div> */}
 
             </div>

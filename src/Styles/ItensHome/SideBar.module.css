@@ -4,10 +4,11 @@
 }
 .base {
     position: relative;
-    top: 10px;
+    top: 20px;
     left: 20px;
     width: 100px;
-    height: 98%;
+    height: 96%;
+    bottom: 20px;
     border-radius: 20px;
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
