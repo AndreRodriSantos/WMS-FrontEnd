@@ -7,7 +7,7 @@
     border: none;
     font-size: 20px;
     font-weight: bold;
-    padding-left: 10px;
+    padding-left: 25px;
 }
 
 .inputPesquisa[type="search"]::-webkit-search-decoration,

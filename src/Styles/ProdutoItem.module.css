@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     padding: 20px 0px;
+    border-bottom: 3px solid #F9F9F9;
 }
 
 
@@ -51,22 +52,67 @@
     border-radius: 10px;
     
 }
+/*  */
 
 .qtd{
-    height: 20px;
-    width: 50px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    border: solid 1.5px black;
-    outline: none;
-    padding-left: 2px;
-    transition: 0.2s all linear;
+    position: relative; 
+    left: -3%;
+    height: 30px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .qtd:disabled{
     color: gray;
-    border: solid 1.5px gray;
+    border: solid 1.5px gray;                                              
+}
+
+.InputQnt{
+    position: relative;
+    left: 10%;
+    height: 30px;
+    width: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent; 
+    outline: none;
+    padding-left: 18px;
+    transition: 0.2s all linear;
+}
+.btnQndLeft{
+    position: absolute;
+    left: -15%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #A7A7A7;
+}
+
+.btnQnd{
+    position: absolute;
+    right: -35%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #4D71FF;
+
 }
 
 .divQtd{
@@ -76,10 +122,28 @@
     align-items: center;
 }
 
-.divQtd p{
+.qtd p{
     padding-right: 5px;
 }
 
+.sku{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70px;
+}
+.sku i{
+    font-size: 18px;
+    font-weight: bold;
+}
+.skuNum{
+    position: relative;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+/*  */
 .btnRemover{
     font-size: 25px;
     color: #06b1c5;
@@ -105,6 +169,7 @@
     left: 0;
     top: 0;
     z-index: -1;
+    opacity: 0;
 }
 
 .inputCheck {

@@ -5,18 +5,22 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    background-color: #ECEEF2;
 }
 
 .formContainer {
     width: 1200px;
     height: 750px;
-    box-shadow: 0px 0px 30px black;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     position: relative;
+    background-color: #fff;
+    transform: scale(1);
 }
+
 .divFotos{
     height: 80%;
     display: flex;
@@ -54,14 +58,23 @@
     justify-content: center;
     align-items: center;
     height: 60%;
+    width: 100%;
 }
 
 .linhaEtapa{
-    background-color: black;
+    position: relative;
     width: 450px;
-    height: 2px;
+    height: 3px;
+    background-color: #000;
+    transition: .2s ease-in;
 }
-
+.linhaProcess{
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-color: #4D71FF;
+    transition: .2s ease-in;
+}
 .etapaCircle{
     width: 50px;
     height: 50px;
@@ -84,6 +97,10 @@
 }
 
 .titleOn{
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+
     top: +130px;
     color: #4D71FF;
     opacity: 100%;
@@ -119,7 +136,7 @@
 }
 
 .logo {
-    margin: 10px;
+    margin: 20px 0 0 20px;
 }
 
 .column {
@@ -131,24 +148,107 @@
     justify-content: center;
 }
 
+.titleDemanda{
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    left: 4%;
+    top: 44%;
+    z-index: 1;
+
+    text-align: center;
+
+    color: #000;
+    font-size: 1em;
+    background: #fff;
+    letter-spacing: 0.2em;
+
+}
+
+.titleNcm{
+    position: absolute;
+    width: 65px;
+    height: 20px;
+    left: 36%;
+    top: 30%;
+    z-index: 1;
+
+    text-align: center;
+
+    color: #000;
+    font-size: 1em;
+    background: #fff;
+    letter-spacing: 0.2em;
+}
+
+.titleMedida{
+    position: absolute;
+    width: 90px;
+    height: 20px;
+    left: 36%;
+    top: 44.5%;
+    z-index: 1;
+
+    text-align: center;
+
+    color: #000;
+    font-size: 1em;
+    background: #fff;
+    letter-spacing: 0.2em;
+}
+.label{
+    position: relative;
+    top: 0;
+
+    font-size: 18px;
+    font-weight: 300;
+}
 .divInput {
-    height: 60px;
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-    margin: 20px 0;
+    width: 80%;
+    height: 60px;
+    position: relative;
+    top: -2%;
+}
+
+.ValorLiquido{
+    border: 2px solid #000;
+    border-radius: 10px;
+    position: relative;
+    top: 3%;
+    width: 80%;
+    height: 48%;
+}
+
+.titleVL{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -7%;
+    left: 5%;
+    width: 150px;
+    height: 30px;
+    background-color: #fff;
+    color: #000;
+    font-size: 1em;
+    letter-spacing: 0.2em;
 }
 
 .footerButtons{
-    height: 20%;
-    width: 100%;
+    position: relative;
+    bottom: 2%;
+    height: 85px;
+    width: 95%;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 0 50px;
+    background-color: #F9F9F9;
 }
 
 .importado{
@@ -162,9 +262,22 @@
     width: 130px;
     height: 45px;
     border: none;
-    font-size: 15;
+
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 300;
+    color: #fff;
+    cursor: pointer;
+    transition: .2s ease-in;
+}
+.avancarButton:hover{
+    border: 2px solid #41C04E;
+    background-color: #fff;
+    color: #41C04E;
+
+    font-size: 16px;
     font-weight: bold;
-    color: white
+    text-transform: uppercase;
 }
 
 .voltarButton{
@@ -174,11 +287,24 @@
     background-color: #2F80ED;
     border: none;
     font-weight: bold;
-    font-size: 15;
-    color: white;
+    
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 300;
+    color: #fff;
     text-align: center;
+    cursor: pointer;
+    transition: .2s ease-in;
 }
+.voltarButton:hover{
+    border: 2px solid #2F80ED;
+    background-color: #fff;
+    color: #2F80ED;
 
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 .formdados{
     height: 80%;
     width: 100%;
@@ -238,7 +364,7 @@
     margin: 20px;
     border-radius: 10px;
     height: 40px;
-    box-shadow: black 0 1px 8px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: .2s linear;
 }
 
@@ -408,4 +534,132 @@
     100% {
         transform: scale(1) rotate(-45deg);
     }
+}
+
+
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch .inputCheckbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50px;
+}
+
+.inputCheckbox:checked+.slider {
+    background-color: #2196F3;
+}
+
+.inputCheckbox:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.inputCheckbox:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+@media screen and (max-width:1440px) {
+    .formContainer{
+        transform: scale(0.9);
+    }
+    
+}
+
+
+@media screen and (max-height: 900px) {
+    .formContainer{
+        transform: scale(0.9);
+    }
+    
+}
+
+@media screen and (max-width:1250px) {
+    .formContainer{
+        transform: scale(0.8);
+    }
+    
+}
+
+
+@media screen and (max-height: 800px) {
+    .formContainer{
+        transform: scale(0.8);
+    }
+    
+}
+
+@media screen and (max-width:1080px) {
+    .formContainer{
+        transform: scale(0.7);
+    }
+    
+}
+
+@media screen and (max-height: 750px) {
+    .formContainer{
+        transform: scale(0.7);
+    }
+    
+}
+
+@media screen and (max-width: 890px) {
+    .formContainer{
+        transform: scale(0.6);
+    }
+    
+}
+
+@media screen and (max-height: 600px) {
+    .formContainer{
+        transform: scale(0.6);
+    }
+    
+}
+
+@media screen and (max-height: 500px) {
+    .formContainer{
+        transform: scale(0.5);
+    }
+    
+}
+
+@media screen and (max-height: 400px) {
+    .formContainer{
+        transform: scale(0.4);
+    }
+    
 }

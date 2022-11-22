@@ -36,6 +36,8 @@ export default function CadastroProduto() {
         const valorImportacaoInput = document.getElementById("valorImportacao")
 
         if (id) {
+            const homologado = document.getElementById("homologado")
+
             api.get(`api/produto/${id}`).then(
                 response => {
                     const produto = response.data
@@ -45,6 +47,8 @@ export default function CadastroProduto() {
                     setSku(produto.sku)
                     setValor(produto.valorUnitario)
                     setPedido(produto.pontoPedido)
+
+                    homologado.checked = produto.importado
 
                     if (produto.valorImportacao != null) {
                         valorImportacaoInput.removeAttribute("disabled")
@@ -58,7 +62,6 @@ export default function CadastroProduto() {
                     produto.fornecedores.map(f => {
                         setCheck(check => [...check, f.fornecedor])
                     })
-
 
                     setimportado(produto.importado)
                     setPis(produto.pis)
@@ -88,6 +91,9 @@ export default function CadastroProduto() {
         const etap2Title = document.getElementById("etapaTitle2")
         const etap3Title = document.getElementById("etapaTitle3")
 
+        const processLinha = document.getElementById('processLinha')
+        const processLinha2 = document.getElementById('processLinha2')
+
         switch (passo) {
             case 1:
                 etapa1.classList.replace(styles.etapa1Off, styles.etapa1On)
@@ -100,6 +106,8 @@ export default function CadastroProduto() {
                 etap1Title.classList.add(styles.titleOn)
                 etap2Title.classList.remove(styles.titleOn)
                 etap3Title.classList.remove(styles.titleOn)
+
+                processLinha.style.width = '0%'
 
                 break;
             case 2:
@@ -117,6 +125,10 @@ export default function CadastroProduto() {
                 etap1Title.classList.remove(styles.titleOn)
                 etap2Title.classList.add(styles.titleOn)
                 etap3Title.classList.remove(styles.titleOn)
+
+                processLinha.style.width = '100%'
+                processLinha2.style.width = '0%'
+
                 break;
             case 3:
                 etapa1.classList.replace(styles.etapa1On, styles.etapa1Off)
@@ -129,6 +141,9 @@ export default function CadastroProduto() {
                 etap1Title.classList.remove(styles.titleOn)
                 etap2Title.classList.remove(styles.titleOn)
                 etap3Title.classList.add(styles.titleOn)
+
+                processLinha2.style.width = '100%'
+
                 break;
         }
     }
@@ -167,10 +182,19 @@ export default function CadastroProduto() {
     }, [])
 
     function disableImportacao(tipo) {
-        const valorImportacaoInput = document.getElementById("valorImportacao")
-        tipo == "sim" ? valorImportacaoInput.removeAttribute("disabled") : valorImportacaoInput.setAttribute("disabled", "true")
-    }
+        const valorImportacaoInput = document.getElementById("homologado").checked
+        const valorImportacao = document.getElementById('valorImportacao')
 
+        console.log(valorImportacaoInput);
+        console.log(valorImportacao);
+
+        if (valorImportacaoInput == false) {
+            valorImportacao.setAttribute("disabled", '')
+        } else {
+            valorImportacao.removeAttribute('disabled')
+        }
+
+    }
 
     async function CadastrarProduto(e) {
         e.preventDefault()
@@ -184,6 +208,8 @@ export default function CadastroProduto() {
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
 
         const id = localStorage.getItem("idProduto")
+
+        const importado = document.getElementById("homologado").checked
 
         const produto = {
             nome, descricao, medida, pontoPedido, valorImportacao, valorUnitario, demanda, ncm, sku, "fornecedores":
@@ -254,7 +280,9 @@ export default function CadastroProduto() {
                             <span className={`${styles.etapaTitle} ${styles.titleOn}`} id="etapaTitle1">Dados Principais</span>
                         </div>
 
-                        <div className={styles.linhaEtapa}></div>
+                        <div className={styles.linhaEtapa}>
+                            <span id='processLinha' className={styles.linhaProcess}></span>
+                        </div>
 
                         <div className={styles.etapa} id="etapa2">
                             <div className={styles.etapaCircle}>
@@ -263,7 +291,9 @@ export default function CadastroProduto() {
                             <span className={`${styles.etapaTitle}`} id="etapaTitle2">Impostos</span>
                         </div>
 
-                        <div className={styles.linhaEtapa}></div>
+                        <div className={styles.linhaEtapa}>
+                            <span id='processLinha2' className={styles.linhaProcess}></span>
+                        </div>
 
                         <div className={styles.etapa} id="etapa3">
                             <div className={styles.etapaCircle} >
@@ -284,13 +314,16 @@ export default function CadastroProduto() {
                                 <div className={styles.column}>
                                     <Input width={"325px"} defaultValue={nome} onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
                                     <Input width={"325px"} defaultValue={descricao} onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
+                                    <span className={styles.titleDemanda}>Demanda</span>
                                     <Select width={"325px"} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                                     <Input width={"325px"} defaultValue={pontoPedido} onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="number" id="nome" name="pontoPedido"></Input>
                                 </div>
 
                                 <div className={styles.column}>
                                     <Input width={"325px"} defaultValue={sku} onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="number" name="nome" ></Input>
+                                    <span className={styles.titleNcm}>NCM</span>
                                     <Select width={"325px"} data={fazOptionsNcm()} label="NCM" id="ncm" idArrow="arrow4" name="ncm"></Select>
+                                    <span className={styles.titleMedida}>Medida</span>
                                     <Select width={"325px"} data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
                                     <Input width={"325px"} defaultValue={valorUnitario} onChange={(e) => setValor(e.target.value)} label="Valor Bruto" id="valor" type="number" name="valor"></Input>
                                 </div>
@@ -358,27 +391,33 @@ export default function CadastroProduto() {
                             <Input defaultValue={ipi} onChange={(e) => setIpi(e.target.value)} label="IPI" id="nome" type="number" name="nome" ></Input>
                             <Input defaultValue={pis} onChange={(e) => setPis(e.target.value)} label="PIS" id="descricao" type="number" name="descricao" ></Input>
                             <Input defaultValue={cofins} onChange={(e) => setCofins(e.target.value)} label="COFINS" id="descricao" type="number" name="descricao" ></Input>
+                            <Input defaultValue={icms} onChange={(e) => setIcms(e.target.value)} label="ICMS" id="descricao" type="number" name="descricao" ></Input>
                         </div>
 
                         <div className={styles.column}>
-                            <Input defaultValue={icms} onChange={(e) => setIcms(e.target.value)} label="ICMS" id="descricao" type="number" name="descricao" ></Input>
+
                             <div className={styles.divInput}>
-                                <label className={styles.label}>Produto Importado</label>
+                               <label className={styles.label}>Importado</label>
 
                                 <div className={styles.importado}>
 
-                                    <div>
-                                        <label className={styles.label}>Sim</label>
-                                        <input defaultChecked={importado == null ? false : importado == 1 ? true : false} onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("sim")} id="sim" className={styles.radio} type="radio" value="true" name="homologado" ></input>
-                                    </div>
+                                    <label className={styles.switch}>
+                                        <input id='homologado' className={styles.inputCheckbox} type="checkbox"
+                                            /* defaultChecked={importado == null ? false : importado == 1 ? false : true} */
+                                            onChange={(e) => setimportado(e.target.value)}
+                                            onClick={() => disableImportacao()}
+                                        />
+                                        <span className={styles.slider}></span>
+                                    </label>
 
-                                    <div>
-                                        <label className={styles.label}>Não</label>
-                                        <input defaultChecked={importado == null ? false : importado == 1 ? false : true} onChange={(e) => setimportado(e.target.value)} onClick={() => disableImportacao("não")} id="nao" className={styles.radio} type="radio" value="false" name="homologado"></input>
-                                    </div>
                                 </div>
+                                <Input width={250} defaultValue={valorImportacao} onChange={(e) => setValorImportacao(e.target.value)} disabled={true} label="Valor de Importação" id="valorImportacao" type="number" name="valorImportacao" ></Input>
                             </div>
-                            <Input defaultValue={valorImportacao} onChange={(e) => setValorImportacao(e.target.value)} disabled={true} label="Valor de Importação" id="valorImportacao" type="number" name="valorImportacao" ></Input>
+
+                            <div className={styles.ValorLiquido}>
+                                <span className={styles.titleVL}>Valor Liquido</span>
+                            </div>
+
                         </div>
 
                         <div className={styles.footerButtons}>
