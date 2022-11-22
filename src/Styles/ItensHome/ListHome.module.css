@@ -2,9 +2,6 @@
     position: relative;
     width: 100%;
     height: 50px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     cursor: pointer;
     margin-top: 15px;
     border-radius: 10px;
@@ -18,8 +15,14 @@
     transition: 0.2s linear;
 }
 
-.titleList {
-    margin: 30px;
+.titleList{
+    font-weight: bold;
+    color: #a7a7a7;
+}
+
+.nome{
+    font-weight: bold;
+    color: black;
 }
 
 .alertOn {

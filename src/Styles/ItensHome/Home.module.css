@@ -379,7 +379,7 @@
 .estatisticas span{
     width: 100%;
     height: 10%;
-    font-size: 200%;
+    font-size: 180%;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -415,7 +415,7 @@
     width: 35%;
     padding: 10px;
     height: 40%;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
     margin: 20px;
     background: linear-gradient(180deg, #00FFF0 0%, #003BD4 100%);
@@ -425,7 +425,7 @@
     width: 35%;
     padding: 10px;
     height: 40%;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
     margin: 20px;
     background: linear-gradient(180deg, #E15AE3 0%, #8E0090 100%);
@@ -435,7 +435,7 @@
     width: 35%;
     padding: 10px;
     height: 40%;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
     margin: 20px;
     background: linear-gradient(180deg, #44A118 0%, #194206 100%);
@@ -445,7 +445,7 @@
     width: 35%;
     padding: 10px;
     height: 40%;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
     margin: 20px;
     background: linear-gradient(180deg, #FF9900 0%, #FF4D00 100%);
@@ -459,13 +459,12 @@
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     overflow: hidden;  
 }
 .btnsList {
     position: relative;
-    top: -170px;
     width: 100%;
     height: 90px;
     display: flex;
@@ -519,27 +518,42 @@
     transition: 0.5s;
 }
 .listaPedidos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative ;
     width: 450px;
-    height: 80%;
-
+    height: 75%;
 }
+
+.thead{
+    font-size: 15px;
+    position: relative;
+    height: 50px;
+    border-bottom: 5px solid #F2F2F4;
+}
+
 .listaFornecedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     width: 450px;
-    height: 80%;
+    height: 75%;
 }
 .listaProdutos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     width: 450px;
-    height: 80%;
+    height: 75%;
 
 }
 .headerList{
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 50px;
-    top: 0;
+    height: 60px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -649,12 +663,18 @@
 }
 
 .lista{
-    position: absolute;
+    position: relative;
     width: 450px;
     height: 300px;
     bottom: 0;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+.tabela{
+    border-collapse: collapse;
+    width: 90%;
+    text-align: center;
 }
 
 /* POPUP */

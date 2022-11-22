@@ -223,12 +223,28 @@ export default function Home() {
                             </div>
 
                             <div className={styles.status3}>
-                                <div className={styles.circleStatus}></div>
+                                <div className={styles.circleStatus}>
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/zvllgyec.json"
+                                        trigger="hover"
+                                        colors="primary:#ffffff"
+                                        state="hover"
+                                        style={{ width: 32, height: 32 }}>
+                                    </lord-icon>
+                                </div>
 
                             </div>
 
                             <div className={styles.status4}>
-                                <div className={styles.circleStatus}></div>
+                                <div className={styles.circleStatus}>
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/eanmttmw.json"
+                                        trigger="hover"
+                                        colors="primary:#ffffff"
+                                        state="hover-1"
+                                        style={{ width: 32, height: 32 }}>
+                                    </lord-icon>
+                                </div>
 
                             </div>
                         </div>
@@ -256,6 +272,13 @@ export default function Home() {
                                     </a>
                                 </div>
                                 <table className={styles.tabela}>
+                                    <thead className={styles.thead}>
+                                        <tr>
+                                            <th colSpan="1">ID</th>
+                                            <th colSpan="1">Data</th>
+                                            <th colSpan="1">Valor</th>
+                                        </tr>
+                                    </thead>
                                     <tbody className={styles.lista}>
                                         {
                                             pedido.map((p, key) => <ListHome id={p.numPedido} key={key} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
@@ -275,7 +298,14 @@ export default function Home() {
                                         <p className={styles.addTitle}>Novo Fornecedor</p>
                                     </a>
                                 </div>
-                                <table>
+                                <table className={styles.tabela}>
+                                    <thead className={styles.thead}>
+                                        <tr>
+                                            <th colSpan="1">Nome</th>
+                                            <th colSpan="1">CNPJ</th>
+                                            <th colSpan="1">UF</th>
+                                        </tr>
+                                    </thead>
                                     <tbody className={styles.lista}>
                                         {
                                             fornecedor.map((f, key) => <ListHome id={f.id} objeto={f} key={key} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
@@ -295,7 +325,14 @@ export default function Home() {
                                         <p className={styles.addTitle}>Novo Produto</p>
                                     </a>
                                 </div>
-                                <table>
+                                <table className={styles.tabela}>
+                                    <thead className={styles.thead}>
+                                        <tr>
+                                            <th colSpan="1">SKU</th>
+                                            <th colSpan="1">Nome</th>
+                                            <th colSpan="1">Valor</th>
+                                        </tr>
+                                    </thead>
                                     <tbody className={styles.lista}>
                                         {
                                             produto.map((p, key) => <ListHome objeto={p} key={key} id={p.codProduto} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
