@@ -1,4 +1,4 @@
-.components{
+.components {
     width: 100%;
     height: 100%;
     background-color: #C4C9DC;
@@ -9,7 +9,8 @@
     overflow-x: hidden;
     padding: 20px;
 }
-.home{
+
+.home {
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -17,7 +18,7 @@
     display: flex;
 }
 
-.homeCenter{
+.homeCenter {
     width: 80%;
     transition: .2s ease-in;
     padding: 20px 0px 20px 20px;
@@ -28,7 +29,7 @@
     margin: 0 2%;
 }
 
-.HomeRight{
+.HomeRight {
     width: 30%;
     height: 100%;
     padding: 20px;
@@ -38,18 +39,18 @@
     justify-content: space-between;
 }
 
-.cardTutorial{
+.cardTutorial {
     position: relative;
     width: 100%;
     height: 49%;
     max-height: 500px;
     background: linear-gradient(287deg, #CA8DEA 0%, #6064F9 120%);
-    border-radius: 20px 20px 170px 20px ;
+    border-radius: 20px 20px 170px 20px;
     box-shadow: rgba(0, 0, 0, 0.402) 0px 8px 20px;
     transition: .2s ease-in;
 }
 
-.titleCard{
+.titleCard {
     position: relative;
     top: 5%;
     left: 5%;
@@ -60,7 +61,8 @@
     height: 100px;
 
 }
-.subCard{
+
+.subCard {
     position: relative;
     top: 5%;
     left: 5%;
@@ -70,13 +72,15 @@
     flex-direction: column;
     justify-content: center;
 }
-.subTitle{
+
+.subTitle {
     font-size: 18px;
     color: #fff;
     font-weight: 300;
     margin: 1% 0;
 }
-.btns{
+
+.btns {
     position: relative;
     top: 5%;
     left: 5%;
@@ -86,7 +90,8 @@
     justify-content: space-between;
     align-items: center;
 }
-.tutorial{
+
+.tutorial {
     width: 150px;
     height: 50px;
     border-radius: 10px;
@@ -98,7 +103,8 @@
     background-color: #ED80FD;
     cursor: pointer;
 }
-.simulacao{
+
+.simulacao {
     width: 150px;
     height: 50px;
     border-radius: 10px;
@@ -110,7 +116,8 @@
     background-color: transparent;
     cursor: pointer;
 }
-.Caixa{
+
+.Caixa {
     position: absolute;
     top: 0;
     right: 0;
@@ -121,30 +128,36 @@
     align-items: center;
 
 }
-.C1{
+
+.C1 {
     position: relative;
     top: 0;
     animation: caixa 5s ease-in infinite;
 }
-@keyframes caixa{
-    0%{
+
+@keyframes caixa {
+    0% {
         top: 0;
     }
-    50%{
+
+    50% {
         top: 5%;
     }
-    100%{
+
+    100% {
         top: 0;
     }
 }
-.listHistorico{
+
+.listHistorico {
     width: 100%;
     height: 49%;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.402) 0px 8px 20px;
     transition: .2s ease-in;
 }
-.BaseBotChat{
+
+.BaseBotChat {
     position: absolute;
     top: 4%;
     right: 0;
@@ -155,7 +168,8 @@
     justify-content: center;
     transition: .5s;
 }
-.BotChat{
+
+.BotChat {
     position: relative;
     width: 100%;
     height: 100%;
@@ -168,11 +182,12 @@
     z-index: 15;
     transition: .5s;
 }
-.conversa{
+
+.conversa {
     position: relative;
     width: 80%;
     height: 100%;
-    top: -5%;    
+    top: -5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -180,7 +195,8 @@
     overflow: hidden;
     /* overflow-y: scroll; */
 }
-.msgBot{
+
+.msgBot {
     position: relative;
     display: flex;
     justify-content: center;
@@ -190,7 +206,7 @@
     margin: 5% 0;
 }
 
-.MsgImgBot{
+.MsgImgBot {
     position: absolute;
     right: 0;
     width: 50px;
@@ -199,7 +215,7 @@
     background-color: #000;
 }
 
-.MsgBot{
+.MsgBot {
     position: absolute;
     left: 0;
     top: 20%;
@@ -212,7 +228,7 @@
     align-items: center;
 }
 
-.MsgNameBot{
+.MsgNameBot {
     position: absolute;
     top: -20%;
     right: 20%;
@@ -221,7 +237,8 @@
     font-weight: 400;
 
 }
-.msgUser{
+
+.msgUser {
     position: relative;
     display: flex;
     justify-content: center;
@@ -230,7 +247,8 @@
     height: 50px;
     margin: 5% 0;
 }
-.MsgImgUser{
+
+.MsgImgUser {
     position: absolute;
     left: 0;
     width: 50px;
@@ -238,7 +256,8 @@
     border-radius: 50%;
     background-color: #000;
 }
-.MsgName{
+
+.MsgName {
     position: absolute;
     top: -20%;
     left: 20%;
@@ -247,7 +266,8 @@
     font-weight: 400;
 
 }
-.Msg{
+
+.Msg {
     position: absolute;
     right: 0;
     top: 20%;
@@ -259,11 +279,13 @@
     justify-content: center;
     align-items: center;
 }
-.InfoMsg{
+
+.InfoMsg {
     width: 90%;
     padding: 10px;
 }
-.Duvida{
+
+.Duvida {
     position: absolute;
     bottom: 5%;
     width: 80%;
@@ -271,7 +293,8 @@
     border-radius: 50px;
 
 }
-.baseAI{
+
+.baseAI {
     position: absolute;
     top: -5%;
     left: -15%;
@@ -286,7 +309,7 @@
     z-index: 1;
 }
 
-.foto{
+.foto {
     position: absolute;
     width: 100px;
     height: 100px;
@@ -297,7 +320,7 @@
     z-index: 16;
 }
 
-.btnOn{
+.btnOn {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -313,7 +336,8 @@
     cursor: pointer;
     opacity: 1;
 }
-.btnOff{
+
+.btnOff {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -329,7 +353,8 @@
     cursor: pointer;
     opacity: 0;
 }
-.interogacao{
+
+.interogacao {
     position: absolute;
     background-color: #4D71FF;
     width: 50px;
@@ -345,18 +370,20 @@
     z-index: 1;
     transition: .5s;
 }
-.triangulo{
+
+.triangulo {
     position: absolute;
     right: -3%;
     bottom: 0;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-bottom: 15px solid #4D71FF;
     transform: rotate(30deg);
 }
-.title{
+
+.title {
     position: absolute;
     top: 3%;
     right: 3%;
@@ -367,7 +394,7 @@
     align-items: center;
 }
 
-.estatisticas{
+.estatisticas {
     width: 450px;
     height: 450px;
     border-radius: 20px;
@@ -377,7 +404,7 @@
     font-size: 15px;
 }
 
-.estatisticas span{
+.estatisticas span {
     width: 100%;
     height: 10%;
     font-size: 180%;
@@ -387,7 +414,7 @@
     padding: 10px;
 }
 
-.statusHead{
+.statusHead {
     height: 35px;
     display: flex;
     justify-content: flex-start;
@@ -397,7 +424,7 @@
     margin-top: 10px;
 }
 
-.titleStatus{
+.titleStatus {
     font-size: 16px;
     font-weight: bold;
     color: #000;
@@ -407,7 +434,7 @@
     word-break: break-all;
 }
 
-.statusContainer{
+.statusContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -417,13 +444,13 @@
     height: 90%;
 }
 
-.saldo{
+.saldo {
     margin: 12px;
     font-size: 28px;
     text-align: center;
 }
 
-.circleStatus{
+.circleStatus {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -439,7 +466,7 @@
     box-shadow: rgba(0, 0, 0, 0.598) 0px 5px 15px;
 }
 
-.status1{
+.status1 {
     width: 35%;
     padding: 10px;
     height: 40%;
@@ -449,7 +476,7 @@
     background: linear-gradient(180deg, #00FFF0 0%, #003BD4 100%);
 }
 
-.status2{
+.status2 {
     width: 35%;
     padding: 10px;
     height: 40%;
@@ -459,7 +486,7 @@
     background: linear-gradient(180deg, #E15AE3 0%, #8E0090 100%);
 }
 
-.status3{
+.status3 {
     width: 35%;
     padding: 10px;
     height: 40%;
@@ -469,7 +496,7 @@
     background: linear-gradient(180deg, #44A118 0%, #194206 100%);
 }
 
-.status4{
+.status4 {
     width: 35%;
     padding: 10px;
     height: 40%;
@@ -479,7 +506,7 @@
     background: linear-gradient(180deg, #FF9900 0%, #FF4D00 100%);
 }
 
-.base{
+.base {
     position: relative;
     width: 450px;
     height: 450px;
@@ -489,8 +516,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;  
+    overflow: hidden;
 }
+
 .btnsList {
     position: relative;
     width: 100%;
@@ -501,7 +529,8 @@
     box-shadow: rgba(0, 0, 0, 0.23) 0px 8px 20px;
     z-index: 9;
 }
-.buttons{
+
+.buttons {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -516,11 +545,13 @@
     font-size: 18px;
     transition: .2s ease-in;
 }
-.buttons:hover{
+
+.buttons:hover {
     color: #fff;
     background-color: #000;
 }
-.buttonsFocus{
+
+.buttonsFocus {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -535,7 +566,8 @@
     font-size: 18px;
     transition: .2s ease-in;
 }
-.base_form{
+
+.base_form {
     position: absolute;
     height: 100%;
     display: flex;
@@ -545,23 +577,24 @@
     bottom: -45px;
     transition: 0.5s;
 }
-.listaPedidos{
+
+.listaPedidos {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative ;
+    position: relative;
     width: 450px;
     height: 75%;
 }
 
-.thead{
+.thead {
     font-size: 15px;
     position: relative;
     height: 50px;
     border-bottom: 5px solid #F2F2F4;
 }
 
-.listaFornecedor{
+.listaFornecedor {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -569,7 +602,8 @@
     width: 450px;
     height: 75%;
 }
-.listaProdutos{
+
+.listaProdutos {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -578,7 +612,8 @@
     height: 75%;
 
 }
-.headerList{
+
+.headerList {
     position: relative;
     width: 100%;
     height: 60px;
@@ -586,7 +621,8 @@
     justify-content: space-around;
     align-items: center;
 }
-.headerTitle{
+
+.headerTitle {
     position: relative;
     width: 150px;
     height: 30px;
@@ -597,14 +633,15 @@
     justify-content: center;
     align-items: center;
 }
-.SubTitle{
+
+.SubTitle {
     color: #000;
     font-size: 15px;
     font-weight: bold;
     margin: 0 5px;
 }
 
-.headerListMovimentacao{
+.headerListMovimentacao {
     width: 100%;
     height: 20%;
     display: flex;
@@ -613,7 +650,7 @@
     padding: 0 20px;
 }
 
-.headerTitleMovimentacao{
+.headerTitleMovimentacao {
     position: relative;
     height: 30px;
     color: #000;
@@ -622,9 +659,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
-.SubTitleMovimetacao{
+
+.SubTitleMovimetacao {
     color: #000;
     font-size: 15px;
     font-weight: bold;
@@ -633,7 +671,7 @@
     align-items: center;
 }
 
-.addFornecedor{
+.addFornecedor {
     position: relative;
     width: 150px;
     height: 30px;
@@ -646,58 +684,105 @@
     align-items: center;
 }
 
-.tipo{
+.tipo {
     font-size: 20px;
 }
 
-.data{
+.data {
     font-weight: bold;
     font-size: 20px;
 }
 
-.produtoNome{
+.produtoNome {
     font-size: 20px;
     color: #A7A7A7;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tabelaContainer {
     width: 100%;
-    height: 80%;
+    height: 60%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
-.tabelaMovimentacao{
+.tabelaMovimentacao {
     width: 100%;
-    padding: 20px;
     text-align: center;
 }
 
-.tabelaMovimentacaoHead{
+.tabelaMovimentacaoHead {
     font-size: 20px;
     color: #A7A7A7;
     height: 20%;
+
 }
 
-.tabelaMovimentacaoBody{
+.MovimentacaoHeaderTr{
+    height: 50px;
+    width: 100%; 
+    font-size: 20px;
+    font-weight: bold;
+    color: #A7A7A7; 
+    border-bottom: 5px solid #F2F2F4;
+}
+.MovimentacaoHeaderTr tr{
+    position: relative;
+    width: 15%;
+}
+.qntMovimento{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 15%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: red;
+}
+
+.tabelaMovimentacaoBody {
     height: 80%;
 }
 
-.addTitle{
+.trMovimentacao {
+    position: relative;
+    height: 70px;
+}
+
+.trMovimentacao {
+    position: relative;
+    width: 100px;
+}
+
+.addTitle {
     color: #4D71FF;
     font-size: 12px;
     font-weight: bold;
     margin: 0 0 0 5px;
 }
 
-.lista{
+.headerTr th {
+    width: 28%;
+}
+
+.pedidoHeaderTr th {
+    width: 0%;
+}
+
+.lista {
     position: absolute;
     width: 415px;
     height: 215px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.tabela{
+.tabela {
     border-collapse: collapse;
     width: 90%;
     text-align: center;
@@ -705,9 +790,9 @@
 
 /* POPUP */
 
-.popUp{
+.popUp {
     position: fixed;
-    display: flex ;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -716,9 +801,10 @@
     right: 0;
     z-index: -1;
 }
-.popUpMedidas{
+
+.popUpMedidas {
     position: fixed;
-    display: flex ;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;

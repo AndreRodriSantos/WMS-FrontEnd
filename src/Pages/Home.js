@@ -79,7 +79,9 @@ export default function Home() {
 
     function getMovimentacao() {
         api.get(`api/movimentacao`).then(response => {
+            console.log(response.data);
             setMovimentacoes(response.data)
+
         })
     }
 
@@ -122,7 +124,7 @@ export default function Home() {
         }
     }
 
-    async function getEstatisticas(){
+    async function getEstatisticas() {
 
         api.get('api/professor/list').then(response => {
             let count = 0
@@ -234,11 +236,20 @@ export default function Home() {
                         </div>
                         <div className={styles.tabelaContainer}>
                             <table className={styles.tabelaMovimentacao}>
+                                <thead className={styles.thead}>
+                                    <tr className={styles.MovimentacaoHeaderTr}>
+                                        <th colSpan="1">Data</th>
+                                        <th colSpan="1">Movimento</th>
+                                        <th colSpan="1">Tipo</th>
+                                    </tr>
+                                </thead>
                                 <tbody className={styles.tabelaMovimentacaoBody}>
                                     {movimentacoes.map((m, key) =>
-                                        <tr key={key}>
-                                            <td className={styles.produtoNome}>{m.id}</td>
+                                        <tr key={key} className={styles.trMovimentacao}>
                                             <td className={styles.data}>{m.data}</td>
+                                            <td className={styles.produtoNome}>                            
+                                                <span style={m.tipo == 'SAIDA' ? {backgroundColor : '#F2C7C3'} : {backgroundColor : '#B2FBDE'}} className={styles.qntMovimento}>{m.tipo == 'ENTRADA' ? "+"+m.quantidade : "-"+m.quantidade }</span>
+                                            </td>
                                             <td style={m.tipo == "ENTRADA" ? { color: "green" } : { color: "red" }} className={styles.tipo}>{m.tipo}</td>
                                         </tr>
                                     )}
@@ -350,7 +361,7 @@ export default function Home() {
                                 </div>
                                 <table className={styles.tabela}>
                                     <thead className={styles.thead}>
-                                        <tr>
+                                        <tr className={styles.pedidoHeaderTr}>
                                             <th colSpan="1">ID</th>
                                             <th colSpan="1">Data</th>
                                             <th colSpan="1">Valor</th>
@@ -377,7 +388,7 @@ export default function Home() {
                                 </div>
                                 <table className={styles.tabela}>
                                     <thead className={styles.thead}>
-                                        <tr>
+                                        <tr className={styles.headerTr}>
                                             <th colSpan="1">Nome</th>
                                             <th colSpan="1">CNPJ</th>
                                             <th colSpan="1">UF</th>
