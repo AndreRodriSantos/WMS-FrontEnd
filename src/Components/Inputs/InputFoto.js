@@ -43,6 +43,6 @@ function fileChange() {
     reader.onload = () => {
         photo.src = reader.result;
     }
-
+    
     return reader.readAsDataURL(file.files[0]);
 }

@@ -160,10 +160,9 @@ function CadastroNCM(event) {
     } else {
         api.post(
             "api/ncm/save", body
-        ).then(
-            response => {
-                if (response.status == 201 || response.status == 200) {
-                    sucesso(`Ncm cadastrado com sucesso!!!`)
+        ).then(response => {
+                if (response.status == 201 || response.status == 200){
+                    refresh('cadastro')
                 }
             },
             err => {

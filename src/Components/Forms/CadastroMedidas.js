@@ -21,7 +21,7 @@ export default class CadastroMedidas extends React.Component {
             const btn = document.getElementById('b')
             const btnAlterar = document.getElementById('btnAlterar')
             const btnExcluir = document.getElementById('btnExcluir')
-            
+
             btn.style.opacity = '0.5'
             btn.style.cursor = 'not-allowed'
             btn.style.pointerEvents = 'none'
@@ -129,21 +129,18 @@ function CadastrarMedida(event) {
 
     const id = localStorage.getItem('idMedida')
 
-    const body = {
+    var body ={
         id,
-        'nome': nomeMedida,
-        'sigla': siglaMedida
+        "nome": nomeMedida,
+        "sigla": siglaMedida
     }
 
     console.log(body)
 
     if (id) {
-
         api.put(`api/unidade/${id}`, body).then(
             response => {
-                if (response.status == 201 || response.status == 200) {
-                    refresh('alteracao')
-                }
+                refresh('alteracao')
             },
             err => {
                 erro("Ocorreu um erro ao Alterar a Medida:" + err)
@@ -155,7 +152,7 @@ function CadastrarMedida(event) {
         ).then(
             response => {
                 if (response.status == 201 || response.status == 200) {
-                    sucesso(`Medida ${nomeMedida} cadastrada com sucesso!!!`)
+                    refresh('cadastro')
                 }
             },
             err => {
@@ -163,7 +160,6 @@ function CadastrarMedida(event) {
             }
         )
     }
-
 }
 
 function Fechar() {
