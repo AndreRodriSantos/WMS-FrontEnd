@@ -79,6 +79,15 @@ export class CadastroNcm extends React.Component {
                         <div className={styles.listaMedida}>
                             <div className={styles.labelMedida}>
                                 <span>Ncms Cadastrados</span>
+                                <div className={styles.btns}>
+                                    <button id='AlterarNcm' title={"Alterar"} onClick={CadastroNCM} className={styles.btn} >
+                                        <i className="fa-solid fa-pen-to-square"></i>
+                                    </button>
+
+                                    <button id='ExcluirNcm' title={"Excluir"} className={styles.btn} onClick={excluirNcm} >
+                                        <i className="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
                             </div>
                             <ul id="listMedidas" className={styles.ListMedidas}>
                                 {ncms.map((n, index) => <LinhaNcm chamarIdNcm={pegaIdNcm}
@@ -89,19 +98,6 @@ export class CadastroNcm extends React.Component {
                             </ul>
                         </div>
                     </form>
-                    <div className={styles.btns}>
-                        <a id='AlterarNcm' onClick={CadastroNCM} className={styles.btn} >
-                            <span className={styles.rounded2}>
-                                <span className={styles.text_green}>alterar</span>
-                            </span>
-                        </a>
-
-                        <button id='ExcluirNcm' className={styles.btn} onClick={excluirNcm} >
-                            <span id='btnAnimation' className={styles.rounded}>
-                                <span className={styles.text_green}>excluir</span>
-                            </span>
-                        </button>
-                    </div>
                 </div>
             </div>
         );
