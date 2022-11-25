@@ -691,12 +691,10 @@
 }
 
 .lista{
-    position: relative;
-    width: 450px;
-    height: 300px;
-    bottom: 0;
+    position: absolute;
+    width: 415px;
+    height: 215px;
     overflow-y: scroll;
-    overflow-x: hidden;
 }
 
 .tabela{
