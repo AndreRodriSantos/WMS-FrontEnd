@@ -27,6 +27,15 @@ export default function Home() {
     const [codMatricula, setCodMatricula] = useState()
     const [imagemUser, setImagemUser] = useState()
 
+    const [qtdProfessores, setQtdProfessores] = useState()
+    const [qtdAlunos, setQtdAlunos] = useState()
+    let [saldo, setSaldo] = useState(0)
+    const [qtdProdutos, setQtdProdutos] = useState()
+    const [qtdPedidos, setQtdPedidos] = useState()
+    const [qtdFornecedores, setQtdFornecedores] = useState()
+    const [turma, setTurma] = useState({})
+    const [professor, setProfessor] = useState({})
+
     async function getListaNcm() {
         const ncms = await getNcm()
         setNcms(ncms)
@@ -99,7 +108,6 @@ export default function Home() {
             setNif(professor.nif)
             professor.imagem == null ? setImagemUser("https://www.somadesenvolvimento.com.br/application/assets/img/male.png") : setImagemUser(`https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${professor.imagem}?alt=media`)
 
-
         } else if (localStorage.getItem("aluno")) {
             let idAluno = localStorage.getItem("idAluno")
             let aluno = (await getAluno(idAluno)).data
@@ -114,7 +122,57 @@ export default function Home() {
         }
     }
 
+    async function getEstatisticas(){
+
+        api.get('api/professor/list').then(response => {
+            let count = 0
+            response.data.map(p => {
+                count = count + 1
+            })
+            setQtdProfessores(count)
+        })
+
+        api.get('api/aluno/list').then(response => {
+            let count = 0
+            response.data.map(a => {
+                count = count + 1
+            })
+            setQtdAlunos(count)
+        })
+
+        api.get('api/produto/list').then(response => {
+            let count = 0
+            response.data.map(p => {
+                count = count + 1
+                setSaldo(saldo += p.saldo)
+            })
+            setQtdProdutos(count)
+        })
+
+        api.get('api/pedido/list').then(response => {
+            let count = 0
+            response.data.map(p => {
+                count = count + 1
+            })
+            setQtdPedidos(count)
+        })
+
+        api.get('api/fornecedor/list').then(response => {
+            let count = 0
+            response.data.map(f => {
+                count = count + 1
+            })
+            setQtdFornecedores(count)
+        })
+
+        api.get(`api/turma/${localStorage.getItem("idTurma")}`).then(response => {
+            setTurma(response.data)
+            setProfessor(response.data.prof)
+        })
+    }
+
     useEffect(() => {
+        getEstatisticas()
         getUserLogado()
         getFornecedor()
         getPedido()
@@ -199,53 +257,72 @@ export default function Home() {
 
                         <div className={styles.statusContainer}>
                             <div className={styles.status1}>
-                                <div className={styles.circleStatus}>
-                                    <lord-icon
-                                        src="https://cdn.lordicon.com/hbvyhtse.json"
-                                        trigger="hover"
-                                        colors="primary:#e4e4e4"
-                                        state="hover"
-                                        style={{ width: 32, height: 32 }}>
-                                    </lord-icon>
+                                <div className={styles.statusHead}>
+                                    <div className={styles.circleStatus}>
+                                        <lord-icon
+                                            src="https://cdn.lordicon.com/hbvyhtse.json"
+                                            trigger="hover"
+                                            colors="primary:#e4e4e4"
+                                            state="hover"
+                                            style={{ width: 32, height: 32 }}>
+                                        </lord-icon>
+                                    </div>
+                                    <p className={styles.titleStatus}>Usuários</p>
                                 </div>
+
+                                <p><strong>Professores:</strong> {qtdProfessores}</p>
+                                <p><strong>Alunos:</strong> {qtdAlunos}</p>
 
                             </div>
 
                             <div className={styles.status2}>
-                                <div className={styles.circleStatus}>
-                                    <lord-icon
-                                        src="https://cdn.lordicon.com/slduhdil.json"
-                                        trigger="hover"
-                                        colors="primary:#ffffff"
-                                        style={{ width: 32, height: 32 }}>
-                                    </lord-icon></div>
-
+                                <div className={styles.statusHead}>
+                                    <div className={styles.circleStatus}>
+                                        <lord-icon
+                                            src="https://cdn.lordicon.com/slduhdil.json"
+                                            trigger="hover"
+                                            colors="primary:#ffffff"
+                                            style={{ width: 32, height: 32 }}>
+                                        </lord-icon></div>
+                                    <p className={styles.titleStatus}>Estoque</p>
+                                </div>
+                                <p className={styles.saldo}><strong>Saldo:</strong> {saldo}</p>
                             </div>
 
                             <div className={styles.status3}>
-                                <div className={styles.circleStatus}>
-                                    <lord-icon
-                                        src="https://cdn.lordicon.com/zvllgyec.json"
-                                        trigger="hover"
-                                        colors="primary:#ffffff"
-                                        state="hover"
-                                        style={{ width: 32, height: 32 }}>
-                                    </lord-icon>
+                                <div className={styles.statusHead}>
+                                    <div className={styles.circleStatus}>
+                                        <lord-icon
+                                            src="https://cdn.lordicon.com/zvllgyec.json"
+                                            trigger="hover"
+                                            colors="primary:#ffffff"
+                                            state="hover"
+                                            style={{ width: 32, height: 32 }}>
+                                        </lord-icon>
+                                    </div>
+                                    <p className={styles.titleStatus}>Cadastros</p>
                                 </div>
-
+                                <p><strong>Produtos:</strong> {qtdProdutos}</p>
+                                <p><strong>Pedidos:</strong> {qtdPedidos}</p>
+                                <p><strong>Fornecedores:</strong> {qtdFornecedores}</p>
                             </div>
 
                             <div className={styles.status4}>
-                                <div className={styles.circleStatus}>
-                                    <lord-icon
-                                        src="https://cdn.lordicon.com/eanmttmw.json"
-                                        trigger="hover"
-                                        colors="primary:#ffffff"
-                                        state="hover-1"
-                                        style={{ width: 32, height: 32 }}>
-                                    </lord-icon>
+                                <div className={styles.statusHead}>
+                                    <div className={styles.circleStatus}>
+                                        <lord-icon
+                                            src="https://cdn.lordicon.com/eanmttmw.json"
+                                            trigger="hover"
+                                            colors="primary:#ffffff"
+                                            state="hover-1"
+                                            style={{ width: 32, height: 32 }}>
+                                        </lord-icon>
+                                    </div>
+                                    <p className={styles.titleStatus}>Turma</p>
                                 </div>
-
+                                <p><strong>Nome:</strong> {turma.nome}</p>
+                                <p><strong>Participantes:</strong> {turma.numParticipantes}</p>
+                                <p><strong>Professor:</strong> {professor.nome}</p>
                             </div>
                         </div>
 

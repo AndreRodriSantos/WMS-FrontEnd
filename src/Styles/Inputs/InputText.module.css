@@ -39,7 +39,6 @@
   top: 9px;
   padding: 5px;
   pointer-events: none;
-  color: #111;
   transition: 0.5s;
 }
 
@@ -56,4 +55,13 @@
 .inputBox input:focus{
   border: 2px solid #4D71FF;
 }
+
+.inputBox input:disabled{
+  border: 2px solid gray;
+}
+
+.inputBox input:disabled ~ span{
+  color: gray;
+}
+
 

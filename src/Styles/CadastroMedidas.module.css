@@ -70,8 +70,10 @@
     width: 93.5%;
     bottom: -15%;
 }
+
 .labelMedida{
     display: flex;
+    height: 20px;
     justify-content: space-between;
 }
 
@@ -107,80 +109,23 @@
 /* BTNS INFO */
 
 .btns {
-    position: absolute;
-    bottom: 5%;
-    left: 15%;
-    width: 75%;
-    height: 50px;
     border-radius: 10px;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    
+    justify-content: flex-end;
 }
 
 .btn{
+    transition: 0.2s linear;
+    font-size: 18px;
     border: none;
-    width: 150px;
-    height: 50px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
+    margin-right: 10px;
     background-color: transparent;
+    position: relative;
+    border-radius: 50px;
     cursor: not-allowed;
     pointer-events: none ;
     opacity: 0.5;
-}
-
-.rounded {
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    background: #000;
-    position: absolute;
-    display: flex;
-    color: #000;
-    justify-content: right;
-    align-items: center;
-    left: 0;
-    transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-}
-
-.rounded:hover {
-    content: '';
-    width: 100%;
-    height: 100%;
-    left: 0;
-    color: #fff;
-    position: absolute;
-}
-
-
-.rounded2 {
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    position: absolute;
-    display: flex;
-    color: #000;
-    justify-content: right;
-    align-items: center;
-    left: 0;
-    transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-}
-
-.rounded2:hover {
-    content: '';
-    width: 100%;
-    height: 100%;
-    left: 0;
-    color: #fff;
-    position: absolute;
-    
 }
 
 .text_green {

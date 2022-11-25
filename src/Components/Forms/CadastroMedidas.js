@@ -21,7 +21,7 @@ export default class CadastroMedidas extends React.Component {
             const btn = document.getElementById('b')
             const btnAlterar = document.getElementById('btnAlterar')
             const btnExcluir = document.getElementById('btnExcluir')
-
+            
             btn.style.opacity = '0.5'
             btn.style.cursor = 'not-allowed'
             btn.style.pointerEvents = 'none'
@@ -84,6 +84,15 @@ export default class CadastroMedidas extends React.Component {
                             <div className={styles.listaMedida}>
                                 <div className={styles.labelMedida}>
                                     <span>Medidas Cadastradas</span>
+                                    <div className={styles.btns}>
+                                        <button id='btnAlterar' title={"Alterar"} onClick={CadastrarMedida} className={styles.btn} >
+                                            <i className="fa-solid fa-pen-to-square"></i>
+                                        </button>
+
+                                        <button id='btnExcluir' title={"Excluir"} className={styles.btn} onClick={excluir} >
+                                            <i className="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </div>
                                 <ul id="listMedidas" className={styles.ListMedidas}>
                                     {medidas.map((m, index) => {
@@ -96,19 +105,6 @@ export default class CadastroMedidas extends React.Component {
                                 </ul>
                             </div>
                         </form>
-                    </div>
-                    <div className={styles.btns}>
-                        <a id='btnAlterar' onClick={CadastrarMedida} className={styles.btn} >
-                            <span className={styles.rounded2}>
-                                <span className={styles.text_green}>alterar</span>
-                            </span>
-                        </a>
-
-                        <button id='btnExcluir' className={styles.btn} onClick={excluir} >
-                            <span id='btnAnimation' className={styles.rounded}>
-                                <span className={styles.text_green}>excluir</span>
-                            </span>
-                        </button>
                     </div>
                 </div>
             </div>
