@@ -201,7 +201,7 @@ export default function Home() {
             <div id="popUp" className={styles.popUp}>
                 <CadastroNcm ncms={ncms} />
             </div>
-            <div className={styles.home}>
+            <div id='home' className={styles.home}>
                 <SideBar />
                 <div className={styles.homeCenter} id="HomeCenter">
                     <div id='CardTutoria' className={styles.cardTutorial}>
@@ -222,44 +222,53 @@ export default function Home() {
                             <button className={styles.simulacao}>simulação</button>
                         </div>
                         <div className={styles.Caixa}>
-                            <img className={styles.C1} src={Caixas} />
+                            <img className={styles.C1} id='C1' src={Caixas} />
                         </div>
                     </div>
 
                     <div id='ListHistorico' className={styles.listHistorico}>
                         <div className={styles.headerListMovimentacao}>
                             <span className={styles.headerTitleMovimentacao}>
-                                <i className="fa-solid fa-users"></i>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/ogkplaef.json"
+                                    trigger="hover"
+                                    colors="primary:#000"
+                                    state="hover"
+                                    style={{ width: 32, height: 32 }}>
+                                </lord-icon>
                                 <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
                             </span>
                             <InputPesquisa placeholder={"Pesquise uma Movimentação"} search={search} />
                         </div>
                         <div className={styles.tabelaContainer}>
-                            <table className={styles.tabelaMovimentacao}>
-                                <thead className={styles.thead}>
-                                    <tr className={styles.MovimentacaoHeaderTr}>
-                                        <th colSpan="1">Data</th>
-                                        <th colSpan="1">Movimento</th>
-                                        <th colSpan="1">Tipo</th>
-                                    </tr>
-                                </thead>
-                                <tbody className={styles.tabelaMovimentacaoBody}>
-                                    {movimentacoes.map((m, key) =>
-                                        <tr key={key} className={styles.trMovimentacao}>
-                                            <td className={styles.data}>{m.data}</td>
-                                            <td className={styles.produtoNome}>                            
-                                                <span style={m.tipo == 'SAIDA' ? {backgroundColor : '#F2C7C3'} : {backgroundColor : '#B2FBDE'}} className={styles.qntMovimento}>{m.tipo == 'ENTRADA' ? "+"+m.quantidade : "-"+m.quantidade }</span>
-                                            </td>
-                                            <td style={m.tipo == "ENTRADA" ? { color: "green" } : { color: "red" }} className={styles.tipo}>{m.tipo}</td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
+                            <div className={styles.headerListH}>
+                                <div className={styles.HeaderMovimentacao}>
+                                    <p colSpan="1">Data</p>
+                                    <p colSpan="1">Movimento</p>
+                                    <p colSpan="1">Tipo</p>
+                                </div>
+                                <span className={styles.barra}></span>
+                            </div>
+                            <div className={styles.tabelaHistorico}>
+                                <table className={styles.tabelaMovimentacao}>
+                                    <tbody className={styles.tabelaMovimentacaoBody}>
+                                        {movimentacoes.map((m, key) =>
+                                            <tr key={key} className={styles.trMovimentacao}>
+                                                <td className={styles.data}>{m.data}</td>
+                                                <td className={styles.produtoNome}>
+                                                    <span style={m.tipo == 'SAIDA' ? { backgroundColor: '#F2C7C3' } : { backgroundColor: '#B2FBDE' }} className={styles.qntMovimento}>{m.tipo == 'ENTRADA' ? "+" + m.quantidade : "-" + m.quantidade}</span>
+                                                </td>
+                                                <td style={m.tipo == "ENTRADA" ? { color: "green" } : { color: "red" }} className={styles.tipo}>{m.tipo}</td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className={styles.HomeRight}>
+                <div id='HomeRight' className={styles.HomeRight}>
 
                     <div className={styles.estatisticas}>
                         <span>
@@ -434,9 +443,37 @@ export default function Home() {
                 </div>
 
 
-                {/* <div id='chatbot' className={styles.BaseBotChat}>
+                <div id='chatbot' className={styles.BaseBotChat}>
+                    <div id='balao' className={styles.interogacao}>
+                        <i className="fa-solid fa-question"></i>
+                        <span className={styles.triangulo}></span>
+                    </div>
+                    <div className={styles.baseAI}>
+                        <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
+                            <i className="fa-solid fa-arrow-down"></i>
+                        </div>
+                        <div id='btnOn' onClick={abrirChat} className={styles.btnOn}>
+                            <i className="fa-solid fa-arrow-up"></i>
+                        </div>
+                        <span className={styles.foto}></span>
+                    </div>
+                    <div className={styles.BotChat}>
+                        <span className={styles.BotChatTitle}>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/pkmkagva.json"
+                                trigger="hover"
+                                colors="primary:#4d71ff"
+                                style={{ width: 32, height: 32 }}>
+                            </lord-icon>
+                            <h3 className={styles.BCTitleH3} >ChatBot</h3>
+                        </span>
+                        <div className={styles.iframeBotChat}>
+                        {/* Lugar do Chat */}
+                        </div>
+                    </div>
+                </div>
 
-                </div> */}
+
 
             </div>
         </section >
@@ -446,12 +483,19 @@ export default function Home() {
         const btnOn = document.getElementById('btnOn')
         const btnOff = document.getElementById('btnOff')
         const BotChat = document.getElementById('chatbot')
-        const balao = document.getElementById('balao')
+        const balao = document.getElementById('balao')  
+
+        if(window.screen.width <= 1070){
+            BotChat.style.bottom = '-8%'
+        }
+        else{
+            BotChat.style.bottom = '0%'
+        }
+
         btnOn.style.opacity = '0'
         btnOn.style.zIndex = '0'
         btnOff.style.opacity = '1'
         btnOff.style.zIndex = '1'
-        BotChat.style.bottom = '0%'
         balao.style.opacity = '0'
     }
 
@@ -460,11 +504,17 @@ export default function Home() {
         const btnOff = document.getElementById('btnOff')
         const BotChat = document.getElementById('chatbot')
         const balao = document.getElementById('balao')
+        
+        if(window.screen.width <= 1070){
+            BotChat.style.bottom = '-37.7%'
+        }else{
+            BotChat.style.bottom = '-45%'
+        }
+        
         btnOn.style.opacity = '1'
         btnOn.style.zIndex = '1'
         btnOff.style.opacity = '0'
         btnOff.style.zIndex = '0'
-        BotChat.style.bottom = '-67%'
         balao.style.opacity = '1'
     }
 

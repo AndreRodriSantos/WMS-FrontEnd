@@ -12,11 +12,23 @@ export function logout() {
     window.location.href = "/Login"
 }
 
+
 export class SideBar extends React.Component {
 
     render() {
+
+        /*  const sideBar = document.getElementById("sideBar");
+ 
+         setTimeout(() => {
+             if(window.screen.width <= 1575){            
+                 sideBar.style.height = '62.5%' 
+             }else{
+                 sideBar.style.height = '96%' 
+             }
+         }, 0); */
+
         return (
-            <div  className={styles.container} onMouseLeave={offSub}>
+            <div className={styles.container} onMouseLeave={offSub}>
                 {/* BTN ON SIDEBAR */}
                 <div id='onBtn' onClick={onSideBar} className={styles.btn}>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -70,8 +82,9 @@ export class SideBar extends React.Component {
                     <div onMouseEnter={offSubLink} className={styles.base_form}>
                         {/* HOME */}
                         <a onMouseEnter={offSub} className={styles.list}>
-                            <span onMouseEnter={onSubTextHome} id='chamaSubText' className={styles.icon}>
+                            <span onMouseEnter={onSubTextHome} id='chamaSubText' className={styles.iconHome}>
                                 <i className="fa-solid fa-house"></i>
+                                <span className={styles.barhome}></span>
                             </span>
                             <span className={styles.iconTitle}>HOME</span>
                         </a>
@@ -164,7 +177,7 @@ export class SideBar extends React.Component {
                             </span>
                         </a>
                         {/* NCM */}
-                        <a onClick={chamarNCM} onMouseEnter={offSub}  className={styles.list}>
+                        <a onClick={chamarNCM} onMouseEnter={offSub} className={styles.list}>
                             <span onMouseEnter={onSubTextNcm} id='chamaTextNcm' className={styles.icon}>
                                 <span className={styles.textNcm}>NCM</span>
                             </span>
@@ -180,14 +193,14 @@ export class SideBar extends React.Component {
                         </div>
                         <div id='InfoUser' className={styles.InfoUser}>
                             <div id='UserNome' className={styles.Nome}></div>
-                            <div  id='UserEmail' className={styles.Email}></div>
+                            <div id='UserEmail' className={styles.Email}></div>
                         </div>
                         {/* LOG OUT */}
                         <a id="logOut" onClick={logout} className={styles.logOut}>
                             <i className="fa-solid fa-arrow-right-from-bracket"></i>
                         </a>
                     </div>
-                </div>  
+                </div>
             </div>
         );
     }
@@ -215,9 +228,15 @@ function onSideBar() {
     const chamaTextNcm = document.getElementById("chamaTextNcm");
 
     const HomeCenter = document.getElementById("HomeCenter");
+    const C1 = document.getElementById("C1");
 
-    HomeCenter.style.width = '65%'
 
+    if (window.screen.width <= 1575) {
+        HomeCenter.style.width = '75%'
+
+    } else {
+        HomeCenter.style.width = '65%'
+    }
 
     sideBar.style.width = '300px'
     onBtn.style.display = 'none'
@@ -231,7 +250,7 @@ function onSideBar() {
     sub_menuCadastroOff.style.display = 'none'
     chamaListSub.classList.replace(styles.icon, styles.iconoff)
     chamaListSubC.classList.replace(styles.icon, styles.iconoff)
-    chamaSubText.classList.replace(styles.icon, styles.iconoff)
+    chamaSubText.classList.replace(styles.iconHome, styles.iconHomeOff)
     chamaTextPE.classList.replace(styles.icon, styles.iconoff)
     chamaTextPI.classList.replace(styles.icon, styles.iconoff)
     chamaTextME.classList.replace(styles.icon, styles.iconoff)
@@ -258,8 +277,19 @@ function offSideBar() {
 
 
     const HomeCenter = document.getElementById("HomeCenter");
+    const C1 = document.getElementById("C1");
+    const home = document.getElementById('home')
 
-    HomeCenter.style.width = '80%'
+
+    if (window.screen.width <= 1575) {
+        HomeCenter.style.width = '88%'
+
+    } else if (window.screen.width == 840) {
+        HomeCenter.style.width = '88%%'
+    }
+    else {
+        HomeCenter.style.width = '80%'
+    }
 
     sub_menu.style.display = 'none'
     select.style.height = "50px"
@@ -298,7 +328,7 @@ function offSideBar() {
     sub_menuCadastroOff.style.display = 'block'
     chamaListSub.classList.replace(styles.iconoff, styles.icon)
     chamaListSubC.classList.replace(styles.iconoff, styles.icon)
-    chamaSubText.classList.replace(styles.iconoff, styles.icon)
+    chamaSubText.classList.replace(styles.iconHomeOff, styles.iconHome)
     chamaTextPE.classList.replace(styles.iconoff, styles.icon)
     chamaTextPI.classList.replace(styles.iconoff, styles.icon)
     chamaTextME.classList.replace(styles.iconoff, styles.icon)

@@ -31,6 +31,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     justify-content: center;
+    transform: scale(1);
 }
 .estocagem{
     position: fixed;
@@ -151,6 +152,7 @@
     justify-content: center;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: scale(1);
     z-index: 11;
 }
 .close {
@@ -244,3 +246,132 @@
     position: relative;
     width: 200px;
 }
+
+
+@media screen and (max-height: 900px) {
+    .Pedidos{
+        transform: scale(0.9);
+    }
+    .PopUpInfo{
+        transform: scale(0.9);
+    }
+    
+}
+
+@media screen and (max-width:1250px) {
+    .Pedidos{
+        transform: scale(0.8);
+    }
+    .PopUpInfo{
+        transform: scale(0.8);
+    }
+    
+}
+
+
+@media screen and (max-height: 800px) {
+    .Pedidos{
+        transform: scale(0.8);
+    }
+    .PopUpInfo{
+        transform: scale(0.8);
+    }
+}
+
+@media screen and (max-width:1080px) {
+    .Pedidos{
+        transform: scale(0.8);
+    }
+    .PopUpInfo{
+        transform: scale(0.8);
+    }
+    
+}
+
+@media screen and (max-height: 750px) {
+    .Pedidos{
+        transform: scale(0.7);
+    } 
+    .PopUpInfo{
+        transform: scale(0.7);
+    }    
+}
+
+@media screen and (max-width: 890px) {
+    .Pedidos{
+        transform: scale(0.6);
+    }
+    .PopUpInfo{
+        transform: scale(0.6);
+    }
+    
+}
+@media screen and (max-height: 600px) {
+    .Pedidos{
+        transform: scale(0.6);
+    }
+    .PopUpInfo{
+        transform: scale(0.6);
+    }
+    
+}
+
+@media screen and (max-height: 500px) {
+    .Pedidos{
+        transform: scale(0.5);
+    }
+    .PopUpInfo{
+        transform: scale(0.5);
+    }
+    
+}
+
+@media screen and (max-height: 400px) {
+    .Pedidos{
+        transform: scale(0.4);
+    }
+    .Pedidos{
+        transform: scale(0.4);
+    }
+    
+}
+
+
+@media screen and (max-width: 750px) {
+    .Pedidos{
+        width: 1000px;
+    }
+    
+}
+@media screen and (max-width: 620px) {
+    .Pedidos{
+        width: 900px;
+    }
+    
+}
+@media screen and (max-width: 580px) {
+    .Pedidos{
+        width: 800px;
+    }
+    
+}
+@media screen and (max-width: 510px) {
+    .Pedidos{
+        width: 700px;
+    }
+    
+}
+@media screen and (max-width: 450px) {
+    .Pedidos{
+        width: 600px;
+    }
+    
+}
+
+@media screen and (max-width: 280px) {
+    .Pedidos{
+        width: 400px;
+    }
+    
+}
+
