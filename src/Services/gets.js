@@ -19,7 +19,7 @@ export function getDemandas(e) {
 }
 
 export function getNcm(e) {
-    return api.get("api/ncm/").then(response => response.data)
+    return api.get("api/ncm/list").then(response => response.data)
 }
 
 export function getFornecedorID(id) {

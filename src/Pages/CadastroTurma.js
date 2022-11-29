@@ -11,7 +11,6 @@ import { fazOptionsPeriodo } from "../Services/gets"
 import { erro, sucesso } from "../Components/Avisos/Alert"
 
 export default function CadastroTurma() {
-
     function getTurma() {
         const id = localStorage.getItem("idTurma")
         const periodo = document.getElementById("periodo")

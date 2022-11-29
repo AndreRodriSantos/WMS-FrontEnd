@@ -28,9 +28,8 @@ export default function VerificarPedidos() {
         api.get(`api/notaFiscal/pega/${localStorage.getItem("idPedido")}`).then(response => {
             const notaFiscal = response.data
             console.log(notaFiscal);
-            window.location.href = `http://localhost:8080/api/pedido/teste/${notaFiscal.codigoNota}`
+            window.location.href = `http://10.92.198.23:8080/api/pedido/teste/${notaFiscal.codigoNota}`
         })
-
     }
 
     function ItemCall(item) {
@@ -44,7 +43,9 @@ export default function VerificarPedidos() {
         let importado = document.getElementById('importado')
         let valorImportado = document.getElementById('valorImportado')
         let valorTotal = document.getElementById('valorTotal')
+        let imgItemPedido = document.getElementById('imgItemPedido')
 
+        imgItemPedido.setAttribute("src", item.produto.imagem)
         produto.innerText = item.produto.nome
         descricao.innerText = item.produto.descricao
 
@@ -97,8 +98,14 @@ export default function VerificarPedidos() {
                     style={{ width: 32, height: 32 }}>
                 </lord-icon>
             </a>
-            <a className={styles.headerLogo} href="#">
-                <img src={logo} className={styles.logo}></img>
+            <a className={styles.headerLogo} href="Enderecamento">
+                <lord-icon
+                    src="https://cdn.lordicon.com/jxwksgwv.json"
+                    trigger="hover"
+                    colors="primary:#121331"
+                    state="hover-1"
+                    style={{ width: 32, height: 32 }}>
+                </lord-icon>
             </a>
             <div className={styles.Pedidos}>
                 <div className={styles.headerList}>
@@ -118,80 +125,82 @@ export default function VerificarPedidos() {
                 </div >
             </div >
 
-        <div className={styles.BasePoup} id="BasePoup">
-            <div className={styles.PopUpInfo} id="PopUpInfo">
-                <span className={styles.close} onClick={fechar}>
-                    <i className="fa-regular fa-circle-xmark"></i>
-                </span>
-                <div className={styles.BaseInfo}>
-                    <div className={styles.InfoProduto}>
-                        <div className={styles.ImgProduto}></div>
-                        <div className={styles.TitleInfo}>
-                            <span id='produto' className={styles.NomeProduto}></span>
-                            <span id='descricao' className={styles.DescricaoProduto}></span>
-                        </div>
-                    </div>
-
-                    <div className={styles.BaseInfoValores}>
-                        <div className={styles.InfoSobre}>
-                            <div className={styles.Impostos}>
-                                <span className={styles.InfoImpostos}>
-                                    <p className={styles.titleImpor}>SKU :</p>
-                                    <p id='sku' className={styles.ResImpor}></p>
-                                </span>
-                                <span className={styles.InfoImpostos}>
-                                    <p className={styles.titleImpor}>NCM :</p>
-                                    <p id='ncm' className={styles.ResImpor}></p>
-                                </span>
-                                <span className={styles.InfoImpostos}>
-                                    <p className={styles.titleImpor}>Quantidade :</p>
-                                    <p id='qnd' className={styles.ResImpor}></p>
-                                </span>
-                                <span className={styles.InfoImpostos}>
-                                    <p className={styles.titleImpor}>Medida:</p>
-                                    <p id='medida' className={styles.ResImpor}></p>
-                                </span>
-
+            <div className={styles.BasePoup} id="BasePoup">
+                <div className={styles.PopUpInfo} id="PopUpInfo">
+                    <span className={styles.close} onClick={fechar}>
+                        <i className="fa-regular fa-circle-xmark"></i>
+                    </span>
+                    <div className={styles.BaseInfo}>
+                        <div className={styles.InfoProduto}>
+                            <div className={styles.ImgProduto}>
+                                <img id='imgItemPedido' className={styles.produtoImagem}></img>
                             </div>
-                            <div className={styles.Importacoes}>
-                                <span className={styles.baseTitleImpor}>
-                                    <p className={styles.titleImpor}>Importado:</p>
-                                    <p id='importado' className={styles.ResImpor}></p>
-                                </span>
-                                <span className={styles.ValorImportacao}>
+                            <div className={styles.TitleInfo}>
+                                <span id='produto' className={styles.NomeProduto}></span>
+                                <span id='descricao' className={styles.DescricaoProduto}></span>
+                            </div>
+                        </div>
+
+                        <div className={styles.BaseInfoValores}>
+                            <div className={styles.InfoSobre}>
+                                <div className={styles.Impostos}>
+                                    <span className={styles.InfoImpostos}>
+                                        <p className={styles.titleImpor}>SKU :</p>
+                                        <p id='sku' className={styles.ResImpor}></p>
+                                    </span>
+                                    <span className={styles.InfoImpostos}>
+                                        <p className={styles.titleImpor}>NCM :</p>
+                                        <p id='ncm' className={styles.ResImpor}></p>
+                                    </span>
+                                    <span className={styles.InfoImpostos}>
+                                        <p className={styles.titleImpor}>Quantidade :</p>
+                                        <p id='qnd' className={styles.ResImpor}></p>
+                                    </span>
+                                    <span className={styles.InfoImpostos}>
+                                        <p className={styles.titleImpor}>Medida:</p>
+                                        <p id='medida' className={styles.ResImpor}></p>
+                                    </span>
+
+                                </div>
+                                <div className={styles.Importacoes}>
+                                    <span className={styles.baseTitleImpor}>
+                                        <p className={styles.titleImpor}>Importado:</p>
+                                        <p id='importado' className={styles.ResImpor}></p>
+                                    </span>
+                                    <span className={styles.ValorImportacao}>
+                                        <span className={styles.TitleValor}>
+                                            <p className={styles.textUnitario}>Valor Importação :</p>
+                                        </span>
+                                        <span className={styles.Valor}>
+                                            <p className={styles.cifrao}>R$</p>
+                                            <p id='valorImportado' className={styles.Num}></p>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div className={styles.InfoValores}>
+                                <div className={styles.ValoreUnitario}>
                                     <span className={styles.TitleValor}>
-                                        <p className={styles.textUnitario}>Valor Importação :</p>
+                                        <p className={styles.textUnitario}>Valor Unitario :</p>
                                     </span>
                                     <span className={styles.Valor}>
                                         <p className={styles.cifrao}>R$</p>
-                                        <p id='valorImportado' className={styles.Num}></p>
+                                        <p id='valor' className={styles.Num}></p>
                                     </span>
-                                </span>
+                                </div>
+                                <div className={styles.ValoreTotal}>
+                                    <span className={styles.TitleValor}>
+                                        <p className={styles.textTotal}>Valor Final :</p>
+                                    </span>
+                                    <span className={styles.Valor}>
+                                        <p className={styles.Totalcifrao}>R$</p>
+                                        <p id='valorTotal' className={styles.TotalNum}></p>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <div className={styles.InfoValores}>
-                            <div className={styles.ValoreUnitario}>
-                                <span className={styles.TitleValor}>
-                                    <p className={styles.textUnitario}>Valor Unitario :</p>
-                                </span>
-                                <span className={styles.Valor}>
-                                    <p className={styles.cifrao}>R$</p>
-                                    <p id='valor' className={styles.Num}></p>
-                                </span>
-                            </div>
-                            <div className={styles.ValoreTotal}>
-                                <span className={styles.TitleValor}>
-                                    <p className={styles.textTotal}>Valor Final :</p>
-                                </span>
-                                <span className={styles.Valor}>
-                                    <p className={styles.Totalcifrao}>R$</p>
-                                    <p id='valorTotal' className={styles.TotalNum}></p>
-                                </span>
-                            </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
                 </div >
             </div >
         </section >

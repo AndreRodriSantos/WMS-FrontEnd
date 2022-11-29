@@ -177,8 +177,8 @@ export default function CadastroProduto() {
         let impostoFormat = parseInt(valorUnitario)
         const valorFinal = valorImposto + impostoFormat
 
-        valorFinal.toFixed(2)
-        setValorLiquido(valorFinal)
+        const valorFinalBr =valorFinal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        setValorLiquido(valorFinalBr)
 
     }
 
@@ -238,9 +238,7 @@ export default function CadastroProduto() {
         let ncm = document.getElementById("ncm").value
         ncm = await getNcmID(ncm)
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
-
         const id = localStorage.getItem("idProduto")
-
         const importado = document.getElementById("homologado").checked
 
         const produto = {

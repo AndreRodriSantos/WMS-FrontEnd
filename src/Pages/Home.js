@@ -78,7 +78,7 @@ export default function Home() {
     }
 
     function getMovimentacao() {
-        api.get(`api/movimentacao`).then(response => {
+        api.get(`api/movimentacao/list`).then(response => {
             console.log(response.data);
             setMovimentacoes(response.data)
 

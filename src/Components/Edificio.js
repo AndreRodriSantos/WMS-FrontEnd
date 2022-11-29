@@ -6,7 +6,7 @@ import api from "../Services/api"
 
 export default class Edificio extends React.Component {
     render() {
-        const { edificio, edifNum } = this.props
+        const { edificio, edifNum, handleEndereco } = this.props
 
         function drop_handler(ev) {
             ev.preventDefault();
@@ -24,8 +24,8 @@ export default class Edificio extends React.Component {
                 const item = reponse.data
                 const produto = item.produto
                 const quantidade = item.quantidade
-                const enderecamento = { "modulo": modulo, "andar": andar.id, "edificio": edifNum, "corredor": corredor, produto, quantidade }
-                console.log(enderecamento);
+                const enderecamento = { "modulo": modulo, "andar": andar.id, "edificio": edifNum, "corredor": corredor, "itens" : produto, quantidade, "demanda" : produto.demanda }
+                handleEndereco(enderecamento)
             })
         }
 
@@ -35,7 +35,7 @@ export default class Edificio extends React.Component {
         }
 
         return (
-            <div id={edificio} className={styles.edificioContainer}>
+            <div id={edifNum} className={styles.edificioContainer}>
                 <img src={prateleira}></img>
 
                 <div id={"1"} className={styles.andar1}>

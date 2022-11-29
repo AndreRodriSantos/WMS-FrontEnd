@@ -5,12 +5,13 @@ import api from "../Services/api";
 import { ListaPedidos } from "../Components/InfoPedido/ListaPedidos";
 import { PedidoItemCaixa } from "../Components/InfoPedido/PedidoItemCaixa";
 import Edificio from "../Components/Edificio";
+import { erro, sucesso } from "../Components/Avisos/Alert";
 
 export default function Enderecamento() {
 
     const [itens, setItens] = useState([])
     const [edificios, setEdificios] = useState([1, 2, 3, 4])
-    const [endereçamentosCheck, setEndereçamentosCheck] = useState([])
+    const [enderecamentosCheck, setEndereçamentosCheck] = useState([])
 
     async function getPedido(id) {
         return api.get(`api/pedido/${id}`).then(
@@ -21,9 +22,59 @@ export default function Enderecamento() {
         )
     }
 
+    function getEnderecamento() {
+        var modulos = document.getElementsByClassName(styles.modulo)
+
+        for (let i = 0; i < modulos.length; i++) {
+
+            const modulo = modulos[i];
+            const andar = modulo.parentElement
+            const edificio = andar.parentElement
+            const corredor = edificio.parentElement.id
+            
+
+            api.get("api/enderecamento/list").then(
+                response => {
+                    const endereco = response.data
+                    endereco.map(e => {
+                        if (e.corredor == corredor) {
+                            if (e.edificio == edificio.id) {
+                                if (e.andar == andar.id) {
+                                    if (e.modulo == modulo.id) {
+                                        console.log("aaaaa");
+                                    }
+                                }
+                            }
+                        }
+                    })
+                })
+        }
+    }
+
     useEffect(() => {
         getPedido(localStorage.getItem('idPedido'))
+        getEnderecamento()
     }, [])
+
+    function handleEndereco(endereco) {
+        setEndereçamentosCheck(ender => [...enderecamentosCheck, endereco])
+        console.log(enderecamentosCheck);
+    }
+
+    function CadastrarEndereçamentos() {
+        enderecamentosCheck.map(e => {
+            api.post("api/enderecamento/save", e).then(
+                response => {
+                    if (response.status == 201 || response.status == 200) {
+                        sucesso("Endereçamento cadastrado com sucesso!!!")
+                    }
+                },
+                err => {
+                    erro("Ocorreu um erro ao Cadastrar este Endereçamento:" + err)
+                }
+            )
+        })
+    }
 
     return (
         <div className={styles.container}>
@@ -34,7 +85,7 @@ export default function Enderecamento() {
                     Cancelar
                 </button>
 
-                <button className={styles.confirmarButton}>
+                <button onClick={CadastrarEndereçamentos} className={styles.confirmarButton}>
                     Confirmar
                 </button>
 
@@ -43,7 +94,7 @@ export default function Enderecamento() {
             <div className={styles.body}>
 
                 <div className={styles.corredor} id={"1"}>
-                    {edificios.map((e, key) => <Edificio edifNum={e} key={key} edificio={"edificio" + e} />)}
+                    {edificios.map((e, key) => <Edificio handleEndereco={handleEndereco} edifNum={e} key={key} edificio={"edificio" + e} />)}
                 </div>
 
                 <div className={styles.corredorSeparador}>
@@ -51,7 +102,7 @@ export default function Enderecamento() {
                 </div>
 
                 <div className={styles.corredor} id={"2"}>
-                    {edificios.map((e, key) => <Edificio edifNum={e} key={key} edificio={"edificio" + e} />)}
+                    {edificios.map((e, key) => <Edificio handleEndereco={handleEndereco} edifNum={e} key={key} edificio={"edificio" + e} />)}
                 </div>
 
                 <div className={styles.corredorSeparador}>
@@ -60,7 +111,7 @@ export default function Enderecamento() {
 
 
                 <div className={styles.corredor} id={"3"}>
-                    {edificios.map((e, key) => <Edificio edifNum={e} key={key} edificio={"edificio" + e} />)}
+                    {edificios.map((e, key) => <Edificio handleEndereco={handleEndereco} edifNum={e} key={key} edificio={"edificio" + e} />)}
                 </div>
 
                 <div className={styles.corredorSeparador}>
@@ -68,7 +119,7 @@ export default function Enderecamento() {
                 </div>
 
                 <div className={styles.corredor} id={"4"}>
-                    {edificios.map((e, key) => <Edificio edifNum={e} key={key} edificio={"edificio" + e} />)}
+                    {edificios.map((e, key) => <Edificio handleEndereco={handleEndereco} edifNum={e} key={key} edificio={"edificio" + e} />)}
                 </div>
 
                 <div className={styles.corredorSeparador}>
