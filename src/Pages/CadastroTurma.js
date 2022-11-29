@@ -18,6 +18,7 @@ export default function CadastroTurma() {
         const participantes = document.getElementById("participantes")
         const img = document.getElementById("imgPhoto")
         const range = document.getElementById("myRange")
+        const imagem = document.getElementById("imgPhoto")
         range.setAttribute("value", 1)
 
         if (id != undefined || id != null) {
@@ -29,9 +30,10 @@ export default function CadastroTurma() {
                     range.setAttribute("value", turma.numParticipantes)
                     setDataComeco(turma.dataInicio)
                     setDataFinal(turma.dataFinal)
+                    imagem.setAttribute("src", turma.imagem)
                     periodo.value = turma.periodo
                     if (turma.imagem != null) {
-                        img.setAttribute("src", `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${turma.imagem}?alt=media`)
+                        img.setAttribute("src", `${turma.imagem}`)
                     }
                 }
             )
@@ -56,7 +58,8 @@ export default function CadastroTurma() {
             'dataInicio': dataC,
             'dataFinal': dataF,
             'numParticipantes': participantes,
-            prof
+            prof,
+            imagem
         };
 
         if (id) {
@@ -106,7 +109,7 @@ export default function CadastroTurma() {
                     trigger="hover"
                     colors="primary:#121331"
                     state="hover-1"
-                    style={{width:32,height:32}}>
+                    style={{ width: 32, height: 32 }}>
                 </lord-icon>
             </a>
 

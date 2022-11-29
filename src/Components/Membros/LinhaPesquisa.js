@@ -22,7 +22,7 @@ export default class LinhaPesquisa extends React.Component {
             <li className={styles.linhaPesqusa}>
                 <span className={styles.Membro}>
                     <div className={styles.imgMembro}>
-                        <img src={membro.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${membro.imagem}?alt=media`}></img>
+                        <img src={membro.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `${membro.imagem}`}></img>
                     </div>
                     <div className={styles.infoMembro}>
                         <span className={styles.nameMembro}>{membro.nome}</span>

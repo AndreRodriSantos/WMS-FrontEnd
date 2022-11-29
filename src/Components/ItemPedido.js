@@ -13,7 +13,7 @@ export default class ItemPedido extends React.Component {
         return (
             <div className={styles.container} key={id} >
                 <div className={styles.imgDiv}>
-                    <img src={produto.imagem == null ? "https://cdns.iconmonstr.com/wp-content/releases/preview/2019/240/iconmonstr-product-3.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${produto.imagem}?alt=media`}></img>
+                    <img src={produto.imagem == null ? "https://cdns.iconmonstr.com/wp-content/releases/preview/2019/240/iconmonstr-product-3.png" : `${produto.imagem}`}></img>
                 </div>
 
                 <div className={styles.produtoDados}>

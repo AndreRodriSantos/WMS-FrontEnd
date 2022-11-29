@@ -16,12 +16,11 @@ export class ListaPedidos extends React.Component {
             PopUpInfo.style.display = 'flex'
 
             chamarItem(item)
-
         }
 
         return (
             <>
-                <div className={styles.box} onClick={chamarInfo}>
+                <div className={styles.box} draggable = "true" onClick={chamarInfo}>
                     <img src={Box} className={styles.imgBox} />
                 </div>
 

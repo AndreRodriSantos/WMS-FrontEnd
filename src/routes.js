@@ -19,6 +19,7 @@ import { isAuthenticated, isAuthenticatedPedido, isAuthenticatedProfessor, isAut
 import { BrowserRouter, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import { Confirmacao } from './Components/Avisos/Confirmacao';
 import { Perfil } from './Components/ItensHome/Perfil';
+import Enderecamento from './Pages/Endereçamento';
 
 const history = createBrowserHistory()
 
@@ -76,7 +77,7 @@ export default function Rotas() {
                 <Route path='/Loading' exact element={<Loading />} />
                 <Route path='/CadastroAlunos' element={<CadastroAlunos />}></Route>
                 <Route path='/CadastroProfessores' element={<CadastroProfessores />} ></Route>
-                <Route path='/Perfil' element={<Perfil />} ></Route>
+                <Route path='/Enderecamento' element={<Enderecamento />} ></Route>
 
                 <Route element={<PrivateRouteProfessor />}>
                     <Route path='/CadastroTurma' element={<CadastroTurma />}></Route>

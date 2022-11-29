@@ -7,13 +7,13 @@ export default class LinhaNcm extends React.Component {
         const { id, ncm, chamarIdNcm} = this.props
 
         function chamarBotao(){  
-            chamarIdNcm(id)
+            chamarIdNcm(id, id + ncm.ncm)
         }
        
         return (
-            <li onClick={chamarBotao} id={id} className={styles.linhaMedida} >
+            <li onClick={chamarBotao} id={id + ncm.ncm} className={styles.linhaMedida} >
                 <p> Ncm: </p>
-                <p>{ncm.ncm}</p>                
+                <p>{ncm.ncm}</p> 
             </li>
         )
     }

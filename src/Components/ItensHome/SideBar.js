@@ -469,6 +469,8 @@ function chamarNCM() {
     payment.style.display = "flex"
     principal.style.display = "flex"
     popUp.style.zIndex = 20
+
+    payment.classList.add(styles.alertOn)
 }
 
 function chamarMedidas() {
@@ -479,5 +481,7 @@ function chamarMedidas() {
     base.style.display = "flex"
     containerMedida.style.display = "flex"
     popUpMedidas.style.zIndex = 20
+
+    base.classList.add(styles.alertOn)
 
 }

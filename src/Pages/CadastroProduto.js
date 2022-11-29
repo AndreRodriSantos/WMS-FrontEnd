@@ -27,6 +27,7 @@ export default function CadastroProduto() {
     const [fornecedoresCheck, setFornecedoresCheck] = useState([])
     const [valorImportacao, setValorImportacao] = useState()
     const [check, setCheck] = useState([])
+    const [valorLiquido, setValorLiquido] = useState()
 
     function getProduto() {
         const id = localStorage.getItem("idProduto")
@@ -34,6 +35,7 @@ export default function CadastroProduto() {
         let medida = document.getElementById("medida")
         let ncm = document.getElementById("ncm")
         const valorImportacaoInput = document.getElementById("valorImportacao")
+        const imagem = document.getElementById("imgPhoto")
 
         if (id) {
             const homologado = document.getElementById("homologado")
@@ -47,6 +49,7 @@ export default function CadastroProduto() {
                     setSku(produto.sku)
                     setValor(produto.valorUnitario)
                     setPedido(produto.pontoPedido)
+                    imagem.setAttribute("src", produto.imagem)
 
                     homologado.checked = produto.importado
 
@@ -72,6 +75,10 @@ export default function CadastroProduto() {
                     demanda.value = produto.demanda
                     medida.value = produto.medida.id
                     ncm.value = produto.ncm.id
+
+                    setTimeout(() => {
+                        fazerCalculo()
+                    }, 1000);
 
                 }
             )
@@ -152,6 +159,29 @@ export default function CadastroProduto() {
         return api.get("api/fornecedor/list").then(response => { setFornecedores(response.data) })
     }
 
+    function fazerCalculo() {
+        const ipi = document.getElementById("ipi").value
+        const icms = document.getElementById("icms").value
+        const cofins = document.getElementById("cofins").value
+        const pis = document.getElementById("pis").value
+        const valorUnitario = document.getElementById("valor").value
+        const importado = document.getElementById("valorImportacao").value
+
+        const valorIpi = ipi * valorUnitario / 100
+        const valorIcms = icms * valorUnitario / 100
+        const valorPis = pis * valorUnitario / 100
+        const valorCofins = cofins * valorUnitario / 100
+        const valorImport = importado * valorUnitario / 100
+
+        const valorImposto = valorCofins + valorIcms + valorIpi + valorPis + valorImport
+        let impostoFormat = parseInt(valorUnitario)
+        const valorFinal = valorImposto + impostoFormat
+
+        valorFinal.toFixed(2)
+        setValorLiquido(valorFinal)
+
+    }
+
     function checkFornecedor(fornecedor, id) {
         const checked = document.getElementById(id).checked
         const checkBox = document.getElementById(id)
@@ -183,13 +213,15 @@ export default function CadastroProduto() {
 
     function disableImportacao(tipo) {
         const valorImportacaoInput = document.getElementById("homologado").checked
-        const valorImportacao = document.getElementById('valorImportacao')
+        let valorImportacao = document.getElementById('valorImportacao')
 
         console.log(valorImportacaoInput);
         console.log(valorImportacao);
 
         if (valorImportacaoInput == false) {
+            valorImportacao.value = ""
             valorImportacao.setAttribute("disabled", '')
+            fazerCalculo()
         } else {
             valorImportacao.removeAttribute('disabled')
         }
@@ -325,7 +357,7 @@ export default function CadastroProduto() {
                                     <Select width={"325px"} data={fazOptionsNcm()} label="NCM" id="ncm" idArrow="arrow4" name="ncm"></Select>
                                     <span className={styles.titleMedida}>Medida</span>
                                     <Select width={"325px"} data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
-                                    <Input width={"325px"} defaultValue={valorUnitario} onChange={(e) => setValor(e.target.value)} label="Valor Bruto" id="valor" type="number" name="valor"></Input>
+                                    <Input width={"325px"} defaultValue={valorUnitario} onChange={(e) => { setValor(e.target.value); fazerCalculo() }} label="Valor Bruto" id="valor" type="number" name="valor"></Input>
                                 </div>
 
                             </div>
@@ -388,16 +420,16 @@ export default function CadastroProduto() {
                     <form className={`${styles.form}  ${styles.etapa2Off}`} onSubmit={(e) => { e.preventDefault(); setPasso(passo + 1) }} id="etapa2Div">
 
                         <div className={styles.column}>
-                            <Input defaultValue={ipi} onChange={(e) => setIpi(e.target.value)} label="IPI" id="nome" type="number" name="nome" ></Input>
-                            <Input defaultValue={pis} onChange={(e) => setPis(e.target.value)} label="PIS" id="descricao" type="number" name="descricao" ></Input>
-                            <Input defaultValue={cofins} onChange={(e) => setCofins(e.target.value)} label="COFINS" id="descricao" type="number" name="descricao" ></Input>
-                            <Input defaultValue={icms} onChange={(e) => setIcms(e.target.value)} label="ICMS" id="descricao" type="number" name="descricao" ></Input>
+                            <Input defaultValue={ipi} onChange={(e) => { setIpi(e.target.value); fazerCalculo() }} label="IPI %" id="ipi" type="number" name="nome" ></Input>
+                            <Input defaultValue={pis} onChange={(e) => { setPis(e.target.value); fazerCalculo() }} label="PIS %" id="pis" type="number" name="descricao" ></Input>
+                            <Input defaultValue={cofins} onChange={(e) => { setCofins(e.target.value); fazerCalculo() }} label="COFINS %" id="cofins" type="number" name="descricao" ></Input>
+                            <Input defaultValue={icms} onChange={(e) => { setIcms(e.target.value); fazerCalculo() }} label="ICMS %" id="icms" type="number" name="descricao" ></Input>
                         </div>
 
                         <div className={styles.column}>
 
                             <div className={styles.divInput}>
-                               <label className={styles.label}>Importado</label>
+                                <label className={styles.label}>Importado</label>
 
                                 <div className={styles.importado}>
 
@@ -409,13 +441,13 @@ export default function CadastroProduto() {
                                         />
                                         <span className={styles.slider}></span>
                                     </label>
-
                                 </div>
-                                <Input width={250} defaultValue={valorImportacao} onChange={(e) => setValorImportacao(e.target.value)} disabled={true} label="Valor de Importação" id="valorImportacao" type="number" name="valorImportacao" ></Input>
+                                <Input width={250} defaultValue={valorImportacao} onChange={(e) => { setValorImportacao(e.target.value); fazerCalculo() }} disabled={true} label="Taxa de Importação %" id="valorImportacao" type="number" name="valorImportacao" ></Input>
                             </div>
 
                             <div className={styles.ValorLiquido}>
-                                <span className={styles.titleVL}>Valor Liquido</span>
+                                <span className={styles.titleVL}>Valor Final</span>
+                                <span className={styles.vl}>R$ {valorLiquido}</span>
                             </div>
 
                         </div>

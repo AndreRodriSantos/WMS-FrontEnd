@@ -57,12 +57,13 @@ export default function CadastroAlunos() {
         if (localStorage.getItem("alterandoAluno")) {
             const id = localStorage.getItem("idAluno")
             const aluno = (await getAluno(id)).data
+            const imagem = document.getElementById("imgPhoto")
 
             setNome(aluno.nome)
             setMatricula(aluno.codMatricula)
             setEmailAluno(aluno.email)
+            imagem.setAttribute("src", aluno.imagem)
         }
-
     }
 
     const [nome, setNome] = useState('')

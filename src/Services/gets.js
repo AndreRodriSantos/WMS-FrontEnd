@@ -115,22 +115,22 @@ export function getAluno(id){
 window.onload = function () {
     var reloading = sessionStorage.getItem("reloading");
     if (reloading == "login") {
-        sucesso("Usuário Logado com sucesso!!")
+        sucesso("Usuário Logado com sucesso, seja bem-vindo!!")
         sessionStorage.removeItem("reloading");
     } else if (reloading == "cadastro") {
-        sucesso("Cadastrado realizado com sucesso")
+        sucesso("Cadastrado foi realizado com sucesso")
         sessionStorage.removeItem("reloading");
     } else if (reloading == "alteracao") {
-        sucesso("Alteração realizada com sucesso!!")
+        sucesso("A alteração foi realizada com sucesso!!")
         sessionStorage.removeItem("reloading")
     } else if (reloading == "deleteTurma") {
-        sucesso("Turma deletado com sucesso")
+        sucesso("A turma foi deletada com sucesso")
         sessionStorage.removeItem("reloading")
     } else if (reloading == "delete") {
-        sucesso("Exclusão feita com sucesso")
+        sucesso("A exclusão foi realizada com sucesso")
         sessionStorage.removeItem("reloading")
     } else if (reloading == "semTurma") {
-        erro("Alunos sem turma não podem logar, peça a seu professor para o adicionar em uma turma")
+        erro("Alunos sem turma não podem logar, peça a seu professor para adicioná-lo em uma turma")
         sessionStorage.removeItem("reloading")
     }else if(reloading == "erroFornecedor"){
         erro("Este fornecedor não pode ser excluido, pois existem produtos cadastrados com ele!!")

@@ -10,6 +10,7 @@ import styles from "../Styles/Pedido.module.css"
 import logo from "../IMG/Logo WMS.png"
 import CaixaRight from "../IMG/CaixaRight.png"
 import DesignPedido from "../IMG/DesignPedido.png"
+import { PopUpInfo } from "../Components/ItensHome/PopUpInfo"
 
 export default function Pedido() {
 
@@ -69,12 +70,16 @@ export default function Pedido() {
     function finalizarPedido() {
         const valorTotal = document.getElementById("valorTotalSelec").textContent
         const aluno = { id: localStorage.getItem("idAluno") }
+        const professor = { id: localStorage.getItem("idProfessor") }
 
         const pedido = {
             "itens": produtosAdicionados,
             "valor": valorTotal,
-            aluno
+            aluno,
+            professor
         }
+
+        console.log(pedido);
 
         api.post("api/pedido/save", pedido).then(
             response => {
@@ -115,7 +120,7 @@ export default function Pedido() {
 
     return (
         <div className={styles.container}>
-
+            <PopUpInfo></PopUpInfo>
             <a className='voltar' onClick={() => window.history.back()}>
                 <lord-icon
                     src="https://cdn.lordicon.com/jxwksgwv.json"
@@ -176,7 +181,7 @@ export default function Pedido() {
                 <div className={styles.Caixa}>
                     <img src={CaixaRight} className={styles.CaixaRight}></img>
                 </div>
-                
+
                 <div className={styles.BaseDesignPedido}>
                     <img src={DesignPedido} className={styles.DesignPedido}></img>
                 </div>

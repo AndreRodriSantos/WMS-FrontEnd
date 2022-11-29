@@ -59,8 +59,6 @@ export default function CadastroProfessores() {
                 }
             )
         }
-
-
     }
 
     async function getProfAlterar() {
@@ -68,12 +66,14 @@ export default function CadastroProfessores() {
         if (localStorage.getItem("alterandoProf")) {
             const id = localStorage.getItem("idProf")
             const prof = (await getProfessor(id)).data
+            const imagem = document.getElementById("imgPhoto")
 
             console.log(prof);
 
             setNome(prof.nome)
             setNif(prof.nif)
             setEmail(prof.email)
+            imagem.setAttribute("src", prof.imagem)
         }
     }
 

@@ -6,6 +6,7 @@ import api from "../Services/api";
 
 import QrCode from '../IMG/QrCode.png'
 import CodBarra from '../IMG/CodBarra.png'
+import { PopUpInfo } from "../Components/ItensHome/PopUpInfo";
 
 export default function VerificarPedidos() {
 
@@ -22,6 +23,15 @@ export default function VerificarPedidos() {
         )
     }
 
+    function GerarNota() {
+        api.get(`api/notaFiscal/pega/${localStorage.getItem("idPedido")}`).then(response => {
+            const notaFiscal = response.data
+            console.log(notaFiscal);
+            window.location.href = `http://localhost:8080/api/pedido/teste/${notaFiscal.codigoNota}`
+        })
+
+    }
+
     function ItemCall(item) {
         let produto = document.getElementById('produto')
         let descricao = document.getElementById('descricao')
@@ -30,25 +40,21 @@ export default function VerificarPedidos() {
         let sku = document.getElementById('sku')
         let valorTotal = document.getElementById('valorTotal')
 
-
         produto.innerText = item.produto.nome
         descricao.innerText = item.produto.descricao
         qnd.innerText = item.quantidade
         valor.innerText = item.produto.valorUnitario
         sku.innerText = item.produto.sku
         valorTotal.innerText = item.quantidade * item.produto.valorUnitario
-
     }
 
     useEffect(() => {
         getPedido(localStorage.getItem('idPedido'))
-
     }, [])
 
     return (
         <section className={styles.container}>
-
-            <a className='voltar' onClick={() => window.history.back()}>
+            <a className='voltar' href="Home">
                 <lord-icon
                     src="https://cdn.lordicon.com/jxwksgwv.json"
                     trigger="hover"
@@ -58,8 +64,14 @@ export default function VerificarPedidos() {
                 </lord-icon>
             </a>
 
-            <a className={styles.estocagem} href="#">
-                <i className="fa-solid fa-arrow-rotate-right"></i>
+            <a className={styles.estocagem} href="Enderecamento">
+                <lord-icon
+                    src="https://cdn.lordicon.com/jxwksgwv.json"
+                    trigger="hover"
+                    colors="primary:#121331"
+                    state="hover-1"
+                    style={{ width: 32, height: 32 }}>
+                </lord-icon>
             </a>
             <div className={styles.Pedidos}>
                 <div className={styles.headerList}>
@@ -69,13 +81,13 @@ export default function VerificarPedidos() {
                     <span className={styles.headerTitle}>
                         <p className={styles.SubTitle}>Pedido</p>
                     </span>
-                    <a href="#" className={styles.notaFiscal}>
+                    <a className={styles.notaFiscal} onClick={GerarNota}>
                         <p className={styles.notaFiscalTitle}>Nota Fiscal</p>
                         <i className="fa-solid fa-paper-plane"></i>
                     </a>
                 </div>
                 <div className={styles.lists}>
-                    {itens.map((i) => <ListaPedidos item={i} chamarItem={ItemCall} />)}
+                    {itens.map((i, key) => <ListaPedidos key={key} item={i} chamarItem={ItemCall} />)}
                 </div>
             </div>
 
@@ -122,10 +134,8 @@ export default function VerificarPedidos() {
                             <img src={CodBarra} className={styles.CodBarraImg} />
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </section>
     )
 

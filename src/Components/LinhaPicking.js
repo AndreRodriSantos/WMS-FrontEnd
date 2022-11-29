@@ -25,7 +25,7 @@ export default class LinhaPicking extends React.Component {
 
         return (
             <tr className={styles.container} id={id + "container"}>
-                <td><img className={styles.img} src={produto.imagem == null ? "https://cdns.iconmonstr.com/wp-content/releases/preview/2019/240/iconmonstr-product-3.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${produto.imagem}?alt=media`}></img></td>
+                <td><img className={styles.img} src={produto.imagem == null ? "https://cdns.iconmonstr.com/wp-content/releases/preview/2019/240/iconmonstr-product-3.png" : `${produto.imagem}`}></img></td>
                 <td>{produto.nome}</td>
                 <td>{produto.sku}</td>
                 <td>{item.quantidade}</td>

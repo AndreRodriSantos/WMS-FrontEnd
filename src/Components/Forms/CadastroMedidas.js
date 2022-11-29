@@ -12,41 +12,83 @@ import { refresh } from "../../Services/gets";
 export default class CadastroMedidas extends React.Component {
     render() {
 
-        function pegaId(id) {
-            localStorage.setItem('idMedida', id)
+        function pegaId(id, idLinha) {
+            const linha = document.getElementById(idLinha)
+            const list = document.getElementById("listMedidas").children
 
-            const nome = document.getElementById('nomeMedida')
-            const sigla = document.getElementById('sigla')
+            if (linha.style.backgroundColor != "black") {
+                localStorage.setItem('idMedida', id)
 
-            const btn = document.getElementById('b')
-            const btnAlterar = document.getElementById('btnAlterar')
-            const btnExcluir = document.getElementById('btnExcluir')
+                for (let i = 0; i < list.length; i++) {
+                    const linha = list[i];
 
-            btn.style.opacity = '0.5'
-            btn.style.cursor = 'not-allowed'
-            btn.style.pointerEvents = 'none'
+                    linha.style.backgroundColor = "white"
+                    linha.style.color = "black"
 
-            btnAlterar.style.cursor = 'pointer'
-            btnAlterar.style.pointerEvents = 'auto'
-            btnAlterar.style.opacity = '1'
+                }
+
+                const nome = document.getElementById('nomeMedida')
+                const sigla = document.getElementById('sigla')
+
+                const btn = document.getElementById('b')
+                const btnAlterar = document.getElementById('btnAlterar')
+                const btnExcluir = document.getElementById('btnExcluir')
+
+                linha.style.backgroundColor = "black"
+                linha.style.color = "white"
+
+                btn.style.opacity = '0.5'
+                btn.style.cursor = 'not-allowed'
+                btn.style.pointerEvents = 'none'
+
+                btnAlterar.style.cursor = 'pointer'
+                btnAlterar.style.pointerEvents = 'auto'
+                btnAlterar.style.opacity = '1'
 
 
-            btnExcluir.style.cursor = 'pointer'
-            btnExcluir.style.pointerEvents = 'auto'
-            btnExcluir.style.opacity = '1'
+                btnExcluir.style.cursor = 'pointer'
+                btnExcluir.style.pointerEvents = 'auto'
+                btnExcluir.style.opacity = '1'
+
+                if (id) {
+                    api.get(`api/unidade/${id}`).then(
+                        response => {
+                            const medida = response.data
+                            nome.value = medida.nome
+                            sigla.value = medida.sigla
+                        }
+                    )
+                }
+            } else {
+                localStorage.removeItem('idMedida', id)
+
+                const nome = document.getElementById('nomeMedida')
+                const sigla = document.getElementById('sigla')
+
+                const btn = document.getElementById('b')
+                const btnAlterar = document.getElementById('btnAlterar')
+                const btnExcluir = document.getElementById('btnExcluir')
+
+                linha.style.backgroundColor = "white"
+                linha.style.color = "black"
+
+                btn.style.opacity = '1'
+                btn.style.cursor = 'pointer'
+                btn.style.pointerEvents = 'auto'
+
+                btnAlterar.style.cursor = 'not-allowed'
+                btnAlterar.style.pointerEvents = 'none'
+                btnAlterar.style.opacity = '0.5'
 
 
-            if (id) {
-                api.get(`api/unidade/${id}`).then(
-                    response => {
-                        const medida = response.data
-                        console.log(medida);
-                        nome.value = medida.nome
-                        sigla.value = medida.sigla
-                    }
-                )
+                btnExcluir.style.cursor = 'not-allowed'
+                btnExcluir.style.pointerEvents = 'none'
+                btnExcluir.style.opacity = '0.5'
+
+                nome.value = ""
+                sigla.value = ""
+
             }
-
         }
 
         function excluir() {
@@ -129,7 +171,7 @@ function CadastrarMedida(event) {
 
     const id = localStorage.getItem('idMedida')
 
-    var body ={
+    var body = {
         id,
         "nome": nomeMedida,
         "sigla": siglaMedida
@@ -191,6 +233,8 @@ function Fechar() {
     btnExcluir.style.opacity = '0.5'
     btnExcluir.style.cursor = 'not-allowed'
     btnExcluir.style.pointerEvents = 'none'
+
+    base.classList.remove(styles.alertOn)
 
 }
 

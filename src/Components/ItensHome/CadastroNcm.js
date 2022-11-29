@@ -14,36 +14,78 @@ export class CadastroNcm extends React.Component {
         const { ncms } = this.props
 
 
-        function pegaIdNcm(id) {
-            localStorage.setItem('idNcm', id)
+        function pegaIdNcm(id, idLinha) {
+            const linha = document.getElementById(idLinha)
+            const list = document.getElementById("listNcms").children
 
-            const nome = document.getElementById('ncm')
+            if (linha.style.backgroundColor != "black") {
+                localStorage.setItem('idNcm', id)
 
-            const btn = document.getElementById('bNcm')
-            const btnAlterar = document.getElementById('AlterarNcm')
-            const btnExcluir = document.getElementById('ExcluirNcm')
+                for (let i = 0; i < list.length; i++) {
+                    const linha = list[i];
 
-            btn.style.opacity = '0.5'
-            btn.style.cursor = 'not-allowed'
-            btn.style.pointerEvents = 'none'
+                    linha.style.backgroundColor = "white"
+                    linha.style.color = "black"
 
-            btnAlterar.style.cursor = 'pointer'
-            btnAlterar.style.pointerEvents = 'auto'
-            btnAlterar.style.opacity = '1'
+                }
+
+                const nome = document.getElementById('ncm')
+
+                const btn = document.getElementById('bNcm')
+                const btnAlterar = document.getElementById('AlterarNcm')
+                const btnExcluir = document.getElementById('ExcluirNcm')
+
+                linha.style.backgroundColor = "black"
+                linha.style.color = "white"
+
+                btn.style.opacity = '0.5'
+                btn.style.cursor = 'not-allowed'
+                btn.style.pointerEvents = 'none'
+
+                btnAlterar.style.cursor = 'pointer'
+                btnAlterar.style.pointerEvents = 'auto'
+                btnAlterar.style.opacity = '1'
 
 
-            btnExcluir.style.cursor = 'pointer'
-            btnExcluir.style.pointerEvents = 'auto'
-            btnExcluir.style.opacity = '1'
+                btnExcluir.style.cursor = 'pointer'
+                btnExcluir.style.pointerEvents = 'auto'
+                btnExcluir.style.opacity = '1'
 
-            if (id) {
-                api.get(`api/ncm/${id}`).then(
-                    response => {
-                        const ncmId = response.data
-                        nome.value = ncmId.ncm
-                        console.log(ncmId);
-                    }
-                )
+                if (id) {
+                    api.get(`api/ncm/${id}`).then(
+                        response => {
+                            const ncm = response.data
+                            nome.value = ncm.ncm
+                        }
+                    )
+                }
+            } else {
+                localStorage.removeItem('idNcm', id)
+
+                const nome = document.getElementById('ncm')
+
+                const btn = document.getElementById('bNcm')
+                const btnAlterar = document.getElementById('AlterarNcm')
+                const btnExcluir = document.getElementById('ExcluirNcm')
+
+                linha.style.backgroundColor = "white"
+                linha.style.color = "black"
+
+                btn.style.opacity = '1'
+                btn.style.cursor = 'pointer'
+                btn.style.pointerEvents = 'auto'
+
+                btnAlterar.style.cursor = 'not-allowed'
+                btnAlterar.style.pointerEvents = 'none'
+                btnAlterar.style.opacity = '0.5'
+
+
+                btnExcluir.style.cursor = 'not-allowed'
+                btnExcluir.style.pointerEvents = 'none'
+                btnExcluir.style.opacity = '0.5'
+
+                nome.value = ""
+
             }
         }
 
@@ -89,7 +131,7 @@ export class CadastroNcm extends React.Component {
                                     </button>
                                 </div>
                             </div>
-                            <ul id="listMedidas" className={styles.ListMedidas}>
+                            <ul id="listNcms" className={styles.ListMedidas}>
                                 {ncms.map((n, index) => <LinhaNcm chamarIdNcm={pegaIdNcm}
                                     id={n.id}
                                     key={index}
@@ -103,7 +145,6 @@ export class CadastroNcm extends React.Component {
         );
     }
 }
-
 
 function Fechar() {
     const payment = document.getElementById("payment");
@@ -134,6 +175,7 @@ function Fechar() {
     btnExcluir.style.cursor = 'not-allowed'
     btnExcluir.style.pointerEvents = 'none'
 
+    payment.classList.remove(styles.alertOn)
 }
 
 function CadastroNCM(event) {
@@ -161,10 +203,10 @@ function CadastroNCM(event) {
         api.post(
             "api/ncm/save", body
         ).then(response => {
-                if (response.status == 201 || response.status == 200){
-                    refresh('cadastro')
-                }
-            },
+            if (response.status == 201 || response.status == 200) {
+                refresh('cadastro')
+            }
+        },
             err => {
                 erro("Ocorreu um erro ao Cadastrar O Ncm:" + err)
             }

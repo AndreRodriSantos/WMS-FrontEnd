@@ -57,7 +57,6 @@ export default function Home() {
             api.get(`api/pedido/pedidosAluno/${idAluno}`).then(
                 response => {
                     setPedido(response.data)
-
                 }
             )
 
@@ -69,6 +68,7 @@ export default function Home() {
             )
         }
     }
+    
     function getProduto() {
         api.get(`api/produto/list`).then(
             response => {
@@ -99,26 +99,26 @@ export default function Home() {
             let idProf = localStorage.getItem("idProf")
             let professor = (await getProfessor(idProf)).data
 
-            img.setAttribute("src", professor.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${professor.imagem}?alt=media`)
+            img.setAttribute("src", professor.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `${professor.imagem}`)
             userNome.innerText = professor.nome
             userEmail.innerText = professor.email
 
             setEmail(professor.email)
             setNome(professor.nome)
             setNif(professor.nif)
-            professor.imagem == null ? setImagemUser("https://www.somadesenvolvimento.com.br/application/assets/img/male.png") : setImagemUser(`https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${professor.imagem}?alt=media`)
+            professor.imagem == null ? setImagemUser("https://www.somadesenvolvimento.com.br/application/assets/img/male.png") : setImagemUser(`${professor.imagem}`)
 
         } else if (localStorage.getItem("aluno")) {
             let idAluno = localStorage.getItem("idAluno")
             let aluno = (await getAluno(idAluno)).data
-            img.setAttribute("src", aluno.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${aluno.imagem}?alt=media`)
+            img.setAttribute("src", aluno.imagem == null ? "https://www.somadesenvolvimento.com.br/application/assets/img/male.png" : `${aluno.imagem}`)
             userNome.innerText = aluno.nome
             userEmail.innerText = aluno.email
 
             setEmail(aluno.email)
             setNome(aluno.nome)
             setCodMatricula(aluno.codMatricula)
-            aluno.imagem == null ? setImagemUser("https://www.somadesenvolvimento.com.br/application/assets/img/male.png") : setImagemUser(`https://firebasestorage.googleapis.com/v0/b/systemwms-14aa0.appspot.com/o/${aluno.imagem}?alt=media`)
+            aluno.imagem == null ? setImagemUser("https://www.somadesenvolvimento.com.br/application/assets/img/male.png") : setImagemUser(`${aluno.imagem}`)
         }
     }
 
