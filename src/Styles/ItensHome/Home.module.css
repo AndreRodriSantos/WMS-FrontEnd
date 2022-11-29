@@ -165,7 +165,7 @@
 
 .BaseBotChat {
     position: fixed;
-    bottom: -45%;
+    bottom: -51%;
     right: 4%;
     width: 400px;
     height: 580px;
@@ -1286,136 +1286,236 @@
 
 }
 
-/* Altura */
+/* ALTURA */
 
-@media screen and (max-height:1055px) {
-
-    .Caixa {
-        top: 5%
-    }
+@media screen and (max-height:1040px) {
 
     .homeCenter {
-        height: 68%;
+        height: 950px;
     }
-
-    .HomeRight {
-        bottom: -1%;
+    .listHistorico{
+        height: 445px;
     }
-
-    .BaseBotChat {
-        bottom: 2.6%;
+    .cardTutorial{
+        height: 445px;
     }
 
 }
+
+@media screen and (max-height:1030px) {
+
+    .homeCenter {
+        height: 940px;
+    }
+    .listHistorico{
+        height: 430px;
+    }
+    .cardTutorial{
+        height: 430px;
+    }
+
+}
+
+
+@media screen and (max-height:1020px) {
+
+    .homeCenter {
+        height: 930px;
+    }
+    .listHistorico{
+        height: 435px;
+    }
+    .cardTutorial{
+        height: 435px;
+    }
+
+}
+
 
 @media screen and (max-height:1010px) {
 
     .homeCenter {
-        height: 70%;
+        height: 920px;
     }
-
-    .HomeRight {
-        bottom: -1%;
+    .listHistorico{
+        height: 425px;
     }
-
-    .BaseBotChat {
-        bottom: 2.6%;
+    .cardTutorial{
+        height: 425px;
     }
 
 }
 
-@media screen and (max-height:985px) {
-    .components {
-        height: 160%;
+@media screen and (max-height:1000px) {
+
+    .homeCenter {
+        height: 910px;
     }
+    .listHistorico{
+        height: 420px;
+    }
+    .cardTutorial{
+        height: 420px;
+    }
+
+}
+
+
+@media screen and (max-height:990px) {
+
+    .homeCenter {
+        height: 900px;
+    }
+    .listHistorico{
+        height: 420px;
+    }
+    .cardTutorial{
+        height: 420px;
+    }
+
+}
+
+@media screen and (max-height:980px) {
+
+    .homeCenter {
+        height: 895px;
+    }
+    .listHistorico{
+        height: 420px;
+    }
+    .cardTutorial{
+        height: 420px;
+    }
+
+}
+
+@media screen and (max-height:970px) {
+
+    .homeCenter {
+        height: 885px;
+    }
+    .listHistorico{
+        height: 415px;
+    }
+    .cardTutorial{
+        height: 415px;
+    }
+
+}
+
+@media screen and (max-height:960px) {
+
+    .homeCenter {
+        height: 880px;
+    }
+    .listHistorico{
+        height: 410px;
+    }
+    .cardTutorial{
+        height: 410px;
+    }
+
+}
+
+
+@media screen and (max-height:950px) {
+
+    .homeCenter {
+        height: 865px;
+    }
+    .listHistorico{
+        height: 400px;
+    }
+    .cardTutorial{
+        height: 400px;
+    }
+
+}
+
+
+@media screen and (max-height:940px) {
+
+    .homeCenter {
+        height: 855px;
+    }
+    .listHistorico{
+        height: 400px;
+    }
+    .cardTutorial{
+        height: 400px;
+    }
+
+}
+
+@media screen and (max-height:930px) {
+
+    .homeCenter {
+        height: 845px;
+    }
+    .listHistorico{
+        height: 390px;
+    }
+    .cardTutorial{
+        height: 390px;
+    }
+
 }
 
 @media screen and (max-height:920px) {
-    .components {
-        height: 170%;
+
+    .homeCenter {
+        height: 840px;
     }
+    .listHistorico{
+        height: 390px;
+    }
+    .cardTutorial{
+        height: 390px;
+    }
+
 }
 
-@media screen and (max-height:870px) {
-    .components {
-        height: 175%;
+
+@media screen and (max-height:910px) {
+
+    .homeCenter {
+        height: 830px;
     }
+    .listHistorico{
+        height: 390px;
+    }
+    .cardTutorial{
+        height: 390px;
+    }
+
 }
 
-@media screen and (max-height:840px) {
-    .components {
-        height: 180%;
+
+@media screen and (max-height:900px) {
+
+    .homeCenter {
+        height: 815px;
     }
+    .listHistorico{
+        height: 380px;
+    }
+    .cardTutorial{
+        height: 380px;
+    }
+
 }
 
-@media screen and (max-height:820px) {
-    .components {
-        height: 190%;
-    }
-}
 
-@media screen and (max-height:780px) {
-    .components {
-        height: 195%;
-    }
-}
+@media screen and (max-height:890px) {
 
-@media screen and (max-height:760px) {
-    .components {
-        height: 200%;
+    .homeCenter {
+        height: 815px;
     }
-}
+    .listHistorico{
+        height: 380px;
+    }
+    .cardTutorial{
+        height: 380px;
+    }
 
-@media screen and (max-height:740px) {
-    .components {
-        height: 205%;
-    }
-}
-
-@media screen and (max-height:720px) {
-    .components {
-        height: 210%;
-    }
-}
-
-@media screen and (max-height:700px) {
-    .components {
-        height: 215%;
-    }
-}
-
-@media screen and (max-height:680px) {
-    .components {
-        height: 220%;
-    }
-}
-
-@media screen and (max-height:670px) {
-    .components {
-        height: 225%;
-    }
-}
-
-@media screen and (max-height:660px) {
-    .components {
-        height: 230%;
-    }
-}
-
-@media screen and (max-height:640px) {
-    .components {
-        height: 240%;
-    }
-}
-
-@media screen and (max-height:620px) {
-    .components {
-        height: 250%;
-    }
-}
-
-@media screen and (max-height:600px) {
-    .components {
-        height: 260%;
-    }
 }

@@ -510,7 +510,7 @@ export default function Home() {
         if(window.screen.width <= 1070){
             BotChat.style.bottom = '-37.7%'
         }else{
-            BotChat.style.bottom = '-45%'
+            BotChat.style.bottom = '-51%'
         }
         
         btnOn.style.opacity = '1'
