@@ -101,7 +101,7 @@ export class CadastroNcm extends React.Component {
                     erro('erro')
                 }
             )
-        }
+        } 
 
         return (
             <div className={styles.principal} id="principal">

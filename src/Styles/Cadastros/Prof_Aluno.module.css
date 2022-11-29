@@ -39,6 +39,7 @@
     width: 1300px;
     height: 750px;
     display: flex;
+    transform: scale(1);
 }
 
 .Form {
@@ -247,4 +248,76 @@
     font-weight: bold;
     color: #000;
     display: block;
+}
+
+
+@media screen and (max-width:1440px) {
+    .baseForm{
+        transform: scale(0.9);
+    }
+    
+}
+
+@media screen and (max-height: 900px) {
+    .baseForm{
+        transform: scale(0.9);
+    }
+    
+}
+
+@media screen and (max-width:1250px) {
+    .baseForm{
+        transform: scale(0.8);
+    }
+    
+}
+
+
+@media screen and (max-height: 800px) {
+    .baseForm{
+        transform: scale(0.8);
+    }
+    
+}
+
+@media screen and (max-width:1080px) {
+    .baseForm{
+        transform: scale(0.7);
+    }
+    
+}
+
+@media screen and (max-height: 750px) {
+    .baseForm{
+        transform: scale(0.7);
+    }
+    
+}
+
+@media screen and (max-width: 890px) {
+    .baseForm{
+        transform: scale(0.6);
+    }
+    
+}
+
+@media screen and (max-height: 600px) {
+    .baseForm{
+        transform: scale(0.6);
+    }
+    
+}
+
+@media screen and (max-height: 500px) {
+    .baseForm{
+        transform: scale(0.5);
+    }
+    
+}
+
+@media screen and (max-height: 400px) {
+    .baseForm{
+        transform: scale(0.4);
+    }
+    
 }

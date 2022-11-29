@@ -344,8 +344,8 @@ export default function CadastroProduto() {
                             <div className={styles.dados}>
 
                                 <div className={styles.column}>
-                                    <Input width={"325px"} defaultValue={nome} onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" ></Input>
-                                    <Input width={"325px"} defaultValue={descricao} onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" ></Input>
+                                    <Input width={"325px"} defaultValue={nome} onChange={(e) => setNome(e.target.value)} label="Nome" id="nome" type="text" name="nome" caracter={20} ></Input>
+                                    <Input width={"325px"} defaultValue={descricao} onChange={(e) => setDescricao(e.target.value)} label="Descrição" id="descricao" type="text" name="descricao" caracter={255} ></Input>
                                     <span className={styles.titleDemanda}>Demanda</span>
                                     <Select width={"325px"} data={fazOptionsDemanda()} idArrow="arrow2" id="demanda" name="demanda"></Select>
                                     <Input width={"325px"} defaultValue={pontoPedido} onChange={(e) => setPedido(e.target.value)} label="Ponto de Pedido" type="number" id="nome" name="pontoPedido"></Input>

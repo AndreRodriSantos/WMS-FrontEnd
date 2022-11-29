@@ -2,6 +2,7 @@
     position: relative;
     left: 1%;
 }
+
 .base {
     position: relative;
     top: 20px;
@@ -69,6 +70,7 @@
     font-size: 20px;
     cursor: pointer;
 }
+
 .base_form {
     position: absolute;
     height: 72%;
@@ -78,7 +80,7 @@
     bottom: 13%;
     transition: 0.5s;
     overflow: scroll;
-    overflow-x: hidden;  
+    overflow-x: hidden;
 }
 
 .list {
@@ -87,6 +89,51 @@
     height: 50px;
     margin-bottom: 80px;
     cursor: pointer;
+}
+
+.iconHome {
+    position: absolute;
+    left: 8%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s ease-in;
+    scale: (0.9);
+    font-size: 20px;
+    background: -webkit-linear-gradient(#CA8DEA, #6064F9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 2;
+}
+
+.iconHomeOff {
+    position: absolute;
+    left: 8%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    background: -webkit-linear-gradient(#CA8DEA, #6064F9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-radius: 5px;
+    scale: (0.9);
+    transition: .2s ease-in;
+    z-index: -1;
+}
+
+
+.barhome {
+    position: absolute;
+    left: -30%;
+    height: 50px;
+    width: 5px;
+    border-radius: 20px;
+    background: linear-gradient(287deg, #CA8DEA 0%, #6064F9 120%);
 }
 
 .icon {
@@ -104,7 +151,8 @@
     transition: .2s ease-in;
     z-index: 2;
 }
-.iconoff{
+
+.iconoff {
     position: absolute;
     left: 8%;
     width: 50px;
@@ -140,16 +188,17 @@
     color: #000;
     font-weight: 400;
 }
-.IconText{
+
+.IconText {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    
+
     left: 120px;
     width: 150px;
     height: 70px;
-    
+
     background-color: #000;
     border-radius: 0 20px 20px 0;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px -10px;
@@ -164,7 +213,7 @@
     z-index: -1;
 }
 
-.textNcm{
+.textNcm {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -189,7 +238,8 @@
     margin-bottom: 80px;
     cursor: pointer;
 }
-.arrowOn{
+
+.arrowOn {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -200,7 +250,7 @@
     z-index: 1;
 }
 
-.arrowOff{
+.arrowOff {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -210,11 +260,13 @@
     right: 20%;
     z-index: -1;
 }
-.sub_menu{
+
+.sub_menu {
     display: none;
     padding: 6px 6px 14px 80px;
 }
-.sub_menuOff{
+
+.sub_menuOff {
     padding: 15px 6px 6px 10px;
     position: absolute;
     left: 120px;
@@ -225,23 +277,27 @@
     opacity: 1;
     z-index: -1;
 }
-.sub_link{
+
+.sub_link {
     position: relative;
     list-style: none;
     height: 50px;
     transition: all 0.4s ease;
 }
-.link_container{
+
+.link_container {
     display: none;
 }
-.link_containerOff{
+
+.link_containerOff {
     color: #000;
     font-size: 20px;
     padding: 5px 0;
     text-decoration: none;
     white-space: nowrap;
 }
-.link_name{
+
+.link_name {
     color: #000;
     font-size: 18px;
     padding: 5px 0;
@@ -250,9 +306,11 @@
     opacity: 0.6;
     transition: all 0.3s ease;
 }
-.link_name:hover{
+
+.link_name:hover {
     opacity: 1;
 }
+
 /* sobre */
 
 .sobre {
@@ -268,14 +326,14 @@
     transition: all 0.5s ease;
 }
 
-.user{
+.user {
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.user:hover{
+.user:hover {
     transform: scale(1.2);
 }
 
@@ -370,7 +428,148 @@
     }
 }
 
+@media screen and (min-width:1575px) {
+    .base {
+        height: 96%;
+    }
+}
+
+@media screen and (max-width:1575px) {
+    .base {
+        height: 62.5%;
+    }
+
+    .btnOff {
+        top: 7%;
+    }
+
+    .btn {
+        top: 7%;
+    }
+
+}
+
+@media screen and (max-width:1120px) {
+    .base {
+        height: 70.5%;
+        transform: scale(0.95);
+    }
+
+    .btnOff {
+        top: 7%;
+        transform: scale(0.95);
+    }
+
+    .btn {
+        top: 7%;
+        transform: scale(0.95);
+    }
+
+}
+
+@media screen and (max-width:1080px) {
+    .base {
+        height: 70.5%;
+        transform: scale(0.95);
+    }
+
+    .btnOff {
+        top: 10%;
+        transform: scale(0.95);
+    }
+
+    .btn {
+        top: 10%;
+        transform: scale(0.95);
+    }
+
+}
+@media screen and (max-height:1024px){
+    .base {
+        height: 65.5%;
+    }
+
+  
+}
+
+@media screen and (max-width:1080px) {
+    .base {
+        height: 70.5%;
+        transform: scale(0.95);
+    }
+
+    .btnOff {
+        top: 10%;
+        transform: scale(0.95);
+    }
+
+    .btn {
+        top: 10%;
+        transform: scale(0.95);
+    }
+
+}
+
+@media screen and (max-width:1070px){
+    .base {
+        height: 70.5%;
+        transform: scale(0.9);
+    }
+    .base {
+        transform: scale(0.85);
+        height: 74.5%;
+        top: -4%;
+    }
+
+    .btn {
+        display: none;   
+    }
+    .sub_menuOff{
+        left: 112px;
+    }
+}
+
+@media screen and (max-width:880px){
+    .base {
+        transform: scale(0.85);
+        height: 74.5%;
+        top: -2.6%;
+    }
+
+    .btn {
+        display: none;   
+    }
+    .sub_menuOff{
+        left: 112px;
+    }
+}
 
 
+@media screen and (max-width:840px){
+    .base {
+        transform: scale(0.85);
+        height: 74.5%;
+        top: -2.6%;
+    }
+
+    .btn {
+        display: none;   
+    }
+    .sub_menuOff{
+        left: 112px;
+    }
+}
 
 
+/* Altura */
+@media screen and (max-height:1055px){
+    .base {
+        height: 65.5%;
+    }
+}
+
+@media screen and (max-height:1010px){
+    .base {
+        height: 67.5%;
+    }
+}

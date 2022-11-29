@@ -159,6 +159,7 @@ let medidas = [];
 export function getMedida() {
     return api.get(`api/unidade/list`).then(response => {
         medidas = response.data
+        console.log(medidas);
     })
 }
 

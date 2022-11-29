@@ -1,23 +1,25 @@
-.components{
+.components {
     width: 100%;
     height: 100%;
     background-color: #C4C9DC;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     overflow-y: hidden;
     overflow-x: hidden;
     padding: 20px;
 }
-.home{
+
+.home {
     width: 100%;
-    height: 100%;
+    height: 95%;
     background-color: #fff;
     border-radius: 20px;
     display: flex;
 }
 
-.homeCenter{
+.homeCenter {
     width: 80%;
     transition: .2s ease-in;
     padding: 20px 0px 20px 20px;
@@ -26,9 +28,10 @@
     justify-content: space-between;
     position: relative;
     margin: 0 2%;
+    left: 1%;
 }
 
-.HomeRight{
+.HomeRight {
     width: 30%;
     height: 100%;
     padding: 20px;
@@ -36,47 +39,53 @@
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    left: -0.5%;
+    transition: .2s ease-in;
 }
 
-.cardTutorial{
+.cardTutorial {
     position: relative;
     width: 100%;
-    height: 49%;
+    height: 450px;
     max-height: 500px;
     background: linear-gradient(287deg, #CA8DEA 0%, #6064F9 120%);
-    border-radius: 20px 20px 170px 20px ;
+    border-radius: 20px 20px 170px 20px;
     box-shadow: rgba(0, 0, 0, 0.402) 0px 8px 20px;
     transition: .2s ease-in;
 }
 
-.titleCard{
+.titleCard {
     position: relative;
     top: 5%;
     left: 5%;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     color: #fff;
-    width: 550px;
+    width: 650px;
     height: 100px;
 
 }
-.subCard{
+
+.subCard {
     position: relative;
-    top: 5%;
+    top: 10%;
     left: 5%;
-    width: 400px;
+    width: 600px;
     height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.subTitle{
-    font-size: 18px;
+
+.subTitle {
+    font-size: 20px;
     color: #fff;
     font-weight: 300;
     margin: 1% 0;
 }
-.btns{
+
+.btns {
     position: relative;
     top: 5%;
     left: 5%;
@@ -86,195 +95,105 @@
     justify-content: space-between;
     align-items: center;
 }
-.tutorial{
+
+.tutorial {
     width: 150px;
     height: 50px;
     border-radius: 10px;
     color: #fff;
-    font-size: 15;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
     border: none;
     background-color: #ED80FD;
     cursor: pointer;
 }
-.simulacao{
+
+.simulacao {
     width: 150px;
     height: 50px;
     border-radius: 10px;
     color: #fff;
-    font-size: 15;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
     border: 1px solid #fff;
     background-color: transparent;
     cursor: pointer;
 }
-.Caixa{
+
+.Caixa {
     position: absolute;
     top: 0;
     right: 0;
-    width: 50%;
+    width: 40%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
-.C1{
+
+.C1 {
     position: relative;
     top: 0;
     animation: caixa 5s ease-in infinite;
+    transform: scale(1.1);
 }
-@keyframes caixa{
-    0%{
+
+@keyframes caixa {
+    0% {
         top: 0;
     }
-    50%{
+
+    50% {
         top: 5%;
     }
-    100%{
+
+    100% {
         top: 0;
     }
 }
-.listHistorico{
+
+.listHistorico {
     width: 100%;
-    height: 49%;
+    height: 450px;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.402) 0px 8px 20px;
     transition: .2s ease-in;
 }
-.BaseBotChat{
-    position: absolute;
-    top: 4%;
-    right: 0;
-    width: 530px;
-    height: 430px;
+
+.BaseBotChat {
+    position: fixed;
+    bottom: -45%;
+    right: 4%;
+    width: 400px;
+    height: 580px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: .5s;
+    z-index: 10;
 }
-.BotChat{
-    position: relative;
+
+.BotChat {
+    position: absolute;
     width: 100%;
-    height: 100%;
-    border-radius: 20px 0 0 20px;
+    height: 80%;
+    bottom: 0;
+    border-radius: 20px 20px 0 0;
     background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    z-index: 15;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 25;
     transition: .5s;
 }
-.conversa{
-    position: relative;
-    width: 80%;
-    height: 100%;
-    top: -5%;    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    /* overflow-y: scroll; */
-}
-.msgBot{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    right: -5%;
-    width: 300px;
-    height: 50px;
-    margin: 5% 0;
-}
 
-.MsgImgBot{
+.baseAI {
     position: absolute;
-    right: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #000;
-}
-
-.MsgBot{
-    position: absolute;
-    left: 0;
-    top: 20%;
-    width: 80%;
-    min-height: 40px;
-    border-radius: 10px;
-    background-color: #F2F2F2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.MsgNameBot{
-    position: absolute;
-    top: -20%;
-    right: 20%;
-    color: #9E9E9E;
-    font-size: 11;
-    font-weight: 400;
-
-}
-.msgUser{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    left: -5%;
-    width: 300px;
-    height: 50px;
-    margin: 5% 0;
-}
-.MsgImgUser{
-    position: absolute;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #000;
-}
-.MsgName{
-    position: absolute;
-    top: -20%;
-    left: 20%;
-    color: #9E9E9E;
-    font-size: 11;
-    font-weight: 400;
-
-}
-.Msg{
-    position: absolute;
-    right: 0;
-    top: 20%;
-    width: 80%;
-    min-height: 40px;
-    border-radius: 10px;
-    background-color: #F2F2F2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.InfoMsg{
-    width: 90%;
-    padding: 10px;
-}
-.Duvida{
-    position: absolute;
-    bottom: 5%;
-    width: 80%;
-    height: 50px;
-    border-radius: 50px;
-
-}
-.baseAI{
-    position: absolute;
-    top: -5%;
-    left: -15%;
+    top: 5%;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -283,21 +202,19 @@
     align-items: center;
     background-color: #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    z-index: 1;
 }
 
-.foto{
+.foto {
     position: absolute;
     width: 100px;
     height: 100px;
-    top: 1%;
-    left: -10%;
     border-radius: 50%;
     background-color: #000;
-    z-index: 16;
+    z-index: 26;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.btnOn{
+.btnOn {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -313,7 +230,8 @@
     cursor: pointer;
     opacity: 1;
 }
-.btnOff{
+
+.btnOff {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -329,13 +247,14 @@
     cursor: pointer;
     opacity: 0;
 }
-.interogacao{
+
+.interogacao {
     position: absolute;
     background-color: #4D71FF;
-    width: 50px;
-    height: 50px;
-    top: -5%;
-    left: -20%;
+    width: 60px;
+    height: 60px;
+    top: 3%;
+    left: 20%;
     font-size: 25px;
     color: #fff;
     display: flex;
@@ -345,29 +264,160 @@
     z-index: 1;
     transition: .5s;
 }
-.triangulo{
+
+.triangulo {
     position: absolute;
     right: -3%;
     bottom: 0;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-bottom: 15px solid #4D71FF;
     transform: rotate(30deg);
 }
-.title{
+
+.BotChatTitle {
     position: absolute;
+    width: 120px;
+    height: 30px;
     top: 3%;
-    right: 3%;
+    left: 3%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.BCTitleH3 {
+    position: relative;
     color: #4D71FF;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+.iframeBotChat {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 90%;
+}
+
+/* MSG */
+
+
+.conversa {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    top: -5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+}
+
+.msgBot {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    right: -5%;
+    width: 300px;
+    height: 50px;
+    margin: 5% 0;
+}
+
+.MsgImgBot {
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+.MsgBot {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    width: 80%;
+    min-height: 40px;
+    border-radius: 10px;
+    background-color: #F2F2F2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.estatisticas{
+.MsgNameBot {
+    position: absolute;
+    top: -20%;
+    right: 20%;
+    color: #9E9E9E;
+    font-size: 11;
+    font-weight: 400;
+
+}
+
+.msgUser {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    left: -5%;
+    width: 300px;
+    height: 50px;
+    margin: 5% 0;
+}
+
+.MsgImgUser {
+    position: absolute;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+.MsgName {
+    position: absolute;
+    top: -20%;
+    left: 20%;
+    color: #9E9E9E;
+    font-size: 11;
+    font-weight: 400;
+
+}
+
+.Msg {
+    position: absolute;
+    right: 0;
+    top: 20%;
+    width: 80%;
+    min-height: 40px;
+    border-radius: 10px;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.InfoMsg {
+    width: 90%;
+    padding: 10px;
+}
+
+.Duvida {
+    position: absolute;
+    bottom: 5%;
+    width: 80%;
+    height: 50px;
+    border-radius: 50px;
+
+}
+
+/*  */
+
+.estatisticas {
     width: 450px;
     height: 450px;
     border-radius: 20px;
@@ -377,7 +427,7 @@
     font-size: 13px;
 }
 
-.estatisticas span{
+.estatisticas span {
     width: 100%;
     height: 10%;
     font-size: 150%;
@@ -387,7 +437,7 @@
     padding: 10px;
 }
 
-.statusHead{
+.statusHead {
     height: 35px;
     display: flex;
     justify-content: flex-start;
@@ -397,7 +447,7 @@
     margin-top: 8px;
 }
 
-.titleStatus{
+.titleStatus {
     font-size: 16px;
     font-weight: bold;
     color: #000;
@@ -407,7 +457,7 @@
     word-break: break-all;
 }
 
-.statusContainer{
+.statusContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -417,13 +467,13 @@
     height: 90%;
 }
 
-.saldo{
+.saldo {
     margin: 12px;
     font-size: 28px;
     text-align: center;
 }
 
-.circleStatus{
+.circleStatus {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -439,7 +489,7 @@
     box-shadow: rgba(0, 0, 0, 0.598) 0px 5px 15px;
 }
 
-.status1{
+.status1 {
     width: 35%;
     padding: 10px;
     height: 40%;
@@ -449,7 +499,7 @@
     background: linear-gradient(180deg, #00FFF0 0%, #003BD4 100%);
 }
 
-.status2{
+.status2 {
     width: 35%;
     padding: 10px;
     height: 40%;
@@ -459,7 +509,7 @@
     background: linear-gradient(180deg, #E15AE3 0%, #8E0090 100%);
 }
 
-.status3{
+.status3 {
     width: 35%;
     padding: 10px;
     height: 40%;
@@ -469,7 +519,7 @@
     background: linear-gradient(180deg, #44A118 0%, #194206 100%);
 }
 
-.status4{
+.status4 {
     width: 35%;
     padding: 10px;
     height: 40%;
@@ -479,7 +529,7 @@
     background: linear-gradient(180deg, #FF9900 0%, #FF4D00 100%);
 }
 
-.base{
+.base {
     position: relative;
     width: 450px;
     height: 450px;
@@ -489,8 +539,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;  
+    overflow: hidden;
 }
+
 .btnsList {
     position: relative;
     width: 100%;
@@ -501,7 +552,8 @@
     box-shadow: rgba(0, 0, 0, 0.23) 0px 8px 20px;
     z-index: 9;
 }
-.buttons{
+
+.buttons {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -516,11 +568,13 @@
     font-size: 18px;
     transition: .2s ease-in;
 }
-.buttons:hover{
+
+.buttons:hover {
     color: #fff;
     background-color: #000;
 }
-.buttonsFocus{
+
+.buttonsFocus {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -535,7 +589,8 @@
     font-size: 18px;
     transition: .2s ease-in;
 }
-.base_form{
+
+.base_form {
     position: absolute;
     height: 100%;
     display: flex;
@@ -545,23 +600,24 @@
     bottom: -45px;
     transition: 0.5s;
 }
-.listaPedidos{
+
+.listaPedidos {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative ;
+    position: relative;
     width: 450px;
     height: 75%;
 }
 
-.thead{
+.thead {
     font-size: 15px;
     position: relative;
     height: 50px;
     border-bottom: 5px solid #F2F2F4;
 }
 
-.listaFornecedor{
+.listaFornecedor {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -569,7 +625,8 @@
     width: 450px;
     height: 75%;
 }
-.listaProdutos{
+
+.listaProdutos {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -578,7 +635,8 @@
     height: 75%;
 
 }
-.headerList{
+
+.headerList {
     position: relative;
     width: 100%;
     height: 60px;
@@ -586,7 +644,8 @@
     justify-content: space-around;
     align-items: center;
 }
-.headerTitle{
+
+.headerTitle {
     position: relative;
     width: 150px;
     height: 30px;
@@ -597,14 +656,15 @@
     justify-content: center;
     align-items: center;
 }
-.SubTitle{
+
+.SubTitle {
     color: #000;
     font-size: 15px;
     font-weight: bold;
     margin: 0 5px;
 }
 
-.headerListMovimentacao{
+.headerListMovimentacao {
     width: 100%;
     height: 20%;
     display: flex;
@@ -613,27 +673,31 @@
     padding: 0 20px;
 }
 
-.headerTitleMovimentacao{
+.headerTitleMovimentacao {
     position: relative;
+    left: 2%;
     height: 30px;
     color: #000;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
-.SubTitleMovimetacao{
+
+.SubTitleMovimentacao {
+    position: relative;
+    left: 5%;
     color: #000;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     width: 220px;
     display: flex;
     align-items: center;
 }
 
-.addFornecedor{
+.addFornecedor {
     position: relative;
     width: 150px;
     height: 30px;
@@ -646,58 +710,134 @@
     align-items: center;
 }
 
-.tipo{
+.tipo {
+    width: 28%;
     font-size: 20px;
 }
 
-.data{
+.data {
+    position: relative;
+    left: 2%;
+    width: 28%;
     font-weight: bold;
     font-size: 20px;
 }
 
-.produtoNome{
+.produtoNome {
     font-size: 20px;
     color: #A7A7A7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tabelaContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 80%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    height: 75%;
+
 }
 
-.tabelaMovimentacao{
+.headerListH {
+    position: absolute;
+    top: 0;
     width: 100%;
-    padding: 20px;
+    height: 65px;
+}
+
+.tabelaHistorico {
+    position: absolute;
+    bottom: 5%;
+    width: 98%;
+    height: 65%;
+    overflow-y: scroll;
+    /* background-color: #9E9E9E; */
+}
+
+.tabelaMovimentacao {
+    position: relative;
+    width: 100%;
     text-align: center;
 }
 
-.tabelaMovimentacaoHead{
+
+
+.tabelaMovimentacaoHead {
     font-size: 20px;
     color: #A7A7A7;
     height: 20%;
 }
 
-.tabelaMovimentacaoBody{
+.HeaderMovimentacao {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #A7A7A7;
+}
+
+.barra {
+    position: absolute;
+    bottom: 0;
+    right: 2.5%;
+    width: 95%;
+    height: 5px;
+    border-radius: 50px;
+    background-color: #F2F2F4;
+}
+
+
+.qntMovimento {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 15%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.tabelaMovimentacaoBody {
     height: 80%;
 }
 
-.addTitle{
+.trMovimentacao {
+    position: relative;
+    height: 70px;
+}
+
+.addTitle {
     color: #4D71FF;
     font-size: 12px;
     font-weight: bold;
     margin: 0 0 0 5px;
 }
 
-.lista{
+.headerTr th {
+    width: 28%;
+}
+
+.pedidoHeaderTr th {
+    width: 0%;
+}
+
+.lista {
     position: absolute;
     width: 415px;
     height: 215px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.tabela{
+.tabela {
     border-collapse: collapse;
     width: 90%;
     text-align: center;
@@ -705,9 +845,9 @@
 
 /* POPUP */
 
-.popUp{
+.popUp {
     position: fixed;
-    display: flex ;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -716,14 +856,566 @@
     right: 0;
     z-index: -1;
 }
-.popUpMedidas{
-    position: fixed;
-    display: flex ;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
+
+/* RESPONSIVIDADE */
+
+@media screen and (max-width:1800px) {
+    .C1 {
+        transform: scale(1);
+    }
+
+    .Caixa {
+        top: 4%
+    }
+}
+
+@media screen and (max-width:1710px) {
+    .C1 {
+        transform: scale(1);
+    }
+
+    .Caixa {
+        width: 38%;
+        top: 4%
+    }
+}
+
+@media screen and (max-width:1680px) {
+    .C1 {
+        transform: scale(0.9);
+    }
+
+    .titleCard {
+        font-size: 45px;
+    }
+
+    .subCard {
+        width: 400px;
+    }
+
+    .subTitle {
+        font-size: 18px;
+    }
+
+    .HomeRight {
+        position: relative;
+        left: -0.5%;
+    }
+
+    .SubTitleMovimentacao {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width:1590px) {
+    .HomeRight {
+        position: relative;
+        left: -0.5%;
+    }
+
+    .SubTitleMovimentacao {
+        font-size: 17px;
+        left: 3%;
+    }
+
+    .homeCenter {
+        left: 0.5%;
+    }
+
+    .HomeRight {
+        left: -0.9%;
+    }
+}
+
+/* 1575 */
+
+@media screen and (max-width:1575px) {
+
+    .C1 {
+        transform: scale(1.2);
+    }
+
+    .titleCard {
+        font-size: 50px;
+    }
+
+    .subCard {
+        width: 500px;
+    }
+
+    .subTitle {
+        font-size: 22px;
+    }
+
+    .SubTitleMovimentacao {
+        font-size: 20px;
+    }
+
+    .HomeRight {
+        width: 63.5%;
+        height: 37%;
+        flex-direction: row;
+        position: absolute;
+        bottom: 1%;
+        left: 34.2%;
+    }
+
+    .homeCenter {
+        width: 88%;
+        height: 65%;
+        left: 1%;
+    }
+
+    .components {
+        width: 100%;
+        height: 150%;
+        position: absolute;
+    }
+
+    .base {
+        margin-left: 5%;
+    }
+
+
+    .estatisticas {
+        margin-bottom: 0;
+    }
+
+    .BaseBotChat {
+        position: absolute;
+        bottom: 5.5%;
+        left: 3%;
+        width: 450px;
+        height: 450px;
+    }
+
+    .BotChat {
+        border-radius: 20px;
+        height: 100%;
+    }
+
+    .baseAI {
+        top: -10%;
+        right: -10%;
+    }
+
+    .interogacao {
+        display: none;
+    }
+
+    .btnOn {
+        display: none;
+    }
+}
+
+@media screen and (max-width:1420px) {
+    .HomeRight {
+        transform: scale(0.9);
+        width: 69.5%;
+        left: 32.2%;
+    }
+
+    .BaseBotChat {
+        transform: scale(0.9);
+    }
+}
+
+@media screen and (max-width:1300px) {
+
+    .C1 {
+        transform: scale(1.1);
+    }
+
+    .titleCard {
+        font-size: 47px;
+    }
+
+    .HomeRight {
+        transform: scale(0.8);
+        width: 77.5%;
+        left: 27.2%;
+    }
+
+    .BaseBotChat {
+        transform: scale(0.8);
+        left: 1%;
+    }
+}
+
+@media screen and (max-width:1260px) {
+    .C1 {
+        transform: scale(1);
+    }
+
+    .subTitle {
+        font-size: 20px;
+    }
+
+    .base {
+        margin-left: 3%;
+    }
+}
+
+@media screen and (max-width:1120px) {
+    .C1 {
+        transform: scale(0.9);
+    }
+
+    .titleCard {
+        font-size: 42px;
+    }
+
+    .subCard {
+        width: 500px;
+    }
+
+    .subTitle {
+        font-size: 17px;
+    }
+
+    .SubTitleMovimentacao {
+        font-size: 17px;
+    }
+
+    .components {
+        width: 100%;
+        height: 135%;
+        position: absolute;
+    }
+
+    .homeCenter {
+        width: 88%;
+        height: 73%;
+        left: 1%;
+        transform: scale(0.95);
+    }
+
+    .HomeRight {
+        transform: scale(0.73);
+        width: 84.5%;
+        left: 23.2%;
+        bottom: -1%;
+    }
+
+    .BaseBotChat {
+        transform: scale(0.73);
+        left: -0.5%;
+        bottom: 2%;
+    }
+
+    .base {
+        margin-left: 2%;
+    }
+
+}
+
+@media screen and (max-width:1080px) {
+
+    .HomeRight {
+        transform: scale(0.71);
+        width: 90.5%;
+        left: 20.5%;
+        bottom: -1%;
+
+    }
+
+    .homeCenter {
+        width: 88%;
+        height: 73%;
+        left: 1%;
+        transform: scale(0.95);
+        margin: 0 1%;
+    }
+
+    .BaseBotChat {
+        transform: scale(0.71);
+        left: -2.5%;
+        bottom: 2%;
+    }
+
+    .base {
+        margin-left: 1%;
+    }
+
+}
+
+@media screen and (max-width:1070px) {
+
+    .HomeRight {
+        transform: scale(0.95);
+        width: 98.3%;
+        left: 1.5%;
+        bottom: 1%;
+
+    }
+
+    .homeCenter {
+        position: absolute;
+        width: 94%;
+        height: 71%;
+        left: 8%;
+        top: -1%;
+        transform: scale(0.85);
+        margin: 0 1%;
+    }
+
+    .BaseBotChat {
+        transform: scale(1);
+        left: -2.5%;
+        bottom: 2%;
+    }
+
+    .base {
+        margin-left: 1%;
+    }
+
+    .BaseBotChat {
+        position: fixed;
+        width: 400px;
+        height: 580px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .5s;
+        z-index: 10;
+        transform: scale(0.95);
+        left: 30.5%;
+        bottom: -41%;
+    }
+
+    .BotChat {
+        height: 80%;
+        bottom: 0;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .baseAI {
+        position: absolute;
+        top: 5%;
+        right: 30%;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+
+    .interogacao {
+        display: flex;
+    }
+
+    .btnOn {
+        display: flex;
+    }
+
+}
+
+@media screen and (max-width:980px) {
+    .HomeRight {
+        transform: scale(0.85);
+        width: 109.3%;
+        left: -4%;
+        bottom: 1%;
+    }
+}
+
+@media screen and (max-width:880px) {
+
+    .HomeRight {
+        transform: scale(.8);
+        width: 114.3%;
+        left: -7.5%;
+        bottom: 1%;
+
+    }
+
+    .components {
+        height: 125%;
+    }
+
+    .homeCenter {
+        position: absolute;
+        width: 88%;
+        height: 71%;
+        left: 11%;
+        top: 0%;
+        transform: scale(0.85);
+        margin: 0 1%;
+    }
+
+    .BaseBotChat {
+        transform: scale(0.95);
+        left: 26.5%;
+        bottom: -41%;
+    }
+
+    .base {
+        margin-left: 1%;
+    }
+
+    .BotChat {
+        height: 80%;
+        bottom: 0;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .baseAI {
+        position: absolute;
+        top: 5%;
+        right: 30%;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+
+    .interogacao {
+        display: flex;
+    }
+
+    .btnOn {
+        display: flex;
+    }
+
+}
+
+/* Altura */
+
+@media screen and (max-height:1055px) {
+
+    .Caixa {
+        top: 5%
+    }
+
+    .homeCenter {
+        height: 68%;
+    }
+
+    .HomeRight {
+        bottom: -1%;
+    }
+
+    .BaseBotChat {
+        bottom: 2.6%;
+    }
+
+}
+
+@media screen and (max-height:1010px) {
+
+    .homeCenter {
+        height: 70%;
+    }
+
+    .HomeRight {
+        bottom: -1%;
+    }
+
+    .BaseBotChat {
+        bottom: 2.6%;
+    }
+
+}
+
+@media screen and (max-height:985px) {
+    .components {
+        height: 160%;
+    }
+}
+
+@media screen and (max-height:920px) {
+    .components {
+        height: 170%;
+    }
+}
+
+@media screen and (max-height:870px) {
+    .components {
+        height: 175%;
+    }
+}
+
+@media screen and (max-height:840px) {
+    .components {
+        height: 180%;
+    }
+}
+
+@media screen and (max-height:820px) {
+    .components {
+        height: 190%;
+    }
+}
+
+@media screen and (max-height:780px) {
+    .components {
+        height: 195%;
+    }
+}
+
+@media screen and (max-height:760px) {
+    .components {
+        height: 200%;
+    }
+}
+
+@media screen and (max-height:740px) {
+    .components {
+        height: 205%;
+    }
+}
+
+@media screen and (max-height:720px) {
+    .components {
+        height: 210%;
+    }
+}
+
+@media screen and (max-height:700px) {
+    .components {
+        height: 215%;
+    }
+}
+
+@media screen and (max-height:680px) {
+    .components {
+        height: 220%;
+    }
+}
+
+@media screen and (max-height:670px) {
+    .components {
+        height: 225%;
+    }
+}
+
+@media screen and (max-height:660px) {
+    .components {
+        height: 230%;
+    }
+}
+
+@media screen and (max-height:640px) {
+    .components {
+        height: 240%;
+    }
+}
+
+@media screen and (max-height:620px) {
+    .components {
+        height: 250%;
+    }
+}
+
+@media screen and (max-height:600px) {
+    .components {
+        height: 260%;
+    }
 }

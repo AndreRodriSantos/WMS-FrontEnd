@@ -100,19 +100,28 @@ export class Perfil extends React.Component {
 function Fechar() {
     const container = document.getElementById("containerPerfil");
     const PopUpPerfil = document.getElementById("PopUpPerfil");
+    const popUpSobre = document.getElementById("popUpSobre");
+    
     localStorage.removeItem("idFornecedor")
     localStorage.removeItem("idProduto")
+    
     container.style.display = "none"
     PopUpPerfil.style.display = 'none'
     PopUpPerfil.classList.remove(styles.alertOn)
+    popUpSobre.style.zIndex = '-1'
 }
 
 export function AbrirPerfil() {
     const container = document.getElementById("containerPerfil");
     const PopUpPerfil = document.getElementById("PopUpPerfil");
+    const popUpSobre = document.getElementById("popUpSobre");
+    
+
     localStorage.removeItem("idFornecedor")
     localStorage.removeItem("idProduto")
+
     container.style.display = "flex"
     PopUpPerfil.style.display = 'flex'
     PopUpPerfil.classList.add(styles.alertOn)
+    popUpSobre.style.zIndex = '20'
 }

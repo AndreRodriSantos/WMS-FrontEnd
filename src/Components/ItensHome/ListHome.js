@@ -73,7 +73,13 @@ export class ListHome extends React.Component {
                 id.value = objeto.codProduto
                 nome.innerText = objeto.nome
                 info1.innerText = objeto.sku
-                info2.innerText = objeto.descricao
+                
+                if(objeto.descricao.length > 28){
+                    info2.innerText = objeto.descricao.substring(0, 28)+'...'
+                }else{
+                    info2.innerText = objeto.descricao
+                }          
+                
                 if (objeto.importado == true) {
                     info3.innerText = 'SIM'
                 } else {

@@ -6,7 +6,7 @@ import Box from '../../IMG/CaixaPedido.png'
 export class ListaPedidos extends React.Component {
     render() {
 
-        const {chamarItem, item } = this.props;
+        const { chamarItem, item } = this.props;
 
         function chamarInfo() {
             const BasePoup = document.getElementById('BasePoup')
@@ -22,6 +22,9 @@ export class ListaPedidos extends React.Component {
             <>
                 <div className={styles.box} draggable = "true" onClick={chamarInfo}>
                     <img src={Box} className={styles.imgBox} />
+                    <div className={styles.nomeProduto}>
+                        <span className={styles.titleProduto}>{item.produto.nome.length > 12 ? item.produto.nome.substring(0, 12)+'...' : item.produto.nome }</span>
+                    </div>
                 </div>
 
             </>

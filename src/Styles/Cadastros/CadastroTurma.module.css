@@ -97,7 +97,7 @@
     cursor: pointer;
 }
 
-
+ 
 @media screen and (max-width:1440px) {
     .baseForm{
         transform: scale(0.9);
