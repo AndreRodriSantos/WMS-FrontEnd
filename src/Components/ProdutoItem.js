@@ -118,7 +118,7 @@ export default class ProdutoItem extends React.Component {
                     </div>
 
                     <div className={styles.dados}>
-                        <p className={styles.titleQtd}>Qtd</p>
+                        <p title="Quantidade" className={styles.titleQtd}>Qtd</p>
                         <div className={styles.qtd}>
                             <span onClick={() => addQntd('sub')} id={`removeQtd ${id}`} className={styles.btnQndLeft}><i className="fa-solid fa-circle-minus"></i></span>
                                 <input className={styles.InputQnt} type="number" min={"1"} id={`qtd ${id}`} defaultValue={1} ></input>

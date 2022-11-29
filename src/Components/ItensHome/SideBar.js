@@ -17,16 +17,6 @@ export class SideBar extends React.Component {
 
     render() {
 
-        /*  const sideBar = document.getElementById("sideBar");
- 
-         setTimeout(() => {
-             if(window.screen.width <= 1575){            
-                 sideBar.style.height = '62.5%' 
-             }else{
-                 sideBar.style.height = '96%' 
-             }
-         }, 0); */
-
         return (
             <div className={styles.container} onMouseLeave={offSub}>
                 {/* BTN ON SIDEBAR */}

@@ -194,8 +194,10 @@ export default function Home() {
     return (
         <section className={styles.components}>
             <PopUpInfo />
-            <Perfil nome={nome} email={email} nif={nif} matricula={codMatricula} img={imagemUser}></Perfil>
-            <div id="popUpMedidas" className={styles.popUpMedidas}>
+            <div id="popUpSobre" className={styles.popUp}>
+                <Perfil nome={nome} email={email} nif={nif} matricula={codMatricula} img={imagemUser}></Perfil>
+            </div>
+            <div id="popUpMedidas" className={styles.popUp}>
                 <CadastroMedidas />
             </div>
             <div id="popUp" className={styles.popUp}>

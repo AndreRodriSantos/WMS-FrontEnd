@@ -86,7 +86,7 @@ export default function Rotas() {
                 <Route element={<PrivateRoutePedido />}>
                     <Route path='/VerificarPedidos' element={<VerificarPedidos />}></Route>
                 </Route>
-
+        
                 <Route element={<PrivateRouteTurma />}>
                     <Route element={<Home />} path='/Home'></Route>
                     <Route path='/CadastroFornecedores' element={<CadastroFornecedor />} ></Route>

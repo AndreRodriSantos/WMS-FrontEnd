@@ -22,6 +22,20 @@
     text-decoration: none;
 }
 
+.headerLogo{
+    position: absolute;
+    right: 1%;
+    top: 2%;
+    width: 100px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 100px;
+}
+
 .Pedidos{
     position: absolute;
     width: 1200px;
@@ -33,6 +47,7 @@
     justify-content: center;
     transform: scale(1);
 }
+
 .estocagem{
     position: fixed;
     top: 0;
@@ -46,24 +61,26 @@
     font-size: 20px;
     text-decoration: none;
 }
+
 .headerList{
     position: absolute;
     width: 100%;
-    height: 50px;
+    height: 60px;
     top: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.headerLogo{
-    width: 150px;   
+
+.Busca{
+    position: absolute;
+    left: 0;
+    width: 400px;
+    height: 60px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;  
 }
-.logo{
-    width: 100px;
-}
+
 .headerTitle{
     position: relative;
     width: 150px;
@@ -75,14 +92,17 @@
     justify-content: center;
     align-items: center;
 }
+
 .SubTitle{
     color: #000;
     font-size: 25px;
     font-weight: bold;
     margin: 0 5px;
 }
+
 .notaFiscal{
-    position: relative;
+    position: absolute;
+    right: 5%;
     width: 150px;
     height: 30px;
     color: #4D71FF;
@@ -93,12 +113,14 @@
     justify-content: center;
     align-items: center;
 }
+
 .notaFiscalTitle{
     color: #4D71FF;
     font-size: 18px;
     font-weight: bold;
     margin: 0 0 0 5px;
 }
+
 .lists{
     position: absolute;
     width: 100%;
@@ -110,6 +132,7 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .box{
     position: relative;
     width: 250px;
@@ -120,13 +143,32 @@
     transform: scale(0.8);
     transition: all ease 0.2s;
 }
+
 .box:hover{
     transform: scale(1);
 }
+
 .imgBox{
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+.nomeProduto{
+    position: relative;
+    width: 250px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleProduto{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .BasePoup {
@@ -141,6 +183,7 @@
     background-color: rgba(0, 0, 0, 0.384);
     z-index: 10;
 }
+
 .PopUpInfo {
     width: 700px;
     height: 450px;
@@ -155,13 +198,14 @@
     transform: scale(1);
     z-index: 11;
 }
+
 .close {
     width: 20px;
     height: 20px;
     position: absolute;
     color: #000;
-    top: 40px;
-    right: 40px;
+    top: 5%;
+    right: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,15 +213,243 @@
     font-size: 22px;
     transition: .2s ease-in;
 }
+
 .close:hover{
     color: red;
 }
+
 .BaseInfo{
+    position: absolute;
+    width: 95%;
+    height: 85%;
+    bottom: 4%;
+}
+
+.InfoProduto{
     position: relative;
     width: 100%;
-    height: 40%;
-    top: -10%;
+    top: 0;
+    height: 180px;
 }
+
+.ImgProduto{
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 5px;
+    left: 0;
+    background-color: #000;
+}
+
+.TitleInfo{
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.NomeProduto{
+    font-size: 35px;
+    font-weight: 500;
+    color: #000;
+}
+
+.DescricaoProduto{
+    margin-top: 3%;
+    font-size: 17px;
+    color: #000;
+    text-align: justify;
+
+}
+
+.BaseInfoValores{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 180px;
+}
+
+.InfoSobre{ 
+    position: absolute;
+    width: 360px;
+    height: 100%;
+    left: 0;
+}
+
+.Impostos{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.InfoImpostos{
+    position: relative;
+    margin: 3% 0;
+    width: 95%;
+    height: 30px;
+    background-color: #E6E6E6;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.Importacoes{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.baseTitleImpor{
+    position: absolute;
+    top: 8%;
+    width: 95%;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.titleImpor{
+    font-size: 16px;
+    font-weight: 300;
+    color: #000;
+}
+
+.ResImpor{
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.ValorImportacao{
+    position: absolute;
+    bottom: 2%;
+    width: 95%;
+    height: 95px;
+    background-color: #E6E6E6;
+    display: flex;
+}
+
+
+.InfoValores{
+    position: absolute;
+    width: 280px;
+    height: 100%;
+    right: 0;
+}
+
+.ValoreUnitario{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #f2f2f2;
+}
+
+.ValoreTotal{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #000;
+}
+
+.TitleValor{
+    position: relative;
+    top: 10%;
+    left: 5%;
+   
+}
+
+.textUnitario{
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+}
+
+.textTotal{
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.Valor{
+    position: absolute;
+    bottom: 0;
+    right: 3%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cifrao{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -25%;
+    left: 0;
+    width: 25px;
+    height: 25px;
+
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Num{
+    font-size: 35px;
+    font-weight: 500;
+    color: #000;
+}
+
+.Totalcifrao{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -25%;
+    left: 0;
+    width: 25px;
+    height: 25px;
+
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.TotalNum{
+    font-size: 35px;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
 .InfoLeft{
     position: absolute;
     display: flex;
@@ -188,6 +460,7 @@
     width: 50%;
     height: 100%;
 }
+
 .InfoRight{
     position: absolute;
     display: flex;
@@ -198,15 +471,7 @@
     width: 50%;
     height: 100%;
 }
-.titleInfo{
-    width: 250px;
-    height: 40px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 22px;
-    font-weight: bold;
-}
+
 .info{
     font-size: 20px;
     font-weight: 300;
@@ -222,6 +487,7 @@
     width: 100%;
     height: 150px;
 }
+
 .QrCode{
     position: relative;
     width: 150px;
@@ -230,10 +496,12 @@
     justify-content: center;
     align-items: center;
 }
+
 .QrCodeImg{
     position: relative;
     width: 100px;
 }
+
 .CodBarra{
     position: relative;
     width: 300px;
@@ -242,6 +510,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .CodBarraImg{
     position: relative;
     width: 200px;
