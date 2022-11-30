@@ -49,7 +49,7 @@ export function openConfirmacao(mensagem1, mensagem2) {
     const confirmacaoContainer = document.getElementById("confirmacao")
     const confirmacaoDiv = document.getElementById("confirmacaoDiv")
     const mensagemSpan1 = document.getElementById("mensagem1")
-    const mensagemSpan2 = document.getElementById("mensagem2")
+    const mensagemSpan2 = document.getElementById("mensagem2") 
 
     mensagemSpan1.innerText = mensagem1
     mensagemSpan2.innerText = mensagem2
