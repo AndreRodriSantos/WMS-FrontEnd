@@ -6,7 +6,7 @@ import { erro, sucesso } from "../Avisos/Alert";
 import { refresh } from "../../Services/gets";
 
 export class PopUpInfo extends React.Component {
-    render() {
+    render() { 
 
         function alterar() {
             let id = document.getElementById('id').value
@@ -107,11 +107,14 @@ export class PopUpInfo extends React.Component {
         function Fechar() {
             const container = document.getElementById("container");
             const PopUpInfo = document.getElementById("PopUpInfo");
+            const popUpInformacoes = document.getElementById("popUpInformacoes");
             localStorage.removeItem("idFornecedor")
             localStorage.removeItem("idProduto")
             container.style.zIndex = "-1"
             PopUpInfo.style.display = 'none'
             PopUpInfo.classList.remove(styles.alertOn)
+            popUpInformacoes.style.zIndex = '-1'
+            
         }
 
         /*   function btnOn(){

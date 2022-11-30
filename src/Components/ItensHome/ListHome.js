@@ -18,17 +18,19 @@ export class ListHome extends React.Component {
             }
             else {
                 localStorage.setItem('idProduto', id)
-                chamarPopUp()
+                chamarPopUp() 
             }
         }
 
         function chamarPopUp() {
             const container = document.getElementById("container");
             const PopUpInfo = document.getElementById("PopUpInfo");
+            const popUpInformacoes = document.getElementById("popUpInformacoes");
             PopUpInfo.classList.add(styles.alertOn)
 
             container.style.zIndex = "20"
             PopUpInfo.style.display = 'flex'
+            popUpInformacoes.style.zIndex = '20'
 
             // Informações
             let id = document.getElementById('id')

@@ -116,9 +116,9 @@ export default function CadastroFornecedor() {
                     <Input label="Nome" id="nome" type="text" defaultValue={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o Nome do Fornecedor" name="nome" ></Input>
 
                     <div className={styles.doubleInput1}>
-                        <Input width={210} label="CNPJ" id="cnpj" defaultValue={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" placeholder="Digite o CNPJ" name="cpnj" ></Input>
+                        <Input width={210} caracter={18} label="CNPJ" id="cnpj" defaultValue={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" placeholder="Digite o CNPJ" name="cpnj" ></Input>
 
-                        <Input width={210} label="CEP" id="cep" type="text" defaultValue={cep} onChange={(e) => setCep(e.target.value)} placeholder="Digite o CEP" name="cep" ></Input>
+                        <Input width={210} caracter={9} label="CEP" id="cep" type="text" defaultValue={cep} onChange={(e) => setCep(e.target.value)} placeholder="Digite o CEP" name="cep" ></Input>
                     </div>
 
                     <Input label="Logradouro" id="logradouro" type="text" defaultValue={logradouro} onChange={(e) => setLogradouro(e.target.value)} placeholder="Digite o Logradouro" name="nome" ></Input>

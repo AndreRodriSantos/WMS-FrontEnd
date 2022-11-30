@@ -6,7 +6,7 @@ import { erro } from "../Avisos/Alert"
 import { logout } from "./SideBar"
 
 export class Perfil extends React.Component {
-    render() {
+    render() { 
 
         const {nome, nif, matricula, email, img} = this.props
 

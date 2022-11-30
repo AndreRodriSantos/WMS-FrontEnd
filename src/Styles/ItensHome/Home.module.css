@@ -13,7 +13,7 @@
 
 .home {
     width: 100%;
-    height: 95%;
+    height: 100%;
     background-color: #fff;
     border-radius: 20px;
     display: flex;
@@ -32,7 +32,7 @@
 }
 
 .HomeRight {
-    width: 30%;
+ /*    width: 30%; */
     height: 100%;
     padding: 20px;
     display: flex;
@@ -165,7 +165,7 @@
 
 .BaseBotChat {
     position: fixed;
-    bottom: -51%;
+    bottom: -45%;
     right: 4%;
     width: 400px;
     height: 580px;
@@ -902,6 +902,10 @@
         left: -0.5%;
     }
 
+    .BaseBotChat{ 
+        bottom: -51%;
+    }
+
     .SubTitleMovimentacao {
         font-size: 18px;
     }
@@ -955,9 +959,9 @@
         width: 63.5%;
         height: 37%;
         flex-direction: row;
-        position: absolute;
-        bottom: 1%;
-        left: 34.2%;
+        /* position: absolute; */
+        /* bottom: 1%; */
+        left: 16.2%;
     }
 
     .homeCenter {
@@ -983,8 +987,8 @@
 
     .BaseBotChat {
         position: absolute;
-        bottom: 5.5%;
-        left: 3%;
+        bottom: 4.5%;
+        left: 2%;
         width: 450px;
         height: 450px;
     }
@@ -1006,17 +1010,31 @@
     .btnOn {
         display: none;
     }
+
+    .home2 {
+        position: absolute;
+        width: 100%;
+        height: 500px;
+        /* background-color: red; */
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
 }
+
 
 @media screen and (max-width:1420px) {
     .HomeRight {
         transform: scale(0.9);
         width: 69.5%;
-        left: 32.2%;
+      /*   left: 32.2%; */
     }
 
     .BaseBotChat {
         transform: scale(0.9);
+        left: 1%;
     }
 }
 
@@ -1033,12 +1051,12 @@
     .HomeRight {
         transform: scale(0.8);
         width: 77.5%;
-        left: 27.2%;
+        /* left: 27.2%; */
     }
 
     .BaseBotChat {
         transform: scale(0.8);
-        left: 1%;
+        left: -1%;
     }
 }
 
@@ -1090,17 +1108,29 @@
         transform: scale(0.95);
     }
 
+    .home2{
+        position: absolute;
+        width: 100%;
+        height: 500px;
+        /* background-color: red; */
+        bottom: -3%;
+        display: flex;
+        left: 0%;
+        align-items: center;
+        justify-content: center;
+    }
+
     .HomeRight {
         transform: scale(0.73);
         width: 84.5%;
-        left: 23.2%;
+       /*  left: 23.2%; */
         bottom: -1%;
     }
 
     .BaseBotChat {
         transform: scale(0.73);
         left: -0.5%;
-        bottom: 2%;
+        bottom: 3%;
     }
 
     .base {
@@ -1114,7 +1144,7 @@
     .HomeRight {
         transform: scale(0.71);
         width: 90.5%;
-        left: 20.5%;
+        /* left: 20.5%; */
         bottom: -1%;
 
     }
@@ -1141,6 +1171,11 @@
 
 @media screen and (max-width:1070px) {
 
+    .home2{ 
+        bottom: 0%;
+        left: -1%;
+    }
+
     .HomeRight {
         transform: scale(0.95);
         width: 98.3%;
@@ -1151,18 +1186,12 @@
 
     .homeCenter {
         position: absolute;
-        width: 94%;
+        width: 91%;
         height: 71%;
         left: 8%;
-        top: -1%;
-        transform: scale(0.85);
+        top: -2%;
+        transform: scale(0.89);
         margin: 0 1%;
-    }
-
-    .BaseBotChat {
-        transform: scale(1);
-        left: -2.5%;
-        bottom: 2%;
     }
 
     .base {
@@ -1179,8 +1208,8 @@
         transition: .5s;
         z-index: 10;
         transform: scale(0.95);
-        left: 30.5%;
-        bottom: -41%;
+        left: 31%;
+        bottom: -48%;
     }
 
     .BotChat {
@@ -1216,9 +1245,14 @@
 @media screen and (max-width:980px) {
     .HomeRight {
         transform: scale(0.85);
-        width: 109.3%;
-        left: -4%;
-        bottom: 1%;
+    }
+
+    .home2{
+        width: 111%;
+        left: -7%;
+    }
+    .BaseBotChat{
+        left: 29.5%;
     }
 }
 
@@ -1227,7 +1261,7 @@
     .HomeRight {
         transform: scale(.8);
         width: 114.3%;
-        left: -7.5%;
+        /* left: -7.5%; */
         bottom: 1%;
 
     }
@@ -1238,18 +1272,21 @@
 
     .homeCenter {
         position: absolute;
-        width: 88%;
+        width: 90%;
         height: 71%;
-        left: 11%;
-        top: 0%;
+        left: 10%;
+        top: -3%;
         transform: scale(0.85);
         margin: 0 1%;
+    }
+
+    .home2{
+        bottom: -3%;
     }
 
     .BaseBotChat {
         transform: scale(0.95);
         left: 26.5%;
-        bottom: -41%;
     }
 
     .base {
@@ -1291,13 +1328,7 @@
 @media screen and (max-height:1040px) {
 
     .homeCenter {
-        height: 950px;
-    }
-    .listHistorico{
-        height: 445px;
-    }
-    .cardTutorial{
-        height: 445px;
+        height: 1000px;
     }
 
 }
@@ -1305,13 +1336,7 @@
 @media screen and (max-height:1030px) {
 
     .homeCenter {
-        height: 940px;
-    }
-    .listHistorico{
-        height: 430px;
-    }
-    .cardTutorial{
-        height: 430px;
+        height: 990px;
     }
 
 }
@@ -1320,28 +1345,16 @@
 @media screen and (max-height:1020px) {
 
     .homeCenter {
-        height: 930px;
+        height: 980px;
     }
-    .listHistorico{
-        height: 435px;
-    }
-    .cardTutorial{
-        height: 435px;
-    }
-
+ 
 }
 
 
 @media screen and (max-height:1010px) {
 
     .homeCenter {
-        height: 920px;
-    }
-    .listHistorico{
-        height: 425px;
-    }
-    .cardTutorial{
-        height: 425px;
+        height: 970px;
     }
 
 }
@@ -1349,13 +1362,7 @@
 @media screen and (max-height:1000px) {
 
     .homeCenter {
-        height: 910px;
-    }
-    .listHistorico{
-        height: 420px;
-    }
-    .cardTutorial{
-        height: 420px;
+        height: 960px;
     }
 
 }
@@ -1364,27 +1371,24 @@
 @media screen and (max-height:990px) {
 
     .homeCenter {
-        height: 900px;
+        height: 950px;
     }
-    .listHistorico{
-        height: 420px;
-    }
-    .cardTutorial{
-        height: 420px;
-    }
+
 
 }
 
 @media screen and (max-height:980px) {
 
     .homeCenter {
-        height: 895px;
+        height: 940px;
     }
-    .listHistorico{
-        height: 420px;
+
+    .listHistorico {
+        height: 440px;
     }
-    .cardTutorial{
-        height: 420px;
+
+    .cardTutorial {
+        height: 440px;
     }
 
 }
@@ -1392,13 +1396,15 @@
 @media screen and (max-height:970px) {
 
     .homeCenter {
-        height: 885px;
+        height: 930px;
     }
-    .listHistorico{
-        height: 415px;
+
+    .listHistorico {
+        height: 430px;
     }
-    .cardTutorial{
-        height: 415px;
+
+    .cardTutorial {
+        height: 430px;
     }
 
 }
@@ -1406,13 +1412,7 @@
 @media screen and (max-height:960px) {
 
     .homeCenter {
-        height: 880px;
-    }
-    .listHistorico{
-        height: 410px;
-    }
-    .cardTutorial{
-        height: 410px;
+        height: 920px;
     }
 
 }
@@ -1421,13 +1421,14 @@
 @media screen and (max-height:950px) {
 
     .homeCenter {
-        height: 865px;
+        height: 910px;
     }
-    .listHistorico{
-        height: 400px;
+    .listHistorico {
+        height: 420px;
     }
-    .cardTutorial{
-        height: 400px;
+
+    .cardTutorial {
+        height: 420px;
     }
 
 }
@@ -1436,13 +1437,7 @@
 @media screen and (max-height:940px) {
 
     .homeCenter {
-        height: 855px;
-    }
-    .listHistorico{
-        height: 400px;
-    }
-    .cardTutorial{
-        height: 400px;
+        height: 900px;
     }
 
 }
@@ -1450,27 +1445,23 @@
 @media screen and (max-height:930px) {
 
     .homeCenter {
-        height: 845px;
+        height: 890px;
     }
-    .listHistorico{
-        height: 390px;
+
+    .listHistorico {
+        height: 410px;
     }
-    .cardTutorial{
-        height: 390px;
-    }
+
+    .cardTutorial {
+        height: 410px;
+    }    
 
 }
 
 @media screen and (max-height:920px) {
 
     .homeCenter {
-        height: 840px;
-    }
-    .listHistorico{
-        height: 390px;
-    }
-    .cardTutorial{
-        height: 390px;
+        height: 880px;
     }
 
 }
@@ -1479,13 +1470,15 @@
 @media screen and (max-height:910px) {
 
     .homeCenter {
-        height: 830px;
+        height: 870px;
     }
-    .listHistorico{
-        height: 390px;
+
+    .listHistorico {
+        height: 400px;
     }
-    .cardTutorial{
-        height: 390px;
+
+    .cardTutorial {
+        height: 400px;
     }
 
 }
@@ -1494,28 +1487,127 @@
 @media screen and (max-height:900px) {
 
     .homeCenter {
-        height: 815px;
-    }
-    .listHistorico{
-        height: 380px;
-    }
-    .cardTutorial{
-        height: 380px;
+        height: 860px;
     }
 
+    .BaseBotChat{
+        bottom: -51%;
+    }
 }
 
 
 @media screen and (max-height:890px) {
 
     .homeCenter {
-        height: 815px;
+        height: 850px;
     }
-    .listHistorico{
-        height: 380px;
+
+    .listHistorico {
+        height: 390px;
     }
-    .cardTutorial{
+
+    .cardTutorial {
+        height: 390px;
+    }
+
+    .BaseBotChat{
+        bottom: 4.5%;
+    }
+}
+
+@media screen and (max-height:880px) {
+
+    .homeCenter {
+        height: 840px;
+    }
+    .BaseBotChat{
+        bottom: 4.5%;
+    }
+
+}
+
+@media screen and (max-height:870px) {
+
+    .homeCenter {
+        height: 830px;
+    }
+
+    .listHistorico {
         height: 380px;
     }
 
+    .cardTutorial {
+        height: 380px;
+    }
+
+    .BaseBotChat{
+        bottom: 4.5%;
+    }
+}
+
+@media screen and (max-height:860px) {
+
+    .homeCenter {
+        height: 820px;
+    }
+    .BaseBotChat{
+        bottom: 4.5%;
+    }
+
+}
+
+@media screen and (max-height:850px) {
+
+    .homeCenter {
+        height: 810px;
+    }
+
+    .listHistorico {
+        height: 370px;
+    }
+
+    .cardTutorial {
+        height: 370px;
+    }
+
+    .btns{
+        top: -5%;
+    }
+    .BaseBotChat{
+        bottom: 4.5%;
+    }
+
+}
+
+@media screen and (max-height:840px) {
+
+    .homeCenter {
+        height: 800px;
+    }
+    .BaseBotChat{
+        bottom: 4.5%;
+    }
+
+}
+
+
+@media screen and (max-height:768px) {
+    .components{
+        height: 170%;
+    }
+
+    .homeCenter{
+        height: 750px;
+    }
+
+    .cardTutorial{
+        transform: scale(0.9);
+    }
+
+    .listHistorico{
+        transform: scale(0.9);
+    }
+    .BaseBotChat{
+        bottom: 4.5%;
+    }
 }

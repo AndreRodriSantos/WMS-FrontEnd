@@ -68,7 +68,7 @@ export default function Home() {
             )
         }
     }
-    
+
     function getProduto() {
         api.get(`api/produto/list`).then(
             response => {
@@ -193,7 +193,9 @@ export default function Home() {
 
     return (
         <section className={styles.components}>
-            <PopUpInfo />
+            <div id="popUpInformacoes" className={styles.popUp}>
+                <PopUpInfo />
+            </div>       
             <div id="popUpSobre" className={styles.popUp}>
                 <Perfil nome={nome} email={email} nif={nif} matricula={codMatricula} img={imagemUser}></Perfil>
             </div>
@@ -270,213 +272,212 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div id='HomeRight' className={styles.HomeRight}>
+                <div className={styles.home2}>
+                    <div id='HomeRight' className={styles.HomeRight}>
 
-                    <div className={styles.estatisticas}>
-                        <span>
-                            Estátisticas
-                        </span>
+                        <div className={styles.estatisticas}>
+                            <span>
+                                Estátisticas
+                            </span>
 
-                        <div className={styles.statusContainer}>
-                            <div className={styles.status1}>
-                                <div className={styles.statusHead}>
-                                    <div className={styles.circleStatus}>
-                                        <lord-icon
-                                            src="https://cdn.lordicon.com/hbvyhtse.json"
-                                            trigger="hover"
-                                            colors="primary:#e4e4e4"
-                                            state="hover"
-                                            style={{ width: 32, height: 32 }}>
-                                        </lord-icon>
+                            <div className={styles.statusContainer}>
+                                <div className={styles.status1}>
+                                    <div className={styles.statusHead}>
+                                        <div className={styles.circleStatus}>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/hbvyhtse.json"
+                                                trigger="hover"
+                                                colors="primary:#e4e4e4"
+                                                state="hover"
+                                                style={{ width: 32, height: 32 }}>
+                                            </lord-icon>
+                                        </div>
+                                        <p className={styles.titleStatus}>Usuários</p>
                                     </div>
-                                    <p className={styles.titleStatus}>Usuários</p>
+
+                                    <p><strong>Professores:</strong> {qtdProfessores}</p>
+                                    <p><strong>Alunos:</strong> {qtdAlunos}</p>
+
                                 </div>
 
-                                <p><strong>Professores:</strong> {qtdProfessores}</p>
-                                <p><strong>Alunos:</strong> {qtdAlunos}</p>
-
-                            </div>
-
-                            <div className={styles.status2}>
-                                <div className={styles.statusHead}>
-                                    <div className={styles.circleStatus}>
-                                        <lord-icon
-                                            src="https://cdn.lordicon.com/slduhdil.json"
-                                            trigger="hover"
-                                            colors="primary:#ffffff"
-                                            style={{ width: 32, height: 32 }}>
-                                        </lord-icon></div>
-                                    <p className={styles.titleStatus}>Estoque</p>
-                                </div>
-                                <p className={styles.saldo}><strong>Saldo:</strong> {saldo}</p>
-                            </div>
-
-                            <div className={styles.status3}>
-                                <div className={styles.statusHead}>
-                                    <div className={styles.circleStatus}>
-                                        <lord-icon
-                                            src="https://cdn.lordicon.com/zvllgyec.json"
-                                            trigger="hover"
-                                            colors="primary:#ffffff"
-                                            state="hover"
-                                            style={{ width: 32, height: 32 }}>
-                                        </lord-icon>
+                                <div className={styles.status2}>
+                                    <div className={styles.statusHead}>
+                                        <div className={styles.circleStatus}>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/slduhdil.json"
+                                                trigger="hover"
+                                                colors="primary:#ffffff"
+                                                style={{ width: 32, height: 32 }}>
+                                            </lord-icon></div>
+                                        <p className={styles.titleStatus}>Estoque</p>
                                     </div>
-                                    <p className={styles.titleStatus}>Cadastros</p>
+                                    <p className={styles.saldo}><strong>Saldo:</strong> {saldo}</p>
                                 </div>
-                                <p><strong>Produtos:</strong> {qtdProdutos}</p>
-                                <p><strong>Pedidos:</strong> {qtdPedidos}</p>
-                                <p><strong>Fornecedores:</strong> {qtdFornecedores}</p>
+
+                                <div className={styles.status3}>
+                                    <div className={styles.statusHead}>
+                                        <div className={styles.circleStatus}>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/zvllgyec.json"
+                                                trigger="hover"
+                                                colors="primary:#ffffff"
+                                                state="hover"
+                                                style={{ width: 32, height: 32 }}>
+                                            </lord-icon>
+                                        </div>
+                                        <p className={styles.titleStatus}>Cadastros</p>
+                                    </div>
+                                    <p><strong>Produtos:</strong> {qtdProdutos}</p>
+                                    <p><strong>Pedidos:</strong> {qtdPedidos}</p>
+                                    <p><strong>Fornecedores:</strong> {qtdFornecedores}</p>
+                                </div>
+
+                                <div className={styles.status4}>
+                                    <div className={styles.statusHead}>
+                                        <div className={styles.circleStatus}>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/eanmttmw.json"
+                                                trigger="hover"
+                                                colors="primary:#ffffff"
+                                                state="hover-1"
+                                                style={{ width: 32, height: 32 }}>
+                                            </lord-icon>
+                                        </div>
+                                        <p className={styles.titleStatus}>Turma</p>
+                                    </div>
+                                    <p><strong>Nome:</strong> {turma.nome}</p>
+                                    <p><strong>Participantes:</strong> {turma.numParticipantes}</p>
+                                    <p><strong>Professor:</strong> {professor.nome}</p>
+                                </div>
                             </div>
 
-                            <div className={styles.status4}>
-                                <div className={styles.statusHead}>
-                                    <div className={styles.circleStatus}>
-                                        <lord-icon
-                                            src="https://cdn.lordicon.com/eanmttmw.json"
-                                            trigger="hover"
-                                            colors="primary:#ffffff"
-                                            state="hover-1"
-                                            style={{ width: 32, height: 32 }}>
-                                        </lord-icon>
-                                    </div>
-                                    <p className={styles.titleStatus}>Turma</p>
-                                </div>
-                                <p><strong>Nome:</strong> {turma.nome}</p>
-                                <p><strong>Participantes:</strong> {turma.numParticipantes}</p>
-                                <p><strong>Professor:</strong> {professor.nome}</p>
-                            </div>
+
                         </div>
 
+                        <div className={styles.base}>
+                            <div className={styles.btnsList}>
+                                <button id="btnPedidos" onClick={pedidoList} type="button" className={styles.buttons}><i className="fa-solid fa-cart-plus"></i></button>
+                                <button id="btnFornecedor" onClick={fornecedorList} type="button" className={styles.buttonsFocus}><i className="fa-solid fa-address-book"></i></button>
+                                <button id="btnProdutos" onClick={produtoList} type="button" className={styles.buttons}><i className="fa-solid fa-box"></i></button>
+                            </div>
+                            <div id="baseForm" className={styles.base_form}>
+
+                                <div id='pedidoList' className={styles.listaPedidos}>
+                                    <div className={styles.headerList}>
+                                        <span className={styles.headerTitle}>
+                                            <i className="fa-solid fa-cart-plus"></i>
+                                            <p className={styles.SubTitle}>Pedidos</p>
+                                        </span>
+                                        <a href="/Pedido" className={styles.addFornecedor}>
+                                            <i className="fa-solid fa-circle-plus"></i>
+                                            <p className={styles.addTitle}>Novo Pedido</p>
+                                        </a>
+                                    </div>
+                                    <table className={styles.tabela}>
+                                        <thead className={styles.thead}>
+                                            <tr className={styles.pedidoHeaderTr}>
+                                                <th colSpan="1">ID</th>
+                                                <th colSpan="1">Data</th>
+                                                <th colSpan="1">Valor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className={styles.lista}>
+                                            {
+                                                pedido.map((p, key) => <ListHome id={p.numPedido} key={key} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id='fornecedorList' className={styles.listaFornecedor}>
+                                    <div className={styles.headerList}>
+                                        <span className={styles.headerTitle}>
+                                            <i className="fa-solid fa-address-book"></i>
+                                            <p className={styles.SubTitle}>Fornecedores</p>
+                                        </span>
+                                        <a href="/CadastroFornecedores" className={styles.addFornecedor}>
+                                            <i className="fa-solid fa-circle-plus"></i>
+                                            <p className={styles.addTitle}>Novo Fornecedor</p>
+                                        </a>
+                                    </div>
+                                    <table className={styles.tabela}>
+                                        <thead className={styles.thead}>
+                                            <tr className={styles.headerTr}>
+                                                <th colSpan="1">Nome</th>
+                                                <th colSpan="1">CNPJ</th>
+                                                <th colSpan="1">UF</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className={styles.lista}>
+                                            {
+                                                fornecedor.map((f, key) => <ListHome id={f.id} objeto={f} key={key} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id='produtoList' className={styles.listaProdutos}>
+                                    <div className={styles.headerList}>
+                                        <span className={styles.headerTitle}>
+                                            <i className="fa-solid fa-box"></i>
+                                            <p className={styles.SubTitle}>Produtos</p>
+                                        </span>
+                                        <a href="/CadastroProduto" className={styles.addFornecedor}>
+                                            <i className="fa-solid fa-circle-plus"></i>
+                                            <p className={styles.addTitle}>Novo Produto</p>
+                                        </a>
+                                    </div>
+                                    <table className={styles.tabela}>
+                                        <thead className={styles.thead}>
+                                            <tr>
+                                                <th colSpan="1">SKU</th>
+                                                <th colSpan="1">Nome</th>
+                                                <th colSpan="1">Valor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className={styles.lista}>
+                                            {
+                                                produto.map((p, key) => <ListHome objeto={p} key={key} id={p.codProduto} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 
-                    <div className={styles.base}>
-                        <div className={styles.btnsList}>
-                            <button id="btnPedidos" onClick={pedidoList} type="button" className={styles.buttons}><i className="fa-solid fa-cart-plus"></i></button>
-                            <button id="btnFornecedor" onClick={fornecedorList} type="button" className={styles.buttonsFocus}><i className="fa-solid fa-address-book"></i></button>
-                            <button id="btnProdutos" onClick={produtoList} type="button" className={styles.buttons}><i className="fa-solid fa-box"></i></button>
+
+                    <div id='chatbot' className={styles.BaseBotChat}>
+                        <div id='balao' className={styles.interogacao}>
+                            <i className="fa-solid fa-question"></i>
+                            <span className={styles.triangulo}></span>
                         </div>
-                        <div id="baseForm" className={styles.base_form}>
-
-                            <div id='pedidoList' className={styles.listaPedidos}>
-                                <div className={styles.headerList}>
-                                    <span className={styles.headerTitle}>
-                                        <i className="fa-solid fa-cart-plus"></i>
-                                        <p className={styles.SubTitle}>Pedidos</p>
-                                    </span>
-                                    <a href="/Pedido" className={styles.addFornecedor}>
-                                        <i className="fa-solid fa-circle-plus"></i>
-                                        <p className={styles.addTitle}>Novo Pedido</p>
-                                    </a>
-                                </div>
-                                <table className={styles.tabela}>
-                                    <thead className={styles.thead}>
-                                        <tr className={styles.pedidoHeaderTr}>
-                                            <th colSpan="1">ID</th>
-                                            <th colSpan="1">Data</th>
-                                            <th colSpan="1">Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className={styles.lista}>
-                                        {
-                                            pedido.map((p, key) => <ListHome id={p.numPedido} key={key} objeto={p} Info1={p.numPedido} Info2={p.dataPedido} Info3={"R$ " + p.valor} />)
-                                        }
-                                    </tbody>
-                                </table>
+                        <div className={styles.baseAI}>
+                            <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
+                                <i className="fa-solid fa-arrow-down"></i>
                             </div>
-
-                            <div id='fornecedorList' className={styles.listaFornecedor}>
-                                <div className={styles.headerList}>
-                                    <span className={styles.headerTitle}>
-                                        <i className="fa-solid fa-address-book"></i>
-                                        <p className={styles.SubTitle}>Fornecedores</p>
-                                    </span>
-                                    <a href="/CadastroFornecedores" className={styles.addFornecedor}>
-                                        <i className="fa-solid fa-circle-plus"></i>
-                                        <p className={styles.addTitle}>Novo Fornecedor</p>
-                                    </a>
-                                </div>
-                                <table className={styles.tabela}>
-                                    <thead className={styles.thead}>
-                                        <tr className={styles.headerTr}>
-                                            <th colSpan="1">Nome</th>
-                                            <th colSpan="1">CNPJ</th>
-                                            <th colSpan="1">UF</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className={styles.lista}>
-                                        {
-                                            fornecedor.map((f, key) => <ListHome id={f.id} objeto={f} key={key} Info1={f.nome} Info2={f.cnpj} Info3={f.uf} />)
-                                        }
-                                    </tbody>
-                                </table>
+                            <div id='btnOn' onClick={abrirChat} className={styles.btnOn}>
+                                <i className="fa-solid fa-arrow-up"></i>
                             </div>
-
-                            <div id='produtoList' className={styles.listaProdutos}>
-                                <div className={styles.headerList}>
-                                    <span className={styles.headerTitle}>
-                                        <i className="fa-solid fa-box"></i>
-                                        <p className={styles.SubTitle}>Produtos</p>
-                                    </span>
-                                    <a href="/CadastroProduto" className={styles.addFornecedor}>
-                                        <i className="fa-solid fa-circle-plus"></i>
-                                        <p className={styles.addTitle}>Novo Produto</p>
-                                    </a>
-                                </div>
-                                <table className={styles.tabela}>
-                                    <thead className={styles.thead}>
-                                        <tr>
-                                            <th colSpan="1">SKU</th>
-                                            <th colSpan="1">Nome</th>
-                                            <th colSpan="1">Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className={styles.lista}>
-                                        {
-                                            produto.map((p, key) => <ListHome objeto={p} key={key} id={p.codProduto} Info1={p.sku} Info2={p.nome} Info3={"R$ " + p.valorUnitario} />)
-                                        }
-                                    </tbody>
-                                </table>
+                            <span className={styles.foto}></span>
+                        </div>
+                        <div className={styles.BotChat}>
+                            <span className={styles.BotChatTitle}>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/pkmkagva.json"
+                                    trigger="hover"
+                                    colors="primary:#4d71ff"
+                                    style={{ width: 32, height: 32 }}>
+                                </lord-icon>
+                                <h3 className={styles.BCTitleH3} >ChatBot</h3>
+                            </span>
+                            <div className={styles.iframeBotChat}>
+                                {/* Lugar do Chat */}
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
-                <div id='chatbot' className={styles.BaseBotChat}>
-                    <div id='balao' className={styles.interogacao}>
-                        <i className="fa-solid fa-question"></i>
-                        <span className={styles.triangulo}></span>
-                    </div>
-                    <div className={styles.baseAI}>
-                        <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
-                            <i className="fa-solid fa-arrow-down"></i>
-                        </div>
-                        <div id='btnOn' onClick={abrirChat} className={styles.btnOn}>
-                            <i className="fa-solid fa-arrow-up"></i>
-                        </div>
-                        <span className={styles.foto}></span>
-                    </div>
-                    <div className={styles.BotChat}>
-                        <span className={styles.BotChatTitle}>
-                            <lord-icon
-                                src="https://cdn.lordicon.com/pkmkagva.json"
-                                trigger="hover"
-                                colors="primary:#4d71ff"
-                                style={{ width: 32, height: 32 }}>
-                            </lord-icon>
-                            <h3 className={styles.BCTitleH3} >ChatBot</h3>
-                        </span>
-                        <div className={styles.iframeBotChat}>
-                        {/* Lugar do Chat */}
-                        </div>
-                    </div>
-                </div>
-
-
-
             </div>
         </section >
     );
@@ -485,12 +486,12 @@ export default function Home() {
         const btnOn = document.getElementById('btnOn')
         const btnOff = document.getElementById('btnOff')
         const BotChat = document.getElementById('chatbot')
-        const balao = document.getElementById('balao')  
+        const balao = document.getElementById('balao')
 
-        if(window.screen.width <= 1070){
+        if (window.screen.width <= 1070) {
             BotChat.style.bottom = '-8%'
         }
-        else{
+        else {
             BotChat.style.bottom = '0%'
         }
 
@@ -506,13 +507,13 @@ export default function Home() {
         const btnOff = document.getElementById('btnOff')
         const BotChat = document.getElementById('chatbot')
         const balao = document.getElementById('balao')
-        
-        if(window.screen.width <= 1070){
-            BotChat.style.bottom = '-37.7%'
-        }else{
+
+        if (window.screen.width <= 1070) {
+            BotChat.style.bottom = '-48%'
+        } else {
             BotChat.style.bottom = '-51%'
         }
-        
+
         btnOn.style.opacity = '1'
         btnOn.style.zIndex = '1'
         btnOff.style.opacity = '0'

@@ -552,3 +552,15 @@
         left: 112px;
     }
 }
+
+/* ALTURA */
+
+/* @media screen and (max-height: 1080px) {
+   
+}
+ */
+@media screen and (max-height: 768px) {
+    .base{
+        height: 55.5%;
+    }
+}
