@@ -857,6 +857,24 @@
     z-index: -1;
 }
 
+.relatoriosBtn{
+    width: 120px;
+    height: 40px;
+    background-color: #6064F9;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.402) 0px 5px 20px;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.relatoriosBtn:hover{
+    font-size: 17px;
+}
+
 /* RESPONSIVIDADE */
 
 @media screen and (max-width:1800px) {
@@ -1320,7 +1338,6 @@
     .btnOn {
         display: flex;
     }
-
 }
 
 /* ALTURA */

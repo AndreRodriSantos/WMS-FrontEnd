@@ -11,6 +11,7 @@ import { getAluno, getNcm, getProfessor, sendIdAluno } from "../Services/gets";
 import CadastroMedidas, { getMedida, getPelaMedida } from "../Components/Forms/CadastroMedidas";
 import { CadastroNcm, getListaNcm } from "../Components/ItensHome/CadastroNcm";
 import { Perfil } from "../Components/ItensHome/Perfil";
+import { AbrirRelatorio, Relatorios } from "../Components/Avisos/Relatorios";
 
 export default function Home() {
 
@@ -205,6 +206,7 @@ export default function Home() {
             <div id="popUp" className={styles.popUp}>
                 <CadastroNcm ncms={ncms} />
             </div>
+            <Relatorios></Relatorios>
             <div id='home' className={styles.home}>
                 <SideBar />
                 <div className={styles.homeCenter} id="HomeCenter">
@@ -241,6 +243,7 @@ export default function Home() {
                                 </lord-icon>
                                 <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
                             </span>
+                            <button onClick={AbrirRelatoriogit } className={styles.relatoriosBtn}>Relatórios <i class="fa-sharp fa-solid fa-file"></i></button>
                             <InputPesquisa placeholder={"Pesquise uma Movimentação"} search={search} />
                         </div>
                         <div className={styles.tabelaContainer}>

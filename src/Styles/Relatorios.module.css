@@ -1,0 +1,108 @@
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.relatoriosDiv{
+    position: relative;
+    background-color: white;
+    width: 600px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.274) 0 0px 24px 10px;
+    padding: 20px;
+}
+
+.close {
+    width: 20px;
+    height: 20px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    transition: .2s ease-in;
+}
+
+.close:hover {
+    color: red;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.relatoriosContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 90%;
+}
+
+.relatorioBtn{
+    width: 40%;
+    height: 40%;
+    background-color: #000;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+
+.alertOn {
+    animation-name: alert-animate;
+    animation-duration: 0.3s;
+}
+
+@keyframes alert-animate {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.3, 0.7);
+    }
+
+    55% {
+        transform: scale(1);
+    }
+
+    70% {
+        transform: scale(1.2, 0.8);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1.1, 0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
