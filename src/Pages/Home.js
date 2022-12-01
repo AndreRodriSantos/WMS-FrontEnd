@@ -12,6 +12,7 @@ import CadastroMedidas, { getMedida, getPelaMedida } from "../Components/Forms/C
 import { CadastroNcm, getListaNcm } from "../Components/ItensHome/CadastroNcm";
 import { Perfil } from "../Components/ItensHome/Perfil";
 import { AbrirRelatorio, Relatorios } from "../Components/Avisos/Relatorios";
+import { dataHoraFormatter } from "../Services/formatter";
 
 export default function Home() {
 
@@ -243,7 +244,7 @@ export default function Home() {
                                 </lord-icon>
                                 <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
                             </span>
-                            <button onClick={AbrirRelatoriogit } className={styles.relatoriosBtn}>Relatórios <i class="fa-sharp fa-solid fa-file"></i></button>
+                            <button onClick={AbrirRelatorio } className={styles.relatoriosBtn}>Relatórios <i class="fa-sharp fa-solid fa-file"></i></button>
                             <InputPesquisa placeholder={"Pesquise uma Movimentação"} search={search} />
                         </div>
                         <div className={styles.tabelaContainer}>
@@ -260,7 +261,7 @@ export default function Home() {
                                     <tbody className={styles.tabelaMovimentacaoBody}>
                                         {movimentacoes.map((m, key) =>
                                             <tr key={key} className={styles.trMovimentacao}>
-                                                <td className={styles.data}>{m.data}</td>
+                                                <td className={styles.data}>{dataHoraFormatter(m.data)}</td>
                                                 <td className={styles.produtoNome}>
                                                     <span style={m.tipo == 'SAIDA' ? { backgroundColor: '#F2C7C3' } : { backgroundColor: '#B2FBDE' }} className={styles.qntMovimento}>{m.tipo == 'ENTRADA' ? "+" + m.quantidade : "-" + m.quantidade}</span>
                                                 </td>

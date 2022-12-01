@@ -20,10 +20,10 @@ export default class CardTurma extends React.Component {
         }
 
         function removeTurma() {
+            openConfirmacao("Ao pressionar em EXCLUIR sua turma, será excluida permanentimente", "Deseja realmente excluir sua turma?")
             tirarTurma(turma.id)
-            window.location.reload()
-            closeConfirmacao()
         }
+
 
         function alterarTurma() {
             novosDados(turma.id)
@@ -44,8 +44,9 @@ export default class CardTurma extends React.Component {
         )
 
         const dataInicio = dataFormatada(turma.dataInicio)
+
         return (
-            <>      
+            <>
                 <div className={styles.Card} onMouseLeave={removeOpcoes}>
                     <span onMouseEnter={chamarOpcoes} className={styles.config}><i className="fa-solid fa-gear"></i></span>
                     <div className={styles.imgTurma} onClick={SelectTurma}>
@@ -70,7 +71,7 @@ export default class CardTurma extends React.Component {
                             <a className={styles.link_containerOff} >CONFIG</a>
                         </li>
                         <li className={styles.sub_link}>
-                            <span onClick={() => openConfirmacao("Ao pressionar em EXCLUIR sua turma, será excluida e não poderá ", "Deseja realmente excluir sua turma?")} className={styles.link_name}> <i className="fa-solid fa-trash"></i> EXCLUIR</span >
+                            <span onClick={removeTurma} className={styles.link_name}> <i className="fa-solid fa-trash"></i> EXCLUIR</span >
                         </li>
                         <li className={styles.sub_link}>
                             <span onClick={alterarTurma} className={styles.link_name} > <i className="fa-solid fa-pen"></i> ALTERAR</span >
@@ -97,7 +98,6 @@ export default class CardTurma extends React.Component {
             popUpOpcao.style.opacity = '-1'
             popUpOpcao.style.zIndex = '-1'
         }
-
     }
 }
 

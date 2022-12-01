@@ -10,6 +10,38 @@ export function dataFormatada(date) {
     return diaF + "/" + mesF + "/" + anoF;
 }
 
+export function formataHora(h) {
+
+    let hora = h.substring(0, 2) + ""
+    let minuto = h.substring(3, 6)
+    if (hora == "00") {
+        hora = "21"
+    } else if (hora == "01") {
+        hora = "22"
+    } else {
+        hora = hora - 3 + ""
+    }
+
+    if (hora.length == 1) {
+        hora = "0" + hora
+    }
+
+    let horaFormatada = hora + ":" + minuto
+    return horaFormatada
+}
+
+export function dataHoraFormatter(date){
+    let hora = date.substring(11, 16)
+    let data = date.substring(0, 10)
+
+    hora = formataHora(hora)
+    data = dataFormatada(data)
+
+    let dataHoraFinal
+
+    return dataHoraFinal = data + " - " + hora
+}
+
 export function dataDesformatada(date) {
     var data = new Date(date),
         dia = data.getDate(),

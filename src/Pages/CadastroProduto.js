@@ -27,7 +27,7 @@ export default function CadastroProduto() {
     const [fornecedoresCheck, setFornecedoresCheck] = useState([])
     const [valorImportacao, setValorImportacao] = useState()
     const [check, setCheck] = useState([])
-    const [valorLiquido, setValorLiquido] = useState()
+    let [valorLiquido, setValorLiquido] = useState()
 
     function getProduto() {
         const id = localStorage.getItem("idProduto")
@@ -240,6 +240,7 @@ export default function CadastroProduto() {
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
         const id = localStorage.getItem("idProduto")
         const importado = document.getElementById("homologado").checked
+        valorLiquido = (valorLiquido.substring(3, valorLiquido.lenght).replace(",", "."));
 
         const produto = {
             nome, descricao, medida, pontoPedido, valorImportacao, valorUnitario, demanda, ncm, sku, "fornecedores":
@@ -270,7 +271,7 @@ export default function CadastroProduto() {
             api.post("api/produto/save", produto).then(
                 response => {
                     if (response.status == 201 || response.status == 200) {
-                        sucesso("Produto cadastrado com sucesso!!!")
+                        refresh("cadastro")
                     }
                 },
                 err => {

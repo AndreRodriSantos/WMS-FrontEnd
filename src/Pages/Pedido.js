@@ -70,13 +70,19 @@ export default function Pedido() {
     function finalizarPedido() {
         const valorTotal = document.getElementById("valorTotalSelec").textContent
         const aluno = { id: localStorage.getItem("idAluno") }
-        const professor = { id: localStorage.getItem("idProfessor") }
+        const prof = { id: localStorage.getItem("idProf") }
+        
 
         const pedido = {
             "itens": produtosAdicionados,
             "valor": valorTotal,
-            aluno,
-            professor
+            "enderecado": 0
+        }
+
+        if(aluno.id){
+            pedido.aluno = aluno
+        }else{
+            pedido.prof = prof
         }
 
         console.log(pedido);

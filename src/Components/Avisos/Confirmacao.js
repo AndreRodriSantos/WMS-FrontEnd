@@ -45,7 +45,6 @@ export class Confirmacao extends React.Component {
 }
 
 export function openConfirmacao(mensagem1, mensagem2) {
-    
     const confirmacaoContainer = document.getElementById("confirmacao")
     const confirmacaoDiv = document.getElementById("confirmacaoDiv")
     const mensagemSpan1 = document.getElementById("mensagem1")
