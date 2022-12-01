@@ -484,13 +484,6 @@
     }
 
 }
-@media screen and (max-height:1024px){
-    .base {
-        height: 65.5%;
-    }
-
-  
-}
 
 @media screen and (max-width:1080px) {
     .base {
@@ -560,16 +553,14 @@
     }
 }
 
+/* ALTURA */
 
-/* Altura */
-@media screen and (max-height:1055px){
-    .base {
-        height: 65.5%;
-    }
+/* @media screen and (max-height: 1080px) {
+   
 }
-
-@media screen and (max-height:1010px){
-    .base {
-        height: 67.5%;
+ */
+@media screen and (max-height: 768px) {
+    .base{
+        height: 55.5%;
     }
 }
