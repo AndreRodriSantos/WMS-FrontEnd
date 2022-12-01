@@ -1,4 +1,4 @@
-.container{
+.container {
     width: 100%;
     height: 100vh;
     background: linear-gradient(90deg, rgba(114, 237, 242, 1) 0%, rgba(83, 88, 230, 1) 100%);
@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.voltar{
+.voltar {
     cursor: pointer;
     position: fixed;
     top: 0;
@@ -22,21 +22,22 @@
     text-decoration: none;
 }
 
-.headerLogo{
+.headerLogo {
     position: absolute;
     right: 1%;
     top: 2%;
-    width: 100px;   
+    width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
-.logo{
+.logo {
     width: 100px;
 }
 
-.Pedidos{
+.Pedidos {
     position: absolute;
     width: 1200px;
     height: 750px;
@@ -48,7 +49,7 @@
     transform: scale(1);
 }
 
-.estocagem{
+.estocagem {
     position: fixed;
     top: 0;
     right: 0;
@@ -62,7 +63,7 @@
     text-decoration: none;
 }
 
-.headerList{
+.headerList {
     position: absolute;
     width: 100%;
     height: 60px;
@@ -72,16 +73,16 @@
     align-items: center;
 }
 
-.Busca{
+.Busca {
     position: absolute;
     left: 0;
     width: 400px;
     height: 60px;
     display: flex;
-    justify-content: center;  
+    justify-content: center;
 }
 
-.headerTitle{
+.headerTitle {
     position: relative;
     width: 150px;
     height: 30px;
@@ -93,14 +94,14 @@
     align-items: center;
 }
 
-.SubTitle{
+.SubTitle {
     color: #000;
     font-size: 25px;
     font-weight: bold;
     margin: 0 5px;
 }
 
-.notaFiscal{
+.notaFiscal {
     position: absolute;
     right: 5%;
     width: 150px;
@@ -115,14 +116,14 @@
     cursor: pointer;
 }
 
-.notaFiscalTitle{
+.notaFiscalTitle {
     color: #4D71FF;
     font-size: 18px;
     font-weight: bold;
     margin: 0 0 0 5px;
 }
 
-.lists{
+.lists {
     position: absolute;
     width: 100%;
     height: 85%;
@@ -134,7 +135,7 @@
     flex-wrap: wrap;
 }
 
-.box{
+.box {
     position: relative;
     width: 250px;
     height: 250px;
@@ -145,16 +146,16 @@
     transition: all ease 0.2s;
 }
 
-.box:hover{
+.box:hover {
     transform: scale(1);
 }
 
-.imgBox{
+.imgBox {
     width: 100%;
     height: 100%;
 }
 
-.boxDiv{
+.boxDiv {
     width: 120px;
     height: 120px;
     cursor: pointer;
@@ -165,11 +166,11 @@
     margin: 20px;
 }
 
-.boxDiv:hover{
+.boxDiv:hover {
     transform: scale(1);
 }
 
-.boxDiv2{
+.boxDiv2 {
     width: 70px;
     height: 70px;
     cursor: pointer;
@@ -177,27 +178,24 @@
     transition: all ease 0.2s;
 }
 
-.boxDiv2:hover{
+.boxDiv2 img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: .2s;
+    transition: all ease 0.2s;
+}
+
+.boxDiv2:hover {
     transform: scale(1);
 }
 
-.img{
+.img {
     width: 100%;
     height: 100%;
 }
 
-.nomeProduto{
-    position: relative;
-    width: 250px;
-    height: 60px;
-    background-color: #000;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.titleProduto{
+.titleProduto {
     color: #fff;
     font-size: 30px;
     font-weight: 600;
@@ -246,25 +244,25 @@
     transition: .2s ease-in;
 }
 
-.close:hover{
+.close:hover {
     color: red;
 }
 
-.BaseInfo{
+.BaseInfo {
     position: absolute;
     width: 95%;
     height: 85%;
     bottom: 4%;
 }
 
-.InfoProduto{
+.InfoProduto {
     position: relative;
     width: 100%;
     top: 0;
     height: 180px;
 }
 
-.ImgProduto{
+.ImgProduto {
     position: absolute;
     width: 180px;
     height: 180px;
@@ -274,13 +272,13 @@
     overflow: hidden;
 }
 
-.produtoImagem{
+.produtoImagem {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.TitleInfo{
+.TitleInfo {
     position: absolute;
     width: 70%;
     height: 100%;
@@ -290,13 +288,55 @@
     justify-content: left;
 }
 
-.NomeProduto{
+.nomeProduto {
     font-size: 35px;
     font-weight: 500;
     color: #000;
+    position: relative;
+    width: 250px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.DescricaoProduto{
+.nomeProduto2 {
+    position: relative;
+    left: -30px;
+    font-size: 32px;
+    font-weight: 500;
+    color: #000;
+    position: relative;
+    width: 170px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nomeProduto3 {
+    position: relative;
+    top: -16px;
+    left: -54px;
+    font-size: 32px;
+    font-weight: 500;
+    color: #000;
+    position: relative;
+    width: 170px;
+    height: 50px;
+    background-color: #000;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.5);
+}
+
+.DescricaoProduto {
     margin-top: 3%;
     font-size: 17px;
     color: #000;
@@ -304,21 +344,21 @@
 
 }
 
-.BaseInfoValores{
+.BaseInfoValores {
     position: absolute;
     width: 100%;
     bottom: 0;
     height: 180px;
 }
 
-.InfoSobre{ 
+.InfoSobre {
     position: absolute;
     width: 360px;
     height: 100%;
     left: 0;
 }
 
-.Impostos{
+.Impostos {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -329,7 +369,7 @@
     align-items: center;
 }
 
-.InfoImpostos{
+.InfoImpostos {
     position: relative;
     margin: 3% 0;
     width: 95%;
@@ -342,7 +382,7 @@
 
 }
 
-.Importacoes{
+.Importacoes {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -352,7 +392,7 @@
     align-items: center;
 }
 
-.baseTitleImpor{
+.baseTitleImpor {
     position: absolute;
     top: 8%;
     width: 95%;
@@ -364,19 +404,19 @@
 
 }
 
-.titleImpor{
+.titleImpor {
     font-size: 16px;
     font-weight: 300;
     color: #000;
 }
 
-.ResImpor{
+.ResImpor {
     font-size: 16px;
     font-weight: 300;
     text-transform: uppercase;
 }
 
-.ValorImportacao{
+.ValorImportacao {
     position: absolute;
     bottom: 2%;
     width: 95%;
@@ -386,14 +426,14 @@
 }
 
 
-.InfoValores{
+.InfoValores {
     position: absolute;
     width: 280px;
     height: 100%;
     right: 0;
 }
 
-.ValoreUnitario{
+.ValoreUnitario {
     position: absolute;
     top: 0;
     width: 100%;
@@ -401,7 +441,7 @@
     background-color: #f2f2f2;
 }
 
-.ValoreTotal{
+.ValoreTotal {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -409,26 +449,26 @@
     background-color: #000;
 }
 
-.TitleValor{
+.TitleValor {
     position: relative;
     top: 10%;
     left: 5%;
-   
+
 }
 
-.textUnitario{
+.textUnitario {
     font-size: 15px;
     font-weight: bold;
     color: #000;
 }
 
-.textTotal{
+.textTotal {
     font-size: 15px;
     font-weight: bold;
     color: #fff;
 }
 
-.Valor{
+.Valor {
     position: absolute;
     bottom: 0;
     right: 3%;
@@ -438,7 +478,7 @@
     align-items: center;
 }
 
-.cifrao{
+.cifrao {
     position: relative;
     display: flex;
     justify-content: center;
@@ -453,13 +493,13 @@
     font-weight: bold;
 }
 
-.Num{
+.Num {
     font-size: 35px;
     font-weight: 500;
     color: #000;
 }
 
-.Totalcifrao{
+.Totalcifrao {
     position: relative;
     display: flex;
     justify-content: center;
@@ -474,136 +514,198 @@
     font-weight: bold;
 }
 
-.TotalNum{
+.TotalNum {
     font-size: 35px;
     font-weight: 500;
     color: #fff;
+}
+
+.enderecado {
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    top: 95%;
+    left: 38%;
+    max-height: 20px;
+
+}
+
+.enderecado span {
+    display: flex;
+}
+
+.alertOn {
+    animation-name: alert-animate;
+    animation-duration: 0.3s;
+}
+
+@keyframes alert-animate {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.3, 0.7);
+    }
+
+    55% {
+        transform: scale(1);
+    }
+
+    70% {
+        transform: scale(1.2, 0.8);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1.1, 0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 @media screen and (max-height: 900px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.9);
     }
-    .PopUpInfo{
+
+    .PopUpInfo {
         transform: scale(0.9);
     }
-    
+
 }
 
 @media screen and (max-width:1250px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.8);
     }
-    .PopUpInfo{
+
+    .PopUpInfo {
         transform: scale(0.8);
     }
-    
+
 }
 
 
 @media screen and (max-height: 800px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.8);
     }
-    .PopUpInfo{
+
+    .PopUpInfo {
         transform: scale(0.8);
     }
 }
 
 @media screen and (max-width:1080px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.8);
     }
-    .PopUpInfo{
+
+    .PopUpInfo {
         transform: scale(0.8);
     }
-    
+
 }
 
 @media screen and (max-height: 750px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.7);
-    } 
-    .PopUpInfo{
+    }
+
+    .PopUpInfo {
         transform: scale(0.7);
-    }    
+    }
 }
 
 @media screen and (max-width: 890px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.6);
     }
-    .PopUpInfo{
+
+    .PopUpInfo {
         transform: scale(0.6);
     }
-    
+
 }
+
 @media screen and (max-height: 600px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.6);
     }
-    .PopUpInfo{
+
+    .PopUpInfo {
         transform: scale(0.6);
     }
-    
+
 }
 
 @media screen and (max-height: 500px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.5);
     }
-    .PopUpInfo{
+
+    .PopUpInfo {
         transform: scale(0.5);
     }
-    
+
 }
 
 @media screen and (max-height: 400px) {
-    .Pedidos{
+    .Pedidos {
         transform: scale(0.4);
     }
-    .Pedidos{
+
+    .Pedidos {
         transform: scale(0.4);
     }
-    
+
 }
 
 
 @media screen and (max-width: 750px) {
-    .Pedidos{
+    .Pedidos {
         width: 1000px;
     }
-    
+
 }
+
 @media screen and (max-width: 620px) {
-    .Pedidos{
+    .Pedidos {
         width: 900px;
     }
-    
+
 }
+
 @media screen and (max-width: 580px) {
-    .Pedidos{
+    .Pedidos {
         width: 800px;
     }
-    
+
 }
+
 @media screen and (max-width: 510px) {
-    .Pedidos{
+    .Pedidos {
         width: 700px;
     }
-    
+
 }
+
 @media screen and (max-width: 450px) {
-    .Pedidos{
+    .Pedidos {
         width: 600px;
     }
-    
+
 }
 
 @media screen and (max-width: 280px) {
-    .Pedidos{
+    .Pedidos {
         width: 400px;
     }
-    
-}
 
+}

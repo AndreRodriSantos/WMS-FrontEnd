@@ -4,6 +4,7 @@ import { closeConfirmacao, Confirmacao, openConfirmacao } from "../Components/Av
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import LinhaPicking from "../Components/LinhaPicking"
 import api from "../Services/api"
+import { refresh } from "../Services/gets"
 import styles from "../Styles/Picking.module.css"
 
 export default function Picking() {
@@ -41,9 +42,7 @@ export default function Picking() {
             e.enderecamento.quantidade = e.enderecamento.quantidade - e.quantidade
             api.put(`api/pedido/saida/${e.enderecamento.id}`, e.enderecamento).then(
                 response => {
-                    if (response.status == 201 || response.status == 200) {
-                        sucesso(`Produtos Enviados com sucesso!!!`)
-                    }
+                        refresh(`Picking`)
                 },
                 err => {
                     erro("Ocorreu um erro ao Enviar os Produtos Selecionados: " + err)
@@ -52,7 +51,6 @@ export default function Picking() {
         })
 
         closeConfirmacao()
-        window.location.reload()
     }
 
     useEffect(() => {
@@ -61,7 +59,6 @@ export default function Picking() {
 
     return (
         <div className={styles.container}>
-
             <a className='voltar' onClick={() => window.history.back()}>
                 <lord-icon
                     src="https://cdn.lordicon.com/jxwksgwv.json"

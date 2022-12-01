@@ -4,9 +4,9 @@ import React from 'react'
 
 export class PedidoItemCaixa extends React.Component {
     render() {
-        const { chamarItem, item } = this.props;
+        const { chamarItem, item, onClick } = this.props;
 
-        function dragstart_handler(ev){
+        function dragstart_handler(ev) {
             console.log("dragStart");
             ev.dataTransfer.setData("text/plain", ev.target.id);
             ev.stopPropagation();
@@ -14,8 +14,11 @@ export class PedidoItemCaixa extends React.Component {
         }
 
         return (
-            <div draggable="true" id={"Item" + item.id} onDragStart={(ev) => dragstart_handler(ev)} className={styles.boxDiv}>
+            <div draggable="true" onClick={onClick} id={"Item" + item.id} onDragStart={(ev) => dragstart_handler(ev)} className={styles.boxDiv}>
                 <img src={Box} className={styles.img} />
+                <div className={styles.nomeProduto2}>
+                    <span id={"prodNome" + item.id} title={item.produto.nome} className={styles.titleProduto}>{item.produto.nome.length > 8 ? item.produto.nome.substring(0, 8) + '...' : item.produto.nome}</span>
+                </div>
             </div>
         )
     }

@@ -213,7 +213,7 @@ export default function Home() {
                                 Está com duvidas?
                             </p>
                             <p className={styles.subTitle}>
-                                Venha Conhecer nosso tutorial Rapido e Fácil!
+                                Venha Conhecer nosso tutorial rapido e fácil disponivel no Youtube!!
                             </p>
                             <p className={styles.subTitle}>
                                 Aprender nunca foi tão divertido
@@ -221,7 +221,6 @@ export default function Home() {
                         </div>
                         <div className={styles.btns}>
                             <button className={styles.tutorial}>TUTORIAL</button>
-                            <button className={styles.simulacao}>simulação</button>
                         </div>
                         <div className={styles.Caixa}>
                             <img className={styles.C1} id='C1' src={Caixas} />

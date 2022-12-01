@@ -60,6 +60,7 @@ export class SideBar extends React.Component {
                 {/* SIDEBAR TEXT */}
                 <a href="/Home" id="homeText" className={styles.IconText}>HOME</a>
                 <a href="/Pedido" id="pedidoText" className={styles.IconText}>PEDIDOS</a>
+                <a href="#" id="estoqueText" className={styles.IconText}>ESTOQUE</a>
                 <a href="#" id="pickingText" className={styles.IconText}>PICKING</a>
                 <a onClick={chamarMedidas} id="medidasText" className={styles.IconText}>MEDIDAS</a>
                 <a onClick={chamarNCM} id="ncmText" className={styles.IconText}>NCM</a>
@@ -132,9 +133,6 @@ export class SideBar extends React.Component {
                                 <li className={styles.sub_link}>
                                     <a className={styles.link_name} href="/CadastroProduto">  <i className="fa-solid fa-box"></i> PRODUTO</a>
                                 </li>
-                                <li className={styles.sub_link}>
-                                    <a className={styles.link_name} href="/CadastroEnderecamento"> <i className="fa-solid fa-location-dot"></i> ENDEREÇAMENTO </a>
-                                </li>
                             </ul>
 
                         </div>
@@ -146,6 +144,15 @@ export class SideBar extends React.Component {
                             </span>
                             <span className={styles.iconTitle}>
                                 PEDIDOS
+                            </span>
+                        </a>
+                        {/* ESTOQUE */}
+                        <a href="/Enderecamento" onMouseEnter={offSub} className={styles.list}>
+                            <span onMouseEnter={onSubTextEstoque} id='chamaTextPI' className={styles.icon}>
+                                <i className="fa-solid fa-warehouse"></i>
+                            </span>
+                            <span className={styles.iconTitle}>
+                                ESTOQUE
                             </span>
                         </a>
                         {/* PICKING */}
@@ -385,31 +392,31 @@ function CadastroSelectOff() {
 function onSubTextHome() {
     const homeText = document.getElementById("homeText")
     homeText.style.opacity = '2'
-    homeText.style.top = '140px'
+    homeText.style.top = '180px'
     homeText.style.zIndex = '2'
 }
 function offSubTextHome() {
     const homeText = document.getElementById("homeText")
     homeText.style.opacity = '0'
-    homeText.style.top = '100px'
+    homeText.style.top = '120px'
     homeText.style.zIndex = '-1'
 }
 function onSubTextPedido() {
     const pedidoText = document.getElementById("pedidoText")
     pedidoText.style.opacity = '2'
-    pedidoText.style.top = '420px'
+    pedidoText.style.top = '450px'
     pedidoText.style.zIndex = '2'
 }
 function offSubTextPedido() {
     const pedidoText = document.getElementById("pedidoText")
     pedidoText.style.opacity = '0'
-    pedidoText.style.top = '380px'
+    pedidoText.style.top = '400px'
     pedidoText.style.zIndex = '-1'
 }
 function onSubTextPicking() {
     const pickingText = document.getElementById("pickingText")
     pickingText.style.opacity = '2'
-    pickingText.style.top = '510px'
+    pickingText.style.top = '560px'
     pickingText.style.zIndex = '2'
 }
 function offSubTextPicking() {
@@ -418,10 +425,22 @@ function offSubTextPicking() {
     pickingText.style.top = '470px'
     pickingText.style.zIndex = '-1'
 }
+function onSubTextEstoque() {
+    const pickingText = document.getElementById("estoqueText")
+    pickingText.style.opacity = '2'
+    pickingText.style.top = '520px'
+    pickingText.style.zIndex = '2'
+}
+function offSubTextEstoque() {
+    const pickingText = document.getElementById("estoqueText")
+    pickingText.style.opacity = '0'
+    pickingText.style.top = '470px'
+    pickingText.style.zIndex = '-1'
+}
 function onSubTextMedidas() {
     const medidasText = document.getElementById("medidasText")
     medidasText.style.opacity = '2'
-    medidasText.style.top = '600px'
+    medidasText.style.top = '640px'
     medidasText.style.zIndex = '2'
 }
 function offSubTextMedidas() {
@@ -433,7 +452,7 @@ function offSubTextMedidas() {
 function onSubTextNcm() {
     const ncmText = document.getElementById("ncmText")
     ncmText.style.opacity = '2'
-    ncmText.style.top = '700px'
+    ncmText.style.top = '740px'
     ncmText.style.zIndex = '2'
 }
 function offSubTextNcm() {
@@ -477,6 +496,7 @@ function offSub() {
     offSubTextHome()
     offSubTextPedido()
     offSubTextPicking()
+    offSubTextEstoque()
     offSubTextMedidas()
     offSubTextNcm()
 }

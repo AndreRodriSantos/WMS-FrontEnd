@@ -91,7 +91,6 @@ export default function Rotas() {
                 <Route element={<PrivateRouteTurma />}>
                     <Route element={<Home />} path='/Home'></Route>
                     <Route path='/CadastroFornecedores' element={<CadastroFornecedor />} ></Route>
-                    <Route path='/CadastroEnderecamento' element={<CadastroEnderecamento />} ></Route>
                     <Route path='/CadastroProduto' element={<CadastroProduto />}></Route>
                     <Route path='/Pedido' element={<Pedido />}></Route>
                     <Route path='/Picking' element={<Picking />}></Route>

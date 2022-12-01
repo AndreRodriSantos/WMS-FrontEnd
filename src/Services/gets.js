@@ -141,6 +141,15 @@ window.onload = function () {
     }else if(reloading == "email"){
         sucesso("Verifique seu email e acesse o link para alterar sua senha")
         sessionStorage.removeItem("reloading")
+    }else if(reloading == "enderecamento"){
+        sucesso("Endereçamento cadastrado com sucesso!!!")
+        sessionStorage.removeItem("reloading")
+    }else if(reloading == "picking"){
+        sucesso("Produtos Enviados com sucesso!!!")
+        sessionStorage.removeItem("reloading")
+    }else if(reloading == "erroEnderecado"){
+        erro("Este pedido já está com seus produtos endereçados no estoque")
+        sessionStorage.removeItem("reloading")
     }
 }
 

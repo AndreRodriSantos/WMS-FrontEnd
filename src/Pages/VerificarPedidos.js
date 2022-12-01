@@ -8,18 +8,19 @@ import QrCode from '../IMG/QrCode.png'
 import CodBarra from '../IMG/CodBarra.png'
 import { PopUpInfo } from "../Components/ItensHome/PopUpInfo";
 import { InputPesquisa } from "../Components/Inputs/InputPesquisa";
+import { erro } from "../Components/Avisos/Alert";
 
 export default function VerificarPedidos() {
 
     const [itens, setItens] = useState([])
-
+    const [pedido, setPedido] = useState()
 
     async function getPedido(id) {
         return api.get(`api/pedido/${id}`).then(
             response => {
                 console.log(response.data.itens);
                 setItens(response.data.itens)
-
+                setPedido(response.data)
             }
         )
     }
@@ -28,11 +29,15 @@ export default function VerificarPedidos() {
         api.get(`api/notaFiscal/pega/${localStorage.getItem("idPedido")}`).then(response => {
             const notaFiscal = response.data
             console.log(notaFiscal);
-            window.location.href = `http://10.92.198.23:8080/api/pedido/teste/${notaFiscal.codigoNota}`
+            window.location.href = `http://localhost:8080/api/pedido/teste/${notaFiscal.codigoNota}`
         })
     }
 
     function ItemCall(item) {
+
+        const PopUpInfo = document.getElementById('PopUpInfo')
+        PopUpInfo.classList.add(styles.alertOn)
+
         let produto = document.getElementById('produto')
         let descricao = document.getElementById('descricao')
         let qnd = document.getElementById('qnd')
@@ -45,7 +50,12 @@ export default function VerificarPedidos() {
         let valorTotal = document.getElementById('valorTotal')
         let imgItemPedido = document.getElementById('imgItemPedido')
 
-        imgItemPedido.setAttribute("src", item.produto.imagem)
+        if(item.produto.imagem == null || item.produto.imagem == undefined){
+            imgItemPedido.setAttribute("src", "https://cdns.iconmonstr.com/wp-content/releases/preview/2019/240/iconmonstr-product-3.png")
+        }else{
+            imgItemPedido.setAttribute("src", item.produto.imagem)
+        }
+        
         produto.innerText = item.produto.nome
         descricao.innerText = item.produto.descricao
 
@@ -83,6 +93,14 @@ export default function VerificarPedidos() {
         })
     }
 
+    function verficaEnderecado() {
+        if (pedido.enderecado == false) {
+            window.location.href = "/Enderecamento"
+        } else {
+            erro("Este pedido já foi endereçado no Estoque")
+        }
+    }
+
     useEffect(() => {
         getPedido(localStorage.getItem('idPedido'))
     }, [])
@@ -98,7 +116,7 @@ export default function VerificarPedidos() {
                     style={{ width: 32, height: 32 }}>
                 </lord-icon>
             </a>
-            <a className={styles.headerLogo} href="Enderecamento">
+            <a className={styles.headerLogo} onClick={verficaEnderecado}>
                 <lord-icon
                     src="https://cdn.lordicon.com/jxwksgwv.json"
                     trigger="hover"
@@ -123,7 +141,9 @@ export default function VerificarPedidos() {
                 <div className={styles.lists}>
                     {itens && itens.map((i, index) => <ListaPedidos key={index} item={i} chamarItem={ItemCall} />)}
                 </div >
+                <div className={styles.enderecado}><span>Pedido Endereçado: {pedido ? pedido.enderecado == true ? <p style={{color: "green"}}>SIM</p> : <p style={{color: "red"}}>NÃO</p> : ""}</span></div>
             </div >
+            
 
             <div className={styles.BasePoup} id="BasePoup">
                 <div className={styles.PopUpInfo} id="PopUpInfo">

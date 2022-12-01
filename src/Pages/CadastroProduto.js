@@ -251,7 +251,7 @@ export default function CadastroProduto() {
                     }
                 )
                 )
-            , importado, ipi, pis, cofins, icms, imagem
+            , importado, ipi, pis, cofins, icms, imagem, valorLiquido
         }
 
         if (id) {
@@ -430,7 +430,6 @@ export default function CadastroProduto() {
                                 <label className={styles.label}>Importado</label>
 
                                 <div className={styles.importado}>
-
                                     <label className={styles.switch}>
                                         <input id='homologado' className={styles.inputCheckbox} type="checkbox"
                                             /* defaultChecked={importado == null ? false : importado == 1 ? false : true} */
@@ -445,9 +444,8 @@ export default function CadastroProduto() {
 
                             <div className={styles.ValorLiquido}>
                                 <span className={styles.titleVL}>Valor Final</span>
-                                <span className={styles.vl}>R$ {valorLiquido}</span>
+                                <span className={styles.vl}>{valorLiquido}</span>
                             </div>
-
                         </div>
 
                         <div className={styles.footerButtons}>
