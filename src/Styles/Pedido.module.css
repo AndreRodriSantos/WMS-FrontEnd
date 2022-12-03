@@ -245,7 +245,7 @@
     transition: .2s ease-in;
 }
 
-.finalizarPedido:hover {
+.finalizarPedido:hover { 
     border: 2px solid #000;
     background-color: transparent;
     color: #000;

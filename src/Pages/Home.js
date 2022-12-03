@@ -14,7 +14,7 @@ import { Perfil } from "../Components/ItensHome/Perfil";
 import { AbrirRelatorio, Relatorios } from "../Components/Avisos/Relatorios";
 import { dataHoraFormatter } from "../Services/formatter";
 
-export default function Home() {
+export default function Home() { 
 
     const [fornecedor, setFornecedor] = useState([])
     const [pedido, setPedido] = useState([])

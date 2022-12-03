@@ -33,6 +33,15 @@ export default function VerificarPedidos() {
         })
     }
 
+    function GerarQrCode(){
+        window.location.href = `http://localhost:8080/api/pdf/qrCode/${localStorage.getItem("idProduto")}`
+       
+    }
+    
+    function GerarCodeBar(){
+        window.location.href = `http://localhost:8080/api/pdf/barcode/${localStorage.getItem("idProduto")}`
+    }
+
     function ItemCall(item) {
 
         const PopUpInfo = document.getElementById('PopUpInfo')
@@ -103,6 +112,7 @@ export default function VerificarPedidos() {
 
     useEffect(() => {
         getPedido(localStorage.getItem('idPedido'))
+        localStorage.removeItem("idProduto")
     }, [])
 
     return (
@@ -158,6 +168,14 @@ export default function VerificarPedidos() {
                             <div className={styles.TitleInfo}>
                                 <span id='produto' className={styles.NomeProduto}></span>
                                 <span id='descricao' className={styles.DescricaoProduto}></span>
+                                <div className={styles.cod}>
+                                    <span onClick={GerarQrCode} className={styles.Code} title='QrCode'>
+                                        <i className="fa-solid fa-qrcode"></i>
+                                    </span>
+                                    <span onClick={GerarCodeBar} className={styles.Code} title='Codigo de Barra'>
+                                        <i className="fa-solid fa-barcode"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
@@ -231,5 +249,7 @@ export default function VerificarPedidos() {
         const PopUpInfo = document.getElementById('PopUpInfo')
         BasePoup.style.display = 'none'
         PopUpInfo.style.display = 'none'
+
+        localStorage.removeItem("idProduto")
     }
 } 
