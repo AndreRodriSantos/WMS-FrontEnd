@@ -225,10 +225,10 @@ function onSideBar() {
     const HomeCenter = document.getElementById("HomeCenter");
     const C1 = document.getElementById("C1");
 
-    if(window.screen.width <= 1650){
+    if(window.screen.width <= "1650px"){
         HomeCenter.style.width = '100%'
         HomeRight.style.width = '100%'
-    }else{
+    }else if (window.screen.width > "1650px"){
         HomeCenter.style.width = '60%'
         HomeRight.style.width = '40%'
     }
@@ -276,10 +276,10 @@ function offSideBar() {
     const home = document.getElementById('home')
     const HomeRight = document.getElementById("HomeRight");
 
-    if (window.screen.width <= 1650) {
+    if (window.screen.width <= "1650px") {
         HomeCenter.style.width = '100%'
         HomeRight.style.width = '100%'
-    } else {
+    } else if (window.screen.width > "1650px"){
         HomeCenter.style.width = '70%'
         HomeRight.style.width = '30%'
     }

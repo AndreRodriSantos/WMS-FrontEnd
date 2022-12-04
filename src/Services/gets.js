@@ -124,7 +124,7 @@ window.onload = function () {
         sucesso("Usuário Logado com sucesso, seja bem-vindo!!")
         sessionStorage.removeItem("reloading");
     } else if (reloading == "cadastro") {
-        sucesso("Cadastrado foi realizado com sucesso")
+        sucesso("Seu cadastrado foi realizado com sucesso")
         sessionStorage.removeItem("reloading");
     } else if (reloading == "alteracao") {
         sucesso("A alteração foi realizada com sucesso!!")
@@ -139,13 +139,13 @@ window.onload = function () {
         erro("Alunos sem turma não podem logar, peça a seu professor para adicioná-lo em uma turma")
         sessionStorage.removeItem("reloading")
     }else if(reloading == "erroFornecedor"){
-        erro("Este fornecedor não pode ser excluido, pois existem produtos cadastrados com ele!!")
+        erro("Este fornecedor não pode ser excluído, pois existem produtos cadastrados com ele!!")
         sessionStorage.removeItem("reloading")
     }else if(reloading == "erroProduto"){
-        erro("Este produto não pode ser excluido, pois existem pedidos cadastrados com ele!!")
+        erro("Este produto não pode ser excluído, pois existem pedidos cadastrados com ele!!")
         sessionStorage.removeItem("reloading")
     }else if(reloading == "email"){
-        sucesso("Verifique seu email e acesse o link para alterar sua senha")
+        sucesso("Verifique seu email e insira o código para alterar sua senha")
         sessionStorage.removeItem("reloading")
     }else if(reloading == "enderecamento"){
         sucesso("Endereçamento cadastrado com sucesso!!!")
@@ -161,7 +161,6 @@ window.onload = function () {
         sessionStorage.removeItem("reloading")
     }
 }
-
 
 export function refresh(r) {
     sessionStorage.setItem("reloading", r);

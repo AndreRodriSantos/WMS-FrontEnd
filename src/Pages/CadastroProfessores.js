@@ -73,6 +73,11 @@ export default function CadastroProfessores() {
         }
     }
 
+    function tirarFoto() {
+        document.getElementById("imgPhoto").src = ""
+    }
+
+
     useEffect(() => {
         getProfAlterar()
     }, [])
@@ -141,6 +146,9 @@ export default function CadastroProfessores() {
                         <div className={styles.fotoDiv}>
                             <div className={styles.personal_image}>
                                 <label>
+                                    <span onClick={tirarFoto} className={styles.btnFileRemove}>
+                                        <i className="fa-regular fa-circle-xmark"></i>
+                                    </span>
                                     <input type="file" id="fileImage" onChange={fileChange} accept=".jpg" />
                                     <span className={styles.btnFile}>
                                         <i className="fa-solid fa-file-circle-plus"></i>

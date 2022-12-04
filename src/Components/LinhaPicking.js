@@ -11,7 +11,6 @@ export default class LinhaPicking extends React.Component {
             const checkBox = document.getElementById(id)
             const qtd = document.getElementById(`qtd ${id}`).value
             const qtdInput = document.getElementById(`qtd ${id}`)
-
             console.log(qtd);
 
             if (checked == true) {

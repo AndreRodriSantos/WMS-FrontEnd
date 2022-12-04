@@ -140,6 +140,38 @@ export default class ProdutoItem extends React.Component {
             impostos.style.width = '50%'
         }
 
+        function qtd() {
+            const counter = document.getElementById(`qtd ${id}`)
+            let value = counter.value;
+            const buttonIncrement = document.getElementById(`addQtd ${id}`);
+            const buttonDecrement = document.getElementById(`removeQtd ${id}`);
+
+            if (value > 9) {
+                counter.style.paddingLeft = '15px'
+            }
+            if (value > 99) {
+                counter.style.paddingLeft = '10px'
+            }
+            if (value > 999) {
+                counter.style.fontSize = "13px"
+            }else{
+                counter.style.fontSize = "20px"
+            }
+
+            if (value > 99999) {
+                counter.value = 99999
+                buttonIncrement.style.color = '#A7A7A7'
+            }else{
+                buttonIncrement.style.color = '#4D71FF'
+            }
+
+            if (value >= 2) {
+                buttonDecrement.style.color = '#4D71FF'
+            } else {
+                buttonDecrement.style.color = '#A7A7A7'
+            }
+        }
+
         function addQntd(type) {
             const counter = document.getElementById(`qtd ${id}`)
             const buttonDecrement = document.getElementById(`removeQtd ${id}`);
@@ -155,7 +187,7 @@ export default class ProdutoItem extends React.Component {
                 value = value != 1 ? --value : 1;
                 counter.value = value;
             }
-
+            
             if (value > 9) {
                 counter.style.paddingLeft = '15px'
             }
@@ -163,19 +195,13 @@ export default class ProdutoItem extends React.Component {
                 counter.style.paddingLeft = '10px'
             }
             if (value > 999) {
-                counter.style.paddingLeft = '5px'
-            }
-            if (value > 9999) {
-                counter.style.paddingLeft = '0'
-                counter.style.left = '15%'
-                counter.style.width = '60px'
-                buttonIncrement.style.right = '-40%'
+                counter.style.fontSize = "13px"
             }
             if (value > 99999) {
-                counter.style.paddingLeft = '0'
-                counter.style.left = '16%'
-                counter.style.width = '66px'
-                buttonIncrement.style.right = '-50%'
+                counter.value = 99999
+                buttonIncrement.style.color = '#A7A7A7'
+            }else{
+                buttonIncrement.style.color = '#4D71FF'
             }
 
             if (value >= 2) {
@@ -215,7 +241,7 @@ export default class ProdutoItem extends React.Component {
                         <p title="Quantidade" className={styles.titleQtd}>Qtd</p>
                         <div className={styles.qtd}>
                             <span onClick={() => addQntd('sub')} id={`removeQtd ${id}`} className={styles.btnQndLeft}><i className="fa-solid fa-circle-minus"></i></span>
-                            <input className={styles.InputQnt} type="number" min={"1"} id={`qtd ${id}`} defaultValue={1} ></input>
+                            <input onChange={qtd} className={styles.InputQnt} type="number" min={"1"} id={`qtd ${id}`} defaultValue={1} ></input>
                             <span onClick={() => addQntd('add')} id={`addQtd ${id}`} className={styles.btnQnd}><i className="fa-solid fa-circle-plus"></i></span>
                         </div>
 
