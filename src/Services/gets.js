@@ -66,6 +66,12 @@ export async function fazOptionsProdutos() {
     return options
 }
 
+export async function fazOptionsProdutosSKU() {
+    const produto = await getProduto()
+    const options = produto.map((p) => `<option value=${p.sku}>${p.nome}</option>`)
+    return options
+}
+
 export async function fazOptionsPeriodo() {
     const periodo = await getPeriodo()
     const options = periodo.map((p) => `<option value=${p}>${p}</option>`)
@@ -149,6 +155,9 @@ window.onload = function () {
         sessionStorage.removeItem("reloading")
     }else if(reloading == "erroEnderecado"){
         erro("Este pedido já está com seus produtos endereçados no estoque")
+        sessionStorage.removeItem("reloading")
+    }else if(reloading == "pedido"){
+        sucesso("Pedido foi realizado com sucesso!!")
         sessionStorage.removeItem("reloading")
     }
 }

@@ -8,7 +8,7 @@ export class InputPesquisa extends React.Component {
     }
 
     render() {
-        const { name, id, placeholder, search } = this.props
+        const { name, id, placeholder, search, left } = this.props
 
         const onSearch = (e) => {
             e.preventDefault()
@@ -16,7 +16,7 @@ export class InputPesquisa extends React.Component {
         }
 
         return (
-            <div className={styles.inputBox}>
+            <div className={styles.inputBox} style={{left : left}}>
                 <form onSubmit={onSearch}>
 
                     <input id={id} className={styles.inputPesquisa} type="search" placeholder={placeholder} autoComplete="off" onChange={e => this.setState({ texto: e.target.value })} required name={name}></input>

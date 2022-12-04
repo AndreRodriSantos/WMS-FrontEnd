@@ -11,6 +11,7 @@ import logo from "../IMG/Logo WMS.png"
 import CaixaRight from "../IMG/CaixaRight.png"
 import DesignPedido from "../IMG/DesignPedido.png"
 import { PopUpInfo } from "../Components/ItensHome/PopUpInfo"
+import { refresh } from "../Services/gets"
 
 export default function Pedido() {
 
@@ -90,7 +91,7 @@ export default function Pedido() {
         api.post("api/pedido/save", pedido).then(
             response => {
                 if (response.status == 201 || response.status == 200) {
-                    sucesso(`Pedido relizado com sucesso!!!`)
+                    refresh(`pedido`)
                 }
             },
             err => {

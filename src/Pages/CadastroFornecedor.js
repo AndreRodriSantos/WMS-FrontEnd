@@ -6,6 +6,7 @@ import api from "../Services/api"
 import { useEffect, useState } from "react"
 import { erro, sucesso } from "../Components/Avisos/Alert"
 import gif from '../IMG/telaFornecedor.mp4'
+import { refresh } from "../Services/gets"
 
 export default function CadastroFornecedor() {
 
@@ -55,7 +56,7 @@ export default function CadastroFornecedor() {
             ).then(
                 response => {
                     if (response.status == 201 || response.status == 200) {
-                        sucesso(`Fornecedor ${nome} alterado com sucesso!!!`)
+                        refresh(`alteracao`)
                     }
                 },
                 err => {
@@ -66,7 +67,7 @@ export default function CadastroFornecedor() {
             api.post("api/fornecedor/save", body).then(
                 response => {
                     if (response.status == 201 || response.status == 200) {
-                        sucesso("Fornecedor cadastrado com sucesso!!!")
+                        refresh(`cadastro`)
                     }
                 },
                 err => {

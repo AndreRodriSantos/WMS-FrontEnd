@@ -221,6 +221,7 @@ export default function CadastroProduto() {
         if (valorImportacaoInput == false) {
             valorImportacao.value = ""
             valorImportacao.setAttribute("disabled", '')
+            setValorImportacao(null)
             fazerCalculo()
         } else {
             valorImportacao.removeAttribute('disabled')
@@ -432,7 +433,7 @@ export default function CadastroProduto() {
 
                                 <div className={styles.importado}>
                                     <label className={styles.switch}>
-                                        <input id='homologado' className={styles.inputCheckbox} type="checkbox"
+                                        <input id='homologado' defaultValue={importado} className={styles.inputCheckbox} type="checkbox"
                                             /* defaultChecked={importado == null ? false : importado == 1 ? false : true} */
                                             onChange={(e) => setimportado(e.target.value)}
                                             onClick={() => disableImportacao()}

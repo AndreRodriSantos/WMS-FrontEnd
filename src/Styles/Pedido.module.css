@@ -73,6 +73,7 @@
 .divPesquisa {
     position: relative;
     left: -10%;
+    top: 10px;
 }
 
 .lista {

@@ -41,7 +41,7 @@ export default function CadastroAlunos() {
             ).then(
                 response => {
                     if (response.status == 201 || response.status == 200) {
-                        sucesso("Aluno cadastrado com sucesso!!!")
+                        refresh(`cadastro`)
                     }
                 },
                 err => {

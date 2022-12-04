@@ -13,6 +13,9 @@ import { CadastroNcm, getListaNcm } from "../Components/ItensHome/CadastroNcm";
 import { Perfil } from "../Components/ItensHome/Perfil";
 import { AbrirRelatorio, Relatorios } from "../Components/Avisos/Relatorios";
 import { dataHoraFormatter } from "../Services/formatter";
+import Bruninha from "../IMG/BruninhaAnimation.gif"
+import BruninhaSleep from "../IMG/BruninhaDormindo.gif"
+import BruninhaClick from "../IMG/BruninhaClick.png"
 
 export default function Home() {
 
@@ -197,7 +200,7 @@ export default function Home() {
         <section className={styles.components}>
             <div id="popUpInformacoes" className={styles.popUp}>
                 <PopUpInfo />
-            </div>       
+            </div>
             <div id="popUpSobre" className={styles.popUp}>
                 <Perfil nome={nome} email={email} nif={nif} matricula={codMatricula} img={imagemUser}></Perfil>
             </div>
@@ -210,72 +213,74 @@ export default function Home() {
             <Relatorios></Relatorios>
             <div id='home' className={styles.home}>
                 <SideBar />
-                <div className={styles.homeCenter} id="HomeCenter">
-                    <div id='CardTutoria' className={styles.cardTutorial}>
-                        <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
-                        <div className={styles.subCard}>
-                            <p className={styles.subTitle}>
-                                Está com duvidas?
-                            </p>
-                            <p className={styles.subTitle}>
-                                Venha Conhecer nosso tutorial rapido e fácil disponivel no Youtube!!
-                            </p>
-                            <p className={styles.subTitle}>
-                                Aprender nunca foi tão divertido
-                            </p>
-                        </div>
-                        <div className={styles.btns}>
-                            <button className={styles.tutorial}>TUTORIAL</button>
-                        </div>
-                        <div className={styles.Caixa}>
-                            <img className={styles.C1} id='C1' src={Caixas} />
-                        </div>
-                    </div>
-
-                    <div id='ListHistorico' className={styles.listHistorico}>
-                        <div className={styles.headerListMovimentacao}>
-                            <span className={styles.headerTitleMovimentacao}>
-                                <lord-icon
-                                    src="https://cdn.lordicon.com/ogkplaef.json"
-                                    trigger="hover"
-                                    colors="primary:#000"
-                                    state="hover"
-                                    style={{ width: 32, height: 32 }}>
-                                </lord-icon>
-                                <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
-                            </span>
-                            <button onClick={AbrirRelatorio } className={styles.relatoriosBtn}>Relatórios <i class="fa-sharp fa-solid fa-file"></i></button>
-                            <InputPesquisa placeholder={"Pesquise uma Movimentação"} search={search} />
-                        </div>
-                        <div className={styles.tabelaContainer}>
-                            <div className={styles.headerListH}>
-                                <div className={styles.HeaderMovimentacao}>
-                                    <p colSpan="1">Data</p>
-                                    <p colSpan="1">Movimento</p>
-                                    <p colSpan="1">Tipo</p>
+                <div className={styles.home2} id={"home2"}>
+                    <div className={styles.homeCenter} id="HomeCenter">
+                        <div id='CardTutoria' className={styles.cardTutorial}>
+                            <div className={styles.cardTutorialTexts}>
+                                <h2 className={styles.titleCard}>Gerenciamento de estoque nunca foi tão fácil</h2>
+                                <div className={styles.subCard}>
+                                    <p className={styles.subTitle}>
+                                        Está com duvidas?
+                                    </p>
+                                    <p className={styles.subTitle}>
+                                        Venha Conhecer nosso tutorial rapido e fácil disponivel no Youtube!!
+                                    </p>
+                                    <p className={styles.subTitle}>
+                                        Aprender nunca foi tão divertido
+                                    </p>
                                 </div>
-                                <span className={styles.barra}></span>
+                                <div className={styles.btns}>
+                                    <button className={styles.tutorial}>TUTORIAL</button>
+                                </div>
                             </div>
-                            <div className={styles.tabelaHistorico}>
-                                <table className={styles.tabelaMovimentacao}>
-                                    <tbody className={styles.tabelaMovimentacaoBody}>
-                                        {movimentacoes.map((m, key) =>
-                                            <tr key={key} className={styles.trMovimentacao}>
-                                                <td className={styles.data}>{dataHoraFormatter(m.data)}</td>
-                                                <td className={styles.produtoNome}>
-                                                    <span style={m.tipo == 'SAIDA' ? { backgroundColor: '#F2C7C3' } : { backgroundColor: '#B2FBDE' }} className={styles.qntMovimento}>{m.tipo == 'ENTRADA' ? "+" + m.quantidade : "-" + m.quantidade}</span>
-                                                </td>
-                                                <td style={m.tipo == "ENTRADA" ? { color: "green" } : { color: "red" }} className={styles.tipo}>{m.tipo}</td>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </table>
+                            <div className={styles.Caixa}>
+                                <img className={styles.C1} id='C1' src={Caixas} />
+                            </div>
+                        </div>
+
+                        <div id='ListHistorico' className={styles.listHistorico}>
+                            <div className={styles.headerListMovimentacao}>
+                                <span className={styles.headerTitleMovimentacao}>
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/ogkplaef.json"
+                                        trigger="hover"
+                                        colors="primary:#000"
+                                        state="hover"
+                                        style={{ width: 32, height: 32 }}>
+                                    </lord-icon>
+                                    <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
+                                </span>
+                                <button onClick={AbrirRelatorio} className={styles.relatoriosBtn}><p>Relatórios</p> <i className="fa-sharp fa-solid fa-file"></i></button>
+                                <InputPesquisa placeholder={"Pesquise uma Movimentação"} left={0} search={search} />
+                            </div>
+                            <div className={styles.tabelaContainer}>
+                                <div className={styles.headerListH}>
+                                    <div className={styles.HeaderMovimentacao}>
+                                        <p colSpan="1">Data</p>
+                                        <p colSpan="1">Movimento</p>
+                                        <p colSpan="1">Tipo</p>
+                                    </div>
+                                    <span className={styles.barra}></span>
+                                </div>
+                                <div className={styles.tabelaHistorico}>
+                                    <table className={styles.tabelaMovimentacao}>
+                                        <tbody className={styles.tabelaMovimentacaoBody}>
+                                            {movimentacoes.map((m, key) =>
+                                                <tr key={key} className={styles.trMovimentacao}>
+                                                    <td className={styles.data}>{dataHoraFormatter(m.data)}</td>
+                                                    <td className={styles.produtoNome}>
+                                                        <span style={m.tipo == 'SAIDA' ? { backgroundColor: '#F2C7C3' } : { backgroundColor: '#B2FBDE' }} className={styles.qntMovimento}>{m.tipo == 'ENTRADA' ? "+" + m.quantidade : "-" + m.quantidade}</span>
+                                                    </td>
+                                                    <td style={m.tipo == "ENTRADA" ? { color: "green" } : { color: "red" }} className={styles.tipo}>{m.tipo}</td>
+                                                </tr>
+                                            )}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className={styles.home2}>
                     <div id='HomeRight' className={styles.HomeRight}>
 
                         <div className={styles.estatisticas}>
@@ -300,7 +305,6 @@ export default function Home() {
 
                                     <p><strong>Professores:</strong> {qtdProfessores}</p>
                                     <p><strong>Alunos:</strong> {qtdAlunos}</p>
-
                                 </div>
 
                                 <div className={styles.status2}>
@@ -364,7 +368,6 @@ export default function Home() {
                                 <button id="btnProdutos" onClick={produtoList} type="button" className={styles.buttons}><i className="fa-solid fa-box"></i></button>
                             </div>
                             <div id="baseForm" className={styles.base_form}>
-
                                 <div id='pedidoList' className={styles.listaPedidos}>
                                     <div className={styles.headerList}>
                                         <span className={styles.headerTitle}>
@@ -379,9 +382,10 @@ export default function Home() {
                                     <table className={styles.tabela}>
                                         <thead className={styles.thead}>
                                             <tr className={styles.pedidoHeaderTr}>
-                                                <th colSpan="1">ID</th>
-                                                <th colSpan="1">Data</th>
-                                                <th colSpan="1">Valor</th>
+                                                <th>ID</th>
+                                                <th>Data</th>
+                                                <th>Valor</th>
+                                                <th>Enderaçado</th>
                                             </tr>
                                         </thead>
                                         <tbody className={styles.lista}>
@@ -409,6 +413,7 @@ export default function Home() {
                                                 <th colSpan="1">Nome</th>
                                                 <th colSpan="1">CNPJ</th>
                                                 <th colSpan="1">UF</th>
+                                                <th colSpan="1">Homologado</th>
                                             </tr>
                                         </thead>
                                         <tbody className={styles.lista}>
@@ -436,6 +441,7 @@ export default function Home() {
                                                 <th colSpan="1">SKU</th>
                                                 <th colSpan="1">Nome</th>
                                                 <th colSpan="1">Valor</th>
+                                                <th colSpan="1">Ponto Pedido</th>
                                             </tr>
                                         </thead>
                                         <tbody className={styles.lista}>
@@ -447,10 +453,7 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
                     <div id='chatbot' className={styles.BaseBotChat}>
                         <div id='balao' className={styles.interogacao}>
                             <i className="fa-solid fa-question"></i>
@@ -463,7 +466,9 @@ export default function Home() {
                             <div id='btnOn' onClick={abrirChat} className={styles.btnOn}>
                                 <i className="fa-solid fa-arrow-up"></i>
                             </div>
-                            <span className={styles.foto}></span>
+                            <span id={"avatarFoto"} className={styles.foto}>
+                                <img id={"chatAvatar"} src={BruninhaSleep}></img>
+                            </span>
                         </div>
                         <div className={styles.BotChat}>
                             <span className={styles.BotChatTitle}>
@@ -490,6 +495,15 @@ export default function Home() {
         const btnOff = document.getElementById('btnOff')
         const BotChat = document.getElementById('chatbot')
         const balao = document.getElementById('balao')
+        const chatAvatar = document.getElementById('chatAvatar')
+        const avatarFoto = document.getElementById('avatarFoto')
+
+        chatAvatar.style.width = "160px"
+        chatAvatar.style.height = "160px"
+        chatAvatar.style.left = "-30px"
+        avatarFoto.style.overflow = "hidden"
+        chatAvatar.src = Bruninha
+        chatAvatar.style.bottom = "20px"
 
         if (window.screen.width <= 1070) {
             BotChat.style.bottom = '-8%'
@@ -510,11 +524,20 @@ export default function Home() {
         const btnOff = document.getElementById('btnOff')
         const BotChat = document.getElementById('chatbot')
         const balao = document.getElementById('balao')
+        const chatAvatar = document.getElementById('chatAvatar')
+        const avatarFoto = document.getElementById('avatarFoto')
+
+        chatAvatar.style.width = "150px"
+        chatAvatar.style.height = "150px"
+        chatAvatar.style.left = "-25px"
+        avatarFoto.style.overflow = "visible"
+        chatAvatar.src = BruninhaSleep
+        chatAvatar.style.bottom = "30px"
 
         if (window.screen.width <= 1070) {
             BotChat.style.bottom = '-48%'
         } else {
-            BotChat.style.bottom = '-51%'
+            BotChat.style.bottom = '-470px'
         }
 
         btnOn.style.opacity = '1'

@@ -18,7 +18,7 @@ export class ListHome extends React.Component {
             }
             else {
                 localStorage.setItem('idProduto', id)
-                chamarPopUp() 
+                chamarPopUp()
             }
         }
 
@@ -49,7 +49,6 @@ export class ListHome extends React.Component {
             let info5Title = document.getElementById('info5Title')
             let info6Title = document.getElementById('info6Title')
 
-
             if (localStorage.getItem("idFornecedor") != undefined) {
                 id.value = objeto.id
                 nome.innerText = objeto.nome
@@ -71,17 +70,17 @@ export class ListHome extends React.Component {
                 info5Title.innerText = "Logradouro:"
                 info6Title.innerText = "UF:"
 
-            } else if(localStorage.getItem("idProduto") != undefined) {
+            } else if (localStorage.getItem("idProduto") != undefined) {
                 id.value = objeto.codProduto
                 nome.innerText = objeto.nome
                 info1.innerText = objeto.sku
-                
-                if(objeto.descricao.length > 28){
-                    info2.innerText = objeto.descricao.substring(0, 28)+'...'
-                }else{
+
+                if (objeto.descricao.length > 28) {
+                    info2.innerText = objeto.descricao.substring(0, 28) + '...'
+                } else {
                     info2.innerText = objeto.descricao
-                }          
-                
+                }
+
                 if (objeto.importado == true) {
                     info3.innerText = 'SIM'
                 } else {
@@ -107,6 +106,30 @@ export class ListHome extends React.Component {
                 </td>
                 <td className={styles.titleList}>{Info2}</td>
                 <td className={styles.titleList}>{Info3}</td>
+                <td className={styles.titleList}>
+                    {objeto.enderecado != undefined ?
+                        objeto.enderecado == false ? <p title="Não endereçado" className={styles.circleRed}></p> : <p title="Endereçado" className={styles.circleGreen}></p>
+                        : objeto.homologado != undefined ?
+                            objeto.homologado == true ? <p title="Homologado" className={styles.circleBlue}></p> : <p title="Não Homologado" className={styles.circleGray}></p>
+                            : objeto.pontoPedido >= objeto.saldo ?
+                                <p title="Produto em falta">
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/wdqztrtx.json"
+                                        trigger="hover"
+                                        colors="primary:#c7c116"
+                                        style={{ width: 32, height: 32 }}>
+                                    </lord-icon>
+                                </p> :
+                                <p title="Quantidade Segura">
+                                    <lord-icon
+                                        src="https://cdn.lordicon.com/egiwmiit.json"
+                                        trigger="hover"
+                                        colors="primary:green"
+                                        style={{ width: 32, height: 32 }}>
+                                    </lord-icon>
+                                </p>
+                    }
+                </td>
             </tr>
         );
 

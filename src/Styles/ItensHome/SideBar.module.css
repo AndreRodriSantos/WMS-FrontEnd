@@ -1,6 +1,8 @@
 .container {
     position: relative;
     left: 1%;
+    height: 100%;
+    min-height: 765px;
 }
 
 .base {
@@ -428,139 +430,9 @@
     }
 }
 
-@media screen and (min-width:1575px) {
-    .base {
-        height: 96%;
-    }
-}
-
-@media screen and (max-width:1575px) {
-    .base {
-        height: 62.5%;
-    }
-
-    .btnOff {
-        top: 7%;
-    }
-
-    .btn {
-        top: 7%;
-    }
-
-}
-
-@media screen and (max-width:1120px) {
-    .base {
-        height: 70.5%;
-        transform: scale(0.95);
-    }
-
-    .btnOff {
-        top: 7%;
-        transform: scale(0.95);
-    }
-
-    .btn {
-        top: 7%;
-        transform: scale(0.95);
-    }
-
-}
-
-@media screen and (max-width:1080px) {
-    .base {
-        height: 70.5%;
-        transform: scale(0.95);
-    }
-
-    .btnOff {
-        top: 10%;
-        transform: scale(0.95);
-    }
-
-    .btn {
-        top: 10%;
-        transform: scale(0.95);
-    }
-
-}
-
-@media screen and (max-width:1080px) {
-    .base {
-        height: 70.5%;
-        transform: scale(0.95);
-    }
-
-    .btnOff {
-        top: 10%;
-        transform: scale(0.95);
-    }
-
-    .btn {
-        top: 10%;
-        transform: scale(0.95);
-    }
-
-}
-
-@media screen and (max-width:1070px){
-    .base {
-        height: 70.5%;
-        transform: scale(0.9);
-    }
-    .base {
-        transform: scale(0.85);
-        height: 74.5%;
-        top: -4%;
-    }
-
-    .btn {
-        display: none;   
-    }
-    .sub_menuOff{
-        left: 112px;
-    }
-}
-
-@media screen and (max-width:880px){
-    .base {
-        transform: scale(0.85);
-        height: 74.5%;
-        top: -2.6%;
-    }
-
-    .btn {
-        display: none;   
-    }
-    .sub_menuOff{
-        left: 112px;
-    }
-}
-
-
-@media screen and (max-width:840px){
-    .base {
-        transform: scale(0.85);
-        height: 74.5%;
-        top: -2.6%;
-    }
-
-    .btn {
-        display: none;   
-    }
-    .sub_menuOff{
-        left: 112px;
-    }
-}
-
-/* ALTURA */
-
-/* @media screen and (max-height: 1080px) {
-   
-}
- */
-@media screen and (max-height: 768px) {
-    .base{
-        height: 55.5%;
+@media screen and (max-width:1650px) {
+    .container{
+        height: 150%;
+        min-height: 1520px;
     }
 }

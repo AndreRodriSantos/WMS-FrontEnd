@@ -51,7 +51,7 @@ export default function CadastroProfessores() {
             ).then(
                 response => {
                     if (response.status == 201 || response.status == 200) {
-                        sucesso("Professor cadastrado com sucesso!!!")
+                        refresh(`cadastro`)
                     }
                 },
                 err => {

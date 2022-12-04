@@ -7,6 +7,8 @@
     border-radius: 10px;
     transform: scale(1);
     transition: 0.2s linear;
+    display: flex;
+    justify-content: space-around;
 }
 
 .container:hover {
@@ -18,12 +20,45 @@
 .titleList{
     font-weight: bold;
     color: #a7a7a7;
-    width: 100pc;
+    width: 100px;
+    max-width: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nome{
     font-weight: bold;
     color: black;
+}
+
+.circleRed{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(207, 60, 60);
+}
+
+.circleGreen{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(100, 203, 100);
+}
+
+.circleBlue{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(95, 168, 232);
+}
+
+.circleGray{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(123, 123, 123);
 }
 
 .alertOn {

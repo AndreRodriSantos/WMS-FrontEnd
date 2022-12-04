@@ -224,15 +224,20 @@ function onSideBar() {
     const chamaTextME = document.getElementById("chamaTextME");
     const chamaTextNcm = document.getElementById("chamaTextNcm");
 
-    const HomeCenter = document.getElementById("HomeCenter");
+    const HomeCenter = document.getElementById("home2");
+    const HomeCenter2 = document.getElementById("HomeCenter");
     const C1 = document.getElementById("C1");
 
 
-    if (window.screen.width <= 1575) {
+    if (window.screen.width <= 1650) {
+        HomeCenter.style.width = '100%'
+    }else{
+        HomeCenter2.style.width = '100%'
+        HomeCenter.style.width = '100%'
+    } if (window.screen.width <= 1400) {
+        HomeCenter.style.width = '73%'
+    } if (window.screen.width <= 1300) {
         HomeCenter.style.width = '75%'
-
-    } else {
-        HomeCenter.style.width = '65%'
     }
 
     sideBar.style.width = '300px'
@@ -273,19 +278,19 @@ function offSideBar() {
     const arrowCadastroOff = document.getElementById("arrowCadastroOff");
 
 
-    const HomeCenter = document.getElementById("HomeCenter");
+    const HomeCenter = document.getElementById("home2");
     const C1 = document.getElementById("C1");
     const home = document.getElementById('home')
-
+    const HomeCenter2 = document.getElementById("HomeCenter");
 
     if (window.screen.width <= 1575) {
-        HomeCenter.style.width = '88%'
-
-    } else if (window.screen.width == 840) {
-        HomeCenter.style.width = '88%%'
-    }
-    else {
-        HomeCenter.style.width = '80%'
+        HomeCenter.style.width = '100%'
+        HomeCenter2.style.width = '100%'
+    } if (window.screen.width <= 1300) {
+        HomeCenter.style.width = '90%'
+    } else {
+        HomeCenter.style.width = '100%'
+        HomeCenter2.style.width = '100%'
     }
 
     sub_menu.style.display = 'none'

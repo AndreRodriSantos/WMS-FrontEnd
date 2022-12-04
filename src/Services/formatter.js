@@ -1,7 +1,7 @@
 export function dataFormatada(date) {
     var data = new Date(date),
         dia = data.getDate(),
-        dia = (dia + 1).toString(),
+        dia = (dia == 30) ? "1" : (dia + 1).toString(),
         dia = (dia == 32) ? "01" : dia,
         diaF = (dia.length == 1) ? '0' + dia : dia,
         mes = (data.getMonth() + 1).toString(),

@@ -12,20 +12,35 @@
 }
 
 .home {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: last baseline;
     width: 100%;
     height: 100%;
     background-color: #fff;
     border-radius: 20px;
+    overflow: scroll;
+}
+
+.home2{
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .homeCenter {
+    height: 100%;
     width: 80%;
     transition: .2s ease-in;
     padding: 20px 0px 20px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     margin: 0 2%;
     left: 1%;
@@ -47,6 +62,8 @@
 .cardTutorial {
     position: relative;
     width: 100%;
+    display: flex;
+    flex-direction: row;
     height: 450px;
     max-height: 500px;
     background: linear-gradient(287deg, #CA8DEA 0%, #6064F9 120%);
@@ -71,7 +88,7 @@
     position: relative;
     top: 10%;
     left: 5%;
-    width: 600px;
+    width: 100%;
     height: 150px;
     display: flex;
     flex-direction: column;
@@ -123,7 +140,7 @@
 }
 
 .Caixa {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     width: 40%;
@@ -134,10 +151,17 @@
 
 }
 
+.cardTutorialTexts{
+    width: 60%;
+    height: 100%;
+}
+
 .C1 {
+    width: 80%;
+    min-width: 300px;
     position: relative;
     top: 0;
-    animation: caixa 5s ease-in infinite;
+    animation: caixa 4s linear infinite;
     transform: scale(1.1);
 }
 
@@ -156,8 +180,11 @@
 }
 
 .listHistorico {
+    position: relative;
     width: 100%;
+    min-height: 300px;
     height: 450px;
+    margin-top: 20px;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.402) 0px 8px 20px;
     transition: .2s ease-in;
@@ -165,7 +192,7 @@
 
 .BaseBotChat {
     position: fixed;
-    bottom: -51%;
+    bottom: -470px;
     right: 4%;
     width: 400px;
     height: 580px;
@@ -212,6 +239,16 @@
     background-color: #000;
     z-index: 26;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.foto img{
+    width: 150px;
+    height: 150px;
+    position: relative;
+    bottom: 30px;
+    left: -25px;
+    cursor: pointer;
+    z-index: 28;
 }
 
 .btnOn {
@@ -420,10 +457,11 @@
 .estatisticas {
     width: 450px;
     height: 450px;
+    min-width: 300px;
+    margin-bottom: 20px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.402) 0px 8px 20px;
-    margin-bottom: 20px;
     font-size: 13px;
 }
 
@@ -532,6 +570,7 @@
 .base {
     position: relative;
     width: 450px;
+    min-height: 315px;
     height: 450px;
     border-radius: 20px;
     background-color: #fff;
@@ -683,7 +722,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .SubTitleMovimentacao {
@@ -825,8 +863,10 @@
     width: 28%;
 }
 
-.pedidoHeaderTr th {
-    width: 0%;
+.thead th {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
 }
 
 .lista {
@@ -858,6 +898,9 @@
 }
 
 .relatoriosBtn{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     width: 120px;
     height: 40px;
     background-color: #6064F9;
@@ -875,756 +918,81 @@
     font-size: 17px;
 }
 
-/* RESPONSIVIDADE */
-
-@media screen and (max-width:1800px) {
-    .C1 {
-        transform: scale(1);
-    }
-
-    .Caixa {
-        top: 4%
-    }
-}
-
-@media screen and (max-width:1710px) {
-    .C1 {
-        transform: scale(1);
-    }
-
-    .Caixa {
-        width: 38%;
-        top: 4%
-    }
-}
-
-@media screen and (max-width:1680px) {
-    .C1 {
-        transform: scale(0.9);
-    }
-
-    .titleCard {
-        font-size: 45px;
-    }
-
-    .subCard {
-        width: 400px;
-    }
-
-    .subTitle {
-        font-size: 18px;
-    }
-
-    .HomeRight {
+@media screen and (max-width:1650px) {
+    .home2{
         position: relative;
-        left: -0.5%;
+        flex-direction: column;
+        width: 100%;
+        padding: 40px;
     }
-
-    .BaseBotChat{ 
-        bottom: -51%;
-    }
-
-    .SubTitleMovimentacao {
-        font-size: 18px;
-    }
-}
-
-@media screen and (max-width:1590px) {
-    .HomeRight {
-        position: relative;
-        left: -0.5%;
-    }
-
-    .SubTitleMovimentacao {
-        font-size: 17px;
-        left: 3%;
-    }
-
-    .homeCenter {
-        left: 0.5%;
-    }
-
-    .HomeRight {
-        left: -0.9%;
-    }
-}
-
-/* 1575 */
-
-@media screen and (max-width:1575px) {
-
-    .C1 {
-        transform: scale(1.2);
-    }
-
-    .titleCard {
-        font-size: 50px;
-    }
-
-    .subCard {
-        width: 500px;
-    }
-
-    .subTitle {
-        font-size: 22px;
-    }
-
-    .SubTitleMovimentacao {
-        font-size: 20px;
-    }
-
-    .HomeRight {
-        width: 63.5%;
-        height: 37%;
+    .HomeRight{
+        width: 100%;
+        position: static;
         flex-direction: row;
-        /* position: absolute; */
-        /* bottom: 1%; */
-        left: 16.2%;
+        justify-content: space-between;
+        min-height: 500px;
+        padding-right: 0;
     }
-
-    .homeCenter {
-        width: 88%;
-        height: 65%;
-        left: 1%;
+    .home{
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
-
-    .components {
-        width: 100%;
-        height: 150%;
-        position: absolute;
-    }
-
-    .base {
-        margin-left: 5%;
-    }
-
-
-    .estatisticas {
-        margin-bottom: 0;
-    }
-
-    .BaseBotChat {
-        position: absolute;
-        bottom: 4.5%;
-        left: 2%;
-        width: 450px;
-        height: 450px;
-    }
-
-    .BotChat {
-        border-radius: 20px;
-        height: 100%;
-    }
-
-    .baseAI {
-        top: -10%;
-        right: -10%;
-    }
-
-    .interogacao {
-        display: none;
-    }
-
-    .btnOn {
-        display: none;
-    }
-
-    .home2 {
-        position: absolute;
-        width: 100%;
-        height: 500px;
-        /* background-color: red; */
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-    }
-}
-
-
-@media screen and (max-width:1420px) {
-    .HomeRight {
-        transform: scale(0.9);
-        width: 69.5%;
-      /*   left: 32.2%; */
-    }
-
-    .BaseBotChat {
-        transform: scale(0.9);
-        left: 1%;
-    }
-}
-
-@media screen and (max-width:1300px) {
-
-    .C1 {
-        transform: scale(1.1);
-    }
-
-    .titleCard {
-        font-size: 47px;
-    }
-
-    .HomeRight {
-        transform: scale(0.8);
-        width: 77.5%;
-        /* left: 27.2%; */
-    }
-
-    .BaseBotChat {
-        transform: scale(0.8);
-        left: -1%;
-    }
-}
-
-@media screen and (max-width:1260px) {
-    .C1 {
-        transform: scale(1);
-    }
-
-    .subTitle {
-        font-size: 20px;
-    }
-
-    .base {
-        margin-left: 3%;
-    }
-}
-
-@media screen and (max-width:1120px) {
-    .C1 {
-        transform: scale(0.9);
-    }
-
-    .titleCard {
-        font-size: 42px;
-    }
-
-    .subCard {
-        width: 500px;
-    }
-
-    .subTitle {
-        font-size: 17px;
-    }
-
-    .SubTitleMovimentacao {
-        font-size: 17px;
-    }
-
-    .components {
-        width: 100%;
-        height: 135%;
-        position: absolute;
-    }
-
-    .homeCenter {
-        width: 88%;
-        height: 73%;
-        left: 1%;
-        transform: scale(0.95);
-    }
-
-    .home2{
-        position: absolute;
-        width: 100%;
-        height: 500px;
-        /* background-color: red; */
-        bottom: -3%;
-        display: flex;
-        left: 0%;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .HomeRight {
-        transform: scale(0.73);
-        width: 84.5%;
-       /*  left: 23.2%; */
-        bottom: -1%;
-    }
-
-    .BaseBotChat {
-        transform: scale(0.73);
-        left: -0.5%;
-        bottom: 3%;
-    }
-
-    .base {
-        margin-left: 2%;
-    }
-
-}
-
-@media screen and (max-width:1080px) {
-
-    .HomeRight {
-        transform: scale(0.71);
-        width: 90.5%;
-        /* left: 20.5%; */
-        bottom: -1%;
-
-    }
-
-    .homeCenter {
-        width: 88%;
-        height: 73%;
-        left: 1%;
-        transform: scale(0.95);
-        margin: 0 1%;
-    }
-
-    .BaseBotChat {
-        transform: scale(0.71);
-        left: -2.5%;
-        bottom: 2%;
-    }
-
-    .base {
-        margin-left: 1%;
-    }
-
-}
-
-@media screen and (max-width:1070px) {
-
-    .home2{ 
-        bottom: 0%;
-        left: -1%;
-    }
-
-    .HomeRight {
-        transform: scale(0.95);
-        width: 98.3%;
-        left: 1.5%;
-        bottom: 1%;
-
-    }
-
-    .homeCenter {
-        position: absolute;
-        width: 91%;
-        height: 71%;
-        left: 8%;
-        top: -2%;
-        transform: scale(0.89);
-        margin: 0 1%;
-    }
-
-    .base {
-        margin-left: 1%;
-    }
-
-    .BaseBotChat {
-        position: fixed;
-        width: 400px;
-        height: 580px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: .5s;
-        z-index: 10;
-        transform: scale(0.95);
-        left: 31%;
-        bottom: -48%;
-    }
-
-    .BotChat {
-        height: 80%;
-        bottom: 0;
-        border-radius: 20px 20px 0 0;
-    }
-
-    .baseAI {
-        position: absolute;
-        top: 5%;
-        right: 30%;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #fff;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
-
-    .interogacao {
-        display: flex;
-    }
-
-    .btnOn {
-        display: flex;
-    }
-
-}
-
-@media screen and (max-width:980px) {
-    .HomeRight {
-        transform: scale(0.85);
-    }
-
-    .home2{
-        width: 111%;
-        left: -7%;
-    }
-    .BaseBotChat{
-        left: 29.5%;
-    }
-}
-
-@media screen and (max-width:880px) {
-
-    .HomeRight {
-        transform: scale(.8);
-        width: 114.3%;
-        /* left: -7.5%; */
-        bottom: 1%;
-
-    }
-
-    .components {
-        height: 125%;
-    }
-
-    .homeCenter {
-        position: absolute;
-        width: 90%;
-        height: 71%;
-        left: 10%;
-        top: -3%;
-        transform: scale(0.85);
-        margin: 0 1%;
-    }
-
-    .home2{
-        bottom: -3%;
-    }
-
-    .BaseBotChat {
-        transform: scale(0.95);
-        left: 26.5%;
-    }
-
-    .base {
-        margin-left: 1%;
-    }
-
-    .BotChat {
-        height: 80%;
-        bottom: 0;
-        border-radius: 20px 20px 0 0;
-    }
-
-    .baseAI {
-        position: absolute;
-        top: 5%;
-        right: 30%;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #fff;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
-
-    .interogacao {
-        display: flex;
-    }
-
-    .btnOn {
-        display: flex;
-    }
-}
-
-/* ALTURA */
-
-@media screen and (max-height:1040px) {
-
-    .homeCenter {
-        height: 1000px;
-    }
-
-}
-
-@media screen and (max-height:1030px) {
-
-    .homeCenter {
-        height: 990px;
-    }
-
-}
-
-
-@media screen and (max-height:1020px) {
-
-    .homeCenter {
-        height: 980px;
-    }
- 
-}
-
-
-@media screen and (max-height:1010px) {
-
-    .homeCenter {
-        height: 970px;
-    }
-
-}
-
-@media screen and (max-height:1000px) {
-
-    .homeCenter {
-        height: 960px;
-    }
-
-}
-
-
-@media screen and (max-height:990px) {
-
-    .homeCenter {
-        height: 950px;
-    }
-
-
-}
-
-@media screen and (max-height:980px) {
-
-    .homeCenter {
-        height: 940px;
-    }
-
-    .listHistorico {
-        height: 440px;
-    }
-
-    .cardTutorial {
-        height: 440px;
-    }
-
-}
-
-@media screen and (max-height:970px) {
-
-    .homeCenter {
-        height: 930px;
-    }
-
-    .listHistorico {
-        height: 430px;
-    }
-
-    .cardTutorial {
-        height: 430px;
-    }
-
-}
-
-@media screen and (max-height:960px) {
-
-    .homeCenter {
-        height: 920px;
-    }
-
-}
-
-
-@media screen and (max-height:950px) {
-
-    .homeCenter {
-        height: 910px;
-    }
-    .listHistorico {
-        height: 420px;
-    }
-
-    .cardTutorial {
-        height: 420px;
-    }
-
-}
-
-
-@media screen and (max-height:940px) {
-
-    .homeCenter {
-        height: 900px;
-    }
-
-}
-
-@media screen and (max-height:930px) {
-
-    .homeCenter {
-        height: 890px;
-    }
-
-    .listHistorico {
-        height: 410px;
-    }
-
-    .cardTutorial {
-        height: 410px;
-    }    
-
-}
-
-@media screen and (max-height:920px) {
-
-    .homeCenter {
-        height: 880px;
-    }
-
-}
-
-
-@media screen and (max-height:910px) {
-
-    .homeCenter {
-        height: 870px;
-    }
-
-    .listHistorico {
-        height: 400px;
-    }
-
-    .cardTutorial {
-        height: 400px;
-    }
-
-}
-
-
-@media screen and (max-height:900px) {
-
-    .homeCenter {
-        height: 860px;
-    }
-
-    .BaseBotChat{
-        bottom: -51%;
-    }
-}
-
-
-@media screen and (max-height:890px) {
-
-    .homeCenter {
-        height: 850px;
-    }
-
-    .listHistorico {
-        height: 390px;
-    }
-
-    .cardTutorial {
-        height: 390px;
-    }
-
-    .BaseBotChat{
-        bottom: 4.5%;
-    }
-}
-
-@media screen and (max-height:880px) {
-
-    .homeCenter {
-        height: 840px;
-    }
-    .BaseBotChat{
-        bottom: 4.5%;
-    }
-
-}
-
-@media screen and (max-height:870px) {
-
-    .homeCenter {
-        height: 830px;
-    }
-
-    .listHistorico {
-        height: 380px;
-    }
-
-    .cardTutorial {
-        height: 380px;
-    }
-
-    .BaseBotChat{
-        bottom: 4.5%;
-    }
-}
-
-@media screen and (max-height:860px) {
-
-    .homeCenter {
-        height: 820px;
-    }
-    .BaseBotChat{
-        bottom: 4.5%;
-    }
-
-}
-
-@media screen and (max-height:850px) {
-
-    .homeCenter {
-        height: 810px;
-    }
-
-    .listHistorico {
-        height: 370px;
-    }
-
-    .cardTutorial {
-        height: 370px;
-    }
-
-    .btns{
-        top: -5%;
-    }
-    .BaseBotChat{
-        bottom: 4.5%;
-    }
-
-}
-
-@media screen and (max-height:840px) {
-
-    .homeCenter {
-        height: 800px;
-    }
-    .BaseBotChat{
-        bottom: 4.5%;
-    }
-
-}
-
-
-@media screen and (max-height:768px) {
-    .components{
-        height: 170%;
-    }
-
     .homeCenter{
-        height: 750px;
+        width: 100%;
+        height: auto;
     }
-
-    .cardTutorial{
-        transform: scale(0.9);
-    }
-
-    .listHistorico{
-        transform: scale(0.9);
-    }
-    .BaseBotChat{
-        bottom: 4.5%;
+    .estatisticas{
+        margin-bottom: 0;
+        margin-right: 20px;
     }
 }
+
+@media screen and (max-width:1190px) {
+    .home2{
+        width: 90%;
+    }
+    .headerTitleMovimentacao{
+        width: 200px;
+    }
+    .InputPesquisa_inputBox__yyzIX{
+        left: 0;
+    }
+    .titleStatus{
+        font-size: 13px;
+    }
+    .estatisticas{
+        margin-right: 0;
+        transform: scale(0.9);
+        width: 400px;
+    }
+    .relatoriosBtn{
+        width: 40px;
+        font-size: 20px;
+        margin-right: 20px;
+        min-width: 30px;
+    }
+    .relatoriosBtn p{
+        display: none;
+    }
+    .base{
+        transform: scale(0.9);
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .estatisticas{
+        transform: scale(0.8);
+    }
+    .base{
+        transform: scale(0.8);
+    }
+    .titleCard{
+        width: 600px;
+        font-size: 40px;
+    }
+    .subCard{
+        width: 200px;
+        margin-top: 20px;
+    }
+}
+

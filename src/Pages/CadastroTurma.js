@@ -7,7 +7,7 @@ import logo from "../IMG/Logo WMS.png"
 import styles from "../Styles/Cadastros/CadastroTurma.module.css"
 
 import api from "../Services/api"
-import { fazOptionsPeriodo } from "../Services/gets"
+import { fazOptionsPeriodo, refresh } from "../Services/gets"
 import { erro, sucesso } from "../Components/Avisos/Alert"
 
 export default function CadastroTurma() {
@@ -67,7 +67,7 @@ export default function CadastroTurma() {
             ).then(
                 response => {
                     if (response.status == 201 || response.status == 200) {
-                        sucesso(`A turma ${nome} alterada com sucesso!!!`)
+                        refresh(`alteracao`)
                     }
                 },
                 err => {
@@ -81,7 +81,7 @@ export default function CadastroTurma() {
             ).then(
                 response => {
                     if (response.status == 201 || response.status == 200) {
-                        sucesso(`A turma ${nome} cadastrado com sucesso!!!`)
+                        refresh(`cadastro`)
                     }
                 },
                 err => {
