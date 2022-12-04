@@ -186,17 +186,13 @@ export default function CadastroProduto() {
         const checked = document.getElementById(id).checked
         const checkBox = document.getElementById(id)
 
-        console.log(checked);
-
         if (checked == true) {
             checkBox.checked = true
             setFornecedoresCheck(fornecedoresCheck => [...fornecedoresCheck, fornecedor])
-            console.log(fornecedoresCheck);
         } else {
             fornecedoresCheck.map((f, index) => {
                 if (fornecedor.id == f.id) {
                     fornecedoresCheck.splice(index, 1)
-                    console.log(fornecedoresCheck);
                 }
             })
         }
@@ -214,9 +210,6 @@ export default function CadastroProduto() {
     function disableImportacao(tipo) {
         const valorImportacaoInput = document.getElementById("homologado").checked
         let valorImportacao = document.getElementById('valorImportacao')
-
-        console.log(valorImportacaoInput);
-        console.log(valorImportacao.value);
 
         if (valorImportacaoInput == false) {
             valorImportacao.value = ""
@@ -241,7 +234,6 @@ export default function CadastroProduto() {
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
         const id = localStorage.getItem("idProduto")
         const importado = document.getElementById("homologado").checked
-        console.log(importado);
         valorLiquido = (valorLiquido.substring(3, valorLiquido.lenght).replace(",", "."));
 
         const produto = {
@@ -281,8 +273,6 @@ export default function CadastroProduto() {
                 }
             )
         }
-
-        console.log(produto);
 
     }
 
@@ -379,7 +369,6 @@ export default function CadastroProduto() {
                                                         localStorage.getItem("idProduto") == undefined || localStorage.getItem("idProduto") == null ?
                                                             <input key={index} id={f.nome + index} className={styles.check} onClick={() => checkFornecedor(f, f.nome + index)} type="checkbox" name={"check" + index} /> :
                                                             check.map((fc, key) => {
-                                                                console.log(isBreak);
                                                                 if (fc.id == f.id) {
                                                                     isBreak = true
                                                                     check.splice(key, 1)

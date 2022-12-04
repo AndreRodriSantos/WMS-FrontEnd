@@ -7,8 +7,6 @@ export class ListHome extends React.Component {
 
         const { objeto, Info1, Info2, Info3, id } = this.props;
 
-        console.log(objeto);
-
         function onClickId() {
 
             if (objeto.numPedido) {

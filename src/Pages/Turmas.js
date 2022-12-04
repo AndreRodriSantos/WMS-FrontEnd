@@ -18,7 +18,6 @@ export default function Turmas() {
         return api.get(`api/turma/turmaByProf/${localStorage.getItem("idProf")}`).then(
             response => {
                 setTurmas(response.data)
-                console.log(response.data);
                 return response.data
             }
         )
@@ -32,7 +31,6 @@ export default function Turmas() {
     function search(texto) {
         return api.get(`api/turma/findbyall/${texto}`).then(response => {
             setTurmas(response.data)
-            console.log(response.data);
         })
     }
 

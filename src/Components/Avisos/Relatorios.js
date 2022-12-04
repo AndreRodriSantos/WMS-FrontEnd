@@ -58,7 +58,6 @@ export class Relatorios extends React.Component {
 
             for (let i = 0; i < section.length; i++) {
                 const s = section[i];
-                console.log(s);
                 s.style.opacity = "0"
                 setTimeout(() => {
                     s.style.display = "none"
@@ -153,7 +152,6 @@ export function fecharRelatorio() {
     for (let i = 0; i < section.length; i++) {
         const s = section[i];
 
-        console.log(s);
         s.style.opacity = "100"
         setTimeout(() => {
             s.style.display = "flex"

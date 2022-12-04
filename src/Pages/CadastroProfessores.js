@@ -27,8 +27,6 @@ export default function CadastroProfessores() {
 
         const body = { 'nome': nomeProf, 'nif': nif, "email": email, 'senha': senha, imagem };
 
-        console.log(body)
-
         if (localStorage.getItem("alterandoProf")) {
             const id = localStorage.getItem("idProf")
             const prof = (await getProfessor(id)).data
@@ -67,8 +65,6 @@ export default function CadastroProfessores() {
             const id = localStorage.getItem("idProf")
             const prof = (await getProfessor(id)).data
             const imagem = document.getElementById("imgPhoto")
-
-            console.log(prof);
 
             setNome(prof.nome)
             setNif(prof.nif)

@@ -16,7 +16,6 @@ export default function CadastroAlunos() {
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
         event.preventDefault()
         var body = { "nome": nome, "codMatricula": matricula, imagem, "email": emailAluno, "senha": senha };
-        console.log(body)
 
         if (localStorage.getItem("alterandoAluno")) {
             const id = localStorage.getItem("idAluno")
@@ -228,7 +227,5 @@ export default function CadastroAlunos() {
 
     /* function perfil(){
         const nome = document.getElementById('nome')
-
-        console.log(nome);
     } */
 }

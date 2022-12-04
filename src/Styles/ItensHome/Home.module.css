@@ -24,8 +24,9 @@
 }
 
 .home2{
+    min-width: 500px;
     position: relative;
-    width: 100%;
+    width: 95%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -34,7 +35,7 @@
 
 .homeCenter {
     height: 100%;
-    width: 80%;
+    width: 70%;
     transition: .2s ease-in;
     padding: 20px 0px 20px 20px;
     display: flex;
@@ -47,7 +48,7 @@
 }
 
 .HomeRight {
- /*    width: 30%; */
+    width: 30%;
     height: 100%;
     padding: 20px;
     display: flex;
@@ -995,4 +996,3 @@
         margin-top: 20px;
     }
 }
-

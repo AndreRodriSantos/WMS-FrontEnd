@@ -27,7 +27,6 @@ export class RecuperacaoSenha extends React.Component {
 
             const codigo = this.state.codigo
             const body = { "email": email, "codigo": codigo }
-            console.log(codigo);
 
             if (user == "aluno") {
                 api.post("api/aluno/verificarCod", body).then(response => {
@@ -62,7 +61,6 @@ export class RecuperacaoSenha extends React.Component {
             const senha = this.state.senha
             const usuario = this.state.user
             usuario.senha = senha
-            console.log(usuario);
 
             if (user == "aluno") {
                 api.put(`api/aluno/recuperarSenha/${this.state.user.id}`, usuario).then(response => {

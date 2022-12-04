@@ -16,8 +16,6 @@ export default class ProdutoItem extends React.Component {
             const buttonDecrement = document.getElementById(`removeQtd ${id}`);
             const buttonIncrement = document.getElementById(`addQtd ${id}`);
 
-            /*  console.log(produto); */
-
             if (checked == true) {
                 checkBox.checked = true
                 qtdInput.disabled = true
@@ -148,8 +146,6 @@ export default class ProdutoItem extends React.Component {
             const buttonIncrement = document.getElementById(`addQtd ${id}`);
 
             let value = counter.value;
-
-            console.log(value);
 
             if (type == 'add') {
                 value = ++value;

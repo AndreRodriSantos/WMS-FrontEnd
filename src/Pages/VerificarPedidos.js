@@ -18,7 +18,6 @@ export default function VerificarPedidos() {
     async function getPedido(id) {
         return api.get(`api/pedido/${id}`).then(
             response => {
-                console.log(response.data.itens);
                 setItens(response.data.itens)
                 setPedido(response.data)
             }
@@ -28,7 +27,6 @@ export default function VerificarPedidos() {
     function GerarNota() {
         api.get(`api/notaFiscal/pega/${localStorage.getItem("idPedido")}`).then(response => {
             const notaFiscal = response.data
-            console.log(notaFiscal);
             window.location.href = `http://localhost:8080/api/pedido/teste/${notaFiscal.codigoNota}`
         })
     }
@@ -98,7 +96,6 @@ export default function VerificarPedidos() {
         const id = localStorage.getItem('idPedido')
         return api.get(`api/itemPedido/findbyall/${id}/${texto}`).then(response => {
             setItens(response.data)
-            console.log(response.data);
         })
     }
 

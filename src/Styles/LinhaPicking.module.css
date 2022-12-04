@@ -14,6 +14,11 @@
     font-weight: bold;
     border-radius: 10px;
     padding-left: 3px;
+    transition: 0.2s linear;
+}
+
+.qtd:disabled{
+    border: 3px solid rgb(114, 114, 114);
 }
 .check{
     visibility: hidden;

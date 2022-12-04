@@ -30,8 +30,6 @@ export default function Login() {
                 codMatricula, "senha": senhaAluno
             }
 
-            console.log(body);
-
             api.post("api/aluno/login", body).then(
                 async response => {
                     localStorage.setItem("token", response.data.token)
@@ -39,7 +37,6 @@ export default function Login() {
                     localStorage.setItem("idAluno", idAluno)
                     let aluno = (await getAluno(idAluno)).data
                     localStorage.setItem("aluno", true)
-                    console.log(aluno.turma);
                     if (aluno.turma == null || aluno.turma == undefined) {
                         localStorage.clear()
                         refresh("semTurma")
@@ -66,8 +63,6 @@ export default function Login() {
                 nif, "senha": senhaProf
             }
 
-            console.log(body);
-
             api.post("api/professor/login", body).then(
                 async response => {
                     localStorage.setItem("token", response.data.token)
@@ -93,7 +88,6 @@ export default function Login() {
         if (user == "aluno") {
 
             const aluno = { "email": email }
-            console.log(aluno);
             api.post(`api/aluno/buscarEmail/${email}`, aluno, {
                 headers: {
                     'Accept': 'application/json',
@@ -120,7 +114,6 @@ export default function Login() {
             )
         } else if (user == "professor") {
             const professor = { "email": email }
-            console.log(professor);
             api.post(`api/professor/buscarEmail/${email}`, professor, {
                 headers: {
                     'Accept': 'application/json',

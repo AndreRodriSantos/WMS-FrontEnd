@@ -16,7 +16,6 @@ export class ListaPedidos extends React.Component {
             PopUpInfo.style.display = 'flex'
 
             const id = item.produto.codProduto
-            console.log(id);
             localStorage.setItem("idProduto", id)
 
             chamarItem(item)

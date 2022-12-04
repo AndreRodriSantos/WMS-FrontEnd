@@ -40,7 +40,6 @@ export default function ListaMembros() {
 
         const alunos = (await api.get(`api/aluno/turma/${turma.id}`)).data
         await alunos.map((a) => { count++ })
-        console.log(count);
 
         if (membrosCheck.length != 0) {
             if (localStorage.getItem("professor")) {
@@ -111,7 +110,6 @@ export default function ListaMembros() {
                 const alu = response.data
                 alu.map(a => {
                     if (a.turma == null) {
-                        console.log(a);
                         setAlunos(alunos => [...alunos, a])
                     }
                 })
@@ -122,7 +120,6 @@ export default function ListaMembros() {
     async function getMembros() {
         api.get(`api/aluno/turma/${localStorage.getItem("idTurma")}`).then(response => {
             const membros = response.data
-            console.log(response.data);
             membros.map(m => {
                 setMembrosTurma(membrosTurma => [...membrosTurma, m])
             })
@@ -132,7 +129,6 @@ export default function ListaMembros() {
     function Pesquisar(texto) {
         api.get(`api/aluno/findbyall/${texto}`).then(response => {
             const membros = response.data
-            console.log(membros);
 
             if (membros.length == []) {
                 erro('Nenhum Membro encontrado')

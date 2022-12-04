@@ -91,7 +91,6 @@ export class CadastroNcm extends React.Component {
 
         function excluirNcm() {
             const id = localStorage.getItem('idNcm')
-            console.log(id)
 
             api.delete(`api/ncm/${id}`).then(
                 response => {
@@ -186,7 +185,6 @@ function CadastroNCM(event) {
     const id = localStorage.getItem('idNcm')
 
     var body = { id, "ncm": ncm };
-    console.log(body)
 
     if (id) {
         api.put(`api/ncm/${id}`, body).then(

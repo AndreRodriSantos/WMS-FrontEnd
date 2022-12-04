@@ -23,7 +23,6 @@ export default function Pedido() {
         return api.get('api/produto/list').then(
             response => {
                 setProduto(response.data)
-                console.log(response.data);
                 return response.data
             }
         )
@@ -86,8 +85,6 @@ export default function Pedido() {
             pedido.prof = prof
         }
 
-        console.log(pedido);
-
         api.post("api/pedido/save", pedido).then(
             response => {
                 if (response.status == 201 || response.status == 200) {
@@ -105,7 +102,6 @@ export default function Pedido() {
     function Pesquisar(texto) {
         api.get(`api/produto/findbyall/${texto}`).then(response => {
             setProduto(response.data)
-            console.log(produto)
         })
     }
 
@@ -114,7 +110,6 @@ export default function Pedido() {
     }, [])
 
     function tirarProdutoLista(id) {
-        console.log();
         produtosAdicionados.map((p, index) => {
             const prod = p.produto
             if (prod.codProduto == id) {
@@ -122,7 +117,6 @@ export default function Pedido() {
                 setProdutosAdicionados([...produtosAdicionados])
             }
         })
-        console.log(produtosAdicionados);
     }
 
     return (

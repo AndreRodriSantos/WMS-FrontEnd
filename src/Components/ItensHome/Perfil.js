@@ -32,7 +32,6 @@ export class Perfil extends React.Component {
                     }
                 )
             } else if (localStorage.getItem("idAluno")) {
-                console.log("aaa");
                 const id = localStorage.getItem("idAluno")
                 api.delete(`api/aluno/${id}`).then(
                     response => {

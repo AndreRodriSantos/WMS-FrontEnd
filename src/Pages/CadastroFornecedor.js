@@ -47,9 +47,6 @@ export default function CadastroFornecedor() {
             "homologado": homologado
         };
 
-        console.log(body)
-        console.log(homologado);
-
         if (id) {
             api.put(
                 `api/fornecedor/${id}`, body

@@ -89,7 +89,6 @@ export default function Enderecamento() {
             }
         })
         setEndereçamentosCheck(ender => [...enderecamentosCheck, endereco])
-        console.log(enderecamentosCheck);
     }
 
     function ItemCall(item) {
@@ -189,7 +188,6 @@ export default function Enderecamento() {
         const divItensPedido = document.getElementById("DivItensPedido")
         if (divItensPedido.childElementCount == 0) {
             pedido.enderecado = true
-            console.log(pedido.enderecado);
             api.patch(`api/pedido/enderecado/${pedido.numPedido}`, pedido)
             enderecamentosCheck.map(e => {
                 api.post("api/enderecamento/save", e.enderecamento).then(

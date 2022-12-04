@@ -7,7 +7,6 @@ export class PedidoItemCaixa extends React.Component {
         const { chamarItem, item, onClick } = this.props;
 
         function dragstart_handler(ev) {
-            console.log("dragStart");
             ev.dataTransfer.setData("text/plain", ev.target.id);
             ev.stopPropagation();
             ev.dataTransfer.dropEffect = "move";

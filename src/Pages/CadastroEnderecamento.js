@@ -39,8 +39,6 @@ export default function CadastroEnderecamento() {
             'demanda': demanda,
         };
 
-        console.log(body)
-
         api.post("api/enderecamento/save", body).then(
             response => {
                 if (response.status == 201 || response.status == 200) {

@@ -22,7 +22,6 @@ export default function Picking() {
         setEnderecamentoSelecionados(enderecamentoSelecionados => [...enderecamentoSelecionados, {
             enderecamento, quantidade
         }])
-        console.log(enderecamentoSelecionados);
     }
 
     function unCheck(enderecamento) {
@@ -34,7 +33,6 @@ export default function Picking() {
                 enderecamentoSelecionados.splice(index, 1)
             }
         })
-        console.log(enderecamentoSelecionados);
     }
 
     function EnviarProdutos() {
