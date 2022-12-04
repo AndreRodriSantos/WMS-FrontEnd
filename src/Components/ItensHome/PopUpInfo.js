@@ -6,7 +6,7 @@ import { erro, sucesso } from "../Avisos/Alert";
 import { refresh } from "../../Services/gets";
 
 export class PopUpInfo extends React.Component {
-    render() { 
+    render() {
 
         function alterar() {
             let id = document.getElementById('id').value
@@ -44,63 +44,96 @@ export class PopUpInfo extends React.Component {
 
         return (
             <div id="container" className={styles.container}>
-                <div id="PopUpInfo" className={styles.PopUp}>
 
-                    <header className={styles.headerInfo}>
-                        <div className={styles.titleNome}>
-                            <p id='nome' className={styles.infoName}></p>
+                <div className={styles.PopUpInfo} id="PopUpInfo">
+                    <span className={styles.close} onClick={Fechar}>
+                        <i className="fa-regular fa-circle-xmark"></i>
+                    </span>
+                    <div className={styles.BaseInfo}>
+                        <div className={styles.InfoProduto}>
+                            <div className={styles.ImgProduto}>
+                                <img id='imgItemPedido' className={styles.produtoImagem}></img>
+                            </div>
+                            <div className={styles.TitleInfo}>
+                                <span id='nome' className={styles.NomeProduto}></span>
+                                <span id='descricao' className={styles.DescricaoProduto}>
+                                    <p id='info10Title' className={styles.info}></p>
+                                    <br />
+                                    <p id='info2' className={styles.info}></p>
+                                </span>
+                                <div id='cod' className={styles.cod}>
+                                    <span onClick={alterar} className={styles.Code} title='Alterar'>
+                                        <i className="fa-solid fa-pen-to-square"></i>
+                                    </span>
+                                    <span onClick={excluir} className={styles.Code} title='Excluir'>
+                                        <i className="fa-solid fa-trash"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <span className={styles.close} onClick={Fechar} ><i className="fa-regular fa-circle-xmark"></i></span>
-                    </header>
-
-                    <div className={styles.dados}>
-
                         <input type="hidden" id='id'></input>
+                        <div className={styles.BaseInfoValores}>
+                            <div className={styles.InfoSobre}>
+                                <div id='impostos' className={styles.Impostos}>
+                                    <span className={styles.InfoImpostos}>
+                                        <p id='info1Title' className={styles.titleImpor}></p>
+                                        <p id='info1' className={styles.ResImpor}></p>
+                                    </span>
+                                    <span id='infoImposto' className={styles.InfoImpostos}>
+                                        <p id='info2Title' className={styles.titleImpor}></p>
+                                        <p id='info7' className={styles.ResImpor}></p>
+                                    </span>
+                                    <span className={styles.InfoImpostos}>
+                                        <p id='info4Title' className={styles.titleImpor}></p>
+                                        <p id='info4' className={styles.ResImpor}></p>
+                                    </span>
+                                    <span className={styles.InfoImpostos}>
+                                        <p id='info5Title' className={styles.titleImpor}></p>
+                                        <p id='info5' className={styles.ResImpor}></p>
+                                    </span>
 
-                        <div className={styles.InfoLeft}>
-
-                            <span className={styles.titleInfo}>
-                                <p id="info1Title"></p><p id='info1' className={styles.info}></p>
-                            </span>
-
-                            <span className={styles.titleInfo}>
-                                <p id="info2Title"></p><p id='info2' className={styles.info}></p>
-                            </span>
-
-                            <span className={styles.titleInfo}>
-                                <p id="info3Title"></p><p id='info3' className={styles.info}></p>
-                            </span>
+                                </div>
+                                <div className={styles.Importacoes}>
+                                    <span className={styles.baseTitleImpor}>
+                                        <p id='info3Title' className={styles.titleImpor}>Importado:</p>
+                                        <p id='info3' className={styles.ResImpor}></p>
+                                    </span>
+                                    <span id='importado' className={styles.ValorImportacao}>
+                                        <span className={styles.TitleValor}>
+                                            <p className={styles.textUnitario}>Valor Importação :</p>
+                                        </span>
+                                        <span className={styles.Valor}>
+                                            <p className={styles.cifrao}>R$</p>
+                                            <p id='info8' className={styles.Num}></p>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div className={styles.InfoValores}>
+                                <div className={styles.ValoreUnitario}>
+                                    <span className={styles.TitleValor}>
+                                        <p id='info7Title' className={styles.textUnitario}></p>
+                                    </span>
+                                    <span className={styles.Valor}>
+                                        <p id='info6Title' className={styles.cifrao}>R$</p>
+                                        <p id='info6' className={styles.Num}></p>
+                                    </span>
+                                </div>
+                                <div className={styles.ValoreTotal}>
+                                    <span className={styles.TitleValor}>
+                                        <p id="info8Title" className={styles.textTotal}></p>
+                                    </span>
+                                    <span className={styles.Valor}>
+                                        <p id='info9Title' className={styles.Totalcifrao}></p>
+                                        <p id='info9' className={styles.TotalNum}></p>
+                                    </span>
+                                </div>
+                            </div>
 
                         </div>
-
-                        <div className={styles.InfoRight}>
-
-                            <span className={styles.titleInfo}>
-                                <p id="info4Title"></p><p id='info4' className={styles.info}></p>
-                            </span>
-
-                            <span className={styles.titleInfo}>
-                                <p id="info5Title"></p><p id='info5' className={styles.info}></p>
-                            </span>
-
-                            <span className={styles.titleInfo}>
-                                <p id="info6Title"></p><p id='info6' className={styles.info}></p>
-                            </span>
-
-                        </div>
-
                     </div>
+                </div >
 
-                    <div id='btns' className={styles.btns}>
-                        <button id='btnY' onClick={alterar} className={styles.alterar} >
-                            Alterar
-                        </button>
-
-                        <button onClick={excluir} id='btnX' className={styles.excluir} >
-                            Excluir
-                        </button>
-                    </div>
-                </div>
             </div>
         );
 
@@ -114,7 +147,7 @@ export class PopUpInfo extends React.Component {
             PopUpInfo.style.display = 'none'
             PopUpInfo.classList.remove(styles.alertOn)
             popUpInformacoes.style.zIndex = '-1'
-            
+
         }
 
         /*   function btnOn(){

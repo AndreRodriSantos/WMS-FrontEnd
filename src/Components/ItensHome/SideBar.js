@@ -52,16 +52,13 @@ export class SideBar extends React.Component {
                     </li>
                     <li className={styles.sub_link}>
                         <a className={styles.link_name} href="/CadastroProduto">  <i className="fa-solid fa-box"></i> PRODUTO</a>
-                    </li>
-                    <li className={styles.sub_link}>
-                        <a className={styles.link_name} href="/CadastroEnderecamento"> <i className="fa-solid fa-location-dot"></i> ENDEREÇAMENTO </a>
-                    </li>
+                    </li>                 
                 </ul>
                 {/* SIDEBAR TEXT */}
                 <a href="/Home" id="homeText" className={styles.IconText}>HOME</a>
                 <a href="/Pedido" id="pedidoText" className={styles.IconText}>PEDIDOS</a>
-                <a href="#" id="estoqueText" className={styles.IconText}>ESTOQUE</a>
-                <a href="#" id="pickingText" className={styles.IconText}>PICKING</a>
+                <a href="/Enderecamento" id="estoqueText" className={styles.IconText}>ESTOQUE</a>
+                <a href="/Picking" id="pickingText" className={styles.IconText}>PICKING</a>
                 <a onClick={chamarMedidas} id="medidasText" className={styles.IconText}>MEDIDAS</a>
                 <a onClick={chamarNCM} id="ncmText" className={styles.IconText}>NCM</a>
                 {/* SIDEBAR */}
@@ -132,7 +129,7 @@ export class SideBar extends React.Component {
                                 </li>
                                 <li className={styles.sub_link}>
                                     <a className={styles.link_name} href="/CadastroProduto">  <i className="fa-solid fa-box"></i> PRODUTO</a>
-                                </li>
+                                </li> 
                             </ul>
 
                         </div>
@@ -372,7 +369,7 @@ function CadastroSelectOn() {
     const arrowCadastroOff = document.getElementById("arrowCadastroOff");
 
     sub_menuCadastro.style.display = 'block'
-    select_cadastro.style.height = "120px"
+    select_cadastro.style.height = "70px"
     arrowCadastroOn.style.display = 'none'
     arrowCadastroOn.style.zIndex = '0'
     arrowCadastroOff.style.zIndex = '1'

@@ -47,12 +47,13 @@ export default class ProdutoItem extends React.Component {
             }
         }
 
-
         function chamarPopUp() {
             const container = document.getElementById("container");
             const PopUpInfo = document.getElementById("PopUpInfo");
+            const cod = document.getElementById("cod");
             PopUpInfo.classList.add(styles.alertOn)
 
+            cod.style.display = 'none'
             container.style.zIndex = "20"
             PopUpInfo.style.display = 'flex'
 
@@ -65,6 +66,10 @@ export default class ProdutoItem extends React.Component {
             let info4 = document.getElementById('info4')
             let info5 = document.getElementById('info5')
             let info6 = document.getElementById('info6')
+            let info7 = document.getElementById('info7')
+            let info8 = document.getElementById('info8')
+            let info9 = document.getElementById('info9')
+            let imgItemPedido = document.getElementById('imgItemPedido')
 
             let info1Title = document.getElementById('info1Title')
             let info2Title = document.getElementById('info2Title')
@@ -72,26 +77,69 @@ export default class ProdutoItem extends React.Component {
             let info4Title = document.getElementById('info4Title')
             let info5Title = document.getElementById('info5Title')
             let info6Title = document.getElementById('info6Title')
+            let info7Title = document.getElementById('info7Title')
+            let info8Title = document.getElementById('info8Title')
+            let info9Title = document.getElementById('info9Title')
+            let info10Title = document.getElementById('info10Title')
+
+            let importado = document.getElementById('importado')
+            let infoImposto = document.getElementById('infoImposto')
+            let impostos = document.getElementById('impostos')
 
             id.value = produto.codProduto
             nome.innerText = produto.nome
             info1.innerText = produto.sku
-            info2.innerText = produto.descricao
+
+            if (produto.descricao.length > 255) {
+                info2.innerText = produto.descricao.substring(0, 255) + '...'
+            } else {
+                info2.innerText = produto.descricao
+            }
+
             if (produto.importado == true) {
                 info3.innerText = 'SIM'
+                info3.style.color = 'green'
+                info8.innerText = produto.valorImportacao
             } else {
                 info3.innerText = 'NÃO'
+                info3.style.color = 'red'
+                info8.innerText = '0'
             }
-            info4.innerText = produto.pontoPedido
+            info4.innerText = produto.saldo
             info5.innerText = produto.demanda
-            info6.innerText = "R$ " + produto.valorUnitario
+            info5.style.color = '#000'
+            info6.innerText = produto.valorUnitario
+            info7.innerText = produto.ncm.ncm
+
+            if (produto.saldo < 1) {
+                info9.innerText = produto.valorUnitario
+            } else {
+                info9.innerText = produto.valorUnitario * produto.saldo
+            }
+
+
+
+            if (produto.imagem == null || produto.imagem == undefined) {
+                imgItemPedido.setAttribute("src", "https://cdns.iconmonstr.com/wp-content/releases/preview/2019/240/iconmonstr-product-3.png")
+            } else {
+                imgItemPedido.setAttribute("src", produto.imagem)
+            }
 
             info1Title.innerText = "SKU:"
-            info2Title.innerText = "Descrição:"
+            info2Title.innerText = "NCM:"
             info3Title.innerText = "Importado"
-            info4Title.innerText = "Ponto de Pedido:"
+            info4Title.innerText = "Quantidade:"
             info5Title.innerText = "Demanda:"
-            info6Title.innerText = "Valor:"
+            info6Title.innerText = "R$"
+            info7Title.innerText = "Valor Unitario :"
+            info8Title.innerText = 'Valor Final :'
+            info9Title.innerText = "R$"
+            info9Title.style.color = '#fff'
+            info10Title.innerText = ''
+
+            importado.style.display = 'flex'
+            infoImposto.style.display = 'flex'
+            impostos.style.width = '50%'
         }
 
         function addQntd(type) {

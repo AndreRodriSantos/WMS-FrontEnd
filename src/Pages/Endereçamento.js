@@ -78,6 +78,7 @@ export default function Enderecamento() {
     useEffect(() => {
         getPedido(localStorage.getItem('idPedido'))
         getEnderecamento()
+        localStorage.removeItem('idProduto')
     }, [])
 
     function handleEndereco(endereco){
@@ -92,6 +93,9 @@ export default function Enderecamento() {
     }
 
     function ItemCall(item) {
+
+        const codProduto = item.itens.codProduto
+        localStorage.setItem('idProduto' , codProduto )
 
         const BasePoup = document.getElementById('BasePoup')
         const PopUpInfo = document.getElementById('PopUpInfo')
@@ -110,6 +114,9 @@ export default function Enderecamento() {
         let valorImportado = document.getElementById('valorImportado')
         let valorTotal = document.getElementById('valorTotal')
         let imgItemPedido = document.getElementById('imgItemPedido')
+
+        valorImportado.style.fontSize = '35px'
+        valorImportado.style.fontWeight = '500'
 
         if (item.itens != undefined) {
             if (item.itens.imagem == null || item.itens.imagem == undefined) {
@@ -202,6 +209,15 @@ export default function Enderecamento() {
         }
     }
 
+    function GerarQrCode(){
+        window.location.href = `http://localhost:8080/api/pdf/qrCode/${localStorage.getItem("idProduto")}`
+       
+    }
+    
+    function GerarCodeBar(){
+        window.location.href = `http://localhost:8080/api/pdf/barcode/${localStorage.getItem("idProduto")}`
+    }
+
     return (
         <div className={styles.container}>
 
@@ -218,6 +234,14 @@ export default function Enderecamento() {
                             <div className={styles2.TitleInfo}>
                                 <span id='produto' className={styles2.NomeProduto}></span>
                                 <span id='descricao' className={styles2.DescricaoProduto}></span>
+                                <div className={styles2.cod}>
+                                    <span onClick={GerarQrCode} className={styles2.Code} title='QrCode'>
+                                        <i className="fa-solid fa-qrcode"></i>
+                                    </span>
+                                    <span onClick={GerarCodeBar} className={styles2.Code} title='Codigo de Barra'>
+                                        <i className="fa-solid fa-barcode"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
@@ -359,5 +383,7 @@ export default function Enderecamento() {
         const PopUpInfo = document.getElementById('PopUpInfo')
         BasePoup.style.display = 'none'
         PopUpInfo.style.display = 'none'
+
+        localStorage.removeItem('idProduto')
     }
 }

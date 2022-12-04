@@ -42,7 +42,7 @@ export default function Picking() {
             e.enderecamento.quantidade = e.enderecamento.quantidade - e.quantidade
             api.put(`api/pedido/saida/${e.enderecamento.id}`, e.enderecamento).then(
                 response => {
-                        refresh(`Picking`)
+                    refresh(`Picking`)
                 },
                 err => {
                     erro("Ocorreu um erro ao Enviar os Produtos Selecionados: " + err)
@@ -72,41 +72,44 @@ export default function Picking() {
             <Confirmacao funcao={EnviarProdutos}></Confirmacao>
             <div className={styles.pickingContainer}>
                 <header className={styles.header}>
-                    <span>
+                    <span className={styles.nameHeader}>
                         <i className="fa-solid fa-boxes-packing"></i> <span>Picking</span>
                     </span>
                     <InputPesquisa placeholder={"Pesquise por Produto"} />
                 </header>
 
                 <div className={styles.tabelaContainer}>
-                    <table className={styles.tabela}>
-                        <thead className={styles.tabelaHead}>
-                            <tr>
-                                <td>Foto</td>
-                                <td>Nome</td>
-                                <td>SKU</td>
-                                <td>Qtd Disponivel</td>
-                                <td>Valor</td>
-                                <td>Qtd Saida</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody className={styles.tabelaBody}>
-                            {enderecamentos.map((e, key) =>
-                                <LinhaPicking item={e} key={key} id={e.id} onCheck={onCheck} unCheck={unCheck} produto={e.itens}></LinhaPicking>
-                            )}
-                        </tbody>
-                    </table>
+                    <div className={styles.headerListH}>
+                        <div className={styles.HeaderMovimentacao}>
+                            <p colSpan="1"></p>
+                            <p colSpan="1">Nome</p>
+                            <p className={styles.sku} colSpan="1">SKU</p>
+                            <span colSpan="1">Qtd Disponivel</span>
+                            <p className={styles.valor} colSpan="1">Valor</p>
+                            <p colSpan="1">Qtd Saida</p>
+                            <p colSpan="1"></p>
+                        </div>
+                        <span className={styles.barra}></span>
+                    </div>
+                    <div className={styles.tabelaHistorico}>
+                        <table className={styles.tabelaMovimentacao}>
+                            <tbody className={styles.tabelaMovimentacaoBody}>
+                                {enderecamentos.map((e, key) =>
+                                    <LinhaPicking item={e} key={key} id={e.id} onCheck={onCheck} unCheck={unCheck} produto={e.itens}></LinhaPicking>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                <button className={styles.enviarProdutos} onClick={() => openConfirmacao("Ao pressionar CONFIRMAR, sua lista de produtos separados saíram do estoque e serão enviados.", "Deseja enviar os produtos selecionados?")} id="btnEnviar">Enviar <i className="fa-solid fa-box-archive"></i><lord-icon
+                    src="https://cdn.lordicon.com/zmkotitn.json"
+                    trigger="hover"
+                    colors="primary:#ffffff"
+                    state="hover-1"
+                    style={{ width: 24, height: 24 }}>
+                </lord-icon>
+                </button>
             </div>
-            <button className={styles.enviarProdutos} onClick={() => openConfirmacao("Ao pressionar CONFIRMAR, sua lista de produtos separados saíram do estoque e serão enviados.", "Deseja enviar os produtos selecionados?")} id="btnEnviar">Enviar <i className="fa-solid fa-box-archive"></i><lord-icon
-                src="https://cdn.lordicon.com/zmkotitn.json"
-                trigger="hover"
-                colors="primary:#ffffff"
-                state="hover-1"
-                style={{ width: 24, height: 24 }}>
-            </lord-icon>
-            </button>
         </div>
     )
 }

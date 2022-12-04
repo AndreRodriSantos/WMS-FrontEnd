@@ -17,7 +17,7 @@ import Bruninha from "../IMG/BruninhaAnimation.gif"
 import BruninhaSleep from "../IMG/BruninhaDormindo.gif"
 import BruninhaClick from "../IMG/BruninhaClick.png"
 
-export default function Home() {
+export default function Home() { 
 
     const [fornecedor, setFornecedor] = useState([])
     const [pedido, setPedido] = useState([])
@@ -44,7 +44,6 @@ export default function Home() {
     async function getListaNcm() {
         const ncms = await getNcm()
         setNcms(ncms)
-        console.log(ncms);
     }
 
     function getFornecedor() {
@@ -84,7 +83,6 @@ export default function Home() {
 
     function getMovimentacao() {
         api.get(`api/movimentacao/list`).then(response => {
-            console.log(response.data);
             setMovimentacoes(response.data)
 
         })
