@@ -41,7 +41,6 @@ export default function Home() {
     async function getListaNcm() {
         const ncms = await getNcm()
         setNcms(ncms)
-        console.log(ncms);
     }
 
     function getFornecedor() {
@@ -81,7 +80,6 @@ export default function Home() {
 
     function getMovimentacao() {
         api.get(`api/movimentacao/list`).then(response => {
-            console.log(response.data);
             setMovimentacoes(response.data)
 
         })

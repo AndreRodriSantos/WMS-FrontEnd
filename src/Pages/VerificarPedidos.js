@@ -24,7 +24,7 @@ export default function VerificarPedidos() {
             }
         )
     }
-
+ 
     function GerarNota() {
         api.get(`api/notaFiscal/pega/${localStorage.getItem("idPedido")}`).then(response => {
             const notaFiscal = response.data
@@ -241,6 +241,8 @@ export default function VerificarPedidos() {
                     </div>
                 </div >
             </div >
+
+            
         </section >
     )
 

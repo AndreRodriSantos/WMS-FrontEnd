@@ -57,7 +57,7 @@ export default function CadastroProduto() {
                         valorImportacaoInput.removeAttribute("disabled")
                         setValorImportacao(produto.valorImportacao)
                     }
-
+     
                     produto.fornecedores.map(f => {
                         setFornecedoresCheck(fornecedoresCheck => [...fornecedoresCheck, f.fornecedor])
                     })
@@ -216,11 +216,11 @@ export default function CadastroProduto() {
         let valorImportacao = document.getElementById('valorImportacao')
 
         console.log(valorImportacaoInput);
-        console.log(valorImportacao);
+        console.log(valorImportacao.value);
 
-        if (valorImportacaoInput == false) {
-            valorImportacao.value = ""
-            valorImportacao.setAttribute("disabled", '')
+        if (valorImportacaoInput == false) { 
+            valorImportacao.value = ''
+            valorImportacao.setAttribute("disabled", '' )
             fazerCalculo()
         } else {
             valorImportacao.removeAttribute('disabled')
@@ -240,6 +240,7 @@ export default function CadastroProduto() {
         let imagem = document.getElementById("imgPhoto").getAttribute("src")
         const id = localStorage.getItem("idProduto")
         const importado = document.getElementById("homologado").checked
+        console.log(importado);
         valorLiquido = (valorLiquido.substring(3, valorLiquido.lenght).replace(",", "."));
 
         const produto = {

@@ -93,7 +93,7 @@ export default class CadastroMedidas extends React.Component {
 
         function excluir() {
             const id = localStorage.getItem('idMedida')
-            console.log(id);
+            
 
             api.delete(`api/unidade/${id}`).then(
                 response => {
@@ -159,7 +159,6 @@ let medidas = [];
 export function getMedida() {
     return api.get(`api/unidade/list`).then(response => {
         medidas = response.data
-        console.log(medidas);
     })
 }
 
@@ -178,7 +177,6 @@ function CadastrarMedida(event) {
         "sigla": siglaMedida
     }
 
-    console.log(body)
 
     if (id) {
         api.put(`api/unidade/${id}`, body).then(
