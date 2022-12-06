@@ -94,10 +94,10 @@ export class CadastroNcm extends React.Component {
 
             api.delete(`api/ncm/${id}`).then(
                 response => {
-                    refresh("delete")
+                    refresh("deleteNCM")
                 },
                 err => {
-                    erro('erro')
+                    erro('Ocorreu um erro ao excluir este NCM, verifique se não existem produtos cadastrados com ele')
                 }
             )
         } 
@@ -121,11 +121,11 @@ export class CadastroNcm extends React.Component {
                             <div className={styles.labelMedida}>
                                 <span>Ncms Cadastrados</span>
                                 <div className={styles.btns}>
-                                    <button id='AlterarNcm' title={"Alterar"} onClick={CadastroNCM} className={styles.btn} >
+                                    <button type={"button"} id='AlterarNcm' title={"Alterar"} onClick={CadastroNCM} className={styles.btn} >
                                         <i className="fa-solid fa-pen-to-square"></i>
                                     </button>
 
-                                    <button id='ExcluirNcm' title={"Excluir"} className={styles.btn} onClick={excluirNcm} >
+                                    <button type={"button"} id='ExcluirNcm' title={"Excluir"} className={styles.btn} onClick={excluirNcm} >
                                         <i className="fa-solid fa-trash"></i>
                                     </button>
                                 </div>
@@ -187,6 +187,7 @@ function CadastroNCM(event) {
     var body = { id, "ncm": ncm };
 
     if (id) {
+        console.log("alterar");
         api.put(`api/ncm/${id}`, body).then(
             response => {
                 if (response.status == 201 || response.status == 200) {

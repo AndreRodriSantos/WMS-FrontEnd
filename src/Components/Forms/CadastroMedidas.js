@@ -100,7 +100,7 @@ export default class CadastroMedidas extends React.Component {
                     refresh("delete")
                 },
                 err => {
-                    erro('erro')
+                    erro('Ocorreu um erro ao excluir esta medida, verifique se não existem produtos cadastrados com ela')
                 }
             )
 
@@ -127,11 +127,11 @@ export default class CadastroMedidas extends React.Component {
                                 <div className={styles.labelMedida}>
                                     <span>Medidas Cadastradas</span>
                                     <div className={styles.btns}>
-                                        <button id='btnAlterar' title={"Alterar"} onClick={CadastrarMedida} className={styles.btn} >
+                                        <button type={"button"} id='btnAlterar' title={"Alterar"} onClick={CadastrarMedida} className={styles.btn} >
                                             <i className="fa-solid fa-pen-to-square"></i>
                                         </button>
 
-                                        <button id='btnExcluir' title={"Excluir"} className={styles.btn} onClick={excluir} >
+                                        <button type={"button"} id='btnExcluir' title={"Excluir"} className={styles.btn} onClick={excluir} >
                                             <i className="fa-solid fa-trash"></i>
                                         </button>
                                     </div>

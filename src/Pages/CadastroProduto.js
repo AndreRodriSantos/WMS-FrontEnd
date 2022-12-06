@@ -343,7 +343,7 @@ export default function CadastroProduto() {
                                 </div>
 
                                 <div className={styles.column}>
-                                    <Input width={"325px"} defaultValue={sku} onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="number" name="nome" ></Input>
+                                    <Input width={"325px"} defaultValue={sku} onChange={(e) => setSku(e.target.value)} label="SKU" id="nome" type="text" name="nome" ></Input>
                                     <span className={styles.titleNcm}>NCM</span>
                                     <Select width={"325px"} data={fazOptionsNcm()} label="NCM" id="ncm" idArrow="arrow4" name="ncm"></Select>
                                     <span className={styles.titleMedida}>Medida</span>

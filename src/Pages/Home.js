@@ -453,11 +453,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div id='chatbot' className={styles.BaseBotChat}>
-                        <div id='balao' className={styles.interogacao}>
-                            <i className="fa-solid fa-question"></i>
-                            <span className={styles.triangulo}></span>
-                        </div>
-                        <div className={styles.baseAI}>
+                        <div id={"baseAI"} className={styles.baseAI}>
                             <div id='btnOff' onClick={fecharChat} className={styles.btnOff}>
                                 <i className="fa-solid fa-arrow-down"></i>
                             </div>
@@ -495,8 +491,10 @@ export default function Home() {
         const balao = document.getElementById('balao')
         const chatAvatar = document.getElementById('chatAvatar')
         const avatarFoto = document.getElementById('avatarFoto')
+        const baseAI = document.getElementById('baseAI')
 
         chatAvatar.style.width = "160px"
+        baseAI.style.top = "3%"
         chatAvatar.style.height = "160px"
         chatAvatar.style.left = "-30px"
         avatarFoto.style.overflow = "hidden"
@@ -524,6 +522,7 @@ export default function Home() {
         const balao = document.getElementById('balao')
         const chatAvatar = document.getElementById('chatAvatar')
         const avatarFoto = document.getElementById('avatarFoto')
+        const baseAI = document.getElementById('baseAI')
 
         chatAvatar.style.width = "150px"
         chatAvatar.style.height = "150px"
@@ -537,6 +536,10 @@ export default function Home() {
         } else {
             BotChat.style.bottom = '-470px'
         }
+
+        setTimeout(() => {
+            baseAI.style.top = "-10%"
+        }, 350);
 
         btnOn.style.opacity = '1'
         btnOn.style.zIndex = '1'

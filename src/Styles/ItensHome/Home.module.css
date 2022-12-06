@@ -196,7 +196,7 @@
     bottom: -470px;
     right: 4%;
     width: 400px;
-    height: 580px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,7 +221,7 @@
 
 .baseAI {
     position: absolute;
-    top: 5%;
+    top: -10%;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -291,7 +291,7 @@
     background-color: #4D71FF;
     width: 60px;
     height: 60px;
-    top: 3%;
+    top: -12%;
     left: 20%;
     font-size: 25px;
     color: #fff;

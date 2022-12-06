@@ -18,11 +18,11 @@ export function formataHora(h) {
         hora = "21"
     } else if (hora == "01") {
         hora = "22"
+    } else if (hora == "02") {
+        hora = "23"
     } else {
         hora = hora - 3 + ""
-    }
-
-    if (hora.length == 1) {
+    }if (hora.length == 1) {
         hora = "0" + hora
     }
 

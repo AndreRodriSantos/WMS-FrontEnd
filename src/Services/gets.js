@@ -135,7 +135,7 @@ window.onload = function () {
     } else if (reloading == "delete") {
         sucesso("A exclusão foi realizada com sucesso")
         sessionStorage.removeItem("reloading")
-    } else if (reloading == "semTurma") {
+    }else if (reloading == "semTurma") {
         erro("Alunos sem turma não podem logar, peça a seu professor para adicioná-lo em uma turma")
         sessionStorage.removeItem("reloading")
     }else if(reloading == "erroFornecedor"){
@@ -158,6 +158,9 @@ window.onload = function () {
         sessionStorage.removeItem("reloading")
     }else if(reloading == "pedido"){
         sucesso("Pedido foi realizado com sucesso!!")
+        sessionStorage.removeItem("reloading")
+    } else if (reloading == "deleteNCM") {
+        sucesso("NCM foi excluido com sucesso")
         sessionStorage.removeItem("reloading")
     }
 }
