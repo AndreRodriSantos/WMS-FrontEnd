@@ -17,7 +17,7 @@ import Bruninha from "../IMG/BruninhaAnimation.gif"
 import BruninhaSleep from "../IMG/BruninhaDormindo.gif"
 import BruninhaClick from "../IMG/BruninhaClick.png"
 
-export default function Home() { 
+export default function Home() {
 
     const [fornecedor, setFornecedor] = useState([])
     const [pedido, setPedido] = useState([])
@@ -40,6 +40,8 @@ export default function Home() {
     const [qtdFornecedores, setQtdFornecedores] = useState()
     const [turma, setTurma] = useState({})
     const [professor, setProfessor] = useState({})
+    
+    
 
     async function getListaNcm() {
         const ncms = await getNcm()
@@ -76,6 +78,7 @@ export default function Home() {
     function getProduto() {
         api.get(`api/produto/list`).then(
             response => {
+                console.log(response.data);
                 setProduto(response.data)
             }
         )
@@ -228,7 +231,7 @@ export default function Home() {
                                     </p>
                                 </div>
                                 <div className={styles.btns}>
-                                    <button className={styles.tutorial}>TUTORIAL</button>
+                                    <a href={"https://www.youtube.com/watch?v=WtplWCno5MI&ab_channel=Wmssenai"} className={styles.tutorial}>TUTORIAL</a>
                                 </div>
                             </div>
                             <div className={styles.Caixa}>
@@ -248,7 +251,7 @@ export default function Home() {
                                     </lord-icon>
                                     <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
                                 </span>
-                                <button onClick={AbrirRelatorio} className={styles.relatoriosBtn}><p>Relatórios</p> <i className="fa-sharp fa-solid fa-file"></i></button>
+                                <button onClick={AbrirRelatorio} className={styles.relatoriosBtn}><p>Relatórios</p> <i className="fa-sharp fa-solid fa-file"></i></button>                             
                                 <InputPesquisa placeholder={"Pesquise uma Movimentação"} left={0} search={search} />
                             </div>
                             <div className={styles.tabelaContainer}>
@@ -512,7 +515,6 @@ export default function Home() {
         btnOn.style.zIndex = '0'
         btnOff.style.opacity = '1'
         btnOff.style.zIndex = '1'
-        balao.style.opacity = '0'
     }
 
     function fecharChat() {
@@ -545,7 +547,6 @@ export default function Home() {
         btnOn.style.zIndex = '1'
         btnOff.style.opacity = '0'
         btnOff.style.zIndex = '0'
-        balao.style.opacity = '1'
     }
 
     function produtoList() {

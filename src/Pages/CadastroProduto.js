@@ -29,6 +29,12 @@ export default function CadastroProduto() {
     const [check, setCheck] = useState([])
     let [valorLiquido, setValorLiquido] = useState()
 
+    const [ipiValor, setIpiValor] = useState('')
+    const [pisValor, setPisValor] = useState('')
+    const [cofinsValor, setCofinsValor] = useState('')
+    const [icmsValor, setIcmsValor] = useState('')
+    const [valorImportacaoValor, setValorImportacaoValor] = useState("")
+
     function getProduto() {
         const id = localStorage.getItem("idProduto")
         let demanda = document.getElementById("demanda")
@@ -43,7 +49,6 @@ export default function CadastroProduto() {
             api.get(`api/produto/${id}`).then(
                 response => {
                     const produto = response.data
-
                     setNome(produto.nome)
                     setDescricao(produto.descricao)
                     setSku(produto.sku)
@@ -57,7 +62,7 @@ export default function CadastroProduto() {
                         valorImportacaoInput.removeAttribute("disabled")
                         setValorImportacao(produto.valorImportacao)
                     }
-     
+
                     produto.fornecedores.map(f => {
                         setFornecedoresCheck(fornecedoresCheck => [...fornecedoresCheck, f.fornecedor])
                     })
@@ -173,13 +178,20 @@ export default function CadastroProduto() {
         const valorCofins = cofins * valorUnitario / 100
         const valorImport = importado * valorUnitario / 100
 
+        setIpiValor((valorIpi).toFixed(2))
+        setPisValor((valorPis).toFixed(2))
+        setCofinsValor((valorCofins).toFixed(2))
+        setIcmsValor((valorIcms).toFixed(2))
+        setValorImportacaoValor((valorImport).toFixed(2))
+
+        /*
         const valorImposto = valorCofins + valorIcms + valorIpi + valorPis + valorImport
         let impostoFormat = parseInt(valorUnitario)
         const valorFinal = valorImposto + impostoFormat
+        */
 
-        const valorFinalBr =valorFinal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        const valorFinalBr = valorUnitario.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
         setValorLiquido(valorFinalBr)
-
     }
 
     function checkFornecedor(fornecedor, id) {
@@ -219,7 +231,6 @@ export default function CadastroProduto() {
         } else {
             valorImportacao.removeAttribute('disabled')
         }
-
     }
 
     async function CadastrarProduto(e) {
@@ -348,7 +359,7 @@ export default function CadastroProduto() {
                                     <Select width={"325px"} data={fazOptionsNcm()} label="NCM" id="ncm" idArrow="arrow4" name="ncm"></Select>
                                     <span className={styles.titleMedida}>Medida</span>
                                     <Select width={"325px"} data={fazOptionsMedida()} idArrow="arrow3" id="medida" name="medida"></Select>
-                                    <Input width={"325px"} defaultValue={valorUnitario} onChange={(e) => { setValor(e.target.value); fazerCalculo() }} label="Valor Bruto" id="valor" type="number" name="valor"></Input>
+                                    <Input width={"325px"} defaultValue={valorUnitario} onChange={(e) => {setValor(e.target.value); fazerCalculo()}} label="Valor Bruto" id="valor" type="number" name="valor"></Input>
                                 </div>
 
                             </div>
@@ -396,6 +407,7 @@ export default function CadastroProduto() {
                         </div>
 
                         <div className={styles.footerButtons}>
+
                             <button type="button" className={styles.voltarButton}>
                                 Voltar
                             </button>
@@ -410,10 +422,10 @@ export default function CadastroProduto() {
                     <form className={`${styles.form}  ${styles.etapa2Off}`} onSubmit={(e) => { e.preventDefault(); setPasso(passo + 1) }} id="etapa2Div">
 
                         <div className={styles.column}>
-                            <Input defaultValue={ipi} onChange={(e) => { setIpi(e.target.value); fazerCalculo() }} label="IPI %" id="ipi" type="number" name="nome" ></Input>
-                            <Input defaultValue={pis} onChange={(e) => { setPis(e.target.value); fazerCalculo() }} label="PIS %" id="pis" type="number" name="descricao" ></Input>
-                            <Input defaultValue={cofins} onChange={(e) => { setCofins(e.target.value); fazerCalculo() }} label="COFINS %" id="cofins" type="number" name="descricao" ></Input>
-                            <Input defaultValue={icms} onChange={(e) => { setIcms(e.target.value); fazerCalculo() }} label="ICMS %" id="icms" type="number" name="descricao" ></Input>
+                            <Input onChange={(e) => { setIpi(e.target.value); fazerCalculo() }} defaultValue={ipi} label="IPI %" id="ipi" type="number" name="nome" ></Input>
+                            <Input onChange={(e) => { setPis(e.target.value); fazerCalculo() }} defaultValue={pis} label="PIS %" id="pis" type="number" name="descricao" ></Input>
+                            <Input onChange={(e) => { setCofins(e.target.value); fazerCalculo() }} defaultValue={cofins} label="COFINS %" id="cofins" type="number" name="descricao" ></Input>
+                            <Input onChange={(e) => { setIcms(e.target.value); fazerCalculo() }} defaultValue={icms} label="ICMS %" id="icms" type="number" name="descricao" ></Input>
                         </div>
 
                         <div className={styles.column}>
@@ -435,8 +447,14 @@ export default function CadastroProduto() {
                             </div>
 
                             <div className={styles.ValorLiquido}>
-                                <span className={styles.titleVL}>Valor Final</span>
-                                <span className={styles.vl}>{valorLiquido}</span>
+                                <span className={styles.titleVL}>Taxas</span>
+                                <span className={styles.vl}>
+                                    <p>Valor IPI: {"R$" + ipiValor}</p>
+                                    <p>Valor PIS: {"R$" + pisValor}</p>
+                                    <p>Valor COFINS: {"R$" + cofinsValor}</p>
+                                    <p>Valor ICMS: {"R$" + icmsValor}</p>
+                                    <p>Valor de Importação: {"R$" + valorImportacaoValor}</p>
+                                </span>
                             </div>
                         </div>
 

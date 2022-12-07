@@ -61,7 +61,7 @@ export default function Pedido() {
         produtoSelecionados.map(p => {
             setProdutosAdicionados(produtosAdicionados => [...produtosAdicionados, p])
         })
-
+        
         if (produtoSelecionados.length != 0) {
             ItemsPedidos()
         }
@@ -71,7 +71,6 @@ export default function Pedido() {
         const valorTotal = document.getElementById("valorTotalSelec").textContent
         const aluno = { id: localStorage.getItem("idAluno") }
         const prof = { id: localStorage.getItem("idProf") }
-        
 
         const pedido = {
             "itens": produtosAdicionados,
@@ -79,9 +78,9 @@ export default function Pedido() {
             "enderecado": 0
         }
 
-        if(aluno.id){
+        if (aluno.id) {
             pedido.aluno = aluno
-        }else{
+        } else {
             pedido.prof = prof
         }
 

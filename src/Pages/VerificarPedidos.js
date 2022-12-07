@@ -207,7 +207,7 @@ export default function VerificarPedidos() {
                                             <p className={styles.textUnitario}>Valor Importação :</p>
                                         </span>
                                         <span className={styles.Valor}>
-                                            <p className={styles.cifrao}>R$</p>
+                                            <p className={styles.cifrao}>%</p>
                                             <p id='valorImportado' className={styles.Num}></p>
                                         </span>
                                     </span>

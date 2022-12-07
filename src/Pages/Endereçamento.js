@@ -274,7 +274,7 @@ export default function Enderecamento() {
                                             <p className={styles2.textUnitario}>Valor Importação :</p>
                                         </span>
                                         <span className={styles2.Valor}>
-                                            <p className={styles2.cifrao}>R$</p>
+                                            <p className={styles2.cifrao}>%</p>
                                             <p id='valorImportado' className={styles.Num}></p>
                                         </span>
                                     </span>

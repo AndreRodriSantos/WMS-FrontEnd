@@ -103,7 +103,7 @@ export class PopUpInfo extends React.Component {
                                             <p className={styles.textUnitario}>Valor Importação :</p>
                                         </span>
                                         <span className={styles.Valor}>
-                                            <p className={styles.cifrao}>R$</p>
+                                            <p className={styles.cifrao}>%</p>
                                             <p id='info8' className={styles.Num}></p>
                                         </span>
                                     </span>

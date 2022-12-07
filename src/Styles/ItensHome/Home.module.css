@@ -125,6 +125,10 @@
     border: none;
     background-color: #ED80FD;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .simulacao {
@@ -917,6 +921,18 @@
 
 .relatoriosBtn:hover{
     font-size: 17px;
+}
+
+.selectPesquisa{
+    max-width: 100px;
+    height: 50px;
+
+}
+
+.divPesquisa{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 @media screen and (min-width:1650px) {
