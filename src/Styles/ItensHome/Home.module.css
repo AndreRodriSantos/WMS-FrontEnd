@@ -778,6 +778,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 10%;
 }
 
 .tabelaContainer {
@@ -939,10 +940,30 @@
     font-size: 17px;
 }
 
+.baseSelect{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.select{
+    appearance: auto;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+.select option{
+    color: #000;
+    width: 100%;
+    border: none;
+}
+
 .selectPesquisa{
     max-width: 100px;
     height: 50px;
-
 }
 
 .divPesquisa{

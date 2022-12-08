@@ -39,7 +39,7 @@ export function dataHoraFormatter(date){
 
     let dataHoraFinal
 
-    return dataHoraFinal = data + " - " + hora
+    return dataHoraFinal = data
 }
 
 export function dataDesformatada(date) {
