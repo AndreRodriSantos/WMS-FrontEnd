@@ -130,11 +130,12 @@
 }
 
 .NomeProduto{
+    width: 250px;
+    word-break: break-all;
     height: 60px;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 300;
     color: #000;
-
 }
 
 .DescricaoProduto {

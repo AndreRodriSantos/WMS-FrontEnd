@@ -20,7 +20,12 @@
     height: 100%;
     background-color: #fff;
     border-radius: 20px;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.home::-webkit-scrollbar{
+    background-color: transparent;
 }
 
 .home2{
@@ -187,7 +192,7 @@
 .listHistorico {
     position: relative;
     width: 100%;
-    min-height: 300px;
+    min-height: 420px;
     height: 450px;
     margin-top: 20px;
     border-radius: 20px;
@@ -463,6 +468,7 @@
     width: 450px;
     height: 450px;
     min-width: 300px;
+    min-height: 400px;
     margin-bottom: 20px;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
@@ -575,7 +581,7 @@
 .base {
     position: relative;
     width: 450px;
-    min-height: 315px;
+    min-height: 420px;
     height: 450px;
     border-radius: 20px;
     background-color: #fff;
@@ -838,7 +844,6 @@
 
 
 .qntMovimento {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -853,8 +858,19 @@
 }
 
 .trMovimentacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     position: relative;
     height: 70px;
+}
+
+.excluirBtn{
+    cursor: pointer;
+}
+
+.excluir{
+    color: red;
 }
 
 .addTitle {

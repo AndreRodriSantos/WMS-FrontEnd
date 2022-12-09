@@ -6,8 +6,8 @@ import { InputPesquisa } from "../Components/Inputs/InputPesquisa"
 import { PopUpInfo } from "../Components/ItensHome/PopUpInfo"
 import Caixas from '../IMG/Caixas.png'
 import api from "../Services/api";
-import { sucesso } from "../Components/Avisos/Alert";
-import { getAluno, getNcm, getProfessor, sendIdAluno } from "../Services/gets";
+import { erro, sucesso } from "../Components/Avisos/Alert";
+import { getAluno, getNcm, getProfessor, refresh, sendIdAluno } from "../Services/gets";
 import CadastroMedidas, { getMedida, getPelaMedida } from "../Components/Forms/CadastroMedidas";
 import { CadastroNcm, getListaNcm } from "../Components/ItensHome/CadastroNcm";
 import { Perfil } from "../Components/ItensHome/Perfil";
@@ -40,8 +40,8 @@ export default function Home() {
     const [qtdFornecedores, setQtdFornecedores] = useState()
     const [turma, setTurma] = useState({})
     const [professor, setProfessor] = useState({})
-    
-    
+
+
 
     async function getListaNcm() {
         const ncms = await getNcm()
@@ -95,6 +95,16 @@ export default function Home() {
         api.get(`api/movimentacao/findbyall/${texto}`).then(response => {
             setMovimentacoes(response.data)
         })
+    }
+
+    function excluirMovimentacao(id) {
+        api.delete(`api/movimentacao/${id}`).then(
+            response => {
+                refresh("delete")
+            },
+            err => {
+                erro("Ocorreu um erro ao excluir a movimentação")
+            })
     }
 
     async function getUserLogado() {
@@ -251,15 +261,23 @@ export default function Home() {
                                     </lord-icon>
                                     <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
                                 </span>
-                                <button onClick={AbrirRelatorio} className={styles.relatoriosBtn}><p>Relatórios</p> <i className="fa-sharp fa-solid fa-file"></i></button>                             
-                                <InputPesquisa placeholder={"Pesquise uma Movimentação"} left={0} search={search} />
+                                <button onClick={AbrirRelatorio} className={styles.relatoriosBtn}><p>Relatórios</p> <i className="fa-sharp fa-solid fa-file"></i></button>
+                                <div>
+                                    <InputPesquisa placeholder={"Pesquise uma Movimentação"} left={0} search={search} />
+                                    <select>
+                                        <option value={"tipo"}>Tipo</option>
+                                        <option value={"data"}>Data</option>
+                                    </select>
+                                </div>
                             </div>
                             <div className={styles.tabelaContainer}>
                                 <div className={styles.headerListH}>
                                     <div className={styles.HeaderMovimentacao}>
-                                        <p colSpan="1">Data</p>
-                                        <p colSpan="1">Movimento</p>
-                                        <p colSpan="1">Tipo</p>
+                                        <p>Produto</p>
+                                        <p>Data</p>
+                                        <p>Movimento</p>
+                                        <p>Tipo</p>
+                                        <p className={styles.excluir}>Excluir</p>
                                     </div>
                                     <span className={styles.barra}></span>
                                 </div>
@@ -268,11 +286,23 @@ export default function Home() {
                                         <tbody className={styles.tabelaMovimentacaoBody}>
                                             {movimentacoes.map((m, key) =>
                                                 <tr key={key} className={styles.trMovimentacao}>
+                                                    <td className={styles.produtoNome}>{m.produto.nome}</td>
                                                     <td className={styles.data}>{dataHoraFormatter(m.data)}</td>
                                                     <td className={styles.produtoNome}>
                                                         <span style={m.tipo == 'SAIDA' ? { backgroundColor: '#F2C7C3' } : { backgroundColor: '#B2FBDE' }} className={styles.qntMovimento}>{m.tipo == 'ENTRADA' ? "+" + m.quantidade : "-" + m.quantidade}</span>
                                                     </td>
                                                     <td style={m.tipo == "ENTRADA" ? { color: "green" } : { color: "red" }} className={styles.tipo}>{m.tipo}</td>
+                                                    <td className={styles.produtoNome}>
+                                                        <div className={styles.excluirBtn} onClick={() => excluirMovimentacao(m.id)}>
+                                                            <lord-icon
+                                                                src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                                trigger="hover"
+                                                                colors="primary:#121331"
+                                                                state="hover-empty"
+                                                                style={{ width: 32, height: 32 }}>
+                                                            </lord-icon>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             )}
                                         </tbody>
@@ -479,6 +509,7 @@ export default function Home() {
                             </span>
                             <div className={styles.iframeBotChat}>
                                 {/* Lugar do Chat */}
+                                <iframe src='https://webchat.botframework.com/embed/testesla?s=9eUxyplZb8U.bh6f9_KcCIXiieLVfL0RehGCU-6g9sN0WajI5fOULfU' style={{ width: "100%", height: "350px" }}></iframe>
                             </div>
                         </div>
                     </div>

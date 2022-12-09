@@ -124,7 +124,7 @@ window.onload = function () {
         sucesso("Usuário Logado com sucesso, seja bem-vindo!!")
         sessionStorage.removeItem("reloading");
     } else if (reloading == "cadastro") {
-        sucesso("Seu cadastrado foi realizado com sucesso")
+        sucesso("Seu cadastro foi realizado com sucesso")
         sessionStorage.removeItem("reloading");
     } else if (reloading == "alteracao") {
         sucesso("A alteração foi realizada com sucesso!!")
@@ -148,7 +148,7 @@ window.onload = function () {
         sucesso("Verifique seu email e insira o código para alterar sua senha")
         sessionStorage.removeItem("reloading")
     }else if(reloading == "enderecamento"){
-        sucesso("Endereçamento cadastrado com sucesso!!!")
+        sucesso("Endereçamento foi cadastrado com sucesso!!!")
         sessionStorage.removeItem("reloading")
     }else if(reloading == "picking"){
         sucesso("Produtos Enviados com sucesso!!!")

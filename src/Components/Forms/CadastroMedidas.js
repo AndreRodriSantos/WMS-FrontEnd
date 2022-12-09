@@ -121,7 +121,7 @@ export default class CadastroMedidas extends React.Component {
                             <Input id="nomeMedida" label="Nome" type="text" placeholder="Digite o Nome" ></Input>
                             <Input id="sigla" label="Sigla" type="text" placeholder="Digite a Sigla"></Input>
 
-                            <Button id='b' >Criar Medida</Button>
+                            <Button id='b'>Criar Medida</Button>
 
                             <div className={styles.listaMedida}>
                                 <div className={styles.labelMedida}>
