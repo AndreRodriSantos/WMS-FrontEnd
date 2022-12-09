@@ -194,7 +194,7 @@ export default function ListaMembros() {
                         <span className={styles.titleHeader1}></span>
                         <span className={styles.titleHeader}>Nome</span>
                         <span className={styles.titleHeader}>Email</span>
-                        <span className={styles.titleHeader}>Nif / Matrícula</span>
+                        <span className={styles.titleHeader}>Matrícula</span>
                         <span className={styles.titleHeader}>Função</span>
                         <span className={styles.titleHeader}><p className={styles.titleDelete}>Excluir</p></span>
                         <span className={styles.barra}></span>

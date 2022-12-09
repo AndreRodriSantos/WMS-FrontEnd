@@ -111,17 +111,17 @@ export default function CadastroFornecedor() {
 
                 <form className={styles.form} onSubmit={CadastrarAlterar}>
 
-                    <Input label="Nome" id="nome" type="text" defaultValue={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o Nome do Fornecedor" name="nome" ></Input>
+                    <Input caracter={20}  label="Nome" id="nome" type="text" defaultValue={nome} onChange={(e) => setNome(e.target.value)} placeholder="Digite o Nome do Fornecedor" name="nome" ></Input>
 
                     <div className={styles.doubleInput1}>
-                        <Input width={210} caracter={18} label="CNPJ" id="cnpj" defaultValue={cnpj} onChange={(e) => setCnpj(e.target.value)} type="text" placeholder="Digite o CNPJ" name="cpnj" ></Input>
+                        <Input width={210} caracter={18} label="CNPJ" id="cnpj" defaultValue={cnpj} onChange={(e) => setCnpj(e.target.value)} type="number" placeholder="Digite o CNPJ" name="cpnj" ></Input>
 
-                        <Input width={210} caracter={9} label="CEP" id="cep" type="text" defaultValue={cep} onChange={(e) => setCep(e.target.value)} placeholder="Digite o CEP" name="cep" ></Input>
+                        <Input width={210} caracter={9} label="CEP" id="cep" type="number" defaultValue={cep} onChange={(e) => setCep(e.target.value)} placeholder="Digite o CEP" name="cep" ></Input>
                     </div>
 
-                    <Input label="Logradouro" id="logradouro" type="text" defaultValue={logradouro} onChange={(e) => setLogradouro(e.target.value)} placeholder="Digite o Logradouro" name="nome" ></Input>
+                    <Input caracter={30} label="Logradouro" id="logradouro" type="text" defaultValue={logradouro} onChange={(e) => setLogradouro(e.target.value)} placeholder="Digite o Logradouro" name="nome" ></Input>
 
-                    <Input label="Localidade" id="localidade" type="text" defaultValue={localidade} onChange={(e) => setLocalidade(e.target.value)} placeholder="Digite o localidade" name="localidade" ></Input>
+                    <Input caracter={20} label="Localidade" id="localidade" type="text" defaultValue={localidade} onChange={(e) => setLocalidade(e.target.value)} placeholder="Digite o localidade" name="localidade" ></Input>
 
                     <div className={styles.doubleInput}>
                         <Input width={210} label="UF" id="uf" type="text" defaultValue={uf} onChange={(e) => setUf(e.target.value)} placeholder="Digite o UF" name="uf" ></Input>

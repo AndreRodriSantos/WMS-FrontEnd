@@ -51,6 +51,12 @@ export default function Picking() {
         closeConfirmacao()
     }
 
+    function pesquisaPicking(texto) {
+        api.get(`api/enderecamento/findbyall/${texto}`).then(response => {
+            setEnderecamentos(response.data)
+        })
+    }
+
     useEffect(() => {
         getEnderecamento()
     }, [])
@@ -73,7 +79,7 @@ export default function Picking() {
                     <span className={styles.nameHeader}>
                         <i className="fa-solid fa-boxes-packing"></i> <span>Picking</span>
                     </span>
-                    <InputPesquisa placeholder={"Pesquise por Produto"} />
+                    <InputPesquisa search={pesquisaPicking} placeholder={"Pesquise por Produto"} />
                 </header>
 
                 <div className={styles.tabelaContainer}>

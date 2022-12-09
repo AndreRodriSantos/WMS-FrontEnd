@@ -113,7 +113,7 @@ export class CadastroNcm extends React.Component {
                         <span className={styles.title}>Cadastro de NCM</span>
                     </span>
                     <form onSubmit={CadastroNCM}>
-                        <Input id="ncm" label="NCM" type="number" placeholder="Digite o NCM" name="ncm" />
+                        <Input caracter={8} id="ncm" label="NCM" type="number" placeholder="Digite o NCM" name="ncm" />
                         <Button id='bNcm' >Criar</Button>
 
                         {/* LISTA */}

@@ -150,16 +150,6 @@ export class PopUpInfo extends React.Component {
 
         }
 
-        /*   function btnOn(){
-              const btnAnimation = document.getElementById("btnAnimation");
-              btnAnimation.style.width = '100%'    
-          }
-  
-          function btnOff(){
-              const btnAnimation = document.getElementById("btnAnimation");
-              btnAnimation.style.width = '50px'    
-          } */
-
     }
 
 }

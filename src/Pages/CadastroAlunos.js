@@ -128,9 +128,9 @@ export default function CadastroAlunos() {
                 <div className={styles.Form}>
                     <h1 className={styles.h1}>Cadastro de Aluno(a)</h1>
                     <form onSubmit={CadastrarAluno}>
-                        <Input defaultValue={nome} caracter='25' label="Nome" id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" />
-                        <Input defaultValue={matricula} label="N° Matricula" id="numMatricula" type="number" onChange={(e) => setMatricula(e.target.value)} name="numMatricula" placeholder="Digite o N° Matrícula" />
-                        <Input defaultValue={emailAluno} caracter='30' label="Email" id="emailAluno" type="email" onChange={(e) => setEmailAluno(e.target.value)} name="emailAluno" placeholder="Digite o Email" />
+                        <Input defaultValue={nome} caracter={15} label="Nome" id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" />
+                        <Input defaultValue={matricula} caracter={15} label="N° Matricula" id="numMatricula" type="number" onChange={(e) => setMatricula(e.target.value)} name="numMatricula" placeholder="Digite o N° Matrícula" />
+                        <Input defaultValue={emailAluno} caracter={30} label="Email" id="emailAluno" type="email" onChange={(e) => setEmailAluno(e.target.value)} name="emailAluno" placeholder="Digite o Email" />
                         <InputSenha label="Senha" id="senha" id_eye="eye" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" />
                         <Button>Cadastrar</Button>
                     </form>

@@ -6,7 +6,7 @@ import styles from '../Styles/Turmas/CardTurmas.module.css'
 import { closeConfirmacao, Confirmacao, openConfirmacao } from "./Avisos/Confirmacao";
 
 export default class CardTurma extends React.Component {
-    render() {
+    render() { 
 
         const { imgTurma, id, config, turma, tirarTurma, novosDados } = this.props;
 

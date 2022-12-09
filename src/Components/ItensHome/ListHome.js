@@ -80,7 +80,8 @@ export class ListHome extends React.Component {
                 info4.innerText = objeto.uf 
                 info6.innerText = objeto.localidade
                 info9.innerText = objeto.cnpj
-                info9.style.fontSize = '28px'
+                         
+                info9.style.fontSize = '25px'
 
                 imgItemPedido.setAttribute("src", Fornecedor)
 
@@ -162,7 +163,7 @@ export class ListHome extends React.Component {
                 <td className={styles.titleList}>
                     <span className={styles.nome}>{Info1}</span>
                 </td>
-                <td className={styles.titleList}>{Info2}</td>
+                <td className={styles.titleList} title={Info2}>{Info2.length > 10 ? Info2.substring(0, 10)+'...' : Info2 }</td>
                 <td className={styles.titleList}>{Info3}</td>
                 <td className={styles.titleList}>
                     {objeto.enderecado != undefined ?

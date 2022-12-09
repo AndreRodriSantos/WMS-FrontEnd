@@ -133,9 +133,9 @@ export default function CadastroProfessores() {
                 <div className={styles.Form}>
                     <h1 className={styles.h1}>Cadastro de Professor(a)</h1>
                     <form onSubmit={CadastrarProf}>
-                        <Input defaultValue={nomeProf} id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" label="Nome" />
-                        <Input defaultValue={nif} id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif" />
-                        <Input defaultValue={email} label="Email" id="email" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Digite o Email" />
+                        <Input defaultValue={nomeProf} caracter={15} id="nome" type="text" onChange={(e) => setNome(e.target.value)} placeholder="Digite o seu Nome" name="nome" label="Nome" />
+                        <Input defaultValue={nif} caracter={15} id="nif" type="number" onChange={(e) => setNif(e.target.value)} name="nif" placeholder="Digite seu NIF" label="Nif" />
+                        <Input defaultValue={email} caracter={30} label="Email" id="email" type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Digite o Email" />
                         <InputSenha id="senha" id_eye="eye" type="password" onChange={(e) => setSenha(e.target.value)} name="senha" placeholder="Digite sua Senha" label="Senha" />
                         <Button>Cadastrar</Button>
                     </form>
