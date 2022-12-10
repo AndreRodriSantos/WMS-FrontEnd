@@ -92,9 +92,22 @@ export default function Home() {
     }
 
     function search(texto) {
-        api.get(`api/movimentacao/findbyall/${texto}`).then(response => {
-            setMovimentacoes(response.data)
-        })
+
+        const selectPesquisa = document.getElementById("pesquisaMov").value
+
+        if (selectPesquisa == "tipo") {
+            api.get(`api/movimentacao/findByTipo/${texto}`).then(response => {
+                setMovimentacoes(response.data)
+            })
+        } else if (selectPesquisa == "data") {
+            api.get(`api/movimentacao/findByData/${texto}`).then(response => {
+                setMovimentacoes(response.data)
+            })
+        } else{
+            api.get(`api/movimentacao/findByProduto/${texto}`).then(response => {
+                setMovimentacoes(response.data)
+            })
+        }
     }
 
     function excluirMovimentacao(id) {
@@ -262,11 +275,12 @@ export default function Home() {
                                     <p className={styles.SubTitleMovimentacao}>Histórico de Estoque</p>
                                 </span>
                                 <button onClick={AbrirRelatorio} className={styles.relatoriosBtn}><p>Relatórios</p> <i className="fa-sharp fa-solid fa-file"></i></button>
-                                <div>
+                                <div className={styles.baseSelect}>
                                     <InputPesquisa placeholder={"Pesquise uma Movimentação"} left={0} search={search} />
-                                    <select>
+                                    <select className={styles.select} id="pesquisaMov">
                                         <option value={"tipo"}>Tipo</option>
                                         <option value={"data"}>Data</option>
+                                        <option value={"produto"}>Produto</option>
                                     </select>
                                 </div>
                             </div>
