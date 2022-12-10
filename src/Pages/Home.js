@@ -241,7 +241,7 @@ export default function Home() {
                                     </p>
                                 </div>
                                 <div className={styles.btns}>
-                                    <a href={"https://www.youtube.com/watch?v=WtplWCno5MI&ab_channel=Wmssenai"} className={styles.tutorial}>TUTORIAL</a>
+                                    <a href={"https://www.youtube.com/watch?v=WF6QeWmaB5c"} className={styles.tutorial}>TUTORIAL</a>
                                 </div>
                             </div>
                             <div className={styles.Caixa}>
@@ -509,7 +509,7 @@ export default function Home() {
                             </span>
                             <div className={styles.iframeBotChat}>
                                 {/* Lugar do Chat */}
-                                <iframe src='https://webchat.botframework.com/embed/testesla?s=9eUxyplZb8U.bh6f9_KcCIXiieLVfL0RehGCU-6g9sN0WajI5fOULfU' style={{ width: "100%", height: "350px" }}></iframe>
+                                <iframe src='https://webchat.botframework.com/embed/chatbotBruna?s=-xV9QSsXK00.tFilHx8hrinZO0QkIzWZwfPxr9ide3fdpeKFzgtxhvs' style={{width: "100%", height: "100%", border: "none", fontSize:"20px"}}></iframe>
                             </div>
                         </div>
                     </div>
